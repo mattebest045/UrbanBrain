@@ -1,0 +1,28 @@
+CONVENZIONI: 
+- PK principale = "ID" + <nomeTab>
+- FK 		= "id" + <nomeTabLink>
+
+Professione.Email : Email personale del lavoro (Superchiave a meno che uno possa ritornare a lavorare nello stesso posto con la stessa mail)
+Professione.DataInizio e Professione.DataFine: PK composta perchè uno dopo anni può tornare a lavorare nella stessa azienda 
+
+Utente.Indirizzo: attributo composto (Via, NCivico, Citta, Provicia)
+
+SuperAdmin.Ruolo: es(Gestione Sistema, Gestione Utenti, Gestione Dati, ecc...
+SuperAdmin.StatoAccount: Attivo/Sospeso/Disabilitato
+
+SpesaPubblica.Data: Data di registrazione di una det. spesa pubblica
+
+Sensore.Posizione: attributo composto (Latitudine, Longitudine)
+Dato.Data : Data di rilevazione del valore del sensore
+
+Partecipazione.Ruolo: es(Organizzatore/Collaboratore/Partecipante/ecc...)
+Partecipazione.Data: Data in cui l'Utente si è iscritto ad un evento o quando ne crea uno (Organizzatore/Collaboratore)
+
+CAMBIO ASSOCIAZIONE:
+Incidente - (1, 1) -> RegistrazioneIncidente 
+Traffico  - (1, 1) -> MonitoraggioTraffico
+
+
+MonitoraggioTraffico.CondizioniTraffico: es(Leggero, Moderato, Intenso)
+
+ServizioPubblico.Stato: es(Attivo, Manutenzione, Discarica, ecc..)
