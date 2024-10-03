@@ -7,6 +7,8 @@ Professione.DataInizio e Professione.DataFine: PK composta perchè uno dopo anni
 
 Utente.Indirizzo: attributo composto (Via, NCivico, Citta, Provicia)
 
+Cittadino.CF: Codice Fiscale
+
 SuperAdmin.Ruolo: es(Gestione Sistema, Gestione Utenti, Gestione Dati, ecc...
 SuperAdmin.StatoAccount: Attivo/Sospeso/Disabilitato
 
