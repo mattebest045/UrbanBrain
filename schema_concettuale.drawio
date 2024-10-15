@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 OPR/113.0.0.0" version="24.7.17">
   <diagram name="Pagina-1" id="qD8-IgMIRUxjnWorhRo1">
-    <mxGraphModel dx="826" dy="1604" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="688" dy="1532" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1115,10 +1115,10 @@
           <mxGeometry x="704.25" y="-1133" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="f8H7bPCvHPPE9_fxp1JB-55" value="Telefono" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=10;fontColor=default;" parent="1" vertex="1">
-          <mxGeometry x="677.5" y="-1068" width="60" height="30" as="geometry" />
+          <mxGeometry x="680.5" y="-1068" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="f8H7bPCvHPPE9_fxp1JB-59" value="" style="group;direction=east;rotation=90;pointerEvents=0;align=center;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=none;gradientColor=none;" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="745.5" y="-1068" width="5" height="30" as="geometry" />
+          <mxGeometry x="746.5" y="-1067" width="5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="f8H7bPCvHPPE9_fxp1JB-60" value="" style="endArrow=none;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="f8H7bPCvHPPE9_fxp1JB-59" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -1175,7 +1175,7 @@
           <mxGeometry width="5" height="5" as="geometry" />
         </mxCell>
         <mxCell id="f8H7bPCvHPPE9_fxp1JB-79" value="" style="group;direction=east;rotation=90;" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="745.5" y="-1097" width="5" height="30" as="geometry" />
+          <mxGeometry x="746.5" y="-1097" width="5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="f8H7bPCvHPPE9_fxp1JB-80" value="" style="endArrow=none;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="f8H7bPCvHPPE9_fxp1JB-79" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -1459,7 +1459,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="pfabtf4lPMMX-cfPk-Wo-5" value="Testo" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+        <mxCell id="pfabtf4lPMMX-cfPk-Wo-5" value="Tipo" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="151.75" y="-250" width="50" height="30" as="geometry" />
         </mxCell>
         <mxCell id="CdhmtQijNbEH8fd7aBbH-1" value="" style="group" vertex="1" connectable="0" parent="1">
