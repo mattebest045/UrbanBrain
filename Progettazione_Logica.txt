@@ -1,53 +1,33 @@
-CONVENZIONI:
--[PK], es: -IDUtente
-_[FK], es: _idUtente
+Utente(IDUtente, Nome, Cognome, DataNascita, CI, Email, Telefono, Indirizzo)
+Operatore(IDOperatore, DataInizio, DataFine, Email, Tipo, Ruolo)
+Cittadino(IDCittadino, CF, Stato, DataRegistrazione)
+SuperAdmin(IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, LogAttivita)
+Città(IDCitta, Nome, Regione)
+RisorsaPubblica(IDRisorsaPubblica, Nome, Tipo, Stato)
+SpesaPubblica(idRisorsaPubblica, idCitta, idOperatore, Data, Costo)
+Dato(idSensore, Data, Valore)
+Sensore(IDSensore, idCitta, Posizione, Tipo, DataInstallazione, Stato)
+Evento(IDEvento, Nome, Luogo, NPosti, Descrizione, Data, Stato)
+Creazione(idCitta, idEvento, idOperatore, Data, Ruolo)
+Registrazione(idCitta, idEvento, idCittadino, DataRegistrazione, Segnalazione)
+Feedback(IDFeedback, Tipo)
+Segnalazione(IDSegnalazione, idCitta, idFeedback, idCittadino, Data, Descrizione)
 
-Utente(-IDUtente, Nome, Cognome, DataNascita, CI, Telefono, Email, Indirizzo)
-SuperAdmin(IDSuperAdmin, Ruolo)
-Controllo(idUtente, idSuperAdmin, DataAssegnazioneRuolo, UlitmoAccesso, StatoAccount, LogAttivita)
-Cittadino(IDCittadino, idUtente, CF, DataRegistrazione, StatusAccount
-Operatore(IDOperatore, idUtente, DataInizio, DataFine, Tipo, Email, Ruolo)
-Citta(IDCitta, Nome, Regione)
-RisorsaPubblica(IDRisorsaPubblica, Tipo)
-SpesaPubblica(idRisorsaPubblica, idOperatore, idCitta, Data, Costo)
-Sensore(IDSensore, Posizione, DataInstallazione, Tipo)
-Dato(idSensore, idCitta, Data, Valore)
-Evento(IDEvento, Nome, Luogo, Data, NPosti, Descrizione)
-Creazione(idEvento, idCitta, idOperatore, Data, Ruolo)
-Partecipazione(idEvento, idCitta, idCittatino, Data)
-Incidente(IDIncidente, idCitta, idCittadino, Descrizione, Data)
-Traffico(IDTraffico, idCitta, Data, COndizioniTraffico)
-ServizioPubblico(IDServizioPubblico, Tipo, Stato, Targa, NPosti, Descrizione)
-Fermata(IDFermata, Nome, Posizione)
-Tragitto(idServizioPubblico, idFermata, idCitta)
-
-Relazioni: (PK -> FK)
-Utente.IDUtente -> Controllo.idUtente
-SuperAdmin.IDSuperAdmin -> Controllo.idSuperAdmin
-Utente.IDUtente -> Cittadino.idUtente
-Utente.IDUtente -> Operatore.idUtente
-Citta.IDCitta -> SpesaPubblica.idCitta
-RisorsaPubblica.IDRisorsaPubblica -> SpesaPubblica.idRisorsaPubblica
-Operatore.IDOperatore -> RisorsaPubblica.idOperatore
-Sensore.IDSensore -> Dato.idSensore
-Citta.IDCitta -> Dato.idCitta
-Evento.IDEvento -> Creazione.idEvento
-Citta.IDCitta -> Creazione.idCitta
-Operatore.IDOperatore -> Creazione.idOperatore
-Evento.IDEvento -> Partecipazione.idEvento
-Citta.IDCitta -> Partecipatione.idCitta
-Cittadino.IDCittadino -> Partecipazione.idCittadino
-Incidente.IDIncidente -> RegistrazioneIncidente.idIncidente
-Citta.IDCitta -> RegistrazioneIncidente.idCitta
-Cittadino.IDCittadino -> RegistrazioneIncidente.idCittadino
-Traffico.IDTraffico -> MonitoraggioTraffico.idTraffico
-ServizioPubblico.IDServizioPubblico -> Tragitto.idServizioPubblico
-Fermata.IDFermata -> Tragitto.idFermata
-Citta.IDCitta -> Tragitto.idCitta
-
-
-
-
-
-
-
+Relazioni: (FK -> PK)
+Operatore.IDOperarore -> Utente.IDUtente
+Cittadino.IDCittadino -> Utente.IDUtente
+SuperAdmin.idSuperAdmin -> Utente.IDUtente
+SpesaPubblica.idCitta -> Città.IDCitta
+SpesaPubblica.idRisorsaPubblica -> RisorsaPubblica.IDRisorsaPubblica
+Sensore.idCitta -> Città.IDCitta
+Dato.idSensore -> Sensore.IDSensore
+SpesaPubblica.idOperatore -> Operatore.IDOperatore
+Creazione.idCitta -> Città.IDCitta
+Creazione.idEvento -> Evento.IDEvento
+Creazione.idOperatore -> Operatore.IDOperatore
+Partecipazione.idCitta -> Città.IDCitta
+Partecipazione.idEvento -> Evento.IDEvento
+Partecipazione.idCittadino -> Cittadino.IDCittadino
+Segnalazione.idCitta -> Città.IDCitta
+Segnalazione.idCittadino -> Cittadino.IDCittadino
+Segnalazione.idFeedback -> Feedback.IDFeedback
