@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Tiya Golf Club - Free HTML CSS Template</title>
+        <title>UrbanBrain</title>
 
         <!-- CSS FILES -->                
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,30 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
 
         <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
-        
+
+        <!-- Icona predefinita -->
+        <link id="theme-icon" rel="icon" href="images/logo_scuro.png" type="image/gif" sizes="16x16">
+
+        <script>
+        // Funzione per aggiornare l'icona in base al tema
+        function updateFavicon() {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const iconLink = document.getElementById('theme-icon');
+            
+            if (isDarkMode) {
+            iconLink.href = 'images/logo_chiaro.png'; // Icona chiara per dark mode
+            } else {
+            iconLink.href = 'images/logo_scuro.png'; // Icona scura per light mode
+            }
+        }
+
+        // Chiamata iniziale
+        updateFavicon();
+
+        // Rileva cambiamenti nella modalità tema e aggiorna l'icona
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+        </script>
+
     </head>
     
     <body>
@@ -32,7 +55,7 @@
             <nav class="navbar navbar-expand-lg">                
                 <div class="container">
                     <a class="navbar-brand d-flex align-items-center" href="index.html">
-                        <img src="images/logo.png" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
+                        <img src="images/logo_scuro.png" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
                         <span class="navbar-brand-text">
                             UrbanBrain
                             <small>manage your city</small>
@@ -633,10 +656,10 @@
 
                     <div class="col-lg-6 col-12 me-auto mb-5 mb-lg-0">
                         <a class="navbar-brand d-flex align-items-center" href="index.html">
-                            <img src="images/logo.png" class="navbar-brand-image img-fluid" alt="">
+                            <img src="images/logo_scuro.png" class="navbar-brand-image img-fluid" alt="">
                             <span class="navbar-brand-text">
-                                Tiya
-                                <small>Golf Club</small>
+                                UrbanBrain
+                                <small>Manage Your City</small>
                             </span>
                         </a>
                     </div>
