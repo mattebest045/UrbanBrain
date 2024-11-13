@@ -25,29 +25,25 @@ CREATE TABLE OPERATORE(
     DataInizio date not null,
     DataFine date not null DEFAULT '9999-12-31', /*  */
     Email varchar(50) not null UNIQUE,
-    Tipo varchar(20),
-    Ruolo varchar(20),
-    PRIMARY KEY(IDOperatore, DataInizio, DataFine)
-);
-/* 3 modi per gestire il campo DataFine: 
-    1. Default con data futura -> DataFine DATE NOT NULL DEFAULT '9999-12-31'
-    2. Uso di un dominio -> DataFine DATE DEFAULT NULL,  -- NULL rappresenta "indeterminato" (C'è da aggiungere un controllo ulteriore durante l'inserimento dei dati)
-    3. Colonna aggiuntiva per il tipo di contratto -> DataFine DATE,
-                                                      ContrattoIndeterminato BOOLEAN DEFAULT FALSE,
-*/
-/* Cittadino(IDCittadino, Stato, DataRegistrazione) */
-CREATE TABLE CITTADINO(
-    IDCittadino int not null,
+    Tipo varchar(30),
+    Ruolo varchar(30),
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)), /* Controllo ulteriore per inserire solo i valori corretti */
-    DataRegistrazione date not null,
-    PRIMARY KEY(IDCittadino)
+    PRIMARY KEY(IDOperatore, DataInizio, DataFine)
 );
 /* Valori possibili del campo Stato:
     - 0: Attivo
     - 1: In fase di approvazione Da un SuperAdmin
     - 2: Sospeso
-    - 3: Disattivato
+    - 3: Eliminato
 */
+
+/* Cittadino(IDCittadino, Stato, DataRegistrazione) */
+CREATE TABLE CITTADINO(
+    IDCittadino int not null,
+    Stato int not null CHECK (Stato IN (0, 1, 2, 3)), 
+    DataRegistrazione date not null,
+    PRIMARY KEY(IDCittadino)
+);
 
 /* SuperAdmin(IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso) */
 CREATE TABLE SUPERADMIN(
@@ -90,7 +86,7 @@ CREATE TABLE SPESAPUBBLICA(
 /* Dato(idSensore, Data, Valore) */
 CREATE TABLE DATO(
     idSensore int not null,
-    `Data` datetime not null, /* Se vuoi approfondire possiamo anche includere le frazioni di secondi ahahahaaha */
+    `Data` datetime not null, 
     Valore double not null, 
     PRIMARY KEY(idSensore)
 );
