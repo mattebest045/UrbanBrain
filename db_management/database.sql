@@ -19,15 +19,16 @@ CREATE TABLE UTENTE(
     PRIMARY KEY(IDUtente)
 );
 
-/* Operatore(IDOperatore, DataInizio, DataFine, Email, Tipo, Ruolo) */
+/* Operatore(IDOperatore, DataInizio, DataFine, Email, Tipo, Ruolo, Password) */
 CREATE TABLE OPERATORE(
     IDOperatore int not null,
     DataInizio date not null,
-    DataFine date not null DEFAULT '9999-12-31', /*  */
+    DataFine date not null DEFAULT '9999-12-31', /* Il default indica un tempo indeterminato per il lavoro diun operatore */
     Email varchar(50) not null UNIQUE,
     Tipo varchar(30),
     Ruolo varchar(30),
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)), /* Controllo ulteriore per inserire solo i valori corretti */
+    Password varchar(64) not null, /* SHA-256 produce un hash di 64 caratteri */
     PRIMARY KEY(IDOperatore, DataInizio, DataFine)
 );
 /* Valori possibili del campo Stato:
@@ -37,21 +38,23 @@ CREATE TABLE OPERATORE(
     - 3: Eliminato
 */
 
-/* Cittadino(IDCittadino, Stato, DataRegistrazione) */
+/* Cittadino(IDCittadino, Stato, DataRegistrazione, Password) */
 CREATE TABLE CITTADINO(
     IDCittadino int not null,
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)), 
     DataRegistrazione date not null,
+    Password varchar(64) not null, /* SHA-256 produce un hash di 64 caratteri */
     PRIMARY KEY(IDCittadino)
 );
 
-/* SuperAdmin(IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso) */
+/* SuperAdmin(IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) */
 CREATE TABLE SUPERADMIN(
     IDSuperAdmin int not null, 
     Ruolo varchar(20) not null,
     DataAssegnazioneRuolo DATE not null, 
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)),
     UltimoAccesso datetime not null, /* format: 'YYYY-MM-DD hh:mm:ss' */
+    Password varchar(64) not null, /* SHA-256 produce un hash di 64 caratteri */
     PRIMARY KEY(IDSuperAdmin, DataAssegnazioneRuolo)
 );
 
@@ -59,20 +62,19 @@ CREATE TABLE SUPERADMIN(
 CREATE TABLE CITTA(
     IDCitta int AUTO_INCREMENT, 
     Nome varchar(40) not null,
-    Regione varchar(2) not null, 
+    Regione varchar(18) not null, 
     PRIMARY KEY(IDCitta)
 );
 
-/* RisorsaPubblica(IDRisorsaPubblica, Nome, Tipo, Stato) */
+/* RisorsaPubblica(IDRisorsaPubblica, Nome, Tipo) */
 CREATE TABLE RISORSAPUBBLICA(
     IDRisorsaPubblica int AUTO_INCREMENT, 
     Nome varchar(40) not null, 
     Tipo varchar(30),
-    Stato int not null CHECK (Stato IN (0, 1, 2, 3)),
     PRIMARY KEY(IDRisorsaPubblica)
 );
 
-/* SpesaPubblica(idRisorsaPubblica, idCitta, idOperatore, Data, Costo) */
+/* SpesaPubblica(idRisorsaPubblica, idCitta, idOperatore, Data, Costo, Stato) */
 -- Ricorda: ALT + 96: `
 CREATE TABLE SPESAPUBBLICA(
     idRisorsaPubblica int not null, 
@@ -80,15 +82,8 @@ CREATE TABLE SPESAPUBBLICA(
     idOperatore int not null, 
     `Data` date not null, 
     Costo decimal(10, 2) not null, /* 10 cifre di cui 2 decimali */
+    Stato int not null CHECK (Stato IN (0, 1, 2, 3)),
     PRIMARY KEY(idRisorsaPubblica, idCitta, idOperatore)
-);
-
-/* Dato(idSensore, Data, Valore) */
-CREATE TABLE DATO(
-    idSensore int not null,
-    `Data` datetime not null, 
-    Valore double not null, 
-    PRIMARY KEY(idSensore)
 );
 
 /* Sensore(IDSensore, idCitta, Posizione, Tipo, DataInstallazione, Stato) */
@@ -103,11 +98,19 @@ CREATE TABLE SENSORE(
     PRIMARY KEY(IDSensore, idCitta)
 );
 
+/* Dato(idSensore, Data, Valore) */
+CREATE TABLE DATO(
+    idSensore int not null,
+    `Data` datetime not null, 
+    Valore double, 
+    PRIMARY KEY(idSensore, `Data`)
+);
+
 /* Evento(IDEvento, Nome, Luogo, NPosti, Descrizione, Data, Stato) */
 CREATE TABLE EVENTO(
     IDEvento int AUTO_INCREMENT,
     Nome varchar(50) not null,
-    Luogo varchar(60) not null,
+    Luogo varchar(100) not null,
     NPosti INT DEFAULT -1 CHECK (NPosti > 0 OR NPosti = -1), /* -1 indica i posti illimitati */
     Descrizione text,
     `Data` date not null,
@@ -115,23 +118,23 @@ CREATE TABLE EVENTO(
     PRIMARY KEY(IDEvento)
 );
 
-/* Creazione(idCitta, idEvento, idOperatore, Data, Ruolo) */
+/* Creazione(idCitta, idEvento, idOperatore, Data, Segnalazione) */
 CREATE TABLE CREAZIONE(
-    idCitta int not null,
+    idCitta int, /* NULL solo se l'evento è online */
     idEvento int not null,
     idOperatore int not null, 
     `Data` date not null,
-    Ruolo varchar(20), 
+    Segnalazione text DEFAULT NULL, 
     PRIMARY KEY(idCitta, idEvento, idOperatore)
 );
 
 /* Partecipazione(idCitta, idEvento, idCittadino, DataPartecipazione, Segnalazione) */
 CREATE TABLE PARTECIPAZIONE(
-    idCitta int not null,
+    idCitta int, /* NULL solo se l'evento è online */
     idEvento int not null,
     idCittadino int not null, 
     DataPartecipazione date not null,
-    Segnalazione text,
+    Segnalazione text DEFAULT NULL,
     PRIMARY KEY(idCitta, idEvento, idCittadino)
 );
 
@@ -142,14 +145,15 @@ CREATE TABLE FEEDBACK(
     PRIMARY KEY(IDFeedback) 
 );
 
-/* Segnalazione(IDSegnalazione, idCitta, idFeedback, idCittadino, Data, Descrizione) */
+/* Segnalazione(IDSegnalazione, idCitta, idFeedback, idCittadino, Data, Descrizione, Foto) */
 CREATE TABLE SEGNALAZIONE(
     IDSegnalazione int AUTO_INCREMENT,
-    idCitta int not null,
+    idCitta int, /* NULL solo se è un feedback di un evento online */
     idFeedback int not null,
     idCittadino int not null,
     `Data` date not null,
     Descrizione text,
+    Foto varchar(255),
     PRIMARY KEY(IDSegnalazione, idCitta, idFeedback, idCittadino)
 );
 
