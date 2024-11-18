@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -11,22 +10,17 @@
 
         <!-- CSS FILES -->                
         <link rel="preconnect" href="https://fonts.googleapis.com">
-
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
         <link href="css/bootstrap-icons.css" rel="stylesheet">
-
-        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+        <link href="css/template-urbanbrain.css" rel="stylesheet">
 
         <!-- Icona predefinita -->
         <link id="theme-icon" rel="icon" href="images/logo_scuro.png" type="image/gif" sizes="16x16">
 
         <script>
-        // Funzione per aggiornare l'icona in base al tema
+        // GESTIONE ICONA TITOLO PAGINA ------------------------------------------------------------
         function updateFavicon() {
             const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const iconLink = document.getElementById('theme-icon');
@@ -37,24 +31,23 @@
             iconLink.href = 'images/logo_scuro.png'; // Icona scura per light mode
             }
         }
-
-        // Chiamata iniziale
         updateFavicon();
-
         // Rileva cambiamenti nella modalità tema e aggiorna l'icona
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
-        </script>
+        //------------------------------------------------------------------------------------------
 
+        
+        //------------------------------------------------------------------------------------------
+        </script>
     </head>
     
     <body>
-
         <main>
 
             <!-- Menu opzioni Navbar in alto -->
             <nav class="navbar navbar-expand-lg">                
                 <div class="container">
-                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html" style="max-width: none !important;">
                         <img src="images/logo_scuro.png" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
                         <span class="navbar-brand-text">
                             UrbanBrain
@@ -62,8 +55,9 @@
                         </span>
                     </a>
 
+                    <!-- Login button da mobile - DEFAULT HIDDEN -->
                     <div class="d-lg-none ms-auto me-3">
-                        <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Member Login</a>
+                        <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Login or Signup</a>
                     </div>
     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,74 +93,150 @@
                                     <li><a class="dropdown-item" href="event-listing.html">Event Listing</a></li>
 
                                     <li><a class="dropdown-item" href="event-detail.html">Event Detail</a></li>
+                                    
+                                    <li><a class="dropdown-item" href="dashboard.html">Sensor Data</a></li>
                                 </ul>
                             </li>
                         </ul>
 
                         <div class="d-none d-lg-block ms-lg-3">
-                            <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Member Login</a>
+                            <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Login or Signup</a>
                         </div>
                     </div>
                 </div>
             </nav>
 
-            <!-- Login utente -->
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">                
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Member Login</h5>
-                    
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                
-                <div class="offcanvas-body d-flex flex-column">
-                    <form class="custom-form member-login-form" action="#" method="post" role="form">
+            <!-- Login os Signup utente -->
+            <div class="offcanvas offcanvas-end overflow-y-scroll overflow-x-hidden" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">                
+                <!-- Login utente -->
+                <div class="login-box">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Member Login</h5>
+                        
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column">
+                        <form class="custom-form member-login-form" action="#" method="post" role="form">
 
-                        <div class="member-login-form-body">
-                            <div class="mb-4">
-                                <label class="form-label mb-2" for="member-login-number">Membership No.</label>
+                            <div class="member-login-form-body">
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-login-number">Username</label>
 
-                                <input type="text" name="member-login-number" id="member-login-number" class="form-control" placeholder="11002560" required>
+                                    <input type="text" name="member-login-number" id="member-login-number" class="form-control" placeholder="Username" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-login-password">Password</label>
+
+                                    <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
+                                </div>
+
+                                <!-- <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Remember me
+                                    </label>
+                                </div> -->
+
+                                <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                    <button type="submit" class="form-control">Login</button>
+                                </div>
+
+                                <div class="text-center my-4">
+                                    <a href="#">Forgotten password?</a>
+                                </div>
                             </div>
-
-                            <div class="mb-4">
-                                <label class="form-label mb-2" for="member-login-password">Password</label>
-
-                                <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
-                            </div>
-
-                            <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Remember me
-                                </label>
-                            </div>
-
-                            <div class="col-lg-5 col-md-7 col-8 mx-auto">
-                                <button type="submit" class="form-control">Login</button>
-                            </div>
-
-                            <div class="text-center my-4">
-                                <a href="#">Forgotten password?</a>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="mt-auto mb-5">
-                        <p>
-                            <strong class="text-white me-3">Any Questions?</strong>
-
-                            <a href="tel: 010-020-0340" class="contact-link">
-                            	010-020-0340
-                            </a>
-                        </p>
+                        </form>
                     </div>
                 </div>
+                
+                <!-- Signup utente -->
+                <div class="signup-box">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">New member Sign Up</h5>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column">
+                        <form class="custom-form member-login-form" action="signup_test.php" method="get" role="form">
 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                            <div class="member-login-form-body">
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-name">Name</label>
+
+                                    <input type="text" name="member-signup-name" id="memember-signup-name" class="form-control" placeholder="Name" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-surname">Surname</label>
+
+                                    <input type="text" name="member-signup-surname" id="memember-signup-surname" class="form-control" placeholder="Surname" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-birthday">Birthday</label>
+
+                                    <input type="date" name="member-signup-birthday" id="member-signup-birthday" class="form-control" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-email">Email</label>
+
+                                    <input type="email" name="member-signup-email" id="member-signup-email" class="form-control" placeholder="Email" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-phone">Phone</label>
+
+                                    <input type="tel" name="member-signup-phone" id="member-signup-phone" class="form-control" placeholder="Phone number" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-address">Address</label>
+
+                                    <input type="text" name="member-signup-address" id="member-signup-address" class="form-control" placeholder="Full address" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-permission">User permissions</label>
+
+                                    <select name="member-signup-permission" id="member-signup-permission" class="form-control" placeholder="Select a permission" required="">
+                                        <option value="" selected disabled hidden>Choose a permission..</option>
+                                        <option value="citizen">Citizen</option>
+                                        <option value="operator">Operator</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                    <button type="submit" class="form-control">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contatto  -->
+                <div class="mt-auto">
+                    <p>
+                        <strong class="text-white me-3">Any Questions?</strong>
+
+                        <!-- <a href="mailto: matteo.bestetti@studenti.unipr.it" class="contact-link">
+                            info@urbanbrain.it
+                        </a> -->
+                        <a href="mailto: alessandro.bertani@studenti.unipr.it" class="contact-link">
+                            info@urbanbrain.it
+                        </a>
+                    </p>
+                </div>
+
+
+                <!-- Disegno onda in basso -->
+                <footer class="site-footer svg-footer-login">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                </footer>
             </div>
             
-
+            <!-- Pagina inziale di presentazione -->
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
 
                 <div class="section-overlay"></div>
@@ -207,13 +277,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
             </section>
 
-
+            <!-- Paragrafo di presentazioni team -->
             <section class="about-section section-padding" id="section_2">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-12 col-12 text-center">
-                            <h2 class="mb-lg-5 mb-4">About Tiya</h2>
+                            <h2 class="mb-lg-5 mb-4">About UrbanBrain</h2>
                         </div>
 
                         <div class="col-lg-5 col-12 me-auto mb-4 mb-lg-0">
@@ -275,7 +345,7 @@
                 </div>
             </section>
 
-
+            <!-- Paragrafo newsletter -->
             <section class="section-bg-image">
                 <svg viewBox="0 0 1265 144" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(255, 255, 255, 1)" d="M 0 40 C 164 40 164 20 328 20 L 328 20 L 328 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 327 20 C 445.5 20 445.5 89 564 89 L 564 89 L 564 0 L 327 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 563 89 C 724.5 89 724.5 48 886 48 L 886 48 L 886 0 L 563 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 885 48 C 1006.5 48 1006.5 67 1128 67 L 1128 67 L 1128 0 L 885 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 1127 67 C 1196 67 1196 0 1265 0 L 1265 0 L 1265 0 L 1127 0 Z" stroke-width="0"></path></svg>
 
@@ -290,7 +360,7 @@
 
                                 <form action="#" method="get" class="custom-form mt-lg-4 mt-2" role="form">
                                     <div class="input-group input-group-lg">
-                                        <span class="input-group-text bi-envelope" id="basic-addon1"></span>
+                                        <span class="input-group-text bi-envelope-plus" id="basic-addon1"></span>
 
                                         <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
 
@@ -306,35 +376,36 @@
                 <svg viewBox="0 0 1265 144" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(255, 255, 255, 1)" d="M 0 40 C 164 40 164 20 328 20 L 328 20 L 328 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 327 20 C 445.5 20 445.5 89 564 89 L 564 89 L 564 0 L 327 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 563 89 C 724.5 89 724.5 48 886 48 L 886 48 L 886 0 L 563 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 885 48 C 1006.5 48 1006.5 67 1128 67 L 1128 67 L 1128 0 L 885 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 1127 67 C 1196 67 1196 0 1265 0 L 1265 0 L 1265 0 L 1127 0 Z" stroke-width="0"></path></svg>
             </section>
 
-
+            <!-- Paragrafo gestione nuovi utenti -->
             <section class="membership-section section-padding" id="section_3">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-12 col-12 text-center mx-auto mb-lg-5 mb-4">
-                            <h2><span>Membership</span> at Tiya</h2>
+                            <h2><span>Membership</span> at UrbanBrain</h2>
                         </div>
 
+                        <!-- Tabella permessi utenti -->
                         <div class="col-lg-6 col-12 mb-3 mb-lg-0">
-                            <h4 class="mb-4 pb-lg-2">Membership Fees</h4>
+                            <h4 class="mb-4 pb-lg-2">User Permissions</h4>
 
                             <div class="table-responsive">
-                                <table class="table text-center">
+                                <table class="table text-center" style="margin-bottom: 0px;">
                                     <thead>
                                         <tr>
-                                            <th style="width: 34%;">Yearly Access</th>
+                                            <th style="width: 34%; text-align: left;">Type of User</th>
                                             
-                                            <th style="width: 22%;">T1 $420</th>
+                                            <th style="width: 22%;">Base</th>
                                             
-                                            <th style="width: 22%;">T2 $640</th>
+                                            <th style="width: 22%;">Admin</th>
                                             
-                                            <th style="width: 22%;">T3 $860</th>
+                                            <th style="width: 22%;">SuperAdmin</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
                                         <tr>
-                                            <th scope="row" class="text-start">Golf Insurance</th>
+                                            <th scope="row" class="text-start">Lorem Ipsum</th>
                                             
                                             <td>
                                                 <i class="bi-check-circle-fill"></i>
@@ -350,7 +421,7 @@
                                         </tr>
 
                                         <tr>
-                                            <th scope="row" class="text-start">Club Facilities</th>
+                                            <th scope="row" class="text-start">Lorem Ipsum</th>
 
                                             <td>
                                                 <i class="bi-check-circle-fill"></i>
@@ -366,7 +437,7 @@
                                         </tr>
 
                                         <tr>
-                                            <th scope="row" class="text-start">Country Club</th>
+                                            <th scope="row" class="text-start">Lorem Ipsum</th>
 
                                             <td>
                                                 <i class="bi-x-circle-fill"></i>
@@ -382,7 +453,7 @@
                                         </tr>
 
                                         <tr>
-                                            <th scope="row" class="text-start">Weekend Seasonal</th>
+                                            <th scope="row" class="text-start">Lorem Ipsum</th>
 
                                             <td>
                                                 <i class="bi-x-circle-fill"></i>
@@ -398,7 +469,7 @@
                                         </tr>
 
                                         <tr>
-                                            <th scope="row" class="text-start">Premium Courses</th>
+                                            <th scope="row" class="text-start">Lorem Ipsum</th>
 
                                             <td>
                                                 <i class="bi-x-circle-fill"></i>
@@ -414,7 +485,7 @@
                                         </tr>
                                         
                                         <tr>
-                                            <th scope="row" class="text-start">Pro's Networking</th>
+                                            <th scope="row" class="text-start">Lorem Ipsum</th>
 
                                             <td>
                                                 <i class="bi-x-circle-fill"></i>
@@ -434,39 +505,24 @@
                             </div>
                         </div>
 
+                        <!-- Form di iscrizione al servizio -->
                         <div class="col-lg-5 col-12 mx-auto">
-                        <h4 class="mb-4 pb-lg-2">Please join us!</h4>
-                            <form action="#" method="post" class="custom-form membership-form shadow-lg" role="form">
-                                <h4 class="text-white mb-4">Become a member</h4>
+                            <h4 class="mb-4 pb-lg-2">Please join us!</h4>
 
-                                    <div class="form-floating">
-                                        <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
-                                        
-                                        <label for="floatingInput">Full Name</label>
-                                    </div>
-
-                                    <div class="form-floating">
-                                        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
-                                        
-                                        <label for="floatingInput">Email address</label>
-                                    </div>
-
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="message" name="message" placeholder="Describe message here"></textarea>
-                                        
-                                        <label for="floatingTextarea"> Comments</label>
-                                    </div>
-
-                                    <button type="submit" class="form-control">Submit</button>
+                            <div class="custom-form membership-form shadow-lg">
+                                <h4 class="text-white mb-4">Why become a member?</h4>
+                                <div class="form-floating" style="margin-bottom: 28.333px; color: white;">
+                                        Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 </div>
-                            </form>
+                                <button type="submit" class="form-control" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Sign Up</button>
+                            </div>                            
                         </div>
 
                     </div>
                 </div>
             </section>
 
-
+            <!-- Paragrafo elenco degli eventi principali -->
             <section class="events-section section-bg section-padding" id="section_4">
                 <div class="container">
                     <div class="row">
@@ -577,7 +633,7 @@
                 </div>
             </section>
 
-
+            <!-- Sezione  -->
             <section class="contact-section section-padding" id="section_5">
                 <div class="container">
                     <div class="row">
