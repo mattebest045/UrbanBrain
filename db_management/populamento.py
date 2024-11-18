@@ -345,30 +345,27 @@ tipi_sensori = [
     "Rilevamento incendi",
     "Rilevamento gas",
     "Vibrazioni",
-    "Illuminazione pubblica",
-    "Controllo accessi",
+    "Illuminazione pubblica"
 ]
 configurazione_sensori = {
-    "Temperatura": {"min": -20.0, "max": 50.0},  # Celsius
-    "Umidità": {"min": 0.0, "max": 100.0},  # Percentuale
-    "Luminosità": {"min": 0.0, "max": 100000.0},  # Lux
-    "Pressione atmosferica": {"min": 950.0, "max": 1050.0},  # hPa
-    "Qualità dell`aria": {"min": 0.0, "max": 500.0},  # AQI - indice di qualità dell'aria
-    "Rumore": {"min": 30.0, "max": 130.0},  # Decibel (dB)
-    "Livello di CO2": {"min": 300.0, "max": 5000.0},  # ppm
-    "Velocità del vento": {"min": 0.0, "max": 40.0},  # m/s
-    "Direzione del vento": {"min": 0.0, "max": 360.0},  # Gradi
-    "Pioggia": {"min": 0.0, "max": 500.0},  # mm/h
-    "Livello dell`acqua": {"min": 0.0, "max": 10.0},  # metri
-    "Radiazione UV": {"min": 0.0, "max": 11.0},  # Indice UV
-    "Consumo energetico": {"min": 0.0, "max": 10000.0},  # kWh
-    "Livello di PM2.5": {"min": 0.0, "max": 500.0},  # microgrammi per metro cubo (µg/m³)
-    "Livello di PM10": {"min": 0.0, "max": 500.0},  # µg/m³
-    "Rilevamento incendi": {"min": 0.0, "max": 1.0},  # Presenza di incendio (0 o 1)
-    "Rilevamento gas": {"min": 0.0, "max": 1000.0},  # Concentrazione gas in ppm
-    "Vibrazioni": {"min": 0.0, "max": 10.0},  # m/s^2
-    "Illuminazione pubblica": {"min": 0.0, "max": 1.0},  # Stato di illuminazione (0 o 1)
-    "Controllo accessi": {"min": 0.0, "max": 1.0},  # Stato di accesso (0 o 1)
+    "Temperatura": {"min": -20.0, "max": 50.0},  # Celsius [°C]
+    "Umidità": {"min": 0.0, "max": 100.0},  # Percentuale [%]
+    "Luminosità": {"min": 0.0, "max": 100000.0},  # Lux [lx]
+    "Pressione atmosferica": {"min": 950.0, "max": 1050.0},  # [hPa]
+    "Qualità dell`aria": {"min": 0.0, "max": 500.0},  # [AQI] - indice di qualità dell'aria
+    "Rumore": {"min": 30.0, "max": 130.0},  # Decibel [dB]
+    "Livello di CO2": {"min": 300.0, "max": 5000.0},  # [ppm]
+    "Velocità del vento": {"min": 0.0, "max": 40.0},  # [m/s]
+    "Direzione del vento": {"min": 0.0, "max": 360.0},  # Gradi [°]
+    "Pioggia": {"min": 0.0, "max": 500.0},  # [mm/h]
+    "Livello dell`acqua": {"min": 0.0, "max": 10.0},  # metri [m]
+    "Radiazione UV": {"min": 0.0, "max": 11.0},  # Indice UV [UV]
+    "Consumo energetico": {"min": 0.0, "max": 10000.0},  # [kWh]
+    "Livello di PM2.5": {"min": 0.0, "max": 500.0},  # microgrammi per metro cubo [µg/m³]
+    "Livello di PM10": {"min": 0.0, "max": 500.0},  # [µg/m³]
+    "Rilevamento incendi": {"min": 0.0, "max": 1.0},  # Presenza di incendio (0 o 1) [MJ]
+    "Rilevamento gas": {"min": 0.0, "max": 1000.0},  # Concentrazione gas in [ppm]
+    "Vibrazioni": {"min": 0.0, "max": 10.0},  # [m/s^2]
 }
 tipi_feedback = [
     "Positivo",
@@ -423,8 +420,8 @@ file_order = [
     "utente.sql", "superadmin.sql", "cittadino.sql", "operatore.sql", 
     "citta.sql", "risorsapubblica.sql", "spesapubblica.sql", "sensore.sql", 
     "dato.sql", "evento.sql", "creazione.sql", "partecipazione.sql", 
-    "feedback.sql", "segnalazione.sql"
-] # Manca log.sql
+    "feedback.sql", "segnalazione.sql", "log.sql"
+]
 
 salva_dati = []
 salva_operatore_eventi = []
@@ -539,9 +536,9 @@ def superadmin(): # IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAcc
     with open("db_management/populamento/superadmin.sql", "w", encoding="utf-8") as file:
         query = (
             f"INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) "
-            f"VALUES ('1', 'System Administrator', '2024-11-02', '0', '2204-11-13 11:25:30', '{Password_1}');\n"
+            f"VALUES ('1', 'System Administrator', '2024-11-02', '0', '2024-11-13 11:25:30', '{Password_1}');\n"
             f"INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) "
-            f"VALUES ('2', 'Cybersecurity Analyst', '2024-11-13', '0', '2204-11-13 11:25:31', '{Password_2}');"
+            f"VALUES ('2', 'Cybersecurity Analyst', '2024-11-13', '0', '2024-11-13 11:25:31', '{Password_2}');"
         )
         file.write(query + "\n")
 
