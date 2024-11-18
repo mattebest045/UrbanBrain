@@ -1,0 +1,2 @@
+INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) VALUES ('1', 'System Administrator', '2024-11-02', '0', '2204-11-13 11:25:30', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) VALUES ('2', 'Cybersecurity Analyst', '2024-11-13', '0', '2204-11-13 11:25:31', 'de3d43caad2bd3c4f0622fc60deecd06b34a0f25a80e30b81fe051a3c54799bb');
