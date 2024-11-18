@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -11,15 +10,10 @@
 
         <!-- CSS FILES -->                
         <link rel="preconnect" href="https://fonts.googleapis.com">
-
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
         <link href="css/bootstrap-icons.css" rel="stylesheet">
-
         <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
 
         <!-- Icona predefinita -->
@@ -45,17 +39,15 @@
         
         //------------------------------------------------------------------------------------------
         </script>
-
     </head>
     
     <body>
-
         <main>
 
             <!-- Menu opzioni Navbar in alto -->
             <nav class="navbar navbar-expand-lg">                
                 <div class="container">
-                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html" style="max-width: none !important;">
                         <img src="images/logo_scuro.png" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
                         <span class="navbar-brand-text">
                             UrbanBrain
@@ -63,8 +55,9 @@
                         </span>
                     </a>
 
+                    <!-- Login button da mobile - DEFAULT HIDDEN -->
                     <div class="d-lg-none ms-auto me-3">
-                        <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Member Login</a>
+                        <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Login or Signup</a>
                     </div>
     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,6 +93,8 @@
                                     <li><a class="dropdown-item" href="event-listing.html">Event Listing</a></li>
 
                                     <li><a class="dropdown-item" href="event-detail.html">Event Detail</a></li>
+                                    
+                                    <li><a class="dropdown-item" href="dashboard.html">Sensor Data</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -112,7 +107,7 @@
             </nav>
 
             <!-- Login os Signup utente -->
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">                
+            <div class="offcanvas offcanvas-end overflow-y-scroll overflow-x-hidden" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">                
                 <!-- Login utente -->
                 <div class="login-box">
                     <div class="offcanvas-header">
@@ -136,13 +131,13 @@
                                     <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
                                 </div>
 
-                                <div class="form-check mb-4">
+                                <!-- <div class="form-check mb-4">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                 
                                     <label class="form-check-label" for="flexCheckDefault">
                                         Remember me
                                     </label>
-                                </div>
+                                </div> -->
 
                                 <div class="col-lg-5 col-md-7 col-8 mx-auto">
                                     <button type="submit" class="form-control">Login</button>
@@ -161,42 +156,113 @@
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasExampleLabel">New member Sign Up</h5>
                     </div>
-                    <div class="offcanvas-body d-flex flex-column">
+                    <!-- <div class="offcanvas-body d-flex flex-column">
                         <form class="custom-form member-login-form" action="#" method="post" role="form">
 
                             <div class="member-login-form-body">
                                 <div class="mb-4">
-                                    <label class="form-label mb-2" for="member-login-number">Username</label>
+                                    <label class="form-label mb-2" for="member-signup-name">Name</label>
 
-                                    <input type="text" name="member-login-number" id="member-login-number" class="form-control" placeholder="Username" required>
+                                    <input type="text" name="member-signup-number" id="memember-signup-name" class="form-control" placeholder="Name" required="">
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="form-label mb-2" for="member-login-password">Password</label>
+                                    <label class="form-label mb-2" for="member-signup-surname">Surname</label>
 
-                                    <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
+                                    <input type="password" name="member-signup-password" id="member-signup-surname" class="form-control" placeholder="Surname" required="">
                                 </div>
 
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-birthday">Birthday</label>
+
+                                    <input type="date" name="member-signup-birthday" id="member-signup-birthday" class="form-control" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-email">Email</label>
+
+                                    <input type="email" name="member-signup-email" id="member-signup-email" class="form-control" placeholder="Email" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-phone">Phone number</label>
+
+                                    <input type="tel" name="member-signup-phone" id="member-signup-phone" class="form-control" placeholder="Phone" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-address">Address</label>
+
+                                    <input type="text" name="member-signup-address" id="member-signup-address" class="form-control" placeholder="address" required="">
+                                </div>
+                                
                                 <div class="col-lg-5 col-md-7 col-8 mx-auto">
                                     <button type="submit" class="form-control">Sign Up</button>
                                 </div>
                             </div>
                         </form>
+                    </div> -->
+                    <div class="offcanvas-body d-flex flex-column">
+                        <form class="custom-form member-login-form" action="#" method="post" role="form">
 
-                        <div class="mt-auto mb-5">
-                            <p>
-                                <strong class="text-white me-3">Any Questions?</strong>
+                            <div class="member-login-form-body">
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-name">Name</label>
 
-                                <a href="tel: 010-020-0340" class="contact-link">
-                                    010-020-0340
-                                </a>
-                            </p>
-                        </div>
+                                    <input type="text" name="member-signup-number" id="memember-signup-name" class="form-control" placeholder="Full name" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-birthday">Birthday</label>
+
+                                    <input type="date" name="member-signup-birthday" id="member-signup-birthday" class="form-control" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-email">Email</label>
+
+                                    <input type="email" name="member-signup-email" id="member-signup-email" class="form-control" placeholder="Email" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-phone">Phone</label>
+
+                                    <input type="tel" name="member-signup-phone" id="member-signup-phone" class="form-control" placeholder="Phone number" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-address">Address</label>
+
+                                    <input type="text" name="member-signup-address" id="member-signup-address" class="form-control" placeholder="Full address" required="">
+                                </div>
+                                
+                                <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                    <button type="submit" class="form-control">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 
+                <!-- Contatto  -->
+                <div class="mt-auto">
+                    <p>
+                        <strong class="text-white me-3">Any Questions?</strong>
+
+                        <!-- <a href="mailto: matteo.bestetti@studenti.unipr.it" class="contact-link">
+                            info@urbanbrain.it
+                        </a> -->
+                        <a href="mailto: alessandro.bertani@studenti.unipr.it" class="contact-link">
+                            info@urbanbrain.it
+                        </a>
+                    </p>
+                </div>
+
+
                 <!-- Disegno onda in basso -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                <footer class="site-footer svg-footer-login">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                </footer>
             </div>
             
             <!-- Pagina inziale di presentazione -->
@@ -477,39 +543,8 @@
                                 <div class="form-floating" style="margin-bottom: 28.333px; color: white;">
                                         Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 </div>
-                                <button type="submit" class="form-control">Sign Up</button>
-                            </div>
-                            
-                            <!-- <form action="#" method="post" class="custom-form membership-form shadow-lg" role="form">
-                                <h4 class="text-white mb-4">Become a member</h4>
-
-                                    <div class="form-floating" style="margin-bottom: 28.333px">
-                                        <input type="text" name="name" id="full-name" class="form-control" style="margin-right: 8px;" placeholder="Name" required="">
-                                        
-                                        <label for="floatingInput">Full Name</label>
-                                    </div>
-
-                                    <div class="form-floating" style="margin-bottom: 28.333px">
-                                        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
-                                        
-                                        <label for="floatingInput">Email address</label>
-                                    </div>
-
-                                    <div class="form-floating" style="margin-bottom: 28.333px">
-                                        <input type="password" name="password" id="password" style="margin-bottom: 21px;" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" class="form-control" placeholder="Password" required="">
-                                        
-                                        <label for="floatingInput">Password</label>
-                                    </div>
-
-                                    <div class="form-floating" style="margin-bottom: 28.333px">
-                                        Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita. Ahi quanto a dir qual era è cosa dura esta selva selvaggia e aspra e forte che nel pensier rinova la paura!
-                                    </div>
-
-                                    <button type="submit" class="form-control">Submit</button>
-                                </div>
-                            </form> -->
-
-                            
+                                <button type="submit" class="form-control" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Sign Up</button>
+                            </div>                            
                         </div>
 
                     </div>
