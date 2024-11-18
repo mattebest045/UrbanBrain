@@ -24,7 +24,7 @@ CREATE TABLE OPERATORE(
     IDOperatore int not null,
     DataInizio date not null,
     DataFine date not null DEFAULT '9999-12-31', /* Il default indica un tempo indeterminato per il lavoro diun operatore */
-    Email varchar(50) not null UNIQUE,
+    Email varchar(50) not null, /* Non è unique per comprendere anche operatori con mail aziendali non personali */
     Tipo varchar(30),
     Ruolo varchar(30),
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)), /* Controllo ulteriore per inserire solo i valori corretti */
