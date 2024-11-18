@@ -638,6 +638,57 @@ strong {
   top: 8px;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.svg-footer-login {
+  /* padding-block: inherit; */
+  padding-bottom: 30px !important;
+  width: 120%;
+  left: -30px;
+  /* right: auto; */
+  bottom: -30px;
+}
+
+.signup-box-php {
+  padding: 30px;
+  border-radius: var(--border-radius-medium);
+  background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 992px) {
+  .signup-box-php {
+    padding: 30px;
+    border-radius: var(--border-radius-medium);
+    background-color: var(--primary-color);
+  }
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.pl-30-perc {
+  padding-left: 30% !important;
+}
+
+@media screen and (max-width: 992px) {
+  .pl-30-perc {
+    padding-left: 10% !important;
+  }
+}
+
+.pr-30-perc {
+  padding-right: 30% !important;
+}
+
+@media screen and (max-width: 992px) {
+  .pr-30-perc {
+    padding-right: 10% !important;
+  }
+}
+
 
 /*---------------------------------------
   HERO        
@@ -653,6 +704,19 @@ strong {
   height: 100vh;
   min-height: 670px;
   margin-bottom: -90px;
+}
+
+.signup-hero-section {
+  background-image: none !important;
+  height: max-content;
+}
+
+@media screen and (max-width: 992px) {
+  .signup-hero-section {
+    background-image: none !important;
+    height: max-content;
+    padding-top: 10px !important;
+  }
 }
 
 .hero-50 {
@@ -1163,7 +1227,7 @@ strong {
 /*---------------------------------------
   RESPONSIVE STYLES               
 -----------------------------------------*/
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1200px) {
   h1 {
     font-size: 36px;
   }
@@ -1286,4 +1350,18 @@ strong {
     padding: 4px 12px;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .svg-footer-login {
+    padding-block: inherit;
+    width: 120%;
+    left: -30px;
+    /* right: auto; */
+    bottom: -42px;
+  }
+}
+
+
+
+
 
