@@ -691,6 +691,33 @@ strong {
 
 
 /*---------------------------------------
+  GRAPH        
+-----------------------------------------*/
+canvas { 
+  display: block; 
+  max-width: 100%; 
+}
+
+.chart-container { 
+  backdrop-filter: blur(25px);
+  /* background: linear-gradient(to bottom, var(--primary-color) 0%, var(--white-color) 100%); */
+  border-radius: var(--border-radius-small);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+  scroll-behavior: auto;
+}
+
+.row-chart {
+  max-height: -webkit-fill-available;
+  overflow-y: auto;
+}
+
+
+/*---------------------------------------
   HERO        
 -----------------------------------------*/
 .hero-section {
