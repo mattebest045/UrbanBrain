@@ -5,6 +5,7 @@ import string
 import hashlib
 import os
 import glob
+import bcrypt
 
 def elimina_sql_files():
     # Trova tutti i file con estensione .sql nella directory corrente
@@ -17,15 +18,43 @@ def elimina_sql_files():
         except Exception as e:
             print(f"Errore durante l'eliminazione di '{file}': {e}")
 
-def genera_password(password=None):
+def genera_password(password=None): 
     # Se non viene fornita una password, generane una casuale di 12 caratteri
     if password is None:
         characters = string.ascii_letters + string.digits + string.punctuation
         password = ''.join(random.choice(characters) for _ in range(12))
 
-    # Crittografa la password con SHA-256
-    sha_signature = hashlib.sha256(password.encode()).hexdigest()
-    return sha_signature
+    # Crittografa la password con md5
+    hash_psw = hash_password_md5(password);
+    return hash_psw
+
+def hash_password_md5(password: str) -> str:
+    # Codifica la password in bytes e calcola l'hash MD5
+    return hashlib.md5(password.encode('utf-8')).hexdigest()
+
+'''
+IMPORTANTE: UTILIZZO MD5 PER SEMPLIFICARE LA CREAZIONE DI PASSWORD CRITTOGRAFATE DA PYTHON A PHP
+IN UN SENCONDO MOMENTO POTREI UTILIZZARE UN ALGORITMO DI CRITTOGRAFIA PIÙ SICURO
+Non utilizzo la funzione hash_password perché dovrei impostare un salt uguale sia qui che in php
+e perderebbe di sicurezza 
+'''
+import bcrypt
+
+def hash_password(password: str) -> str:
+    # Codifica la password in bytes
+    password_bytes = password.encode('utf-8')
+    # Genera l'hash bcrypt con cost 10
+    hashed = bcrypt.hashpw(password_bytes, bcrypt.gensalt(rounds=10))
+    # Sostituisci "$2b$" con "$2y$" per compatibilità con PHP
+    return hashed.decode('utf-8').replace('$2b$', '$2y$')
+
+
+def verify_password(password: str, hashed_password: str) -> bool:
+    # Codifica la password in bytes
+    password_bytes = password.encode('utf-8')
+    # Verifica la password
+    return bcrypt.checkpw(password_bytes, hashed_password.encode('utf-8'))
+
 
 # Gnera una data per la registrazione tra il 2 settembre fino ad oggi
 def generaDataRegistrazione():
@@ -484,7 +513,7 @@ def cittadino(n): # IDCittadino, Stato, DataRegistrazione, Password
     id_cittadino_disponibili = list(range(2, (n + 2)))  # Lista di ID da 3 a 202
     random.shuffle(id_cittadino_disponibili)  # Mescoliamo la lista per avere ordine casuale
 
-    for _ in range(2, (n + 2)):
+    for _ in range(3, (n + 2)):
         IDCittadino = get_unique_id(id_cittadino_disponibili)
         Stato = random.randrange(4) # Valore di stato da 0 a 3
         DataRegistrazione = generaDataRegistrazione()
@@ -770,7 +799,7 @@ def log(n): # IDLog, idUtente, Data, Descrizione
             Data = generaDataRegistrazione()
             Descrizione = random.choice(descrizione_log).replace("'", "`")
             query = (
-                    f"INSERT INTO log (, idUtente, `Data`, Descrizione) "
+                    f"INSERT INTO log (idUtente, `Data`, Descrizione) "
                     f"VALUES ('{idUtente}', '{Data}', '{Descrizione}');"
                 )
             file.write(query + "\n")

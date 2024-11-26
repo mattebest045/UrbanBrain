@@ -16,6 +16,27 @@ session_start(); // Inizio a salvarmi la sessione dell'utente
 
 include("connessione_db.php");
 	
+try{
+	// Query per ricavare tutte le città disponibili all'interno del nostro db
+	$sql = "SELECT citta.Nome
+			FROM citta
+			GROUP by citta.Nome
+			ORDER BY citta.Nome;";
+	$result = $pdo->query($sql);
+	if ($result->rowCount() > 0) {
+		$value = array();
+		// Itera sui risultati con un solo ciclo
+		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$value[] = $row['Nome']; // Campo 'Nome'
+		}
+	}
+	// var_dump($value);
+}catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql." . $e->getMessage());
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -129,13 +150,31 @@ include("connessione_db.php");
 	};
 
 	// controlla che la lista non sia nulla prima di fare una post
-	document.querySelector('form').addEventListener('submit', function(event) {
-		const sensorInput = document.getElementById('sensor').value.trim();
-		if (!sensorInput) {
-			alert("Per favore seleziona un sensore dalla lista!");
-			event.preventDefault(); // Blocca l'invio del form
+	// document.querySelector('form').addEventListener('submit', function(event) {
+	// 	const sensorInput = document.getElementById('sensor').value.trim();
+	// 	if (!sensorInput) {
+	// 		alert("Per favore seleziona un sensore dalla lista!");
+	// 		event.preventDefault(); // Blocca l'invio del form
+	// 	}
+	// });
+
+	document.addEventListener("DOMContentLoaded", () => {
+		// Assicurati che `ruoloAdmin` non sia null o undefined
+		const citta = <?php echo json_encode($value, JSON_HEX_TAG); ?> || [];
+		// console.log("citta: "+citta)
+		// Riferimenti agli elementi HTML
+		const lista_citta = document.getElementById("dati-citta");
+		if (lista_citta) {
+			// Svuota la datalist corrente
+			lista_citta.innerHTML = "";
+			// Aggiungi i nuovi ruoli
+			citta.forEach(role => {
+				const option = document.createElement("option");
+				option.value = role;
+				lista_citta.appendChild(option);
+			});
 		}
-	});
+	})
 	</script>
 </head>
 <body>
@@ -150,6 +189,16 @@ include("connessione_db.php");
 	if (!isset($_SESSION['interval'])) {
 		$_SESSION['interval'] = "7 DAY";
 	}
+	
+	if((!isset($_GET['citta'])) && (!isset($_SESSION['citta']))) {
+		die("ERRORE: nessuna città selezionata");
+	}else{
+		$citta =  $_GET['citta'] ?? $_SESSION['citta'];
+		$_SESSION['citta'] = $citta;
+	}
+	// $citta =  $_GET['citta'] ?? $_SESSION['citta'];
+	// $_SESSION['citta'] = $citta;
+	
 	// echo "Sensore: ".$_SESSION['tipo_sensore'].", Intervallo: ".$_SESSION['interval']."<br>";
 	// Aggiorna sessione se sono presenti nuove richieste POST
 	if (isset($_POST['interval'])) {
@@ -163,7 +212,7 @@ include("connessione_db.php");
 	// Recupera valori dalla sessione
 	$tipo_sensore = $_SESSION['tipo_sensore'];
 	$interval = $_SESSION['interval'];
-	$citta = "Roma";
+	$citta = $_SESSION['citta'];
 	if (isset($_POST['interval'])) {
 		$interval = ($_POST['interval'] === "Ultimo Mese") ? "1 MONTH" : "7 DAY"; 
 	}
@@ -232,18 +281,6 @@ include("connessione_db.php");
 	}
 	
 	try{
-		// echo ("Tipo sensore: ".$tipo_sensore."<br>");
-		// Sensori con valore medio:
-		// Pressione atmosferica, Direzione del vento, Consumo energetico
-		// Sensori con valore max:
-		// Pioggia, Livello dell`acqua, Qualità dell`aria, Rumore, Livello di CO2, Velocità del vento,
-		// Radiazione UV, Rilevamento incendi, Rilevamento gas, Vibrazioni
-		// Sensori con valore medio e max:
-		// Luminosità
-		// Sensori con valore min e max:
-		// Temperatura
-		// Sensori con valore min, medio e max:
-		// Luminosità, Umidità
 		$sensori = [
 			'valore_medio' => ["Pressione atmosferica", "Direzione del vento", "Consumo energetico"],
 			'valore_max' => ["Pioggia", "Livello dell`acqua", "Qualità dell`aria",
@@ -253,59 +290,58 @@ include("connessione_db.php");
 			'valore_min_max' => ["Temperatura", "Luminosità"],
 			'valore_min_medio_max' => ["Umidità"]
 		];
-
 		
 		if (in_array($tipo_sensore, $sensori['valore_medio'])) {
 			// Codice per sensori con valore medio
-			$sql =  "SELECT DATE(urbanbrain.dato.Data) as Giorno, AVG(urbanbrain.dato.Valore) as ValoreMedio 
-				FROM urbanbrain.dato 
-				JOIN urbanbrain.sensore ON urbanbrain.sensore.IDSensore = urbanbrain.dato.idSensore 
-				JOIN urbanbrain.citta ON urbanbrain.citta.IDCitta = urbanbrain.citta.idCitta 
-				WHERE urbanbrain.citta.nome = '".$citta."' AND 
-				urbanbrain.sensore.Tipo = '".$tipo_sensore."' AND 
-				urbanbrain.dato.Data >= DATE_SUB(CURDATE(), INTERVAL ".$interval.") 
+			$sql =  "SELECT DATE(dato.Data) as Giorno, AVG(dato.Valore) as ValoreMedio 
+				FROM dato 
+				JOIN sensore ON sensore.IDSensore = dato.idSensore 
+				JOIN citta ON citta.IDCitta = sensore.idCitta 
+				WHERE citta.nome = '".$citta."' AND 
+				sensore.Tipo = '".$tipo_sensore."' AND 
+				dato.Data >= DATE_SUB(CURDATE(), INTERVAL ".$interval.") 
 				GROUP BY Giorno 
 				ORDER BY Giorno ASC;";
 		} elseif (in_array($tipo_sensore, $sensori['valore_max'])) {
 			// Codice per sensori con valore massimo
 			$sql = "SELECT 
-						DATE(urbanbrain.dato.Data) as Giorno,  
-						MAX(urbanbrain.dato.Valore) as ValoreMax 
-					FROM urbanbrain.dato 
-					JOIN urbanbrain.sensore ON urbanbrain.sensore.IDSensore = urbanbrain.dato.idSensore 
-					JOIN urbanbrain.citta ON urbanbrain.citta.IDCitta = urbanbrain.citta.idCitta 
-					WHERE urbanbrain.citta.nome = '" . $citta . "' AND 
-						urbanbrain.sensore.Tipo = '" . $tipo_sensore . "' AND 
-						urbanbrain.dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
+						DATE(dato.Data) as Giorno,  
+						MAX(dato.Valore) as ValoreMax 
+					FROM dato 
+					JOIN sensore ON sensore.IDSensore = dato.idSensore 
+					JOIN citta ON citta.IDCitta = sensore.idCitta 
+					WHERE citta.nome = '" . $citta . "' AND 
+						sensore.Tipo = '" . $tipo_sensore . "' AND 
+						dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
 					GROUP BY Giorno 
 					ORDER BY Giorno ASC;";
 		} elseif (in_array($tipo_sensore, $sensori['valore_min_max'])) {
 			// Codice per sensori con minimo e massimo
 			$sql = "SELECT 
-						DATE(urbanbrain.dato.Data) as Giorno,  
-						MIN(urbanbrain.dato.Valore) as ValoreMin, 
-						MAX(urbanbrain.dato.Valore) as ValoreMax 
-					FROM urbanbrain.dato 
-					JOIN urbanbrain.sensore ON urbanbrain.sensore.IDSensore = urbanbrain.dato.idSensore 
-					JOIN urbanbrain.citta ON urbanbrain.citta.IDCitta = urbanbrain.citta.idCitta 
-					WHERE urbanbrain.citta.nome = '" . $citta . "' AND 
-						urbanbrain.sensore.Tipo = '" . $tipo_sensore . "' AND 
-						urbanbrain.dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
+						DATE(dato.Data) as Giorno,  
+						MIN(dato.Valore) as ValoreMin, 
+						MAX(dato.Valore) as ValoreMax 
+					FROM dato 
+					JOIN sensore ON sensore.IDSensore = dato.idSensore 
+					JOIN citta ON citta.IDCitta = sensore.idCitta 
+					WHERE citta.nome = '" . $citta . "' AND 
+						sensore.Tipo = '" . $tipo_sensore . "' AND 
+						dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
 					GROUP BY Giorno 
 					ORDER BY Giorno ASC;";
 		} elseif (in_array($tipo_sensore, $sensori['valore_min_medio_max'])) {
 			// Codice per sensori con minimo, medio e massimo
 			$sql = "SELECT 
-						DATE(urbanbrain.dato.Data) as Giorno, 
-						AVG(urbanbrain.dato.Valore) as ValoreMedio, 
-						MIN(urbanbrain.dato.Valore) as ValoreMin, 
-						MAX(urbanbrain.dato.Valore) as ValoreMax 
-					FROM urbanbrain.dato 
-					JOIN urbanbrain.sensore ON urbanbrain.sensore.IDSensore = urbanbrain.dato.idSensore 
-					JOIN urbanbrain.citta ON urbanbrain.citta.IDCitta = urbanbrain.citta.idCitta 
-					WHERE urbanbrain.citta.nome = '" . $citta . "' AND 
-						urbanbrain.sensore.Tipo = '" . $tipo_sensore . "' AND 
-						urbanbrain.dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
+						DATE(dato.Data) as Giorno, 
+						AVG(dato.Valore) as ValoreMedio, 
+						MIN(dato.Valore) as ValoreMin, 
+						MAX(dato.Valore) as ValoreMax 
+					FROM dato 
+					JOIN sensore ON sensore.IDSensore = dato.idSensore 
+					JOIN citta ON citta.IDCitta = sensore.idCitta 
+					WHERE citta.nome = '" . $citta . "' AND 
+						sensore.Tipo = '" . $tipo_sensore . "' AND 
+						dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
 					GROUP BY Giorno 
 					ORDER BY Giorno ASC;";
 		}else {
@@ -356,6 +392,14 @@ include("connessione_db.php");
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<input type="submit" value="Ultimi 7 Giorni" name="interval" />
 		<input type="submit" value="Ultimo Mese" name="interval" />
+	</form>
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+	<label for="dati-citta">Città:</label>
+        <input list="dati-citta" id="citta-dati" name="citta" placeholder="Seleziona una città...">
+        <datalist id="dati-citta">
+            <!-- I ruoli verranno aggiunti dinamicamente -->
+        </datalist> 
+		
 	</form>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<label for="sensor">Seleziona un sensore:</label>
