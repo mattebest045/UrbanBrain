@@ -113,7 +113,7 @@ CREATE TABLE EVENTO(
     Luogo varchar(100) not null,
     NPosti INT DEFAULT -1 CHECK (NPosti > 0 OR NPosti = -1), /* -1 indica i posti illimitati */
     Descrizione text,
-    `Data` date not null,
+    `Data` datetime not null,
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)),
     PRIMARY KEY(IDEvento)
 );
