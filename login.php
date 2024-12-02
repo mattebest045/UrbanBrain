@@ -2,6 +2,7 @@
 include("connessione_db.php");
 session_start(); // Inizio a salvarmi la sessione dell'utente
 // unset($_SESSION['url']);
+
 if((!isset($_GET['url'])) && (!isset($_SESSION['url']))) {
     $location = "index.php";
 }else{
@@ -9,8 +10,53 @@ if((!isset($_GET['url'])) && (!isset($_SESSION['url']))) {
 }
 $_SESSION['url'] = $location;
 
+function getUserDataByPermission($queryResult, $permesso) {
+    // Controlla quante tuple sono presenti
+    $tupleCount = count($queryResult);
+    // Mappa per i permessi in base al numero di tuple
+    echo "<br>".$permesso."<br>";
+    if($permesso === "superAdmin"){
+        echo "<br>BELLA<br>";
+        $permessiMap = [
+        1 => ['cittadino'], // Se c'è solo una tupla, è un cittadino
+        2 => ['cittadino', 'superAdmin'], // Due tuple: cittadino e operatore/admin
+        3 => ['cittadino', 'superAdmin', 'operatore'] // Tre tuple: tutti i permessi
+    ];
+    }else{
+        echo "<br>muori<br>";
+        $permessiMap = [
+            1 => ['cittadino'], // Se c'è solo una tupla, è un cittadino
+            2 => ['cittadino', 'operatore'], // Due tuple: cittadino e operatore/admin
+            3 => ['cittadino', 'operatore', 'superAdmin'] // Tre tuple: tutti i permessi
+        ];
+    }
+    
+
+    // Controlla se il numero di tuple ha una corrispondenza
+    if (!array_key_exists($tupleCount, $permessiMap)) {
+        throw new Exception("Numero di tuple inaspettato: $tupleCount");
+    }
+
+    // Trova la posizione del permesso richiesto nell'elenco
+    $permessi = $permessiMap[$tupleCount];
+    $index = array_search($permesso, $permessi);
+
+    // Controlla se il permesso esiste tra quelli disponibili
+    if ($index === false) {
+        throw new Exception("Permesso '$permesso' non trovato tra quelli disponibili per $tupleCount tuple.");
+    }
+
+    // Controlla se esiste una tupla corrispondente all'indice calcolato
+    if (!isset($queryResult[$index])) {
+        throw new Exception("Nessuna tupla trovata per il permesso: $permesso");
+    }
+
+    // Ritorna la tupla corrispondente
+    return $queryResult[$index];
+}
+
 function verificaPassword($id, $psw, $permesso) {
-    global $pdo;
+    global $pdo, $location;
     // Lista dei permessi validi
     $permessiValidi = ['cittadino', 'superAdmin', 'operatore'];
     echo "FUNCTION: ".$id.", ".$permesso.", ".$psw."<br>";
@@ -39,9 +85,73 @@ function verificaPassword($id, $psw, $permesso) {
             $ris = $result['STM'];
         }
 
-        var_dump($ris);
-        // Controllo risultato
-        return $ris;
+        if($ris){
+            echo "<br> PASSWORD CORRETTA! <br>";
+            $_SESSION['user_id'] = $id;
+            $_SESSION['user_role'] = $permesso;
+
+            // Ricavo anche info utili come Nome, Cognome, Indirizzo, Email
+            // operatore -> Tipo, Ruolo, Email_operatore (potrei sovrascrivere il campo email)
+            // superadmin -> Ruolo
+            $sql = "SELECT 
+                        utente.Nome, 
+                        utente.Cognome, 
+                        utente.Indirizzo, 
+                        utente.Email AS Email, 
+                        NULL AS OpEmail,
+                        NULL AS OpTipo, 
+                        NULL AS OpRuolo,
+                        NULL AS AdRuolo
+                    FROM utente
+                    JOIN cittadino ON utente.IDUtente = cittadino.IDCittadino
+                    WHERE cittadino.IDCittadino = :id
+                    UNION
+                    SELECT 
+                        utente.Nome, 
+                        utente.Cognome, 
+                        utente.Indirizzo, 
+                        NULL AS Email,
+                        operatore.Email AS OpEmail,
+                        operatore.Tipo AS OpTipo, 
+                        operatore.Ruolo AS OpRuolo,
+                        NULL AS AdRuolo
+                    FROM operatore
+                    JOIN utente ON utente.IDUtente = operatore.IDOperatore
+                    WHERE operatore.IDOperatore = :id
+                    UNION
+                    SELECT 
+                        utente.Nome, 
+                        utente.Cognome, 
+                        utente.Indirizzo, 
+                        utente.Email AS Email, 
+						NULL AS OpEmail,
+                        NULL AS OpTipo, 
+                        NULL AS OpRuolo,
+                        superadmin.Ruolo AS AdRuolo
+                    FROM superadmin
+                    JOIN utente ON utente.IDUtente = superadmin.IDSuperAdmin
+                    WHERE superadmin.IDSuperAdmin = :id;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':id' => $id]);
+            $queryResult = $stmt->fetchAll(PDO::FETCH_ASSOC); // Ottieni tutte le tuple
+            try {
+                $userData = getUserDataByPermission($queryResult, $permesso);
+                print_r($userData); // Visualizza i dati
+
+                // Cicla su ogni campo della tupla e salva nella sessione
+                foreach ($userData as $campo => $valore) {
+                    $_SESSION['user_' . $campo] = $valore;
+                }
+            } catch (Exception $e) {
+                echo "Errore: " . $e->getMessage();
+            }
+
+            // Close connection
+            unset($pdo);   
+            sleep(3);
+            header('location:'.$location);
+        }
+        
     }catch(PDOException $e){
         die("ERROR: Could not able to execute $sql." . $e->getMessage());
     }
@@ -95,21 +205,13 @@ if(!empty($_POST)){
                     // Controllo se esiste la password è corretta o meno
                     foreach($ruoli as $permesso){
                         echo "<br>PERMESSO: ".$permesso."<br>";
-                        if(verificaPassword($id, $password, $permesso)){
-                            echo "<br> PASSWORD CORRETTA! <br>";
-                            header('location:'.$location);
-                        }else{
-                            echo "<br> PASSWORD NON CORRETTA! ".$permesso."<br>";
-                        }
+                        verificaPassword($id, $password, $permesso);
                     }
                     
                     break;
                 case 'operatore':
                     // Controllo se esiste la password è corretta o meno
-                    if(verificaPassword($id, $password, $permesso)){
-                        echo "<br> PASSWORD CORRETTA! <br>";
-                        header('location:'.$location);
-                    }
+                    verificaPassword($id, $password, $permesso);
                     break;
                 default:
                     echo "Errore: Permesso utente non riconosciuto.";
