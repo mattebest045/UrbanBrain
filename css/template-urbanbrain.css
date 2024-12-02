@@ -40,6 +40,10 @@ https://templatemo.com/tm-587-tiya-golf-club
   --font-weight-normal:           400;
   --font-weight-medium:           500;
   --font-weight-bold:             700;
+
+  --z-index-navbarlayer:          10;
+  --z-index-navbarlayer--1:       9;
+  --z-index-indexlayer:           0;
 }
 
 body {
@@ -47,6 +51,17 @@ body {
   font-family: var(--body-font-family); 
 }
 
+.z-index-navbarlayer {
+  z-index: var(--z-index-navbarlayer);
+}
+
+.z-index-navbarlayer--1 {
+  z-index: calc(var(--z-index-navbarlayer) - 1);
+}
+
+.z-index-navbarlayer--2 {
+  z-index: calc(var(--z-index-navbarlayer) - 2);
+}
 
 /*---------------------------------------
   TYPOGRAPHY               
@@ -687,6 +702,33 @@ strong {
   .pr-30-perc {
     padding-right: 10% !important;
   }
+}
+
+
+/*---------------------------------------
+  GRAPH        
+-----------------------------------------*/
+canvas { 
+  display: block; 
+  max-width: 100%; 
+}
+
+.chart-container { 
+  backdrop-filter: blur(25px);
+  /* background: linear-gradient(to bottom, var(--primary-color) 0%, var(--white-color) 100%); */
+  border-radius: var(--border-radius-small);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+  scroll-behavior: auto;
+}
+
+.row-chart {
+  max-height: -webkit-fill-available;
+  overflow-y: auto;
 }
 
 
