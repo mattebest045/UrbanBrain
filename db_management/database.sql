@@ -28,7 +28,7 @@ CREATE TABLE OPERATORE(
     Tipo varchar(30),
     Ruolo varchar(30),
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)), /* Controllo ulteriore per inserire solo i valori corretti */
-    Password varchar(255) not null, /* SHA-256 produce un hash di 64 caratteri */
+    Password varchar(64) not null, /* SHA-256 produce un hash di 64 caratteri */
     PRIMARY KEY(IDOperatore, DataInizio, DataFine)
 );
 /* Valori possibili del campo Stato:
@@ -43,7 +43,7 @@ CREATE TABLE CITTADINO(
     IDCittadino int not null,
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)), 
     DataRegistrazione date not null,
-    Password varchar(255) not null, /* SHA-256 produce un hash di 64 caratteri */
+    Password varchar(64) not null, /* SHA-256 produce un hash di 64 caratteri */
     PRIMARY KEY(IDCittadino)
 );
 
@@ -53,8 +53,8 @@ CREATE TABLE SUPERADMIN(
     Ruolo varchar(20) not null,
     DataAssegnazioneRuolo DATE not null, 
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)),
-    UltimoAccesso datetime not null, /* format: 'YYYY-MM-DD hh:mm:ss'. Si aggiorna per ogni logout*/
-    Password varchar(255) not null, /* SHA-256 produce un hash di 64 caratteri */
+    UltimoAccesso datetime not null, /* format: 'YYYY-MM-DD hh:mm:ss' */
+    Password varchar(64) not null, /* SHA-256 produce un hash di 64 caratteri */
     PRIMARY KEY(IDSuperAdmin, DataAssegnazioneRuolo)
 );
 
@@ -113,7 +113,7 @@ CREATE TABLE EVENTO(
     Luogo varchar(100) not null,
     NPosti INT DEFAULT -1 CHECK (NPosti > 0 OR NPosti = -1), /* -1 indica i posti illimitati */
     Descrizione text,
-    `Data` date not null,
+    `Data` datetime not null,
     Stato int not null CHECK (Stato IN (0, 1, 2, 3)),
     PRIMARY KEY(IDEvento)
 );
