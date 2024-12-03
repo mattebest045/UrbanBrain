@@ -1,416 +1,584 @@
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '11', '125', '2012-02-09', 'Rendere ah tendere valle vendere croce. Pranzo attività stampa brutto nazionale sorella sacro.
-Sino assicurare albero casa. Speranza nord partecipare parere angolo qua tranquillo.
-Aggiungere tavolo pregare scopo. Sonno croce sposare albergo ne.', 'fissare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '17', '12', '2023-11-01', 'Lago appartenere gioia chiamare. Impossibile venire quello periodo verso perdere. Aiuto infatti costringere serio tranquillo visita angolo dietro.', 'giornata.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '2', '46', '2024-02-25', 'Rosso rosso università. Ah rappresentare particolare corrente girare durare. Superiore moderno voglia silenzio. Sforzo crescere sapere peggio teatro.', 'comunicazione.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '5', '136', '2016-05-21', 'Aria porre nemmeno costruire nessuno popolazione. Aprire libro considerare sinistro chissà. Ritorno tuttavia oramai americano minuto sangue muovere. Morale possedere pesare scrivere lui situazione partito.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '7', '85', '2024-04-29', 'Tratto vi disposizione abbandonare. Epoca avanti fabbrica mestiere fuori film vivo.
-Spirito notizia insieme celebrare. Accettare nascere addirittura secondo.
-Giudicare croce storia vivo bruciare risultato addosso. Sereno presente diventare rosso.', 'fatto.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('44', '2', '171', '2021-03-25', 'Ponte inverno buio rapporto. Durante oro resistere mente treno viaggio. Ringraziare notevole sereno sostenere battaglia addosso. Oh vento sorella forza diverso cominciare.', 'fiducia.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '12', '96', '2017-04-24', 'Egli divertire notizia latino seguito infatti. Prato specie ridurre centrale rosso persona personaggio.
-Povero piacere poiché contare dito attento perciò. Milione giusto principio continuo grande insegnare nord annunciare.', 'tutto.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '11', '193', '2019-11-11', 'Sotto luogo no vasto intenzione o. Limitare oppure compiere fino fame restare.
-Cercare bruciare porto se che. Neppure porre giornale provincia.', 'accordo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '10', '33', '2023-05-31', 'Orecchio parte assicurare quanto lì filo. Linea nazionale riempire organizzare amico tempo. Occorrere suonare perché istante incontrare.
-Latino poiché tornare autore strano accendere destino gatto. Salvare disposizione atteggiamento poiché li autorità.', 'oro.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '4', '177', '2011-05-20', 'Avanzare sperare ricco segreto lasciare qui desiderare sonno. Raggiungere importante prevedere cattivo oramai.
-Filo film istituto. Simile durante cambiare meno.', 'quale.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '12', '22', '2013-04-25', 'Maestro piazza rivelare visita. Minore forma sera desiderare aggiungere normale.
-Sereno greco ah utile disposizione sembrare.', 'costruzione.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '8', '168', '2021-01-31', 'Iniziare viso tendere cane vero via lì.
-A industria indietro buttare tirare imporre. Solito forma ridere leggere grazie acqua. Nave smettere bene evitare. Popolazione ricchezza dopo decidere largo maggio vincere.', 'vostro.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '7', '196', '2019-01-16', 'Numero smettere comunque. Dovere contenere lavoro sinistro mangiare letto sedere. Popolazione caffè provare mamma uscire maniera.
-Contare diventare buono campagna. Subito intorno usare cittadino. Ma parete pianura completamente.', 'decisione.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '17', '51', '2017-01-11', 'Principale altro braccio pieno. E concedere durante verità un azzurro giornale relazione. Odore lontano carattere fondo rosso giudizio.', 'tardi.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '17', '58', '2016-12-30', 'Cucina realtà stare repubblica.
-Prato capire rientrare scherzare.
-Luna posizione situazione papà errore americano più. Addirittura anima fede iniziare formare.
-Cominciare sicuro assumere capello. Dio chiesa oramai felice.', 'pena.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '10', '71', '2022-12-29', 'Buttare tenere quale coloro. Scappare costruzione però carta scoppiare dedicare. Tagliare odore insomma ufficio.
-Angolo ognuno trascinare ma ognuno civile. Serie spingere biondo. Naturale stazione erba centro distanza dimostrare ciascuno.', 'anima.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '12', '192', '2020-10-09', 'Inoltre bosco gridare mezzo papà sorriso fino. Brutto pubblico perfetto carta nascere parere popolo. Avanti accogliere prezzo civiltà.
-Diventare domandare attendere impressione ferro. Cittadino profondo anno spesa legge festa prato tardi.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('41', '17', '200', '2024-03-19', 'Offendere ah ridere assai probabilmente costa ultimo arrivare. Stare nuovo dare alcuno.
-O contatto porto dentro sedere. Coscienza addosso vita ridurre pranzo peso legare. Necessario osservare volere rappresentare passato uccidere sforzo.', 'zona.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '13', '16', '2017-12-20', 'Angolo riempire esercito animo lettera greco problema qui. Immagine luogo usare classe. Cambiare mano ricchezza triste cuore calcio.', 'speciale.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('38', '19', '157', '2017-09-23', 'Condizione bere cucina oggi chi. Mostrare dunque egli famiglia simile fondare.
-Legare parete sala. Realtà necessario cittadino treno.
-Musica possibilità ritorno destino sino nobile rivolgere. Nascere pezzo cattivo atto. Anno limite mese.', 'concetto.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('7', '5', '68', '2020-10-23', 'Crisi piacere parete fine andare ombra invitare. Forma frutto noto greco pranzo perché. Umano tedesco indietro produzione scena.
-Durante operazione privato buio partire. Mattino rompere grazie.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '19', '127', '2016-07-17', 'Ammazzare piacere dedicare. Chiedere attuale ammazzare tipo mangiare. Più buono questione pregare gatto risposta.
-Ricevere stringere albergo guerra privato terzo mio. Sicurezza esperienza molto. Descrivere estendere ritornare rosso accadere continuare.', 'egli.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '16', '18', '2012-09-24', 'Gusto improvviso levare durare appoggiare francese spesa. Giugno erba lanciare adesso figurare proporre.
-Erba pane chiamare tentare. Stanco conseguenza amore parere.', 'provocare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('46', '8', '170', '2011-08-23', 'Utile vero accendere controllo. Ammazzare proporre internazionale risultare diritto.
-Nudo volto saltare.
-Mancare vincere piazza scappare. Fiducia principale vero italiano. Dunque diritto necessità.', 'studio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '19', '77', '2015-08-17', 'Spiegare scrivere nemmeno cantare diretto tuttavia. Provincia bello seguire perfetto.
-Dente problema città zio elemento età domenica. Lira costruire circa gatto titolo pensare peccato. Sala conservare procedere abbandonare confronto conoscere staccare.', 'avanzare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '5', '43', '2022-11-06', 'Compiere osservare avere moglie politica gamba zio. Mettere oro arte potenza croce repubblica operazione fondare. Contento posare superiore diffondere raggiungere libro occasione.', 'onore.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '1', '68', '2017-02-27', 'Stanza sala interesse metà realtà luce correre. Riportare concetto ritorno stanco qualunque. Innamorare vino rivoluzione richiedere girare resto.
-Potere funzione mano. Buttare ridere controllo forza ma operazione.', 'compiere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '12', '11', '2016-02-20', 'Fino ricerca anzi completamente sorridere comprendere. Servizio costa coprire unico.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '16', '88', '2023-07-16', 'Terzo gioia arte escludere dolce piazza bello massimo. Fiducia grosso dare solito fatica.
-Prendere parere fuori vasto. Decisione cane badare ordinare giorno avvocato vivo avanti. Causa idea dolore sentimento personaggio condizione battere.', 'prodotto.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '15', '28', '2014-02-03', 'Gruppo scienza costa accorgersi lavorare effetto. Principio ma tardi li. Arte vedere insieme sbagliare tempo industriale.
-Allontanare pazzo bene guardare mandare. Raccontare opera grande. Esprimere imparare estero appena escludere impossibile.', 'tavolo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '14', '135', '2015-02-24', 'Motivo chiave risposta intorno. Relazione avvicinare autorità patria campagna famiglia. Partire indietro né cane anima.
-Stella sostenere là decisione dottore. Massa russo villa capace chi gatto poeta.', 'attuale.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '19', '87', '2020-07-03', 'Lavorare terzo peggio liberare seguito.
-Unire riferire raccogliere inizio riportare accogliere treno. Bello coscienza concedere peggio.
-Presentare strumento numero rapporto pensiero. Personale montagna accettare apparire arte accogliere ascoltare.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '16', '162', '2019-10-18', 'Discorso forte concludere necessità inizio accorgersi vostro disposizione. Potere eccetera forma controllo celebrare. Gioco maggiore domandare carta inutile studiare.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '15', '102', '2017-09-20', 'Successo fortuna ragazza giorno centrale. Ottenere sapere unire difendere direttore coscienza. Indicare erba tenere denaro latte capace breve.
-Sembrare considerare dire mondo nulla chiedere stanza. Generale solito forse disposizione invitare.', 'pianura.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('5', '7', '167', '2022-12-01', 'Argomento cielo perciò principio impedire. Celebrare libro breve capo storia continuo. Produzione bellezza fatto fabbrica domanda appoggiare.
-Sicuro cittadino albero. Perciò conservare tardi. Assai insieme preferire vero eccetera seguito attraversare.', 'strano.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '6', '106', '2013-02-19', 'Cercare signore lingua rosso. Cercare mercato andare.
-Certo brutto mondo. Scendere toccare infine padre volontà.
-Elevare mercato pensiero cercare uomo. Grado produrre filo bocca arrivare celebrare potere.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('5', '13', '88', '2022-10-04', 'Provincia marito legare fresco servizio fiducia morale. Giorno russo gente permettere rientrare simile congresso fumare.
-Vincere più fondare eppure bambino. Domanda grado vivere appena fuoco numeroso.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '13', '158', '2015-10-11', 'Forza presso cambiare qualcosa. Appartenere voce ognuno straordinario alzare sacrificio accompagnare valle.
-Qualcuno stupido rosso ne e invitare. Volto no paura sacrificio intenzione. Grave durare collina produzione.', 'merito.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '19', '12', '2016-11-12', 'Azione convincere festa famoso immaginare brutto allontanare mangiare. Tu faccia intenzione fissare.
-Mostrare consiglio sapere parete. Stabilire bellezza operaio operazione usare scuola. Letto esprimere popolazione divertire affermare però.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '4', '76', '2023-11-25', 'Vestire costruzione dio loro automobile cristiano loro affrontare. Giornale stesso scopo centro arrivare straordinario chiudere. Sorella ne egli repubblica valere. Scegliere teatro entro attore mattino abito capo.', 'idea.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '4', '35', '2023-07-28', 'Chiave improvviso battere caro scrittore richiedere. Buono segno addirittura riva condizione dito futuro attaccare.', 'chiedere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '10', '77', '2016-09-23', 'Aumentare americano felice credere. Intendere sud sentire tagliare. Campagna destino memoria ancora ne.
-Uno qualcuno contrario. Articolo ringraziare svolgere piazza studio accanto aggiungere.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '13', '183', '2023-10-26', 'Bisognare rosso scendere neppure operazione soffrire iniziare. Camera superiore nazione vario bruciare fortuna. Economico mio vita luogo armare bere.
-Aiuto fatica battere osservare tecnico capo.', 'popolazione.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '5', '173', '2022-04-17', 'Unico tono lui indietro. Esame ritenere buio film fenomeno legare. Roba ciò rivoluzione calcio convincere contare.
-Angolo uomo più puro pena confessare per. Immagine mare caratteristico animo quindi desiderio.', 'repubblica.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '5', '193', '2022-09-17', 'Presenza contadino potere gatto braccio comporre uno levare. Metro naturale professore.
-Prezzo morale popolo prendere corso.', 'giudizio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '2', '162', '2024-11-05', 'Principale ufficiale espressione assai amare chilometro. Montagna grosso popolazione tedesco. No risultato dubbio mamma sorridere a.
-Ordine uomo giallo. Arte ministro fumare passione frutto. Pure opinione togliere poesia mantenere gamba rapido.', 'stringere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '6', '114', '2012-04-03', 'Grave dio possibilità grazia stringere teatro. Rivoluzione religioso sostenere sonno.
-Dire arrestare formare aumentare accordo. Grosso qualcuno tagliare chiave. Dunque forma riprendere porta provvedere fermo.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '17', '92', '2017-04-18', 'Assoluto chilometro massimo rispondere.
-Colpo giudizio entrare infatti bisogno montagna. Lettera corrente foglia tentare angolo servire finire.', 'preferire.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '5', '93', '2024-04-16', 'Straniero fine sbagliare accettare scoppiare nome prossimo. Saltare comprendere pericolo finalmente calcio terzo. Fondo specie rivedere superare importanza film solito.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '3', '59', '2021-03-24', 'Centro bianco crescere seguire risposta estendere osservare sacro. Termine risultato risolvere mente ieri alzare roba.
-Vento giallo dolore provvedere cuore andare uccidere mano.', 'materia.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '13', '106', '2015-10-13', 'Nostro occasione sì ricchezza fornire. Riprendere arte fatica.
-Minuto cane proprio semplice. Aggiungere madre dimenticare.
-Periodo origine favore grazia. Impressione prato tono giudicare altro pensare avvenire costa. Popolo ridurre si.', 'misura.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '14', '190', '2017-09-20', 'Costringere azzurro continuare compagno foglia fra amare. Storia aria mese fuori passare nord popolazione.
-Governo costruzione politica domandare esso.', 'fantasia.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '19', '88', '2018-02-11', 'Riportare capire però dietro aiuto azzurro uguale piangere.
-Ciascuno attaccare interessare battaglia parola nascondere. Resistere dinanzi questione spesa forma domanda filo futuro. Rompere più lira ferire messa dividere aria.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '19', '172', '2017-09-16', 'Pagina vendere controllo arrivare giudizio aggiungere volere. Giardino rivoluzione distruggere vino poiché europeo. Essere facile anima riprendere vasto.', 'giudicare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '14', '165', '2018-06-23', 'Sala freddo ultimo scienza ridurre passato governo freddo. Unico punta partito cura. Sacrificio figura diritto mestiere accordo proprio.', 'via.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '9', '149', '2021-09-26', 'Linea noto per a via scegliere cui. Davanti davanti sviluppo esso passato. Musica sangue ordinare contento anche.
-Stagione lì valore paese tempo. Luogo condizione invitare denaro appoggiare fratello niente.', 'fatica.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '15', '136', '2012-01-17', 'Animo contrario volontà polizia. Puro azione punta ampio utile. Loro persona minore punta sociale ogni epoca.', 'giugno.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '10', '177', '2013-12-01', 'Dunque sistema diretto voglia presto sostenere russo aspettare. Indietro importanza folla corso rivedere.
-Caro felice nostro tavola servire. Dire semplice celebrare sembrare trattare dopo. Collina odore limitare nemmeno scorrere produzione.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('7', '5', '47', '2012-06-25', 'Qualcuno rompere avvenire. Civiltà libero basso età animale nazionale europeo.
-Generale dolore arrestare. Poesia intero loro punta raggiungere. Faccia opera giorno da operaio terzo entro bianco.', 'domani.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('7', '15', '6', '2023-09-13', 'Orecchio figura carne sole messa. Fame dire semplice rifiutare.
-Rifiutare dolore spegnere notevole leggero. Aiutare caso chiedere primo grado. Lago giù minore prendere.
-Chiamare papà stampa cattivo sud. Maggio casa autorità invitare ministro cucina scopo.', 'rifiutare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '14', '163', '2011-07-08', 'Senza grande attaccare amico. Girare sotto casa sapere chilometro stazione valore vero.
-Commissione mi politica permettere ministro greco. Cadere segnare territorio parete principale potere rompere signore.', 'classe.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '5', '149', '2014-07-21', 'Finché contatto spesso passo anno arma accogliere. Stesso idea ognuno. Congresso direzione civiltà camminare proprio popolazione braccio.
-Troppo oppure ferro. Stanco sperare cercare sociale confronto organizzare.', 'quarto.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '3', '86', '2010-05-08', 'Domani voce utile strada. Affare soluzione peggio guerra erba nemmeno mamma.
-Interesse sorprendere capace. Repubblica voltare via.
-Animo infatti ottenere libertà si estremo.
-Fatica via fermo stazione. Riunire già punta.', 'bisognare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '13', '136', '2021-07-08', 'Bestia organizzare porre arrivare ponte nostro. Ufficio ultimo scegliere staccare minore. Vostro insegnare inverno necessità sede mese.
-Comunque forte esame gridare. Alto descrivere presentare esercito. Lavorare costringere comodo inoltre.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '19', '47', '2014-10-02', 'Arma usare militare volto esso. Camminare male ordinare famiglia.
-Difendere calcio speranza labbro svolgere giorno discorso. Differenza continuo staccare congresso milione.', 'assumere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '18', '20', '2021-07-02', 'Musica sistema calcio repubblica quanto durante economico. Prezzo fino vivere azione. Controllo crisi spesa valle. Occorrere estate dio oggetto bocca stampa palazzo chiesa.
-Profondo onore utile sguardo sogno.', 'fretta.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '12', '111', '2013-04-26', 'Erba cura esperienza vario sì italiano nulla ammettere. Risposta folla entrare pesare mano.
-Vendere uguale tavola dividere. Verità autore stanco nazionale libero necessario qualcosa.', 'sicuro.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '18', '89', '2022-11-27', 'Sottile rivelare anzi distanza utile scegliere. Lavoro spazio attaccare giovanotto momento osservare. Spegnere tavolo cattivo oggetto.
-Battere luna fatica triste volere. Fresco volgere riguardare spesa. Corso labbro scoppiare là giardino fantasia elevare.', 'stagione.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '17', '69', '2020-04-23', 'Ultimo desiderio insieme sede. Ufficiale valle baciare pubblico gente ora giardino. Con quale economico abbastanza mattino papà.
-Condizione crescere proporre nudo giorno internazionale chiudere. Forma troppo immagine impedire. Relazione mare peso metà.', 'montagna.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '11', '66', '2011-12-28', 'Avvertire staccare puro europeo meglio. Incontrare odore sereno diritto affermare.
-Chiedere elevare interesse qualunque paura. Avvertire stasera direzione verità futuro. Personaggio bocca cominciare ospedale economico.', 'neanche.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '9', '121', '2014-01-29', 'Passo provare preoccupare letto quello lira termine contare. Un ascoltare industriale quanto prezzo braccio proposta.
-Pomeriggio grosso erba staccare partire carta. Roba rosso mantenere finire morire.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '17', '138', '2012-08-29', 'Domenica opera cantare immagine vi apparire fratello. Europeo presente rompere morire musica espressione sostenere. Caso sino congresso sviluppo estero tenere.', 'casa.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '11', '130', '2022-04-10', 'Quasi gamba presentare basso. Più nulla spegnere avvertire stagione. Per compagnia nero minimo invitare con pace.', 'economico.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '9', '138', '2023-09-26', 'Militare rivelare consentire poiché giorno. Invitare intanto accogliere fissare significare sbagliare nazionale. Potenza ordinare uscire regno funzione ammazzare.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '6', '145', '2019-12-31', 'Contare attimo dunque pieno godere problema. Popolo piantare buio anno. Chilometro eccetera ombra muro energia escludere correre. Professore vita costa differenza proporre storia udire tavolo.', 'probabilmente.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '1', '154', '2010-09-16', 'Molto casa fresco denaro prodotto. Chiaro cucina stabilire opporre difendere.
-Strano bastare sorprendere io ascoltare cosa attore civile. Vincere lei decisione sorella principale accorgersi entro.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '8', '12', '2024-07-28', 'Rosso conservare ascoltare. Voi parere scala soprattutto. Mercato dove puro lettera dinanzi passare.
-Onore eccellenza caldo più massa oramai ridurre. Riferire vedere operazione.
-Tuo folla principio stazione ampio attività.', 'materia.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '15', '15', '2022-03-15', 'Figlio unire mente antico. Futuro mercato eccetera patria attuale arma.
-Scorrere mio abito situazione durante duro stupido dio.
-Questione estero presente età scoprire stella scherzare. Allontanare opporre corrente alto cantare io.', 'importanza.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '15', '42', '2019-10-01', 'Comprendere insistere spettacolo breve calcio crisi pace. Inutile fiume allontanare papà poeta rivoluzione mi. Merito sforzo dito prova corrente. Coscienza destro congresso coloro diretto.', 'rappresentare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '7', '89', '2015-10-06', 'Ognuno calcio nascondere impossibile famiglia. Chiamare correre studio salvare trasformare recare. Fine enorme bruciare storia visita. Poco mano notte ringraziare futuro personaggio.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('43', '10', '74', '2011-01-07', 'Ci bocca lasciare erba recare età bellezza notare.
-Sembrare invitare punta francese volare crisi staccare vino. Andare azione muro attraversare mercato viaggio capo. Fabbrica stella vi unico anzi io.
-Naturalmente idea compiere scomparire legare.', 'attraversare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '9', '63', '2023-07-05', 'Armare diventare rappresentare solito. Ricco io sotto costruzione tornare valore vivo. Persona dare tecnico merito ritornare.
-Fornire vita presso vi segreto. Sostenere rapido lanciare ah.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '2', '118', '2016-03-25', 'Finché ordinare voglia dentro vicino morire. Continuo russo natura rispetto reale.
-Considerare difficoltà segreto scala. Camminare dente insistere cortile lì bere.
-Chilometro difficile pomeriggio rapporto rapido neanche molto.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '2', '194', '2019-03-05', 'Diretto badare pronto vista mese impossibile. Attaccare sentimento aumentare amare appartenere.
-O fabbrica spiegare accettare favore grosso lungo basso. Atto discorso compagnia appena. Espressione denaro fantasia noto cittadino.', 'sguardo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('38', '7', '10', '2012-04-29', 'Davvero moglie matrimonio merito.
-Teatro riprendere finalmente principe superiore regione iniziare. Mestiere ragazza difficoltà moglie sogno azzurro.', 'sacro.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '11', '43', '2017-03-08', 'Di opporre particolare legge vecchio testa serie comunicazione. Scena qualcosa continuo sacrificio.
-Madre attento ammettere. Triste vecchio campo ricordare amare viaggio. Uguale sole regione.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '6', '37', '2017-11-17', 'Isola vuoto attento fronte. Probabilmente creare crescere presente bisognare romano. Stamattina resto spegnere li libro coraggio vario riportare.
-Venire dove bello matrimonio. Lato piuttosto sangue centrale caso.', 'ringraziare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '14', '99', '2019-09-06', 'Autorità resto politico caratteristico. Sapere situazione riconoscere uno preparare caro. Imparare ridere potere nessuno giudicare salvare finestra gruppo.', 'provocare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '4', '90', '2024-02-08', 'Occasione tedesco scegliere meglio divenire fondo cadere. Insieme anche processo comunicazione attento sbagliare lì centrale.
-Parecchio produrre fuggire sostenere movimento muro. Zio chissà insistere impossibile. Pure fondare piccolo sacro naturalmente.', 'nazionale.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '1', '96', '2023-08-30', 'Notare ragazza partito tanto. Cultura provincia grigio tranquillo campagna. In fondo porre treno atteggiamento don impossibile azione.', 'istante.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '9', '177', '2020-02-21', 'Commercio nemico giudizio fianco. Importanza significare scusare signore ringraziare. Prova tirare sacrificio luna direttore pane. Comune piede notte gente solito lì ritrovare.', 'spiegare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '9', '71', '2013-11-03', 'Vi chilometro rapido soldato salvare religioso appena. Espressione rivoluzione intendere badare abbastanza salvare. Comprendere accendere ridere partire. Domandare male trascinare tu caratteristico frase.', 'salutare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('28', '13', '141', '2019-10-27', 'Voglia quarto espressione riuscire conoscere produzione ciò. Parlare importanza segreto povero assicurare finché.
-Prezzo conoscere lago davanti. Caso vostro sino nazionale notte. Collo esperienza processo maniera alto figlia rientrare alto.', 'se.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '15', '129', '2022-11-24', 'Muovere prossimo toccare stazione visita lui povero no. Fresco azione là bambina insieme. Nascondere internazionale tranquillo insegnare piazza esame unire.', 'da.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '7', '65', '2020-06-06', 'Offendere baciare futuro lavorare cui settimana massa. Veramente puro fine famoso scena.
-Poiché potenza generale. Svolgere particolare politico figura coraggio mio dare. Nazione funzione eccellenza chissà scoprire muro. Avanti li tono successo.', 'difesa.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '12', '86', '2020-04-19', 'Fabbrica valere ogni fame storico. Fatto angolo accordo decidere proprio vicino. Giardino triste facile casa.
-Malattia ordinare ringraziare li fino colpo bocca. Silenzio mettere zona ora tacere tacere commercio. Ricerca superare prevedere.', 'commercio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '7', '193', '2012-10-22', 'Inglese ordinare assumere produrre infatti.
-Salutare strano lavoro fra se. Dubbio tanto andare città. Giardino animo presto.
-Li usare giovane spalla malattia finché. Funzione mostrare minimo lago lago nazione.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '4', '198', '2018-02-11', 'Lira atto lotta gioco voi concedere specie. Anno europeo fiume battere là motivo prezzo. Rivoluzione riferire forse.', 'madre.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '12', '52', '2010-02-09', 'Ultimo concedere avere partecipare cercare. Rispondere riva riprendere mandare rivoluzione.
-Riunire programma inglese ma poeta mercato. Tendere notte bianco figura concetto procedere dito.
-Alto origine monte sognare vista. Seguito voglia voce perdere.', 'spettacolo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '6', '100', '2016-05-06', 'Levare università avvicinare frase. Straniero elevare solito bruciare e uguale.
-Dito uguale ricchezza. Il presidente accompagnare ciò viso meritare sorriso. Impossibile relazione simile rapido.', 'treno.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '18', '53', '2024-01-10', 'Ragazza intorno scusare un toccare faccia rendere. Moglie tu uccidere storico muro.
-Gamba figura cristiano popolazione. Uscire economico scrivere libro favore posare patria settimana. Esprimere il più provvedere.', 'confronto.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '13', '142', '2021-02-04', 'Esso proposito ripetere luce riportare tratto. Immagine successo mentre trattare aprire bagno pericoloso. Cioè sera riva eppure.
-Offendere arrestare divenire desiderare poeta presenza.', 'gatto.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '1', '44', '2020-05-07', 'Dimostrare comunicazione importare finché neppure energia rompere. Ufficio mio sogno entro stesso. Morale tratto mondo conoscenza.
-Proprio più andare. Piazza collina esperienza sedere. Nave giovanotto celebrare quale strada fiume ieri.', 'meglio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '4', '55', '2010-09-26', 'Ascoltare ciascuno espressione contento movimento vino. Corsa scrittore albero valore. Ammettere nessuno famiglia addirittura erba luce.', 'tono.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('20', '12', '182', '2013-09-19', 'Presenza affatto potenza intendere verso. Labbro fermare trascinare colore vostro organizzare. Lato inglese tipo finire pure imporre.
-Corsa noi peggio leggere centro davanti volto. Essa particolare preoccupare.', 'fatica.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '6', '48', '2013-07-18', 'Riempire maggiore sociale dente metro rifiutare. Subito oro indietro essa. Tenere antico moglie né bocca.', 'trattare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '17', '106', '2015-02-20', 'Rivelare seguire sorgere politica circa differenza. Solo esercito storia condurre partire già non. Giustizia da giornale neppure presenza angolo.
-Distanza rispondere breve giustizia sicuro rapporto esperienza. Certamente zio rifiutare regione.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '19', '4', '2014-07-31', 'Dentro in conto riempire termine. Scegliere misura chiesa bianco vendere domani. Moglie dichiarare fianco scopo rosso sangue. Alcuno politica avanzare carne né valore figlio ricerca.
-Giocare restare colpa croce cioè.
-Giudicare spalla su giovane.', 'pregare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '1', '109', '2021-06-29', 'Film stabilire chiave immagine. Caso mezzo chiedere maniera governo. Vicino davvero acqua fratello coprire crescere subito.
-Prato operaio volere programma eh mostrare abito. Grave cantare vita necessità scrivere corrente.', 'istante.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '15', '13', '2022-01-12', 'Cane caffè egli accorgersi in. Festa parete fino smettere troppo accadere raccontare. Importare oltre quindi infatti attaccare tempo.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '8', '29', '2022-11-05', 'Storico compagnia riprendere lira direzione possibilità uso. Svegliare libertà personale moderno personale libro. Storico possedere sicuro riempire fatica pericoloso.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('41', '8', '26', '2015-01-19', 'Terreno segreto idea correre tono pena treno. Ministro profondo bestia fratello aumentare grazie staccare classe. Animo costruire bravo tecnico ambiente silenzio collina. Errore scendere oh pagare vi assoluto costruzione.
-Ultimo zitto resto operazione.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '18', '119', '2019-08-30', 'Spirito poesia centrale incontrare. Mezzo qualche ragazzo possedere.
-Stare offendere evitare ottenere cortile. Pure persona anno godere molto ufficiale. Aiuto ritenere soldato fresco piantare.
-Adesso interno spingere ministro.', 'girare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '17', '76', '2016-06-02', 'Significare abbastanza civile. Mostrare favore giovane nascere dimostrare processo. Proprio scoprire di nostro uscire.
-Anno rapido comodo giro automobile. Fra presente carta concludere lo partire tipo.', 'nome.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '2', '182', '2017-07-21', 'Guidare rivelare attimo pure camminare pensiero pianta. Gente metro uso trovare avvertire nave. Mestiere nemico provincia davvero bambina gioco.
-Marito pronto latte prato cuore. O spalla cattivo assicurare.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('5', '5', '173', '2011-04-20', 'Attendere o tratto tavola. Divenire più pieno porta maggio aria.
-Russo aspetto contro proposta francese infine svolgere scusare. Lavoro effetto spingere.
-Treno arrivare zio.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '3', '140', '2018-09-01', 'Tacere estremo rivelare qualunque metro esprimere attimo. Sotto volere sereno macchina. Ammettere trovare fermo bellezza entrare verso interessare.
-Giocare gridare ampio buttare signorina.', 'presso.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '16', '22', '2016-12-22', 'Tuo solito evitare alzare senza successo giornata.
-Opinione esso sorprendere. Brutto assai maniera sicuro.
-Sperare secolo spazio europeo dubbio lavoro pronto. Cambiare tentare qualunque territorio. Pagina io ascoltare piccolo esporre addosso particolare.', 'croce.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '19', '157', '2017-03-21', 'Già mese parola cristiano perfetto intenzione. Verde ascoltare settimana piantare estate attore.
-Montagna difficoltà biondo bisogno mestiere.', 'luogo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '12', '187', '2021-02-02', 'Là legare appena male francese sonno vista. Qualche conseguenza buio.
-Offendere abitare arte. Pena tra limitare eccellenza pieno famoso possibile. Carta gatto invitare finalmente corpo.
-Uscire lago offrire e. Perdere seguito vista specie passo peccato.', 'cioè.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '5', '113', '2017-04-28', 'Orecchio metro volto voglia presto felice lago scorrere. Gettare sereno madre. Provvedere personaggio presidente avvenire villa giocare grave. Signorina notevole pregare loro eppure nessuno.
-Mamma punto alto riuscire. Povero segreto inizio estate.', 'pietra.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '14', '194', '2011-10-18', 'Pianta affrontare qui spesa domenica. Stamattina commercio risposta da spettacolo.
-Indietro figlia motivo studio espressione giocare. Morire condizione vino specie sottile.
-Peggio posizione storia fabbrica pietà pietra. Colpa vuoto abitare.', 'prova.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '15', '90', '2019-11-03', 'Mantenere difficoltà passare studio cantare. Diverso camminare accompagnare riguardare gamba fresco.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('44', '7', '58', '2019-10-22', 'Nazione bastare poeta linea correre avvenire intero. Importante peso monte questione.
-Croce dottore triste braccio presto evitare. Ringraziare finalmente serio crescere sala elemento capo. Estendere dubbio tuo nero comune.', 'minore.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '15', '41', '2018-08-19', 'Pianta vero operaio zio sorgere fermare esso. Camera fra allontanare stasera. Inoltre difendere appoggiare.
-Oltre aiuto senso tutto stringere riempire stamattina. Volgere fantasia contento. Continuare indicare origine migliore stasera.', 'senso.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '7', '34', '2017-08-16', 'Possibilità sinistro letto maggio notte. Eh infine sonno forse. Concludere badare angolo strada russo.
-Natura compagnia militare disposizione senso. Recare stella sì interessante condurre pane rapporto.', 'salvare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '16', '149', '2018-05-24', 'Mente madre industria. Tipo dente rapido anche.
-Colore giorno capitare carne ombra fame origine esistere. Compiere sacro subito là attore. Segretario cura gettare giro. Battere contento soprattutto misura mercato.
-Esempio centrale mestiere.', 'sognare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '3', '195', '2015-05-31', 'Spirito recente situazione porre resistere. Straniero greco anzi albero.
-Adesso né inverno umano nord avere. Bisognare voce tale collina intanto mamma secondo luce. Ricerca prima rispondere luogo commercio comprare finire posare.', 'inizio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '13', '32', '2012-02-19', 'Loro odore domani bene ministro forse relazione. Freddo strano stella noi merito simile spettacolo.
-Libertà limitare comodo sperare. Amico insegnare idea costituire togliere labbro.', 'domenica.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '2', '55', '2009-10-11', 'Osservare pensare vivere né politica sperare confronto. Rivelare soprattutto intenzione operaio forse. Circa ufficiale allontanare avanzare rimettere ascoltare pianura. Pubblicare lira grazia croce inglese popolo.
-Mercato oggi odore essa poco bene.', 'smettere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '8', '145', '2011-03-17', 'Albero qualcuno aiuto. Riconoscere accendere onore pericoloso. Fresco presto puro ufficiale società commercio.', 'rivelare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '2', '179', '2017-07-01', 'Marito pericoloso passato contro ora. Aggiungere scienza anno scoppiare. Dolore posto primo pubblico personaggio.
-Prato nemmeno povero carne fornire. Tanto stanza perfetto salire studio. Posizione padrone volta o mondo metro.', 'sguardo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '1', '195', '2012-09-24', 'Tavolo sviluppo cittadino programma. Arma nuovo stasera guardia ombra stesso innamorare gesto.
-Segno riuscire imparare comodo.
-Scopo cercare camera caratteristico bosco pregare. Onore organizzare fino posizione dire. Scopo automobile produrre costringere.', 'colore.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '7', '8', '2017-04-15', 'Periodo coprire scienza unire bruciare bellezza territorio. Grazia festa odore stato periodo. Subito bestia usare.
-Abbastanza anche maggio base numeroso moderno tendere. Stagione stella da padrone soluzione.', 'sopra.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '10', '162', '2011-02-19', 'Insegnare luce no risultare. Riconoscere ciascuno generale meno da. Successo proporre civile articolo importanza lingua improvviso estendere.', 'forma.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '7', '108', '2015-01-15', 'Sognare albergo bene amore necessità importare finestra. Aggiungere coraggio attendere padre.
-Provare stato libro tale. Mettere diretto tempo.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '10', '76', '2017-06-01', 'Personale disporre storia anche insegnare resto camminare. Riconoscere dolce frutto settimana dirigere. Passo lì qualunque ordine dopo superiore ripetere.
-Non industriale elemento stringere piacere espressione. Guerra a dire salire là.', 'quindi.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '9', '52', '2018-08-05', 'Buono direzione caso preoccupare ogni ascoltare muovere. Bello lago luna nord spesso straniero.
-Servire sera svolgere. Libro straniero italiano americano.
-Usare strano tu invece. Dio grave vostro estendere. Oggetto capo serio lo.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '8', '120', '2023-10-26', 'Abito contadino partito controllo fiume provare giovanotto. Possibilità nazionale rivolgere rispondere.
-Invece libro porto bambina attaccare spettacolo legare io. Ricco partecipare anima atteggiamento badare probabilmente mettere metà.', 'interessare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '19', '176', '2019-02-24', 'Trovare fame amico a divertire. Giallo vento sicuro sotto.
-Sogno realtà voltare medesimo presidente. Riguardare sangue organizzare passo matrimonio circa don dunque.
-Giungere testa sforzo università. Se attento dolore nascere don.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '1', '92', '2020-02-10', 'Estero malattia ricordare durare offrire sedere soltanto. Raccogliere qualunque odore minimo ricordare.
-Forma politica avvertire rifiutare nome determinare notevole quasi. Ah unico società veramente indicare. Cortile letto ufficio descrivere.', 'prova.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '3', '190', '2015-06-29', 'Presenza eppure scherzare oggi domenica confronto. Strano classe economico caso contatto.
-Motivo base ci risposta. Idea venire comune vestito nobile. Interessante ritrovare arma commercio cittadino. Futuro ritrovare rosso avere scherzare.', 'battaglia.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '8', '28', '2021-03-22', 'Comprendere motivo limitare dire grande. Greco spiegare determinare avvocato.
-Coloro denaro periodo aumentare paura succedere. Programma età partecipare storia studio. Intendere dividere circa bello leggere personale uccidere.', 'terzo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '17', '151', '2015-07-09', 'Attorno completamente presentare ritornare lui. Studiare ufficio lago ridere cortile resistere parete intanto. Ospedale costringere leggere cristiano buttare sorella stella. Terreno regno sentire buio.
-Mamma preferire cavallo giustizia.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '13', '149', '2022-12-22', 'Niente lettera ci poesia bisognare. Rifiutare macchina diventare davanti albero. Vivo sposare caro periodo oramai anima.
-Fianco esperienza improvviso fabbrica monte pane regione. Rivelare greco fede. Suo fermare pelle espressione accorgersi evitare.', 'programma.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '2', '159', '2019-08-07', 'Controllo signorina tratto futuro diffondere. Impressione mancare costringere liberare non ripetere staccare età.', 'sole.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('44', '6', '62', '2021-11-13', 'Operazione prezzo cortile minore neanche società. Elevare a ufficio suonare scomparire braccio. Professore vedere scena condizione desiderio.
-Distanza completamente certamente usare vario naturalmente. Inglese risultato massa cultura studio arrestare.', 'presso.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '13', '88', '2015-12-22', 'Rendere caldo voltare pronto coprire davvero. Probabilmente pomeriggio limite.
-Padrone crisi costruire.
-Dare meglio appena reale sera presto. Continuare tutto dovere grosso vendere vario fondare. Piacere accompagnare trovare vento.', 'caldo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '19', '170', '2015-09-12', 'Dovere fino questione scrivere profondo parecchio dio. Svolgere centro contrario orecchio impossibile vincere immagine. Presto fronte stasera tale contare.
-Dividere nuovo scienza memoria egli mente. Esame guidare problema gettare prato loro.', 'completamente.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('41', '1', '169', '2019-02-23', 'Tra desiderio necessario opporre naturale intanto. Ultimo meno elettrico. Bisogno soluzione presentare.
-Soldato bisognare scena davanti. Crescere significare morte. Addirittura segno cantare arrivare.', 'riprendere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '17', '15', '2017-03-26', 'Insistere gettare sinistro necessario voltare sorridere. Numero domenica ridere epoca rientrare vita. Europeo oltre organizzare. Minore tranquillo valore azzurro.', 'entrare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('20', '6', '183', '2023-04-01', 'Superiore discutere stazione capire. Isola passato frase ricco campagna filo appoggiare ricerca. Cosa divenire strumento avvicinare rivolgere letto.
-Vasto contatto bruciare gesto. Trarre soprattutto latte contento meglio.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '9', '150', '2017-04-20', 'Innamorare centrale rispondere corrente. Sotto albero paese medico.
-Ferire metro pietà vita sistema appunto. Civile offendere davanti giardino avere.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '7', '83', '2012-03-29', 'Molto città autore riguardare cittadino patria vita. Ammettere parlare libero lato.
-Cucina ricchezza straniero ricerca terzo. Cantare tanto reale.', 'ferire.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '5', '45', '2022-09-20', 'Giustizia spiegare fiducia congresso camera presentare.
-Sociale notevole viso luna portare ricerca compagno. Amico segno campagna ricchezza film qualcosa.', 'affermare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('28', '19', '188', '2013-08-28', 'Oro carta conoscenza duro distanza chilometro bere vendere. Istituto preferire niente raccontare. Animale no pianura.
-Paura un fresco notizia. Riunire città capire zia conto stampa fiume.', 'esempio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '9', '141', '2021-11-30', 'Insistere noi forse. Si odore distinguere frutto società creare. Qualcuno nostro fermare staccare raggiungere principio.
-Zitto quindi aumentare coscienza dovere enorme. Rifiutare movimento inoltre promettere soprattutto pronto presentare sala.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '16', '98', '2022-03-18', 'Allontanare carne eccellenza impossibile risolvere giornale. Su latino ma fermo terzo chiaro appoggiare opporre. Conoscere capace tavolo storico comporre.', 'proprio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '17', '137', '2016-12-07', 'Bastare frutto sala chissà lotta fabbrica. No importanza trascinare tavola ognuno.
-Ministro il sembrare ne. Rapido guidare meno. Entro insieme stesso peso.
-Conoscenza sostenere minuto sala zio biondo. Sognare paura voglia grazia infine caffè cavallo.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '12', '152', '2018-01-12', 'Atto pregare ora reale.
-Fondo finire inglese. Guardia persona incontrare tenere successo tagliare affrontare. Domanda proposta capo fianco.
-Contro dolore sinistro regno pesare sembrare professore. Imporre medico qualità togliere.', 'errore.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '6', '84', '2017-04-10', 'Eh storico piangere esperienza. Leggere tentare ampio partito migliore rompere bere. Primo smettere giudicare loro ponte rivedere.
-Natura bocca domandare rimettere estate attenzione. Qualunque ospedale personale fatto.', 'attimo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '19', '154', '2020-05-16', 'Caldo tono appunto mare sforzo tono dinanzi. Bianco bellezza guidare militare importanza faccia.', 'mangiare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '14', '92', '2013-06-03', 'Risultato pianta rispondere messa contadino. Questo io largo.
-Mio nessuno segretario campo invece. Articolo volto scrivere insegnare.', 'avvicinare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '7', '70', '2024-10-29', 'Contro relazione sforzo cuore ferro. Formare povero civile ricco sede. Più osservare società.
-Nero duro tavola.
-Riuscire spettacolo regione riunire. Età chiudere ripetere diretto trascinare matrimonio.', 'oramai.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '7', '22', '2022-10-14', 'Veramente mamma provvedere povero atto ambiente opporre. Aria spalla centro regione sistema parere. Caso leggere ragazzo simile lago bellezza trattare vero.
-Mattina difficoltà spalla grave. Massa indietro allora distruggere mentre.', 'dovere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '1', '77', '2020-07-29', 'Che oppure amore. Segreto sole ritenere finché ultimo partecipare immagine.
-Luna bastare esso grazie. Incontrare regno corpo attenzione dio. Molto armare peggio caffè fame rivedere ringraziare desiderare.', 'memoria.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '3', '125', '2009-12-31', 'Dinanzi rosso grazie sorgere piangere crisi guardare. Raccontare contrario proposta proposito giornale frutto coloro cavallo. Resistere sentimento importare costruzione.', 'quello.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '16', '92', '2013-04-15', 'Pubblico pianta volta preciso continuare sala lungo. Fabbrica serie bagno naturalmente lavoro oltre ciascuno.', 'accogliere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('38', '10', '65', '2016-10-29', 'Oggi periodo cattivo bestia. Sorella allontanare bere funzione motivo forma naturale. Riprendere poesia occhio momento coscienza.', 'forma.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '8', '158', '2011-03-05', 'Sorridere collo nemico allora resistere ciò chi.
-Meglio saltare uomo. Costa ecco importanza coloro costruzione nostro sentire riportare. Fatto testa voglia nessuno volare ammettere fantasia.', 'produrre.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '5', '59', '2021-10-28', 'Che scrivere tecnico magari città. Difendere mente oltre capo affrontare.
-Attimo colpire imparare risultare liberare villa ordine zona.
-Spettacolo giudizio raggiungere ammettere temere buio.', 'diventare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '10', '41', '2012-01-28', 'Parlare divenire nemico orecchio. Vita linea terreno davvero braccio battaglia.
-Buono scrivere maggio ne cristiano. Sostenere prova pazzo cane dimostrare importanza.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '8', '168', '2018-02-08', 'Escludere luce padre eppure elemento. Invitare ciò fumare recare. Provare breve freddo condurre dichiarare spingere il.
-Arrestare famoso necessità ritrovare affrontare giù corpo. Giallo tentare ne quindi occhio perciò. Leggere affrontare là altro sorgere.', 'partecipare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '13', '22', '2015-03-09', 'Successo fame studio. Autorità preciso qua seguire prova segno viaggio russo. Sembrare molto vento. Spirito istante grado desiderio.', 'ferro.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '11', '101', '2020-11-24', 'Restare finalmente peso quarto casa fianco fuggire articolo. Metro sapere denaro moderno tanto rivolgere. Compagno occorrere corsa spalla. Pensiero privato anno collo correre adesso riconoscere.', 'scherzare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '15', '28', '2012-06-26', 'Nessuno inutile però ognuno. Nuovo completamente popolo inutile guidare. Difficoltà trascinare attuale perfetto.
-Riportare sonno superiore ragazzo aiuto rispetto ferire. Gamba comunicazione succedere condizione.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('43', '17', '27', '2016-01-23', 'Affare notevole qualunque assumere notizia. Contento padre chiedere porta. Volta sentire distanza sociale medico mamma ferire. Breve stamattina porta coraggio rivedere esso occorrere.', 'coscienza.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '6', '114', '2014-10-01', 'Assoluto mentre soltanto incontrare bianco. Sognare destro futuro situazione.
-Segretario presentare piacere. Accompagnare villa guerra famiglia realtà. Povero normale nemico normale governo. Domandare ringraziare comodo provincia stato mezzo scrivere.', 'baciare.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '1', '21', '2016-05-29', 'Qualche parlare considerare soluzione. Direzione questo compagnia piazza già scala.
-Leggere noto inutile commercio. Moglie un prezzo qualunque gruppo sorridere. Quanto completamente pranzo.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('20', '5', '105', '2016-04-04', 'Nave repubblica scopo sorella fine breve. Preferire mangiare scendere fornire campagna iniziare figurare.
-Voi disposizione colpire difficoltà. Insegnare ascoltare divenire imporre giornata puro né. Occasione diffondere senso notare.', 'passo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '18', '97', '2024-08-19', 'Sogno notizia verità giocare dente. Udire giù erba società volgere piede concludere. Angolo salvare sereno giù dormire esso.
-Largo proposito fiume movimento.', 'contento.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '4', '98', '2021-02-15', 'Denaro grado diverso. Nascondere magari dirigere richiedere spesa giustizia. Estremo succedere prato direzione ascoltare destino.
-Greco spesso trattare funzione sociale dio preferire. Cominciare fianco lì appoggiare.', 'personale.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '7', '193', '2021-08-02', 'Termine metà limite fiume riferire testa là. Moglie titolo bellezza cui.
-Oro breve presentare. Tipo uccidere utile fissare.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '10', '98', '2021-10-21', 'Tirare concludere orecchio riconoscere avvertire aiutare parecchio. Assistere montagna rivelare ragazzo umano perdere aumentare. Affare ci caro quadro pericoloso vestire.
-Scrittore calcio fumare. Tagliare colpire lanciare stamattina.', 'il.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '12', '11', '2021-07-22', 'Venire presentare mantenere egli. Fede tanto partire bruciare io ufficiale desiderare.
-Filo pace prezzo. Giusto oro milione campagna dubbio vostro animale. Appena perfino giovanotto mentre esso.', 'sacrificio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '2', '118', '2015-07-16', 'Mare mezzo affatto pericoloso. Peso già spazio. Soldato principale insomma cioè dove.
-Battere quale insegnare affermare pubblicare stare. Presente minore consentire. Volontà rivoluzione uccidere scuola stazione finire breve.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '16', '167', '2022-04-26', 'Vero adesso altro spiegare diritto. Atteggiamento distanza sistema privato riguardare origine simile valle. Possibilità messa appoggiare.
-Forza desiderio duro a. Villa nudo sì risposta nord militare. Uguale segretario addosso attimo cittadino.', 'tuttavia.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '9', '73', '2019-04-18', 'Carne eppure forza. Stampa certamente metà piede esso primo interessare. Fatica sino sino salutare materia.
-Lavorare ferire volta bastare. Personaggio dichiarare ottenere nazione.
-Mattino sottile industriale tavola. Utile accadere attività pianura.', 'partito.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '2', '106', '2024-06-16', 'Oppure ciò motivo erba celebrare elevare opporre ciascuno. Uno fermo dentro attività.
-Vita costa solito generale visita subito rosso necessario. Unire vista pubblicare eh conseguenza notte pazzo. Tale mentre libero indietro elettrico quanto.', 'anzi.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '1', '108', '2023-10-15', 'Generale accorgersi fornire. Presente appena entro quale. Capo imporre domandare fondare stampa tacere.
-Destro fenomeno conoscenza divenire. Articolo offrire isola pianura sedere intanto folla. Posizione di vivo pagare bestia sicuro piano.', 'ufficiale.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '1', '108', '2019-09-28', 'Signore bellezza superare pagare caldo. Infine antico che straniero con udire.
-Mamma procedere fabbrica tale oramai valere riferire. Lì fianco infatti ultimo posare vincere. Oggi confessare rifiutare abbandonare lato tenere muro.', 'proporre.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '18', '162', '2019-04-21', 'Gioco assicurare mare stanza ah qualcosa. Metà zia caso ricordo vento descrivere costruzione. Ambiente colpire tempo vivo.
-Origine sotto spalla attraversare paura. Indietro vivo storico.', 'azzurro.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '6', '197', '2017-06-15', 'Decidere massimo intendere grigio. Quanto chiamare pesare ombra sociale.', 'riprendere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '19', '32', '2020-05-02', 'Davanti concetto maggiore preoccupare periodo attività mercato. Stampa fantasia secondo aspetto posare loro bere.
-Riunire forma figura oppure. Dopo idea vario poeta. Sperare soprattutto pubblico.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('41', '11', '5', '2010-09-09', 'Lo povero aiutare sinistro quanto ascoltare dipendere.
-Quindi piano capo segreto su forza. Industria scuola elevare triste.', 'desiderio.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '1', '20', '2023-02-21', 'Celebrare tuo giustizia importante. Confessare ritornare ci.
-Poiché lontano bene militare sviluppo spirito. Ufficiale controllo piantare saltare gusto accorgersi. Colpo gioia medesimo.', 'potere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '1', '129', '2023-07-02', 'Ordinare importare folla forse.
-Prova stabilire celebrare abbastanza. Dare significare badare lo correre terzo. Stanza lei se ritornare corso sembrare istante.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '6', '111', '2010-04-25', 'Ognuno proposta destino assoluto giornata. Nazionale principe accorgersi possedere prova. Gettare tendere generale vento impedire lungo nemmeno.', 'capire.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '6', '55', '2015-01-01', 'Cittadino vario porta. Parete spirito addirittura diffondere. Divertire contatto ritorno tipo.
-Anno generale vivere partecipare. Entro preferire scrivere questo.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '7', '180', '2019-02-11', 'Voltare attività malattia donna costruzione fiducia. Noi bastare sguardo forza tratto ritornare scuola correre. Forse periodo distinguere mare servizio giudizio don.', 'bosco.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '4', '53', '2024-02-08', 'Seguito potenza proposito albero bisognare chiudere luce. E pure posare ministro quindi.
-Fornire riuscire realtà vostro. Carne montagna ferro cadere avvocato usare. Ferro guerra professore scienza.', 'moglie.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '2', '154', '2012-04-15', 'Fede bagno eh rivolgere. Importanza problema azione bosco stamattina importante. Camminare poeta fretta principe bere.
-Perciò pagina anima rosso sistema prima prato. Cominciare piazza questione fuoco cattolico appoggiare.', 'modo.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '13', '59', '2010-02-24', 'Vino principale cosa. Militare voltare staccare tagliare.
-Settimana internazionale poco saltare oro. Sbagliare numero inutile scoppiare pace.
-Moglie enorme zio morte. Accendere provare riconoscere risolvere esistere.
-Alcuno ammazzare passato concedere.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '1', '151', '2014-12-12', 'Scherzare uso argomento signora. Salire elevare stesso fenomeno.
-Muovere bello estendere aprire servizio. Enorme comporre massimo.', 'vi.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '14', '125', '2024-07-31', 'Intenzione coloro accogliere materia parere centrale vita questo. Mandare specie montagna. Però eccetera verità voltare esercito saltare.
-Comunicazione casa bello rivedere posto recare cadere. Ragazzo economico strumento zia testa fissare.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '17', '138', '2015-07-18', 'Andare loro numero energia. Papà chiamare film battere dolce ufficiale sperare. Se mercato pranzo luce repubblica alto davanti quanto.', 'accendere.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '13', '40', '2015-02-22', 'Diritto attorno costituire innamorare sonno possibile. Nave procedere sguardo enorme argomento. Don se loro giovanotto sembrare trattare perdere.', 'riferire.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '11', '64', '2017-09-26', 'Istituto intanto presente. Soldato luce rispondere presto. Risultato bene ancora presso vuoto unire fondare.
-Questo salire macchina porre privato sicurezza estremo serio. Succedere governo senso qualsiasi armare ricco. Suo villa terreno massimo.', 'né.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '10', '117', '2024-10-31', 'Opera lato repubblica stampa scrivere estremo poeta. Nord eccellenza accendere polizia. Giungere costituire lasciare memoria usare ma.', 'prima.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '5', '55', '2018-03-19', 'Nero concludere attendere piano succedere posizione ci. Pensiero lira morale padre assicurare esistere noto. Serie neanche straordinario fornire.', 'macchina.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '12', '121', '2024-03-07', 'Attimo consiglio fine lingua ma rimanere movimento. Legge invece offendere neppure uso. Libertà ottenere uomo scendere musica piangere fornire.', 'cristiano.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '17', '132', '2021-01-14', 'Coscienza grave muro modo intendere risolvere che promettere. Allora metro errore almeno vedere ciò mondo. Medesimo quindi accogliere incontrare paura sorella leggere.', 'merito.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '17', '183', '2023-04-12', 'Maestro poco con chiudere. Presenza segretario dovere girare porre ammazzare.
-Forte entro folla intendere pubblicare. Largo necessario guardare bagno.
-Coraggio proporre ottenere sicuro.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '17', '9', '2013-11-01', 'Guardia paura superiore camminare parola cura. Principale natura colpire pubblico.
-Speciale qui settimana loro presente prato abito. Nemmeno folla sangue grado. Discutere sereno proposito diretto morte.', 'necessità.jpg');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '16', '27', '2023-06-23', 'Accorgersi riempire finestra fumare presidente tanto crisi genere. Prima attuale allora fornire pagina scorrere domani allora.
-Mamma mare neppure aprire lui. Essere aria stringere pelle.', '');
-INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '5', '36', '2020-08-28', 'Voce dormire inoltre presto tale diventare. Medico numeroso treno riuscire godere accettare fede. Stesso muro abito.
-Accettare inverno iniziare chi. Ieri tutto ricco soffrire carta. Sacrificio libero medico principale considerare serio famoso fede.', 'fatto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '9', '108', '2019-03-16', 'Parlare aggiungere compiere frutto. Cominciare industriale metro suo attimo. Ringraziare lettera ricordare indicare colpire esprimere cominciare.', 'durante.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '18', '64', '2023-04-09', 'Qualunque compiere istituto odore accordo dente. Straniero tempo operazione nobile.
+Mattino palazzo osservare scoprire vincere. Proposito faccia zio esporre chiave stupido. Capello oppure minimo dubbio linea.', 'bene.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '3', '115', '2010-06-04', 'Gettare levare moderno morale nemico centrale. Sorgere trovare accorgersi girare occorrere messa qualche estremo.
+Trarre lettera spegnere quale apparire pregare. Villa pena di però.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '8', '125', '2016-06-23', 'Politico erba pesare mare escludere forse scoppiare. Strano qualsiasi provocare metro spazio riconoscere.
+Attento cominciare contenere estremo sì.', 'via.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '7', '88', '2016-05-28', 'Proprio ciascuno attenzione vestito. Papà appartenere periodo continuare. Ammazzare vuoto avvicinare francese.
+Comporre utile comporre certo. Ridurre pomeriggio punto intero attesa.', 'minuto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '14', '83', '2024-02-19', 'Silenzio disporre naturale profondo peccato arrivare minore. Ah superare dietro autorità fissare. Pietra sembrare ponte cristiano chilometro domanda.
+Campagna già tecnico cercare. Arte azzurro bianco capire presto. Inverno pezzo messa ridurre.', 'sembrare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '17', '14', '2019-12-24', 'Grado risolvere giovane ricerca raggiungere sopra. Periodo desiderio terzo buttare suonare dietro parecchio. Favore uguale moderno smettere chiesa.', 'ministro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '15', '169', '2019-07-18', 'Tecnico carattere sposare preparare mestiere preferire. Contenere vasto buttare dopo giovanotto gente attraversare mare. Minore pianta un centro costa sede ombra.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '9', '93', '2024-02-22', 'Guardare insegnare seguire tale meritare stringere padrone resistere.
+Dipendere quanto silenzio fatica. Abito nord casa osservare cattolico. Medico tavola affermare ricordare raggiungere dopo collo campo.
+Proposito settimana sala.', 'autorità.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '5', '169', '2013-11-24', 'Particolare seguito opinione comodo costringere popolazione. Fame svolgere di parola lungo notevole.
+Punto stamattina colpo storia motivo sguardo. Comprare collina o allontanare studio. Nascere salutare se ospedale lasciare origine.
+Entrare giro quasi.', 'assoluto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '13', '32', '2021-03-27', 'Accompagnare sala realtà provare. Fabbrica malattia volare cortile via. Arrivare comprare triste elevare.
+Aprire stesso madre affermare pensiero battaglia salire. Il convincere opera tenere mantenere minuto. Mantenere famiglia paese.', 'ah.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '11', '19', '2010-11-24', 'Nudo riportare indietro scuola avere colpa buio vecchio.
+Puro sogno cattivo sentire affare politica piazza. Commissione vendere aiutare vestire meglio scorrere.
+Fenomeno signorina subito ciò loro passo qualunque. Credere albero valere durare terreno.', 'francese.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '8', '99', '2014-10-21', 'Quadro possedere stagione lotta circa. Sicurezza forte inoltre fenomeno.
+Palazzo stabilire soffrire spingere oh. Insieme oltre messa nome spalla regno. Possibile tra generale classe.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '4', '33', '2010-07-25', 'Contatto partito scendere semplice via dio. Internazionale volgere profondo costruzione si compagno discorso fronte. Intendere abitare elevare là perfino osservare. Difficoltà tirare aiutare disporre camera colore comporre.', 'viaggio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('44', '3', '15', '2017-07-14', 'Sì fuoco avvicinare buttare. Largo problema sognare città sogno scusare studiare. Raccogliere commissione ringraziare cuore inverno costringere scappare.
+Caso grazia preparare recare russo notare. Avanti unire certo poco enorme.', 'loro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '9', '60', '2016-03-08', 'Volta esistere ammettere scala esso caffè.
+Gusto trovare qualche io. Bruciare raggiungere famiglia cristiano. Scappare visita inglese qualità.', 'servire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '5', '118', '2010-11-09', 'Fantasia forza cattivo tentare. Riempire allora maggio presente importare visita serio. Passione notizia carne entro desiderare freddo regno regno.', 'fresco.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '12', '66', '2013-12-26', 'Spiegare indicare stasera colpo difficoltà verde. Umano carattere signora scoprire davanti sereno.
+Elemento futuro lotta rapido scappare estremo.', 'suo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '11', '30', '2011-04-22', 'Egli appunto dolore intero posizione medico nemico possedere. Caso duro basso affare inoltre. Isola fuoco semplice. Dimenticare inizio destino estero probabilmente.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '3', '111', '2023-06-21', 'Oltre moglie succedere avanzare presentare pietà. Errore avvocato mostrare problema latte necessità. Sviluppo croce strumento libero risultare.', 'cambiare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '19', '25', '2011-04-01', 'Mese risposta piede denaro successo. Ne lavorare divenire qualche spazio a nessuno. Niente soldato oramai. Nostro viaggio almeno militare insomma fenomeno.
+Opera guidare primo appena appena lago meno. Chissà lungo film piazza strumento medio folla.', 'speciale.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '5', '31', '2014-01-28', 'Papà mercato spesso stagione. Anima istante attuale riconoscere ritorno ufficiale.
+Relazione giù sacrificio qualsiasi giorno ne storia. Di procedere addirittura.', 'giudizio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '4', '93', '2023-01-08', 'Divertire rivelare tenere leggero dinanzi camera bisognare. Gioco qui società ritrovare intendere politica. Strada occhio occhio italiano dolore ospedale.
+Alzare riguardare battere svolgere indicare.', 'perciò.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '2', '42', '2016-01-14', 'Chilometro muro inoltre contare dividere. Ecco necessario spettacolo accogliere libero scienza cortile.
+Fermo limite speranza storia diretto. Libertà fumare formare foglia fornire.', 'decisione.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '18', '32', '2019-11-06', 'Fame antico interessare. Trovare misura cortile scomparire processo ricco.
+Estero mestiere fratello determinare spesso. Immagine possedere memoria tirare niente.
+Domani consentire serio. Avvertire luna medio bagno. Giro preciso ragazza sangue.', 'corso.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '4', '144', '2014-02-19', 'Sala matrimonio calcio trattare dottore fenomeno accordo ammazzare. Molto porta ragione epoca aiutare viso industria. Occorrere facile pietra coloro senza massimo sognare.', 'piazza.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '16', '182', '2016-01-06', 'Scena stazione poco giudicare. Muro intanto forte quadro offrire.
+Cambiare sorriso chissà andare rimanere nascere spirito. Civiltà roba avvocato ultimo niente.', 'distruggere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '6', '63', '2019-04-02', 'Ringraziare largo perfetto insomma. Argomento atteggiamento fede armare mestiere. Alzare stringere a. Dopo avanti sorriso fino abito militare potenza qualcosa.
+Stanza accendere passo atto rapido domanda nemmeno fissare.', 'giudicare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '14', '15', '2015-12-27', 'Bellezza affare dubbio vuoto grande. Sole sotto nascere cambiare significare dottore consiglio. Assai medico ridere punto fresco riportare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('28', '4', '96', '2020-05-22', 'Proporre via modo appoggiare aspettare. Numeroso accanto provvedere esercito giugno posizione. Condizione lotta chiesa disposizione origine vicino se.', 'metà.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('38', '4', '199', '2017-01-14', 'Militare linea difficoltà tentare piano diretto scappare a. Alto risultato arte figura realtà diverso svegliare.', 'stamattina.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '5', '36', '2016-01-19', 'Storico testa venire. Istante periodo libro ogni malattia relazione dimostrare.
+Primo ritenere contro nave problema carattere. Indietro essa spirito carne.
+Tono parere allora. Pensiero abito problema giorno costa chiedere appunto.', 'punto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '13', '118', '2014-10-28', 'Grave poiché stesso tavolo gatto ognuno. Proposito tipo superiore mancare avanzare.
+Rivelare pagina porre aspettare mantenere dito medio. Passato inizio sottile albergo credere ricerca. Rivedere fornire ciascuno capitare condurre centrale armare insieme.', 'vendere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '1', '139', '2014-06-04', 'Maniera probabilmente serie bagno medesimo verso. Invitare professore giallo lei imporre.
+Moderno punto assumere ferro giocare. Convincere professore che dopo. Nuovo salire probabilmente politica.', 'romano.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '3', '182', '2011-12-20', 'Grazie giocare voi mamma volare. Evitare fuggire poco coloro onore uso discorso. Pure nemmeno riferire meno.
+Dito preoccupare assumere nero. Tratto esprimere labbro diffondere temere puro provocare. Stabilire spesa comprendere uno carta.', 'fiore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '13', '41', '2019-03-27', 'Riguardare venire intero capire marito qualcuno. Solo politico risultare francese volto.
+Visita chissà difficoltà ultimo dipendere. Occhio ufficio smettere qualcuno attenzione procedere lato. Comodo aiutare comunicazione civile.', 'partecipare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '11', '138', '2021-04-30', 'Lui contento accanto gusto assumere. Accettare rivelare tale quello. Perciò bastare sole chiamare. Epoca fresco scienza differenza figura.
+Quanto finestra perché contrario credere ragazzo giro. Largo davvero sino.', 'parere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '7', '107', '2016-09-07', 'Diventare ascoltare scrivere liberare. Soldato proposito numeroso occasione giungere riportare comunicazione milione. Tavolo fiducia continuare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '1', '175', '2013-09-30', 'Colpire salire stare piacere crescere.
+Acqua realtà unico. Mente distruggere tavola letto. Grado improvviso dedicare popolazione segretario no badare.', 'distinguere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '11', '178', '2021-04-30', 'Crescere aprire eppure bere zio pensiero. Giovane lasciare pane rivedere.
+Colpa sorriso interesse grazia posare voce uno. Qui giusto raccontare attorno quanto.
+Raccogliere partito morte buttare. Europeo domanda stupido.', 'scusare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '3', '176', '2010-02-04', 'Commissione contare piantare continuare scala. Origine fermare camminare politico pagare matrimonio attento.
+Legge avanti potere dove. Letto eppure più corpo spingere concetto zia.', 'mestiere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '2', '170', '2012-05-04', 'Mezzo finalmente capace scomparire prossimo aiuto. Guardare pensare stabilire affatto raccogliere umano.', 'materia.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '9', '198', '2022-01-13', 'Provare contare pianura oggi proposito. Lui però abito vasto porre.
+Sinistro vendere sedere sicuro meglio. Vero trattare su mestiere giovanotto qualcosa fabbrica. Divenire assicurare duro volto coraggio teatro.', 'raggiungere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '8', '111', '2017-11-08', 'Giustizia tardi tranquillo. Memoria spesso decidere rientrare aspettare esprimere. Poesia scegliere atteggiamento aspettare ufficiale mi prossimo.
+Capitare abito nazione italiano buttare normale sala. Caso fabbrica orecchio intanto ridere.', 'giovanotto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '10', '66', '2016-09-01', 'Poesia soluzione croce luna effetto. Segretario governo testa.
+Indicare autorità bianco fuoco vuoto. Zia chi tardi errore spazio immagine.
+Pagare rapporto accanto se. Nascondere su monte viso centrale. Stasera paese dimenticare animo spiegare abitare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '11', '140', '2013-05-02', 'Giorno nascondere straordinario risolvere. Perfetto patria zona medico biondo spingere. Desiderare uccidere sorella ospedale procedere difesa.', 'operaio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '1', '52', '2017-05-02', 'Dire studio origine dentro coraggio sorprendere gesto. Fuori comodo spalla.
+Prezzo sorgere aria lago spegnere cercare errore. Aiuto università vestire guidare udire esporre possedere. Discutere lotta estero seguire grande desiderio caldo.', 'domani.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '1', '59', '2016-02-08', 'Proposito donna giro rispondere. Anche mestiere passo duro immaginare. Destro verde ascoltare.
+Seguire molto medesimo massimo. Sorgere favore esso gatto. Volta qualcosa assistere romano don ridurre bisognare qualsiasi.', 'certo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '1', '34', '2018-03-04', 'Sforzo loro possibilità dente valere giusto nemico. Azione temere mentre aiuto riunire durante attore. Davvero caro immagine mantenere polizia magari mercato più. Notare finire qualsiasi sinistro.', 'bellezza.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '11', '117', '2020-09-19', 'Tavolo volgere trarre silenzio fermare pensiero. Nazione aspettare inoltre ferire coprire sbagliare nascondere contento. Presentare inglese esistere nave continuare professore. Abbandonare segretario superiore faccia cura rimettere gioia pericolo.', 'determinare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '4', '80', '2021-10-15', 'Provvedere europeo alcuno trovare gamba finalmente pianta. Verità contento giudicare origine basso.
+Suonare passato costituire erba nome. Territorio strano colpa ricevere celebrare aspetto tentare.', 'preparare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '19', '61', '2015-03-13', 'Cattolico camminare ufficiale periodo ragazza assoluto per. Risolvere sociale avanti dottore sotto lei dopo. Fronte egli mio.
+Notare sedere sorgere comprare scappare pezzo mancare. Tendere primo lavoro quale mercato noi sacrificio.', 'senza.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '6', '66', '2023-12-04', 'Provincia naturale abbastanza. Andare armare grigio speranza forma parecchio. Consentire enorme elettrico finire stazione risposta.
+Cultura figura voce ampio massa industria latino sotto. Bellezza eccetera labbro stupido nudo meglio.', 'tedesco.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '16', '141', '2024-12-01', 'Scoprire continuo muro si regno mano. Sedere uscire mamma grazia. Breve concludere albergo caffè luce ordinare spingere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '5', '140', '2015-02-18', 'Camminare paese ministro male male ricerca prato. Rosso attendere civiltà casa unire colpa pesare creare. Notare umano nostro stabilire aggiungere biondo.
+Gridare poesia appunto. Domani certo avere.', 'assai.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '2', '69', '2018-10-26', 'Mese tutto assai alto polizia inutile. Giustizia piazza armare quasi. Fuoco cortile semplice tornare.
+Cambiare linea da villa punto. Egli attesa neppure terreno.', 'nemmeno.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '2', '16', '2013-08-03', 'Via riferire colpire camera principio zona. Invitare soprattutto sguardo raggiungere.
+Cittadino religioso sorridere mandare insieme mestiere ordine celebrare. Regno rivedere problema rapporto.', 'fumare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '3', '15', '2014-04-06', 'Verde abito troppo qualunque eccetera valle risolvere. Crescere signora soltanto gamba. Ci massa fiducia li.
+Senso mostrare rispetto signora. Nulla arrivare svolgere. Straordinario scrivere essere probabilmente provvedere intenzione bruciare.', 'ragazzo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '10', '151', '2023-03-10', 'Ferire presidente automobile piano papà grave. Specie maggio compiere numeroso calcio.
+Tecnico invece pezzo tecnico elettrico. Studio carta aspetto. Sinistro come arrivare provare superiore saltare badare.', 'presto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '10', '122', '2019-09-15', 'Donna insegnare correre. Senza nuovo li gamba.
+Loro li terzo mancare dito croce. Prato tra figura dopo potenza quadro. Rappresentare scherzare dio tavolo fra chi ah musica.
+Gioco proporre servizio serio. Sì dichiarare intenzione atto.', 'attuale.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '11', '53', '2023-04-21', 'Orecchio carne differenza. Finalmente attività oggetto aspettare pericolo sviluppo pesare nave. Abbastanza rompere oltre solo.
+Sicuro più costringere sorgere tornare. Eppure trascinare attività. Possibilità vivere badare oltre.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '15', '58', '2020-09-13', 'Teatro tecnico mandare perfetto stupido malattia soldato. Lasciare tagliare nazionale considerare estremo porto. Passato giardino ritenere mio luna tornare.', 'tu.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '12', '66', '2021-05-26', 'Come problema attore mancare. Dove eh moderno.
+Primo pranzo scuola azzurro pane appartenere. Attore dito arma diverso estremo muro francese. Altro raggiungere difesa vero correre vista.', 'lo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '4', '23', '2010-11-13', 'Egli fretta eccetera storico. Capello dente con cambiare pane studiare. Cane occasione messa lingua polizia servire preferire erba.
+Frutto pericolo dito dove principio rosso albero.
+Addosso tavola governo segretario.', 'tornare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '6', '193', '2015-09-07', 'Interno villa provocare corpo porre politica primo. Gioia pregare eccetera vicino potere.
+Su roba determinare rientrare conoscenza ricerca posare duro. Destino confronto su inizio semplice abitare padrone elettrico. Subito ne ritorno oggi.', 'escludere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '2', '2', '2015-08-27', 'Succedere senso scrivere strada figlio segretario paura specie. Brutto sforzo montagna. Disporre ambiente crescere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '7', '119', '2021-04-18', 'Ordinare amico studiare questo mantenere. Scrittore operaio occasione giugno ultimo quadro.
+Bastare appena nazione conoscere fortuna corso che. Ieri qui fatto sostenere. Circa marito attendere biondo situazione.', 'fine.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '17', '46', '2019-02-13', 'Festa distruggere papà figlio noto determinare famiglia. Scuola giocare errore essere viso oh attraversare. Vedere eh speciale.', 'o.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '3', '158', '2012-10-13', 'Pericoloso operazione sembrare vincere roba udire superiore concedere. Sotto maestro neanche stabilire iniziare ognuno vino. Denaro repubblica certo vedere. Compagnia movimento teatro fine sistema rimettere popolo.', 'rimanere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '11', '112', '2012-01-03', 'Cortile rivolgere dietro sotto libertà romano piantare. Credere contadino civile soltanto giardino caro. Lungo meno assai differenza.
+Provare corso trascinare faccia. Adesso peggio bianco provare rivedere segno.', 'articolo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '8', '8', '2011-08-03', 'Piacere fra tale sicuro intero braccio. No spettacolo cui riferire inglese e spiegare. Questo ammazzare lotta.', 'trasformare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '17', '8', '2016-08-25', 'Sicuro da festa là carne. Presso bianco compiere spalla guardare fronte distinguere. Russo piangere oramai dolore lungo milione aria.', 'utile.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '14', '96', '2024-10-15', 'Latte pronto filo libero frase. Espressione gusto conservare avanzare giorno. Interesse storico chi madre insistere zitto.
+Oro industriale rapido festa. Spesa battaglia motivo chiamare povero giocare risolvere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '12', '73', '2020-02-19', 'Lasciare pranzo tra sbagliare grande sì limitare grazia. Sud bellezza provvedere ultimo corrente nome ecco.
+Antico dare riempire grazia fra lanciare provincia. Biondo notizia su né ferro zio. Assumere lingua braccio uno troppo.', 'pensiero.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('44', '18', '137', '2020-07-21', 'Stazione difficoltà giocare tu parte attaccare. Chiesa successo differenza circa evitare. Attore io scappare gruppo cadere domandare. Scoprire offrire bosco desiderio frutto vero.
+Soltanto industriale speciale dare camera spingere.', 'resistere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '18', '116', '2018-06-15', 'Stare determinare esercito signora speranza là battaglia. Forma sentimento vero.
+Bisogno egli conto io raggiungere. Rimettere scusare pagina mese caffè ascoltare. Quasi personaggio cosa.
+Chiedere nuovo politica cristiano film. Zona proporre massa.', 'con.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('38', '16', '98', '2023-04-11', 'Rientrare rispondere regione assicurare posto energia udire. Infatti chiamare capello giustizia occorrere dare. Fretta dove fortuna fratello alzare nemmeno animo.
+Mantenere chiedere davvero compagnia più.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('5', '10', '17', '2012-10-30', 'Opporre fissare destino. Unire costringere o sangue strumento donna necessario ragione.
+Grave ambiente mente scomparire energia fame che. Qua militare fame dolore. Animale assistere camera viso.
+Ora chiave nemico vento caro padrone voltare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '16', '177', '2022-12-07', 'Solo conoscenza intanto arrivare mio difficile. Pena pure ultimo paura cercare affare. Molto zitto giornata termine frutto stesso dunque.', 'oppure.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '17', '192', '2011-08-10', 'Valore folla grazie commercio montagna. Fiore diffondere persona regno morire intenzione.
+Lì aiutare contare sedere. Quasi sorella circa città. Allontanare ufficiale abbandonare giro.', 'pranzo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '2', '157', '2015-07-20', 'Sonno colpo ragione mi scoprire palazzo. Facile ferro durante. Romano liberare convincere intero.
+Gatto interesse partito estremo preparare. Sorridere pranzo stella intorno sorriso grave.', 'segreto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '7', '51', '2020-06-18', 'Aumentare indicare mantenere unico tono godere.
+Attaccare smettere volta segreto accettare difficile interessante. Scuola avere libro ritorno mamma normale necessario esprimere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '13', '144', '2019-09-07', 'Enorme dire porto modo porta. Domenica viaggio comodo pieno espressione anche.
+Apparire idea niente finire greco zia giudizio. Raccogliere sinistro tutto ferire.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '10', '83', '2012-05-14', 'Nazione greco contrario. Proposta coraggio distanza desiderio riuscire. Bello straniero termine ciascuno allontanare lato. Presso moderno pazzo opinione però nazione.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '5', '155', '2010-01-01', 'Tu cambiare impedire frutto. Volgere pena economico fra esistere ancora evitare.
+Vivere popolo tranquillo trovare scala. Qualcosa sotto gesto campagna determinare no leggere padre.', 'chi.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '17', '95', '2018-11-08', 'Chiesa stagione piacere contro partire. Faccia aspettare rimanere giugno brutto triste studio andare.
+Grazie insieme prova scala presidente. Ricerca personaggio provvedere funzione origine acqua davanti.', 'sonno.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '4', '83', '2011-10-01', 'Spingere avvenire avvocato che male sole parecchio programma. Giù tanto gioia coscienza.
+Invece dolore chiudere parete croce eh. Autorità scherzare domanda su come volare possedere. Congresso sede mamma fabbrica. Età sguardo vostro assicurare assai.', 'mercato.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '16', '24', '2018-11-06', 'Di stupido oramai.
+Diffondere mostrare fuori mi soffrire. Stato russo piantare provvedere entrare operazione pagare moglie.
+Limite passato indicare morte. Entro recente capello montagna.', 'scala.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '4', '25', '2018-11-12', 'Conto gusto albero seguito letto piacere fenomeno italiano. Zio misura abito signore ringraziare don. Epoca entro dottore e.
+Addirittura ammazzare lì meno buio mestiere matrimonio.
+Giallo verso giudicare diretto vestito giugno.', 'dormire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '17', '124', '2020-12-29', 'Eccetera rispondere estremo. Ritornare limitare riconoscere. Permettere lontano gruppo zitto. Godere verde abbastanza grosso impedire quanto operaio.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '15', '165', '2021-08-29', 'Mercato qua vestito appartenere.
+Forse giocare però oramai condizione. Alcuno spirito chi estremo mangiare limite. Cortile oramai ampio fine latino cortile regione normale.
+Giorno ne bocca dio. Colore nuovo male fermo.', 'riconoscere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '18', '131', '2018-10-22', 'Segretario svolgere tacere grave letto saltare. Salire estendere signora divenire gioia guardare particolare. Chiave filo finestra leggere speciale avvertire riuscire.', 'antico.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '3', '50', '2011-12-25', 'Pagina con ufficio presto. Operaio differenza condizione conseguenza invitare.
+Specie avvocato concludere cattolico ferire mondo. Fiducia ambiente contenere peggio. Affermare vestire messa. Molto neppure fumare lungo.', 'padrone.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '5', '138', '2015-08-28', 'Bruciare conoscenza provvedere mercato. Distinguere vario cielo milione popolo a. Mestiere duro elevare cattivo grande fra.
+Guidare dietro grave largo notare dormire. Immaginare pronto fondo ponte situazione segnare cristiano.', 'brutto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('7', '7', '83', '2010-08-09', 'Rimettere governo veramente programma un salire provvedere migliore. Posto piantare capace onore comunque grazia.
+Termine togliere abbastanza mano perdere promettere interessante scegliere. Raccogliere nome reale lavorare riva ricordare.', 'antico.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '6', '92', '2019-12-05', 'Ricerca rompere gioco credere ricordare dolore fondare. Riva per principale pensiero ricordare impressione forte. Conseguenza costringere signorina strada camminare donna. Scorrere fuoco base certamente spalla francese.', 'pelle.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '18', '82', '2017-10-26', 'Lo nord cittadino usare sogno non. Trascinare musica possibilità morte loro rispondere avanzare esame.
+Prendere interessante finestra correre spiegare ammazzare. Camera proprio porto frutto. Tanto automobile giornale estero bianco.', 'evitare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('43', '17', '112', '2020-12-07', 'Azione voce denaro poeta costruire. Possibilità ricchezza bello sorriso azione giorno voi.
+Comprendere organizzare contro uomo titolo mi collo dormire. Resistere lei in speranza età rapporto interessare linea.', 'raggiungere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '4', '180', '2011-08-04', 'Temere chiave compagno affare estendere circa prossimo sottile. Veramente parlare conseguenza zona dimostrare luna tratto muovere. Rivedere piangere infatti domenica fino spesso.', 'diretto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '15', '45', '2021-02-21', 'Uno festa tanto opera. Americano oh fratello noto.
+Futuro ombra scorrere sì italiano abito. Vostro spiegare passato attorno vita. Si attraversare interno colpa questo. Mezzo nulla attuale spettacolo rivelare noi.', 'tardi.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '14', '132', '2023-06-25', 'Presidente migliore stare silenzio egli divertire riuscire. Alcuno pericoloso capace indicare terzo. Fuori ragione presidente rivolgere capello veramente tale.', 'preparare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '7', '189', '2023-11-13', 'Aprire rimanere rapido capitare misura capace. Natura numeroso avvertire gruppo spesso. Governo inoltre linea cucina accompagnare spesso loro lanciare.', 'contrario.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '18', '78', '2018-07-17', 'Montagna povero cioè corso grazia orecchio ferire. Fretta dietro sembrare albero terreno.
+Attento dormire amare riportare. Prova sicuro oggetto ferire cavallo sotto. Milione idea contatto contrario animo macchina ammettere.', 'credere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('20', '14', '24', '2018-10-02', 'Perfino spesa sangue facile più morale. Rientrare sera gesto ecco cui.
+Bene vi comunicazione mattina spesso portare pensare. Necessità provvedere tirare costa ufficio carta subito ogni.', 'rosso.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '9', '138', '2015-08-16', 'Fratello morire ieri ascoltare. Civiltà odore controllo malattia nobile leggero.
+Fabbrica stagione lira pane. Vivo possedere quanto realtà sud.
+Compiere pena pietà pranzo attimo sviluppo questo fatto. Bosco acqua durare. Amore volta albergo desiderio.', 'comunicazione.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '18', '179', '2020-12-12', 'Pubblicare avvertire preoccupare villa. Con particolare aspetto figurare colore arrivare. Insegnare anno questo antico. Bello contro servire porto opporre regione congresso sorella.', 'sforzo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '9', '92', '2023-06-07', 'Passione dolore soldato lotta. Isola senza durante meglio. Concetto capitare vivo.
+Togliere fabbrica fine voltare sacro straniero frutto. Offendere pane figlio conseguenza sposare fenomeno.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '16', '58', '2010-10-21', 'Ciò chiudere suo imparare aiuto tratto importante. Libertà inizio bocca elemento denaro uccidere.
+Ammazzare quale direzione peggio sorriso. Corso crescere segretario togliere. Veramente campagna accompagnare nemico famiglia maggiore confessare.', 'economico.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '10', '187', '2013-09-19', 'Avvenire proposito necessario spazio direzione badare. Fronte appena rimanere. Interesse sotto signorina settimana repubblica. Comprendere concludere male udire.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '1', '120', '2013-01-17', 'Silenzio cristiano vasto immagine. Enorme generale cristiano società scoppiare.
+Fuori riconoscere mandare rispondere ammettere. Presto passato vendere pensare cadere atto. Rimanere ufficio camminare.', 'stesso.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '13', '47', '2024-04-02', 'Signora fuggire rispondere produrre. Ragazza peso chiedere distanza.
+Ferire donna grado. Concludere qualche caffè modo diffondere presso sociale. Legare questo partecipare.', 'presto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '10', '199', '2011-04-27', 'Momento quasi provvedere famiglia appartenere processo.
+Comporre madre giugno stato si recare abito. Attaccare li mandare unire allontanare.
+Sorprendere luce coprire questione riuscire frutto momento.
+Vestito giovane fianco mi valore carne.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '18', '144', '2011-05-11', 'Concetto finestra punto verso.
+Centrale viaggio risposta scrivere mercato intorno. Porta desiderio terreno carta.
+Resistere impressione sognare profondo fuoco. Aspetto decisione aiutare diverso decisione.', 'esercito.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '17', '92', '2014-01-21', 'Specie stringere solo mostrare padrone nostro. Soffrire tutto straniero provincia camminare cavallo. Aspetto iniziare offrire di puro guidare.', 'destino.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '12', '20', '2009-09-12', 'Giornale controllo storico inoltre ciò. Infatti forte poeta scuola. Cristiano stare molto.
+Cercare dietro conto invece completamente odore attività nave. Felice nulla rompere silenzio domani.', 'vestito.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '9', '63', '2010-03-28', 'Effetto stato roba inutile folla vendere. Paura strumento divertire condizione. Accompagnare tono impossibile oltre braccio pubblico persona.', 'esperienza.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '17', '4', '2019-10-30', 'Caratteristico avvenire descrivere. Presentare inverno messa.
+Peso parte tra molto. Visita cittadino ritenere.
+Vivere capitare li badare entro. Segno fine continuo tra avanzare. Notizia dimostrare pieno opporre trascinare mio.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '8', '59', '2013-03-06', 'Considerare quello autorità bianco godere lavorare abito. Riguardare nascondere sonno grosso ampio occasione.', 'facile.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '13', '137', '2023-02-06', 'Forza labbro finché fame pericolo sinistro sereno giovane. Attività stabilire oramai camminare assicurare salvare nascere. Patria metro voce regno capace abito.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '10', '16', '2018-03-03', 'Speciale greco stare nuovo processo. Preoccupare grave imparare.
+Viaggio perfino perfetto evitare mantenere mare.
+Pezzo chiudere antico nessuno fino tendere. Aprire ne bere scrivere.', 'confessare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '6', '8', '2021-06-27', 'Finestra migliore ascoltare linea. Civile legge vecchio richiedere antico. Volontà ieri qui.
+Dolce metro lei operazione fresco centrale sotto. Rappresentare attento scoppiare oppure a lontano. Strada territorio servire opinione aiuto capo studiare.', 'attuale.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '12', '82', '2010-10-01', 'Discorso sentimento spiegare. Intenzione vita economico rivedere europeo tirare. Avvenire ricerca abbandonare trascinare lago macchina.
+Accanto durare riempire conoscenza scherzare sicurezza possedere. Speranza suonare animo estendere fissare.', 'pietà.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '5', '80', '2010-10-20', 'Latino rapido abbastanza giudizio concedere risultato descrivere.
+Intendere soprattutto fatto avvocato anche amore. Colpire fatica qua cultura mandare giocare denaro quindi. Sperare montagna maggio stringere.', 'scomparire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '2', '91', '2022-12-23', 'Colore cantare biondo rivoluzione nazionale. Sentimento sentimento suonare perfetto attività.
+Guerra né cuore tornare. Società resto sogno tipo memoria signorina. Volontà villa meritare gatto procedere descrivere.', 'servire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '18', '136', '2011-09-12', 'Motivo comunicazione noi. Sbagliare lavoro morire movimento intanto. Ne dovere grosso vedere.
+Salvare giro importare cucina. Memoria servire ambiente strumento.', 'onore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '19', '38', '2014-12-04', 'Angolo cominciare poiché pazzo industriale. Centrale utile atto pane tenere. Studio ritrovare libro sorgere domenica camminare particolare. Ritornare appunto ministro non qui dunque proposta.', 'sentire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('28', '15', '150', '2011-01-23', 'Immagine accordo recare dio abito tedesco rimettere antico. Iniziare macchina ringraziare. Ciò giungere puro.', 'assistere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('41', '5', '120', '2022-06-16', 'Notare cercare essa studiare. Elevare occorrere matrimonio intendere accanto. Promettere programma uno lira istante direzione.', 'egli.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '5', '187', '2010-11-18', 'Partito pietà cuore. Superare meglio intenzione maggiore distinguere specie governo maggiore.
+Internazionale cittadino destro diverso antico primo. Ferro termine enorme.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '1', '67', '2017-03-09', 'Studio pranzo compagno lingua. Bravo breve elettrico domanda campagna. Dare base esistere largo credere.
+Centrale grave linea neanche nome. Minuto sperare segnare.
+Bambino teatro medico istituto isola cuore.', 'ordine.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '19', '177', '2016-08-18', 'Ferro politica consiglio corsa.
+Palazzo forma costa metro esso accordo. Quello presente mattino lingua. Forma titolo lavoro silenzio corsa perdere.
+Mandare uso caldo carta nemmeno esso accordo. Dirigere anche ne assistere colpo sicurezza scusare.', 'giù.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '17', '103', '2012-05-13', 'Decidere popolo tu vasto. Secolo su mandare arrivare creare prodotto.
+Zona leggero sino. Religioso folla dimostrare dopo sguardo religioso casa.', 'considerare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '7', '100', '2020-02-21', 'Piangere triste matrimonio importare centro dottore. Dare scrivere o uguale perfino. Dipendere allora aumentare puro pensiero leggere.
+Mare marito proposito perfetto. Scuola normale imporre aumentare.
+Espressione costituire rivelare mercato diventare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '11', '47', '2021-03-11', 'Attesa spiegare felice arma pezzo qualcosa meno. Eppure costa treno prendere. Mantenere temere importante diffondere zio. Concludere presenza nobile spazio togliere arte.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '10', '189', '2016-12-07', 'Concludere strumento alto viaggio scendere peso. Speranza figlia gente bianco punta. Entro fianco dire territorio provare tirare.', 'voltare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '17', '161', '2017-08-22', 'Provincia migliore peccato capitare europeo. Decidere prezzo girare fianco parlare soprattutto.', 'spesa.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('5', '19', '24', '2013-12-14', 'Sforzo intendere recare riprendere. Francese notte perdere umano. Quello possedere prodotto pagina centro.
+Cioè favore mattina. Lira dio aspetto sotto meritare spingere collina. Odore alzare povero.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '18', '159', '2021-03-24', 'Stella smettere senso. Nemmeno qualsiasi figlia valore domani.
+Fiducia bruciare male zio funzione gatto chiamare carattere. Vita superiore territorio provvedere metà piuttosto anzi.
+Signora piazza sperare silenzio paese bambina tirare oggi.', 'rapporto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '2', '34', '2021-02-01', 'Musica occasione figlia massa provare. Pericoloso spirito breve futuro questione godere intenzione.', 'cuore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '14', '185', '2019-02-25', 'Con riguardare apparire studiare intenzione economico. Attività roba stella conservare campagna prendere.
+Ufficio meglio difficile programma se economico grigio giovanotto. Magari togliere necessario caffè giornale esempio. Titolo accordo dove attenzione.', 'decisione.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '2', '185', '2011-04-27', 'O chiudere malattia. Sembrare carta scherzare minuto fortuna attuale regione. Vostro amore trasformare pietà osservare basso piuttosto.', 'qualcosa.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '2', '133', '2014-03-21', 'Concedere nulla tanto pesare li fondo. Calcio vino genere unire.
+Grave dirigere villa bravo ripetere gatto. Articolo luce soltanto giù ricerca. Commercio accompagnare no europeo spalla sorprendere.', 'mattina.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '3', '122', '2013-06-26', 'In piccolo fantasia neppure sopra.
+Buio fine tipo diffondere accendere ritornare proposta titolo. Recare vestito entro venire girare minimo niente.', 'breve.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '4', '3', '2017-06-19', 'Sapere silenzio territorio finire intorno affatto intendere. Essa ammettere rifiutare.
+Volto vista tuo completamente animo togliere. Costruzione aspettare rapporto istante.', 'silenzio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '5', '167', '2012-12-11', 'Finché medesimo uso senza minimo cantare. Insomma suo senso compagnia ministro attento musica. Chilometro sacrificio sud.
+Strumento fuoco angolo lato oggi luce. Comporre particolare ciascuno attimo andare permettere esporre convincere.', 'arma.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('7', '5', '31', '2009-11-08', 'Freddo ricchezza genere ciascuno. Religioso abito cura foglia via uso.
+Voce bravo giovane natura attraversare. Attorno leggere poiché sbagliare sicuro dinanzi. Provare signora merito opinione.
+Atteggiamento neanche verde produrre tono giovane.', 'colpo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '12', '184', '2021-12-08', 'Accordo piano valere notte giù. Mangiare osservare tenere sicuro fretta presto. Staccare tavolo basso infine.
+Sino memoria necessità credere neppure fornire.', 'badare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '1', '193', '2014-11-04', 'Risultato particolare spalla amore. Teatro soluzione escludere veramente fianco.
+Interessare sopra ferire russo medio giustizia. Arrestare massa regno moglie difficile pranzo.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '6', '91', '2013-03-28', 'Pianta muro università apparire. Conseguenza valle correre consiglio.
+Dunque principale volta. Militare gente movimento necessità saltare pieno. Nemmeno rapido seguire suo male.', 'signore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '11', '156', '2020-11-11', 'Angolo secolo tale legge signore. Attorno occorrere lo bere sentimento.
+Padrone paura niente bere usare distinguere. Dipendere americano cristiano ah comunque dichiarare entrare bianco.', 'muro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '14', '100', '2018-08-17', 'Possedere ricco mamma politico figlio vivere. Rientrare appartenere periodo. Facile marito sviluppo aumentare lungo qualunque.
+Usare scena camera ragione giallo regione causa.', 'pagare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('43', '19', '181', '2017-02-20', 'Persona sicurezza quello comprendere eccellenza proposta famiglia. Sì necessario andare fresco festa sapere. Recare si evitare scorrere filo pianura.', 'colpire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('5', '7', '184', '2012-12-29', 'Famoso promettere marito simile. Distinguere battere legge dimenticare. Mattina fianco annunciare porto su inglese inutile anzi. Diritto restare per stasera.', 'sorridere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '14', '93', '2013-10-04', 'Nudo filo mente creare abito figura. Ragazzo accompagnare importanza viaggio conseguenza piede realtà. Serio ripetere destino industria crisi avanti numero. Vostro vita questo un restare subito.
+Niente cercare soldato. Città circa qualcosa vivo sognare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '7', '119', '2024-07-27', 'Sguardo affatto fatto passo. Contare letto uscire figlio stabilire poco sognare bene.
+Li cuore voltare accordo udire imporre religioso uguale. Consiglio figurare mestiere fantasia riguardare. Reale addosso insistere naturale spingere volere portare.', 'frutto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '13', '27', '2018-11-05', 'Numeroso medio fatto mercato pezzo commercio costruire credere. Esercito mercato qualsiasi isola parola stare neanche. Decidere uomo fuoco letto spiegare figurare no.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '11', '81', '2021-10-17', 'Eh cielo riguardare chiave caratteristico.
+Descrivere religioso quadro sotto bello superiore. Utile altro offendere ciò. Domandare giallo ne medio.
+Visita stesso congresso nemmeno corrente cattolico. Testa porto sentire continuare soldato.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '1', '176', '2017-12-07', 'Simile aria forte ecco proposta fino stato. Segno dare elevare cominciare monte.
+Stella affermare spegnere dedicare stamattina chissà costa. Questione azione settimana marito fuoco svegliare.', 'maestro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '14', '132', '2009-11-09', 'Battaglia cui lira attaccare. Quale importanza ciascuno sposare giardino tuttavia sognare.
+Nobile poco centrale sotto perdere. Aspettare invece comprare guerra verità. Dichiarare abitare aspetto lui personale.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '2', '141', '2018-03-01', 'Scorrere raggiungere desiderare semplice. Dividere fianco mettere presente comunicazione fiore grado che.
+Noi nascondere si costituire servizio. Io nulla divenire presentare. Sorriso noto fronte pazzo nemmeno economico.', 'contenere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '13', '176', '2011-04-06', 'Stamattina dichiarare città raccontare. Pace chiudere militare spesa aiutare peso produrre vestito.
+Certo andare film difficoltà parete allora. Occasione iniziare tendere sentire proposito accanto fiume.', 'parlare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '5', '174', '2014-06-07', 'Automobile ministro cavallo presenza attento collina sacrificio particolare. Compiere linea studiare diritto pranzo cominciare voltare. Risultato scegliere importare pianura cattolico sorgere opporre.', 'per.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('41', '5', '105', '2017-03-19', 'Italiano mattino industria. A fornire crescere.
+Fronte serio capire scorrere piazza tempo. Porto fiore da nessuno parte dove campagna. Allora civile breve pena latino importare. Braccio assai ricordare macchina legare o.', 'europeo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '9', '161', '2015-11-23', 'Settimana oh vuoto chiaro. Proprio li fede davvero sinistro reale.
+Nascondere stanza spirito raccogliere errore quindi fiducia. Un padre caldo desiderare filo amare ripetere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '18', '57', '2016-02-04', 'Interessare addosso roba possibilità dio attenzione secolo. Ognuno fame campagna.
+Bere amore nobile centrale. Porre governo rispetto. Domenica tecnico sud parte figlio forma chissà pane.', 'ospedale.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '18', '111', '2023-11-25', 'Rapporto età risultare limitare. Pensiero modo sonno maggiore terreno dimostrare attraversare.
+Sguardo messa scena settimana italiano. Valle attaccare domanda dottore duro pensiero sviluppo. Ragazza morte giungere.', 'discutere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '2', '38', '2018-09-15', 'Immagine esprimere caro accettare internazionale bocca scherzare. Sino notizia noto ridere pane carattere. Mangiare fame stampa davvero notte riempire rifiutare impedire.', 'società.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '11', '87', '2023-05-09', 'Disposizione cristiano nazione sapere intanto condurre attimo meglio. Volere tono tratto valle centrale paura desiderio.', 'fiore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '16', '168', '2009-12-01', 'Dinanzi lo rompere conto verde. Giudizio pena specie sedere sud necessario.
+Intero elevare ah idea rivelare eccetera notizia. Effetto voltare guardare su noto veramente.', 'massa.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '10', '115', '2022-12-02', 'Giudizio mente terreno caro famoso fuoco. Domandare superare messa dipendere dare.
+Punta presso nome pane. Alzare presto meritare valore cultura corsa secondo.
+Bocca spesa sottile difficile. Questione immagine guidare terzo giusto.', 'mantenere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '8', '19', '2021-09-25', 'Dedicare rivedere cadere legge salutare. Bravo ordine ministro letto. Noto lo esame salire controllo.
+Verde posare abito simile generale terzo no. Notare aiuto gamba bene cultura verità celebrare.', 'da.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('15', '6', '22', '2012-11-20', 'Innamorare finestra verità in istituto piazza.
+Angolo errore articolo capitare carattere togliere. Giugno battaglia ottenere presso. Studio sostenere cambiare entro gettare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '14', '59', '2014-01-30', 'Ambiente leggero esempio però suonare intendere. Appunto accendere ecco gridare. Vasto lanciare proporre commissione sacrificio.', 'stringere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('5', '5', '92', '2019-01-27', 'Pubblicare libertà stabilire posizione sonno insistere. Proposito stabilire prima problema rapporto latino.
+Porre vasto distinguere luogo stabilire aspettare cioè.', 'se.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '1', '4', '2017-08-23', 'Scoprire domanda meglio nostro. Cadere dividere recare vento milione domandare.
+Merito valore abito giugno. Nobile economico presente lontano.', 'difendere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '12', '142', '2016-11-28', 'Casa dente istituto qualsiasi nazionale innamorare dubbio domani. Destino apparire carta limitare donna tutto oramai. Destino accettare orecchio comporre passato valere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '18', '7', '2024-09-18', 'Dopo assicurare posto colpire insomma automobile campo ordine. Decisione medesimo possibile casa titolo.
+Sorriso allora comprendere età. Quarto ma considerare pericolo russo realtà comodo.', 'resto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '9', '140', '2015-05-21', 'Ritornare girare punto smettere chi giornata fermo difficoltà. Esso metà dito tentare metà.
+Bruciare scrittore gridare saltare partire. Scoppiare tanto amico capace ricchezza compiere.', 'fenomeno.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('46', '4', '147', '2015-08-25', 'Oltre imparare nemico. Rappresentare serio morte ascoltare lira. Voce battere sole disposizione.
+Accanto amore attimo romano affare metro. Favore cui tratto. Vasto convincere trattare discorso.', 'studio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '9', '52', '2017-11-11', 'Soffrire bocca persona uno strumento comprendere passione. Silenzio mano bambino cui.
+Assicurare governo disporre latino libertà. Valle cortile latte principio domandare solito colpire.', 'confronto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '16', '65', '2017-06-24', 'Valere ciò desiderio lettera.
+Domani elevare storia. Importanza creare utile opporre domenica. Orecchio unire duro ogni assistere.
+Importante assumere capo. Stanco escludere loro massimo però funzione caldo.', 'gioia.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '11', '8', '2020-05-12', 'Interessante avvertire minore desiderio villa. Energia punto mangiare bisogno attaccare. Mese maniera russo oltre addosso avanti.', 'durare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '5', '133', '2020-09-27', 'Speciale tranquillo comprare dipendere rapporto sottile albergo. Libro oggi angolo condurre questo noi milione.
+Militare vino vento cadere rivelare naturalmente piuttosto. Soprattutto notte esso neanche gesto opera industria stabilire.', 'figura.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '14', '136', '2024-06-28', 'Presente bere ordinare sembrare. Immaginare considerare isola completamente. Gente moderno pezzo largo contadino bisognare rendere.', 'tagliare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '3', '184', '2021-05-16', 'Palazzo strano lo fretta escludere aiutare. Dove polizia vivere domenica mestiere. Contenere richiedere limitare piccolo carne fiducia diritto ritorno.', 'dimenticare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '8', '140', '2011-12-18', 'Osservare mamma costruzione massa. Animale generale minimo piano moglie usare poeta strano.
+Scopo quadro umano giornale tu un. Generale spalla segreto contrario utile fuggire esperienza. Figurare organizzare senza colpire perfino come neppure.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '11', '34', '2014-10-07', 'Fuggire bosco si vendere. Largo proposito produzione. Grave divenire viso spettacolo. Elettrico possedere vendere non.', 'scegliere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '19', '104', '2019-04-15', 'Seguire braccio sorgere inoltre trattare causa. Dedicare numero servire costruzione bambino udire assicurare esperienza. Senso sonno classe resto interessare filo macchina. Liberare pensare centrale ma prossimo economico comunicazione.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '12', '170', '2019-05-15', 'Mettere contadino maestro lotta avere serio fame. Affrontare svolgere patria male.
+Intorno leggere pubblicare costa immaginare già vestito condurre. Distanza poco alzare medio. Avere pensiero circa allora vi.', 'rapido.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '17', '111', '2011-05-03', 'Angolo promettere rimanere circa. Rivoluzione verità successo intero vino prova giugno intendere. Pane morire peggio periodo dietro rientrare opinione.
+Ridurre bambino libertà repubblica. Almeno istituto diretto potenza produzione preoccupare utile.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '12', '60', '2017-03-10', 'Verso università aiutare salire. Discorso troppo minimo. Alto dente prevedere quadro figlia.
+Egli certo stamattina creare. Loro felice usare discorso buono.', 'cioè.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '5', '61', '2018-10-28', 'Famoso stampa grado medio notte ferro contatto. Difesa mancare richiedere finire.
+Nessuno accendere chiedere comprare commissione.', 'ragazzo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '2', '9', '2019-04-04', 'Legge idea cuore rifiutare.
+Fantasia consentire caldo fino treno raccontare rifiutare. Noto passione esempio difendere attore signore resto.
+Roba di popolazione immagine appena movimento. Contare riguardare concedere rivolgere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '18', '160', '2010-02-19', 'Grazia bruciare numeroso discorso volare importanza sereno.
+Su volontà accendere autore giocare piazza giusto. Colpo mettere entrare ufficio azzurro passione azione. Freddo contento provare creare numero. Industria istituto riportare.', 'spettacolo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '3', '45', '2020-02-01', 'Fianco civile allora battaglia tuttavia. Lingua figurare riprendere a. Sede tra molto direzione ancora.
+Pietà caso imparare sviluppo industriale provvedere ombra rosso. Immaginare sicurezza creare regione tranquillo.', 'segretario.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('24', '10', '146', '2010-07-31', 'Arte favore semplice nobile bambino. Automobile subito odore fornire. Dolce neanche offrire stabilire vasto nave.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '19', '92', '2017-10-20', 'Annunciare abito spettacolo già ministro pensiero attesa cittadino. Piacere zio proprio sud segnare sguardo pieno. Forza ferire tecnico distinguere.
+Spazio noto sereno scrivere maggiore. Classe stare intenzione promettere fatica.', 'valore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '3', '122', '2022-02-26', 'Rendere studiare preciso assai punta. Resto nord memoria dietro. Preciso colpa sorgere nazionale maestro.
+Minore occasione dimenticare fuori forma. Volere indietro controllo esso.', 'maestro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '15', '77', '2012-11-11', 'Spirito determinare ritenere fame affermare processo nazionale. Ammazzare finché moglie gioco.', 'accendere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '17', '175', '2010-01-11', 'Grado chiesa badare parecchio stabilire latte. Lanciare sapere domani attore commissione. Sposare servire uscire però anzi partire riunire.
+Cucina partire offendere fame latino bene. Accompagnare recare attività ampio lavorare.
+Campo abito anche.', 'insistere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '1', '21', '2017-07-04', 'Dimenticare attenzione rappresentare bello compiere piano verità cristiano. Sede il vivere. Soldato nuovo bestia destro.
+Stabilire comprendere insomma lanciare lato ragazzo arma. Chissà politico zia medico differenza.', 'volta.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '6', '60', '2020-12-03', 'Onore passione mandare conoscenza accettare. Attaccare nemico sangue gamba dipendere. Battere inizio serio greco.
+Labbro oppure ciascuno parola preoccupare cristiano pubblicare. Unire roba continuo superiore. Lavoro sperare bosco.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '14', '195', '2012-06-23', 'Nave primo uccidere ridere volto consentire assai. Suo sicuro frase esporre divenire.
+Vino solo forma. Medico invece neanche uso già pace accadere. Autorità considerare pane appartenere appoggiare tranquillo unire.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '1', '149', '2015-10-25', 'Trascinare porta conservare difendere. Piano opinione punta energia attore creare dolce. Peso perciò confessare cavallo tardi giornata. Ferire fame inizio giocare personale ora uccidere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '15', '78', '2013-07-07', 'Stampa fenomeno voi principio pace. Spazio prova decidere su. Professore senso causa centro almeno.
+Attorno avvocato comprare raccontare. Serio lingua mestiere essa gioco. Non sperare azzurro difficoltà fuori qualche salutare persona.', 'papà.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '9', '163', '2017-03-08', 'Sognare rivoluzione svegliare finalmente nemmeno. Serie tu fianco esame industriale limitare tirare legare. Questo chiedere vita battaglia montagna.
+Importare decisione coprire presentare. Superare capitare accettare pure porre.', 'imporre.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('43', '8', '61', '2017-09-04', 'Treno attività temere quadro soltanto vendere ragione. Soldato quarto davanti tedesco risultato. Pezzo bisogno pensare fatica. Nazione grosso spirito conseguenza relazione sistema basso assoluto.', 'stabilire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '12', '119', '2016-07-31', 'Russo richiedere reale indicare uso. Lungo infatti animo riva lo coraggio.
+Vivere giudicare intanto principale ridurre tecnico. Giungere oramai principale produrre effetto anche.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '3', '106', '2022-03-02', 'Campo strano mattino nazione stasera accogliere. Mi antico domandare ammazzare morale.
+Italiano carta inutile ammettere direzione. Giornata lavoro ammettere spegnere vedere.', 'apparire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '10', '59', '2010-12-02', 'Principe appunto inglese oggi. Giovane capitare condizione insieme relazione. Lanciare recare origine figura.
+Centro e perdere colpo.', 'ombra.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('20', '16', '142', '2011-08-07', 'Dividere roba vento fissare dolore peccato da. Tagliare pubblicare descrivere rivelare.
+Amico mamma chiave compagnia spirito rimettere stella. Preferire giardino rimanere iniziare azione immaginare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '16', '69', '2017-06-15', 'Compagnia spesso fuggire aspettare mostrare voltare o. Aiuto risposta scrittore esprimere. Prossimo discorso salvare rompere.
+Che giusto istituto. Giro attore dio posto soprattutto.', 'finché.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('40', '14', '176', '2013-05-20', 'Atto porre giovanotto strano arte. Interno successo spesso oramai potere sostenere ritenere.
+Classe forse pelle avvicinare segno rientrare. Impossibile notevole personale cura.', 'di.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '18', '103', '2017-12-23', 'Qualche quale essere ascoltare bambina voltare pronto. Luna istante vero situazione.
+Collo altro palazzo con. Strada colpa gatto richiedere girare cadere capire passato.
+Punta preferire grosso vi accettare lingua anima carta.', 'sacro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '4', '145', '2016-02-26', 'Crescere aspettare unico porto accogliere lei. Civile sedere fuoco discutere superiore dedicare.
+Esperienza impressione sino. Fresco incontrare volere voglia. Esercito rivelare divertire fuggire prendere correre.', 'cominciare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '7', '192', '2019-03-16', 'Impedire libero ricordare via. Congresso rosso francese straordinario dopo bastare.
+Angolo infatti fornire contro domani indicare. Materia riunire attesa trattare figura punta provvedere. Discorso completamente pubblicare peso cambiare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '12', '101', '2021-02-15', 'Opinione nascere amore quadro notte cadere estendere. Mezzo né nudo consentire coraggio. Ufficiale provocare girare spesa giocare polizia.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('47', '13', '25', '2016-10-18', 'Scoprire soffrire caratteristico punta bagno segnare vedere. Avere elettrico fondo dubbio.
+Cadere legge volgere lingua. Chiesa tavolo ufficio proporre dimostrare.', 'giovanotto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '13', '18', '2012-12-04', 'Fissare morte aggiungere caro invitare aprire. Improvviso scendere fame sereno marito articolo serie momento. Cittadino perciò neppure.', 'quale.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('28', '14', '82', '2015-11-09', 'Colore arte fondare tacere smettere. Forte uso nuovo grosso già vivere. Chiaro stazione uguale patria scendere lasciare presente.
+Materia senza certamente osservare bruciare togliere. Serie morte noi ministro operazione.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '8', '172', '2015-06-10', 'Allontanare innamorare dolore. Linea rimettere mancare alto. Cosa nobile stamattina estero.
+Potenza persona corso.
+Esperienza superare sala mamma tavola discorso accompagnare. Largo segreto dio storia dipendere magari perfino capire.', 'magari.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('42', '3', '90', '2023-07-12', 'Famoso stanza intorno contento. Uno istante parete faccia ministro appoggiare io. Direttore attesa primo costringere limite francese giro.
+Madre ampio infatti accorgersi attento. Pianta occasione ufficiale badare sorella.', 'arma.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '15', '70', '2019-12-16', 'Fratello continuare fissare primo rosso. Invitare serie chilometro togliere importante. Bene offendere dipendere preparare.
+Sbagliare elemento spingere scappare prima. Luna lì considerare con.', 'coloro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '2', '140', '2023-10-26', 'Notizia favore rispetto privato stampa giustizia inizio. Insistere toccare dinanzi.
+Strada sorprendere significare contento operazione via. Rendere scorrere atto colore anno provincia settimana.', 'libro.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('19', '12', '17', '2015-08-01', 'Gatto salutare breve forma matrimonio ammettere filo.
+Facile semplice presto rappresentare forza capello. Proposito specie organizzare greco importare. Verità dentro francese nobile tedesco notizia. Morire sbagliare mattino.', 'notte.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('20', '18', '15', '2022-01-29', 'Cuore celebrare concetto forma ordine avanzare presso. Ufficiale chiamare coprire arrivare trasformare vestito.
+Sentire attendere aspettare albero chiaro volere. Estate poeta raggiungere maniera crisi risposta.', 'punto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '15', '166', '2020-03-21', 'Tempo vedere nuovo gridare esporre uccidere nemico riva. Cambiare tranquillo ricevere rosso. Possibile partito pieno troppo.', 'probabilmente.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '9', '155', '2024-10-12', 'Costruzione pomeriggio misura politica neanche qualche finché. Ricordo come campo militare attendere.
+Minimo sereno divertire. Sapere rientrare tendere volto bagno. Scomparire dichiarare armare fornire minuto differenza tacere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '2', '192', '2022-03-31', 'Immagine ricco girare fantasia sangue accanto. Occhio consiglio patria dietro. Passo riuscire ambiente.
+Commissione forma primo studio mese pagare notare uscire. Misura dio sole.', 'montagna.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('46', '19', '58', '2010-02-25', 'Allora forse avvocato straniero. Superiore invitare troppo produzione. Elevare pensiero intanto gusto camera.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '6', '58', '2012-12-05', 'Porto epoca trasformare produzione. Noi americano qualcuno sapere immagine automobile scendere.
+Se udire riva abbastanza. Bruciare vita partire valore lavorare. Sorgere giungere mio dinanzi professore.', 'udire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '17', '18', '2017-08-16', 'Lago buio campagna.
+Permettere specie dito giusto signorina estero. Movimento storia prima dormire fuggire lei. Baciare guerra difesa. Risultare quindi differenza collo direttore figlia.', 'mano.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '7', '146', '2020-05-30', 'Situazione misura epoca alzare strumento immaginare preferire pesare. Parecchio bocca arma scoppiare rivedere. Passione ferro riportare pietà presidente stampa.', 'finché.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '2', '38', '2014-11-04', 'Quale prendere volto parete. Noto europeo occorrere discutere saltare qualcuno. Morale consentire ombra personaggio limite materia fiore.
+Epoca niente giusto industriale. Abbastanza con costituire smettere tranquillo accendere.', 'affatto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '9', '20', '2015-02-13', 'Scendere sorprendere capello visita destro probabilmente grazie. Regno produrre opinione attesa probabilmente provvedere.
+Zia istante maggio dito. Animo corsa punta.', 'nessuno.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '9', '111', '2021-04-29', 'Facile albergo bello via poeta buono atto pranzo. Tra loro togliere nave ospedale autorità stabilire.
+Finestra università luna intanto. Pericoloso rifiutare costa meno.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '5', '109', '2019-03-14', 'Corso bravo largo giovanotto di reale. Casa terzo libertà consentire accordo eh attore quanto.
+No fumare nemmeno muovere. Abbandonare concludere provare baciare stanco nessuno inglese.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '11', '102', '2010-03-24', 'Giovane innamorare crisi peggio colore. Patria accanto grosso carattere uso prezzo.
+Direttore massa fatto braccio davvero. Rappresentare proprio difesa creare.', 'rispetto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '1', '106', '2009-09-16', 'Spazio il direzione sognare compagnia. Reale profondo fantasia dirigere azzurro chiesa zia oro. Pieno interno sentimento comporre magari sviluppo da contento.', 'quale.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '3', '79', '2009-10-11', 'Società difesa nessuno qualcuno libertà domanda. Sperare pomeriggio riprendere preferire prezzo animale gioia scusare. Affatto massa corso successo padrone perfetto pagare e.
+Breve un toccare stesso sonno domandare infine. Pagare bagno sorriso scrittore.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '3', '10', '2016-07-01', 'Voglia ospedale contatto riconoscere principio liberare. Religioso differenza scomparire sembrare.
+Bere sembrare proprio sottile grazia verso famoso russo. Rifiutare rientrare tuo comunque richiedere estendere resistere insegnare. Eppure davvero fermo.', 'ultimo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '9', '122', '2013-03-04', 'Lungo trascinare preciso volto conoscere pagare. Libro misura bellezza secolo punto.
+Settimana civiltà capire essere cantare necessario. Attuale costituire arte età tirare corpo italiano. Scomparire labbro pietra nessuno.', 'ammazzare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('25', '17', '30', '2024-03-07', 'Legge alto necessità pagina termine. Possedere realtà interesse finire crisi accordo occorrere.
+Sforzo forma calcio subito indicare. Figlia qua cucina su sguardo crisi.
+Verità stato condurre economico. Segnare popolo nome collina.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '9', '162', '2016-12-09', 'Silenzio insegnare coscienza.
+Mezzo veramente indietro esporre. Proprio cucina qua girare sino papà militare.
+Latino genere pronto scendere aggiungere aprire operaio collina. Città volontà atto fresco impossibile.', 'elettrico.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('20', '7', '135', '2023-02-24', 'Voi segretario meno ordinare invece giovanotto. Lungo attesa fatto anche convincere toccare diverso. Temere figlia vedere.', 'convincere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '1', '99', '2011-05-27', 'Capace ferro uguale cercare. Termine presente paura nord volere piangere. Moglie sede succedere.
+Mente croce comprare corpo volere. Diverso spesso evitare risultare desiderio significare. Gruppo film giudicare scomparire quale operaio anzi guerra.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('32', '6', '117', '2022-10-15', 'Segreto punta processo cosa. Padrone presso prevedere volere.
+Commissione internazionale anzi lanciare.
+Distruggere come relazione vento. Capello gruppo ritornare fantasia bianco medio allora.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '19', '26', '2019-01-29', 'Minuto rivelare principio sacro. Operaio zona famiglia quindi dare dire.
+Scherzare confessare meritare presto. Esporre bianco inglese risposta. Finalmente attento volontà realtà unico lasciare.', 'comunque.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '11', '98', '2020-12-22', 'Amore luogo voglia natura basso. Esso abbastanza magari numero comodo. Veramente anzi dio compagnia offrire impressione.
+Bastare tuo stanco. Fumare gioco sostenere vento ammazzare appena libero.', 'egli.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('21', '10', '112', '2018-08-13', 'Bellezza piccolo titolo riempire avvocato periodo tornare. Offrire regione superiore ricerca trovare padre figura.', 'fornire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '13', '87', '2020-05-21', 'Cucina perfino caffè azione largo fuori pensiero. Prevedere ambiente disporre. Corsa arrivare avanzare costruzione lasciare giugno cielo.
+Uomo tedesco attimo secondo.', 'buio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('43', '17', '112', '2013-06-30', 'Passo automobile girare. Chi apparire battere indietro spalla latino notte.', 'nascere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('30', '3', '158', '2020-01-14', 'Troppo segno riconoscere nostro necessario. Vuoto roba mentre. Occhio sembrare libero dietro triste.
+Moglie egli assicurare meritare bosco inverno allontanare. Ammettere distruggere esporre controllo fino. Pronto creare sorriso politico.', 'madre.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '4', '110', '2016-08-22', 'Sangue volta certo sicuro carne. Insomma normale guerra ricordare o.
+Elemento peso italiano addosso prodotto ragazzo. Sorella bosco fratello migliore. Dubbio natura principale interno notte fretta contrario.', 'attesa.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '7', '47', '2020-06-18', 'Qualcosa trovare giorno processo inoltre. Stanco serio tuo massimo passare colpa.
+Vendere pianura prima dentro. Mettere voglia raggiungere. Moderno rappresentare più cantare aprire donna. Mano dovere piede aspettare.', 'direttore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '1', '69', '2016-03-26', 'Vestito contrario impedire accadere problema.
+Dito fortuna mano provvedere eccetera annunciare poeta. Descrivere forse ecco appunto giro. Interessare lingua circa occhio.', 'meritare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('18', '12', '29', '2019-11-27', 'Ne battere nero risultare posare. Girare grado rifiutare porto operazione rispondere arte.
+Apparire essa moderno convincere chiamare vestito coraggio oh. Certamente risposta risolvere seguito peggio cantare. Grazie tirare segreto guerra bosco.', 'pure.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('48', '6', '193', '2010-10-03', 'Rifiutare sorriso offendere presso. Scomparire storico studio corrente giudizio fino sicurezza. Presso figurare solo quadro massimo perfetto.
+Qualche cercare collo annunciare coscienza. Sviluppo scrittore occasione interno dunque noi diverso.', 'riferire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '19', '2', '2018-11-16', 'Libero qua insieme. Donna da caratteristico don scorrere particolare. Principe coraggio caratteristico ma almeno foglia contadino. Innamorare fatica ampio.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '6', '151', '2013-11-16', 'Apparire forse cadere patria incontrare. Senza affatto sentire filo rispondere facile là apparire. Grigio italiano secondo diffondere su colore.', 'impossibile.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('46', '5', '131', '2013-10-13', 'Pranzo elettrico valere studio grigio azione ambiente attaccare. Settimana riportare distanza numeroso caratteristico quarto. Quanto regione superare svolgere fresco regione. Francese vedere parte offendere giugno.
+Avanti testa rispetto rosso notizia.', 'sognare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '16', '94', '2020-12-31', 'Occorrere produrre attore moglie finalmente dirigere. Però fresco corpo scienza giornale importanza essa guardia.
+Sbagliare spettacolo anche divenire o ricco massimo. Sbagliare infatti provocare forma stare insomma. Meritare memoria impedire risultato.', 'dio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('26', '8', '105', '2018-11-28', 'Parte poiché preoccupare elettrico giudicare. Rimettere annunciare nazionale ragazzo domandare costringere.
+Trasformare presente giardino mangiare eh. Ciò giallo lato pensare possedere basso villa presso.', 'fiume.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '11', '173', '2011-10-17', 'Nessuno roba niente ricchezza ciò distanza ora pietà. Porta parte pieno latino signorina industriale.
+Secolo riva insieme comune accogliere attuale. Materia ammazzare badare strano. Peggio profondo dente cattolico giusto.', 'circa.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('8', '7', '169', '2021-03-20', 'Almeno industriale animale personale. Evitare convincere giallo scappare colore zio contadino.
+Caso tornare alcuno rivolgere. Affatto animo piccolo confronto. Fresco ospedale innamorare verità pronto poesia.', 'su.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('38', '11', '46', '2017-05-19', 'Opporre altro controllo mangiare libero riguardare. Animale produrre ferire costa ufficio dimostrare presidente. Pubblico terzo merito figlio corsa volta programma.', 'legare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '17', '93', '2018-04-29', 'Sogno magari treno pietra. Pronto dimenticare mi perfino poesia. Scrittore fede riferire fresco industriale. Attesa pensare spiegare inverno tendere termine.
+Monte grazie piano funzione. Unire provocare pietra sforzo dito meritare dottore.', 'luna.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('17', '7', '96', '2021-08-15', 'Speciale inoltre avvenire vuoto. Sentimento serio difficoltà eccellenza medesimo.
+Generale tutto stella ordinare inoltre. Prossimo popolo svolgere straniero sorridere entrare. Costringere mente solito malattia latte.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('31', '7', '114', '2023-04-24', 'Anzi poco vento difficoltà largo ritornare evitare.
+Servire giorno peccato. Sonno pezzo offrire morale automobile intendere. Tedesco determinare processo battere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('2', '16', '178', '2022-06-08', 'Studiare riportare casa stesso unire bianco provincia naturalmente. Probabilmente padre cucina forma situazione costringere più.
+Mese stato sistema anzi giro quello giocare. Animale sperare avvocato zio.', 'antico.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('33', '13', '134', '2023-02-21', 'Tendere viso grigio esame spazio frutto capo stasera. Strada territorio maestro conto scena.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '9', '112', '2011-08-12', 'Fiducia rivedere salire dichiarare caldo. Onore muro certamente festa giornale qualità contro ricevere.
+Giorno almeno visita viaggio adesso tutto saltare. Popolo condurre appartenere considerare modo tranquillo richiedere sorella.', 'levare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('16', '19', '129', '2019-04-29', 'Ufficiale leggere cane accompagnare. Ricchezza diventare accogliere atteggiamento scherzare mattino fermare. Morte fantasia assai che errore milione.', 'lingua.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('44', '18', '174', '2022-04-14', 'Senso prossimo nazionale mente allora sala. Solo favore limite età ogni. Mi durare situazione azzurro esempio superare metà.
+Fresco abbastanza muovere normale vincere. Immagine viaggio cattivo insieme perdere dolce naturale.', 'polizia.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('3', '2', '150', '2017-08-11', 'Desiderio rifiutare giungere lotta. Vuoto dolore produzione. Festa piede riva greco mostrare correre. Medio sangue rimanere completamente successo.', 'conto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('14', '5', '142', '2020-05-27', 'Possibilità freddo verità volta davvero passo pranzo togliere. Futuro industria ieri riva. Ricchezza unire tuttavia.
+Accogliere creare buttare verità legge. Provare notte prova oggi meno.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '4', '189', '2010-12-29', 'Suonare in rivolgere papà cucina per.
+Pericoloso nazionale figurare freddo. Pace famoso fine.
+Figlio donna scienza comodo amare spazio giardino. Voltare subito umano pubblicare. Grande nazionale attimo bere occorrere mantenere chiudere.', 'mattino.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '10', '128', '2012-01-01', 'Aria uno età uomo dente ricordo esperienza. Stupido vicino notte dottore provocare. Salvare corpo domandare un avvertire terzo.
+Viaggio piuttosto abitare cortile. Arma colpire mettere amico. Perfino però gettare giusto gatto molto oggi.', 'autore.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '3', '199', '2017-01-27', 'Sotto distanza motivo mamma scoppiare medesimo battere. Dolce apparire privato cielo fame tavolo compagno città. Valle preferire giugno stamattina loro scomparire piccolo guardare.', 'pranzo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '17', '31', '2017-04-23', 'Presso accogliere considerare insegnare qualcuno professore tale mettere. Arrivare messa sentire albero grosso. Restare padre metro viaggio anno direzione occorrere ricchezza.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '7', '59', '2013-04-04', 'Seguito tornare notte ora difficoltà voi ricordo vostro. Tendere compiere vendere frase ciascuno. Inutile stanza fino forse raggiungere.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '15', '95', '2011-10-07', 'Punta zitto niente stampa. Legge qualsiasi tedesco verità fortuna. Ogni scorrere tentare esso circa.
+Nuovo camera ridurre europeo frutto il. Coscienza udire pietà sognare potere mese lo. Conservare punta fortuna assicurare prezzo.', 'proposito.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '13', '130', '2016-05-05', 'Considerare rivolgere giornale vostro ordine misura repubblica azione. Si piantare si romano udire mettere riunire.
+Pensiero posare legare spettacolo scena occhio morte. Autore ringraziare forte qua richiedere restare.', 'vento.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('28', '4', '71', '2017-04-14', 'Terreno occorrere questo. Religioso provocare colpo interessante studio se odore. Folla sorella difendere come.', 'coprire.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '19', '11', '2013-10-18', 'Attività territorio spiegare servizio avvertire esperienza calcio. Senso ammazzare fornire buio porta.
+Porto forse epoca sotto. Futuro nord ufficio proprio volere sapere grazia.
+Stanza ora passare padrone spalla inglese sala.', 'quello.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('1', '13', '194', '2020-10-27', 'Senza malattia capello semplice esempio abito acqua qualsiasi. Quindi esistere macchina produzione stringere. Finalmente territorio naturale appena fantasia cattivo minore.
+Fratello idea in. Riportare probabilmente cercare segretario bambina grazia.', 'non.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('49', '19', '24', '2011-02-10', 'Comunicazione divenire stare tutto. Partito principe accendere bambino.
+Umano possibile sociale. Uno insegnare sorgere stamattina. Almeno maggiore pietra croce spiegare sinistro.', 'vi.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '1', '33', '2016-01-09', 'Maniera ringraziare come battere naturalmente zia cosa. Segno accorgersi sacrificio opinione fiume vedere interessare. Carta economico felice dinanzi errore studio principio già.', 'descrivere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('9', '11', '63', '2020-05-11', 'Meritare sentimento immagine gatto convincere. Nome continuo titolo. Legge intero orecchio nuovo carattere volta.
+Il decisione costruire finestra scoppiare spazio occorrere. Prevedere libero quale. Cominciare capace carattere ricchezza lanciare non.', 'esporre.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '7', '19', '2010-12-12', 'Maggiore trasformare colore dovere. Dire cortile corrente scrittore sera.
+Casa porre faccia successo. Pelle stamattina professore decidere. Mangiare interesse esporre cercare monte gesto legge.', 'risolvere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('41', '8', '177', '2023-04-08', 'Molto dovere disporre letto vicino. Scrittore continuare salire pelle voglia durante.
+Denaro fresco convincere. Faccia sorridere infatti scoprire pubblicare basso attesa gente.', 'massimo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('7', '10', '84', '2023-12-30', 'Fiume inutile aprire cielo dopo assumere medio. Felice ritrovare raccogliere costruire natura malattia. Lira scendere offrire.', 'camera.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '16', '189', '2024-09-30', 'Cantare industria oh ragazza. Infatti tirare senso. Breve capello principio voltare speciale fino stanco. Riuscire parlare facile dente.
+Tenere settimana utile descrivere. Sviluppo dinanzi presidente pure braccio.
+Su studio dietro camera ordine pieno.', 'davanti.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('34', '10', '58', '2015-12-04', 'Particolare parecchio piccolo pena indietro politica esempio. Quale sicuro confronto attore discorso risposta battaglia.
+Rimanere giù segnare dottore affermare difficoltà. Noi riunire pazzo misura parte unire giusto russo.', 'permettere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('6', '12', '38', '2022-03-05', 'Superare riprendere oramai maggiore. Chiedere palazzo fenomeno maestro stazione sociale.
+Grande provocare parecchio abbandonare dimenticare esame. Dinanzi massa mostrare lavorare. Calcio matrimonio riprendere cittadino coscienza domenica sorgere.', 'verde.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '7', '189', '2020-10-18', 'Studio tratto fretta attore rispondere professore programma stupido. Morale osservare odore pianura.
+Insomma giugno accettare bambina bruciare. Giù contro carta attaccare muro linea da desiderio. Vedere scopo numeroso accordo.', 'milione.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('37', '18', '174', '2018-01-03', 'Potere bambina presso notevole porre cattivo ufficio. Messa zio continuare basso perdere interessante militare campagna.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '8', '77', '2014-10-23', 'Prato rivedere denaro memoria domani. Nobile provvedere perdere matrimonio. Freddo scorrere regno poesia partecipare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '14', '173', '2011-10-09', 'Sorgere meglio storico girare sentimento lì perciò stella. Comprare guardia processo camera liberare aspetto.
+Mestiere necessario grande passare. Albergo verde viaggio pubblico greco principio.', 'sino.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '8', '184', '2020-02-13', 'Lato comune valore pagina. Paese tornare sopra campagna capire parlare. Posare volare poco migliore.
+Perdere veramente contadino quindi giorno. Formare almeno partito rivolgere pronto.', 'bambino.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('4', '4', '41', '2016-07-13', 'Prato soffrire zona diverso atteggiamento pomeriggio. Scienza nemico smettere qualcosa.
+Favore forte vicino giusto anzi industriale addosso. Destino mentre inizio destro normale. Lingua odore tra scopo fame.', 'accadere.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('12', '3', '26', '2010-01-16', 'Diretto ridere tutto consiglio fortuna ottenere. Pieno neppure luna adesso richiedere.
+Leggere immaginare grado dividere. Futuro appartenere uccidere campo. Diventare morale amico pianura ripetere.', 'battaglia.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '5', '126', '2023-01-29', 'Modo teatro celebrare gamba oro credere realtà invitare. Estendere mondo tendere faccia. Desiderare impressione numero recente scala innamorare concedere grigio. Come con superiore avvocato europeo confessare.', 'gatto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('11', '10', '185', '2022-12-02', 'Parte dimostrare qualunque fuggire orecchio. Massa trascinare fiume sistema eccetera.
+Società occorrere puro conto vecchio suo parlare.
+Riconoscere nazione perfetto riuscire. Morte azzurro intenzione civile allora sbagliare bravo.', 'interno.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('45', '15', '4', '2015-06-23', 'Pazzo imparare accorgersi proposta. Famiglia riva abitare sopra russo volare espressione. Albero ma gamba pagare poesia ragazza ognuno cambiare.', 'regione.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '8', '85', '2017-06-22', 'Conto azzurro mese. Tardi porre sbagliare verso in raccontare spazio spesa. Congresso giovane ricordare verità comprare pure.
+Albergo interno ombra superiore. Finire ogni congresso calcio arte vostro.', 'significare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('23', '16', '196', '2024-07-10', 'Dirigere occasione probabilmente forma riempire. Dichiarare naturale punta notare male rispetto.
+Distruggere particolare differenza rispondere atto insomma svolgere. Felice superare presidente ciò storico confronto.', 'settimana.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('10', '14', '73', '2019-02-12', 'Tacere sottile direttore stanco posizione. Appunto rompere direttore sud. Salire attenzione segnare comunicazione mandare modo attraversare.
+Valere infine presentare orecchio ombra povero. Nazionale vedere badare mese.', 'sbagliare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('35', '8', '97', '2022-08-29', 'Civile provocare straniero recente principe vivo. Restare uscire scegliere osservare. Osservare aspettare caratteristico aspetto aria commissione chi.', 'esempio.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('38', '19', '104', '2023-03-26', 'Rivedere andare giudizio dolce mondo. Ambiente esperienza europeo riuscire tedesco cattolico ripetere odore. Ferro con ci solo conservare.
+Opporre strano cura cattolico tirare giocare.', 'questo.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '12', '18', '2024-07-25', 'Arrivare coscienza minimo leggero. Gettare trascinare ecco.
+Accettare caffè pietra giusto dunque contare acqua. Tedesco figlia ricevere mamma guidare.', 'avanzare.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('27', '7', '132', '2021-10-21', 'Interno spesso significare più polizia. Diverso popolazione cucina difendere trovare volta. Croce avere ottenere importanza guerra amare.
+Semplice entrare letto chiave errore. Latte articolo scrittore speciale tecnico accettare.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('36', '17', '123', '2022-12-16', 'Proporre importante discutere forte diretto decisione. Porta abbastanza promettere.
+Lontano donna togliere naturalmente. Riempire uso stato sperare.', 'buono.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('13', '10', '6', '2009-11-22', 'Privato scienza giungere fatto bellezza. Lontano escludere fortuna voi foglia centrale.', 'presenza.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('29', '17', '61', '2024-02-05', 'Parecchio tardi gioia convincere. Bene occasione lira anno mattino ancora.
+Sembrare folla appunto caso vecchio saltare. Perciò estremo azione riuscire oppure brutto. Stesso imporre qualcuno dunque.', '');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('22', '3', '73', '2010-12-17', 'Roba nostro impossibile spingere. Centrale società uccidere. Commissione riva consiglio fabbrica.
+Stesso mi carta chi crescere. Cantare pericolo ritorno valle distruggere ascoltare. Uso semplice tempo errore grado atto assistere inglese.', 'fatto.jpg');
+INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) VALUES ('39', '14', '114', '2014-11-22', 'Morale famiglia attenzione semplice figlio possedere. Opinione arrestare recare personale.
+Attore superare ne male ma segretario capire. Medio prodotto palazzo industriale infatti ricchezza favore.', 'attraversare.jpg');
