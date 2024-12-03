@@ -770,7 +770,7 @@ def log(n): # IDLog, idUtente, Data, Descrizione
             Data = generaDataRegistrazione()
             Descrizione = random.choice(descrizione_log).replace("'", "`")
             query = (
-                    f"INSERT INTO log (, idUtente, `Data`, Descrizione) "
+                    f"INSERT INTO log (idUtente, `Data`, Descrizione) "
                     f"VALUES ('{idUtente}', '{Data}', '{Descrizione}');"
                 )
             file.write(query + "\n")
