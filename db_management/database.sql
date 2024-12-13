@@ -133,7 +133,7 @@ CREATE TABLE PARTECIPAZIONE(
     idCitta int, /* NULL solo se l'evento è online */
     idEvento int not null,
     idCittadino int not null, 
-    DataPartecipazione date not null,
+    `Data` date not null,
     Segnalazione text DEFAULT NULL,
     PRIMARY KEY(idCitta, idEvento, idCittadino)
 );
