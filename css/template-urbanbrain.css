@@ -148,6 +148,10 @@ strong {
 /*---------------------------------------
   SECTION               
 -----------------------------------------*/
+.text-primary-color{
+  color: var(--link-hover-color);
+}
+
 .section-bg {
   background-color: var(--section-bg-color);
 }
