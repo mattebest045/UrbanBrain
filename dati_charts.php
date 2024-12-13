@@ -210,9 +210,10 @@ try{
 	
 
 	// Recupera valori dalla sessione
-	$tipo_sensore = $_SESSION['tipo_sensore'];
-	$interval = $_SESSION['interval'];
+	$tipo_sensore = $_GET['tipo_sensore'] ?? $_SESSION['tipo_sensore'];
+	$interval = $_GET['interval'] ?? $_SESSION['interval'];
 	$citta = $_SESSION['citta'];
+	echo "<br>".$citta.", ".$interval.", ".$tipo_sensore."<br>";
 	if (isset($_POST['interval'])) {
 		$interval = ($_POST['interval'] === "Ultimo Mese") ? "1 MONTH" : "7 DAY"; 
 	}

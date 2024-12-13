@@ -641,7 +641,7 @@ def dato(): # idSensore, Data, Valore
             # print(f'{idSensore} -> {Tipo}')
             for _ in range(random.randrange(64)):
                 # Genera la data in formato timestamp
-                Data = fake.date_time_between(start_date='-1y', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
+                Data = fake.date_time_between(start_date='-1m', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
 
                 # Genera un valore realistico basato sul tipo di sensore
                 range_valori = configurazione_sensori.get(Tipo)
@@ -770,7 +770,7 @@ def log(n): # IDLog, idUtente, Data, Descrizione
             Data = generaDataRegistrazione()
             Descrizione = random.choice(descrizione_log).replace("'", "`")
             query = (
-                    f"INSERT INTO log (, idUtente, `Data`, Descrizione) "
+                    f"INSERT INTO log (idUtente, `Data`, Descrizione) "
                     f"VALUES ('{idUtente}', '{Data}', '{Descrizione}');"
                 )
             file.write(query + "\n")
