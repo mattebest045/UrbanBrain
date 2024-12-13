@@ -1,6 +1,6 @@
 <?php
 $username = "root";
-$password = ""; // Per BEST: root
+$password = ""; // berta: '', best: 'root'
 $host = "localhost";
 $database = "urbanbrain";
 
