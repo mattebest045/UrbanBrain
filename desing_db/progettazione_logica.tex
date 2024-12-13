@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{xcolor} % Per la gestione dei colori
+\usepackage{fontawesome}
+\geometry{
+	a4paper,
+	total={180mm,265mm}, % Allarga leggermente l'area del contenuto
+	left=15mm,
+	top=15mm,
+}
+\usepackage{graphicx}
+\usepackage{titling}
+
+\title{Schema Logico del database di UrbanBrain}
+\author{Alessandro Bertani, Matteo Bestetti}
+\date{Ottobre 2022}
+
+\definecolor{light_blue}{RGB}{0, 101, 191}
+\definecolor{map_green}{RGB}{0, 164, 0}
+\definecolor{map_red}{RGB}{164, 0, 0}
+\newcommand{\book}{\textcolor{light_blue}{\faBook}}
+\newcommand{\pin}{\textcolor{map_red}{\faMapMarker}}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%  the preset of fancyhdr 
+	\fancyhf{} % clear all header and footer fields
+	\fancyfoot[R]{\includegraphics[width=1.5cm]{logo_scuro.png}}
+	\fancyfoot[L]{\thedate}
+	\fancyhead[L]{Description of Assignment}
+	\fancyhead[R]{\theauthor}
+}
+\pagestyle{plain}
+
+\makeatletter
+\def\@maketitle{%
+	\newpage
+	\null
+	\vskip 1em%
+	\begin{center}%
+		\let \footnote \thanks
+		{\LARGE \@title \par}%
+		\vskip 1em%
+		%{\large \@date}%
+	\end{center}%
+	\par
+	\vskip 1em}
+\makeatother
+
+\usepackage{lipsum}  
+\usepackage{cmbright}
+
+\begin{document}
+	
+	\maketitle
+	
+	\noindent\begin{tabular}{@{}ll}
+		Studenti & \theauthor\\
+		Promotore &  Prof. Stefano Cagnoni\\
+	\end{tabular}
+	\section*{Glossario}
+	\small % Riduce la dimensione del testo
+	
+	\begin{itemize}
+		\item[\book] Il \underline{Campo sottolineato} indica una chiave primaria per quell'entità.
+		\item[\book] Il \textbf{campo in grassetto} indica un campo univoco in un'entità.
+		\item[\book] Per convenzione indichiamo come \textit{primary key} un campo che inizia con "ID-", mentre indichiamo come \textit{foreign key} un campo che inizia con "id-".
+		\item[\faEdit] \textbf{NOTA}: abbiamo deciso di rinominare i campi delle entità Operatore, Cittadino, SuperAdmin come se fossero delle \textit{primary key} per una migliore leggibililità.
+		\item[\textcolor{map_green}{\faMap}] \textbf{Campo} (Sensore.Posizione): Attributo composto utilizzato per rappresentare le coordinate geografiche del sensore in gradi decimali (DD). Include due componenti:\\
+		\pin\space \textbf{Latitudine}: valore numerico in gradi decimali che rappresenta la distanza del punto dall'equatore. I valori variano tra -90 (Sud) e +90 (Nord). \\
+		\pin\space \textbf{Longitudine}: valore numerico in gradi decimali che indica la distanza del punto dal meridiano di Greenwich. I valori variano tra -180 (Ovest) e +180 (Est).
+	\end{itemize}
+	
+	\section*{Tabelle}
+	\small % Riduce la dimensione del testo
+	
+	Utente(\underline{IDUtente}, Nome, Cognome, DataNascita, \textbf{Email}, \textbf{Telefono}, Indirizzo)\\
+	Operatore(\underline{IDOperatore, DataInizio, DataFine}, Email, Tipo, Ruolo, Stato, Password)\\
+	Cittadino(\underline{IDCittadino}, Stato, DataRegistrazione, Password)\\
+	SuperAdmin(\underline{IDSuperAdmin}, Ruolo, \underline{DataAssegnazioneRuolo}, Stato, UltimoAccesso, Password)\\
+	Città(\underline{IDCitta}, Nome, Regione)\\
+	RisorsaPubblica(\underline{IDRisorsaPubblica}, Nome, Tipo)\\
+	SpesaPubblica(\underline{idRisorsaPubblica, idCitta, idOperatore}, Data, Costo, Stato)\\
+	Dato(\underline{idSensore}, Data, Valore)\\
+	Sensore(\underline{IDSensore, idCitta}, Posizione, Tipo, DataInstallazione, Stato)\\
+	Evento(\underline{IDEvento}, Nome, Luogo, NPosti, Descrizione, Data, Stato)\\
+	Creazione(\underline{idCitta, idEvento, idOperatore}, Data, Segnalazione)\\
+	Partecipazione(\underline{idCitta, idEvento, idCittadino}, DataPartecipazione, Segnalazione)\\
+	Feedback(\underline{IDFeedback}, Tipo)\\
+	Segnalazione(\underline{IDSegnalazione, idCitta, idFeedback, idCittadino}, Data, Descrizione, Foto)\\
+	Log(\underline{IDLog, idUtente, Data}, Descrizione)\\
+	
+	%\newpage
+	
+	\section*{Relazioni (FK \faLongArrowRight\space PK)}
+	\small % Riduce la dimensione del testo
+	
+	Operatore.IDOperatore \faLongArrowRight\space Utente.IDUtente \\
+	Cittadino.IDCittadino \faLongArrowRight\space Utente.IDUtente \\
+	SuperAdmin.idSuperAdmin \faLongArrowRight\space Utente.IDUtente\\
+	SpesaPubblica.idCitta \faLongArrowRight\space Città.IDCitta\\
+	SpesaPubblica.idRisorsaPubblica \faLongArrowRight\space RisorsaPubblica.IDRisorsaPubblica\\
+	SpesaPubblica.idOperatore \faLongArrowRight\space Operatore.IDOperatore\\
+	Sensore.idCitta \faLongArrowRight\space Città.IDCitta\\
+	Dato.idSensore \faLongArrowRight\space Sensore.IDSensore\\
+	Creazione.idCitta \faLongArrowRight\space Città.IDCitta\\
+	Creazione.idEvento \faLongArrowRight\space Evento.IDEvento\\
+	Creazione.idOperatore \faLongArrowRight\space Operatore.IDOperatore\\
+	Partecipazione.idCitta \faLongArrowRight\space Città.IDCitta\\
+	Partecipazione.idEvento \faLongArrowRight\space Evento.IDEvento\\
+	Partecipazione.idCittadino \faLongArrowRight\space Cittadino.IDCittadino\\
+	Segnalazione.idCitta \faLongArrowRight\space Città.IDCitta\\
+	Segnalazione.idCittadino \faLongArrowRight\space Cittadino.IDCittadino\\
+	Segnalazione.idFeedback \faLongArrowRight\space Feedback.IDFeedback\\
+	Log.idUtente \faLongArrowRight\space Utente.IDUtente
+	
+\end{document}
