@@ -91,133 +91,227 @@ const configurazioneSensori = {
     }
 };
 
-$(document).ready(function() {
-    // controlla che la lista non sia nulla prima di fare una post
-	// document.querySelector('form').addEventListener('submit', function(event) {
-	// 	const sensorInput = document.getElementById('sensor').value.trim();
-	// 	if (!sensorInput) {
-	// 		alert("Per favore seleziona un sensore dalla lista!");
-	// 		event.preventDefault(); // Blocca l'invio del form
-	// 	}
-	// });
+const colori = [
+    '#F2CC8F', // Sabbia
+    '#E07A5F', // Terracotta
+    '#3D405B', // Grigio ardesia scuro
+    '#81B29A', // Verde menta
+    '#FF6347', // Rosso tomato
+    '#4682B4', // Acciaio
+    '#6A5ACD', // Blu ardesia
+    '#2E8B57', // Verde mare
+    '#B8860B', // Oro antico
+    '#DAA520', // Oro
+    '#CD5C5C', // Rosa indiano
+    '#FF4500', // Arancione rosso
+    '#008080', // Verde petrolio
+    '#A0522D', // Marrone legno
+    '#DC143C', // Cremisi
+    '#8A2BE2', // Blu violaceo
+    '#228B22', // Verde bosco
+    '#D2691E'  // Marrone cioccolato
+];
+  
 
-	// document.addEventListener("DOMContentLoaded", () => {
-	// 	// Assicurati che `ruoloAdmin` non sia null o undefined
-	// 	const citta = json_encode($value, JSON_HEX_TAG) || [];
-	// 	// console.log("citta: "+citta)
-	// 	// Riferimenti agli elementi HTML
-	// 	const lista_citta = document.getElementById("dati-citta");
-	// 	if (lista_citta) {
-	// 		// Svuota la datalist corrente
-	// 		lista_citta.innerHTML = "";
-	// 		// Aggiungi i nuovi ruoli
-	// 		citta.forEach(role => {
-	// 			const option = document.createElement("option");
-	// 			option.value = role;
-	// 			lista_citta.appendChild(option);
-	// 		});
-	// 	}
-	// })
+function hexToRgba(hex, alpha = 0){
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+    
+    return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+}
 
-    function createChart(container, type, title, dataSeries, color) {
-        // Estrai le categorie dall'oggetto dataSeries 
-        const xLabels = dataSeries.map(item => item.Giorno); 
-        
-        // Inizializza un oggetto per le serie 
-        const seriesData = {}; 
-        dataSeries.forEach(item => { 
-            Object.keys(item).forEach(key => { 
-                if (key !== 'Giorno') { 
-                    if (!seriesData[key]) { 
-                        seriesData[key] = []; 
-                    } 
-                    seriesData[key].push(item[key]); 
-                } 
-            }); 
-        }); 
-        
-        // Converte l'oggetto delle serie in un array di serie per Highcharts 
-        const series = Object.keys(seriesData).map((key, index) => ({
-             name: key, 
-             data: seriesData[key], 
-             color: Array.isArray(color) ? colorMap[index] : color }));
-        
-        Highcharts.chart(container, {
-            chart: {
-                type: type,
-                backgroundColor: {
-                    color: 'transparent'
-                    // linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-                    // stops: [
-                    //     [0, 'rgba(255, 255, 255, 1)'],
-                    //     [1, 'rgba(129, 178, 154, 0.2)']
-                    // ]
-                },
+function isJSON(str) { 
+    try { 
+        JSON.parse(str); 
+    } catch (e) { 
+        return false; 
+    } 
+    return true; 
+}
+
+function unicodeToUTF8(inputStr) { 
+    return inputStr.replace(/\\u[\dA-F]{4}/gi, function (match) { 
+        return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16)); 
+    }); 
+}
+
+function createChart(container, type, title, dataSeries, color) {
+    console.log(container);
+    console.log(type);
+    console.log(title);
+    console.log(dataSeries);
+    
+    if (dataSeries['Errore']) { 
+        Highcharts.chart(container, { 
+            chart: { 
+                type: type, 
+                backgroundColor: 'transparent',
+                linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                stops: [
+                    [0, hexToRgba(color, 0.1)],
+                    [1, hexToRgba(color, 0.3)]
+                ],
                 borderRadius: 10
-            },
-            title: {
-                text: title
-            },
-            xAxis: {
-                categories: xLabels
-            },
-            yAxis: {
-                title: {
-                    text: title
-                }
-            },
-            series: series,
-            accessibility: {
-                enabled: false
-            }
-        });
+            }, title: { 
+                text: title 
+            }, 
+            series: [],
+            annotations: [{ 
+                labels: [{ 
+                    point: { 
+                        x: 2, 
+                        y: 3, 
+                        xAxis: 0, 
+                        yAxis: 0 
+                    }, 
+                    text: 'Label di esempio' 
+                }] 
+            }]
+        }); 
+        return; 
     }
+    
+    // Estrai le categorie dall'oggetto dataSeries 
+    const xLabels = dataSeries.map(item => item.Giorno); 
+    
+    // Inizializza un oggetto per le serie 
+    const seriesData = {}; 
+    dataSeries.forEach(item => { 
+        Object.keys(item).forEach(key => { 
+            if (key !== 'Giorno') { 
+                if (!seriesData[key]) { 
+                    seriesData[key] = []; 
+                } 
+                seriesData[key].push(item[key]); 
+            } 
+        }); 
+    }); 
+    
+    // Converte l'oggetto delle serie in un array di serie per Highcharts 
+    const series = Object.keys(seriesData).map((key, index) => ({
+         name: key, 
+         data: seriesData[key], 
+         color: Array.isArray(color) ? colorMap[index] : color }));
+    
+    Highcharts.chart(container, {
+        chart: {
+            type: type,
+            backgroundColor: {
+                color: 'transparent',
+                linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                stops: [
+                    [0, hexToRgba(color, 0.1)],
+                    [1, hexToRgba(color, 0.3)]
+                ]
+            },
+            borderRadius: 10
+        },
+        title: { 
+            text: title 
+        },
+        xAxis: { 
+            categories: xLabels 
+        },
+        yAxis: { 
+            title: { 
+                text: title 
+            } 
+        },
+        series: series,
+        accessibility: { 
+            enabled: false 
+        }
+    });
+}
+
+function defineChart(city, sensor, interval = '1 MONTH') {    
+    var url = `php/dati_charts.php`;
+    var data = { 
+        citta: decodeURIComponent(encodeURIComponent(city)), 
+        tipo_sensore: decodeURIComponent(encodeURIComponent(sensor)), 
+        interval: interval
+    };
 
     $.ajax({
-        url: 'php/dati_charts.php?citta=Roma&interval=1%20MONTH&tipo_sensore=Temperatura',
+        url: url,
         method: 'GET',
+        data: data,
         success: function(data) {
-            console.log("Dati ricevuti:", data);  // Debug: mostra i dati ricevuti
             data = data.split('_');
-            console.log("", JSON.parse(data[0]));  // Debug: mostra i dati ricevuti
-            console.log("", data[1].replaceAll('"',''));  // Debug: mostra i dati ricevuti
+            console.log(data);
 
             try {
                 if (data.error) {
                     console.error(data.error);
                     alert("Errore nel caricamento dei dati: " + data.error);
                 } else {
-                    var values = JSON.parse(data[0]);
-                    var sensor = data[1].replaceAll('"','');
-
-                    createChart('temperatureChart', 'line', sensor, values, '#81B29A');
-                    // createChart('humidityChart', 'column', 'Umidità', sensors.labels, sensors.humidity, '#3D405B');
-                    // createChart('lightChart', 'line', 'Luminosità', sensors.labels, sensors.light, '#F2CC8F');
-                    // createChart('pressureChart', 'column', 'Pressione atmosferica', sensors.labels, sensors.pressure, '#E07A5F');
-                    // createChart('airQualityChart', 'line', 'Qualità dell`aria', sensors.labels, sensors.airQuality, '#FF6347');
-                    // createChart('noiseChart', 'column', 'Rumore', sensors.labels, sensors.noise, '#4682B4');
-                    // createChart('co2Chart', 'line', 'Livello di CO2', sensors.labels, sensors.co2, '#6A5ACD');
-                    // createChart('windSpeedChart', 'column', 'Velocità del vento', sensors.labels, sensors.windSpeed, '#2E8B57');
-                    // createChart('windDirectionChart', 'line', 'Direzione del vento', sensors.labels, sensors.windDirection, '#B8860B');
-                    // createChart('rainfallChart', 'column', 'Pioggia', sensors.labels, sensors.rainfall, '#DAA520');
-                    // createChart('waterLevelChart', 'line', 'Livello dell`acqua', sensors.labels, sensors.waterLevel, '#CD5C5C');
-                    // createChart('uvRadiationChart', 'column', 'Radiazione UV', sensors.labels, sensors.uvRadiation, '#FF4500');
-                    // createChart('energyConsumptionChart', 'line', 'Consumo energetico', sensors.labels, sensors.energyConsumption, '#008080');
-                    // createChart('pm25Chart', 'column', 'Livello di PM2.5', sensors.labels, sensors.pm25, '#4682B4');
-                    // createChart('pm10Chart', 'line', 'Livello di PM10', sensors.labels, sensors.pm10, '#A0522D');
-                    // createChart('fireDetectionChart', 'column', 'Rilevamento incendi', sensors.labels, sensors.fireDetection, '#DC143C');
-                    // createChart('gasDetectionChart', 'line', 'Rilevamento gas', sensors.labels, sensors.gasDetection, '#8A2BE2');
-                    // createChart('vibrationsChart', 'column', 'Vibrazioni', sensors.labels, sensors.vibrations, '#228B22');
-                    // createChart('publicLightingChart', 'line', 'Illuminazione pubblica', sensors.labels, sensors.publicLighting, '#D2691E');
-                    // Aggiungi ulteriori grafici qui
+                    var sensor = unicodeToUTF8(data[1].replaceAll('"', ''));
+                    if (!isJSON(data[0])){
+                        var values = {
+                            'Errore': 'Sensore non valido.'
+                        };
+                        createChart(`chart${sensor.replace(/\s/g, '')}`, 'text', sensor, values, colori[0]);                    
+                    } else {
+                        var values = JSON.parse(data[0]);
+                        createChart(`chart${sensor.replace(/\s/g, '')}`, configurazioneSensori[sensor].grafico, sensor, values, colori[0]);
+                    }
                 }
             } catch (e) {
                 console.error("Errore nel parsing JSON:", e);
                 alert("Errore nel parsing dei dati JSON.");
-            }
+            }    
         },
         error: function(xhr, status, error) {
             console.error("Errore AJAX:", status, error);
         }
     });
+}
+
+
+function whichCharts() {
+    var value = document.getElementById('selectWhichCity').textContent;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'php/query.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var container = document.getElementById('chartsContainer');
+            container.innerHTML = ''; // Clear the container before adding new elements
+
+            console.log(response);
+            if (Array.isArray(response)) {
+                response.forEach(function(item) {
+                    // console.log(item.Nome);
+                    // console.log(item.Tipo);
+                    
+                    var divCol = document.createElement('div');
+                    divCol.className = 'col-md-6';
+
+                    var divChartContainer = document.createElement('div');
+                    divChartContainer.className = 'chart-container';
+
+                    var divChart = document.createElement('div');
+                    divChart.id = 'chart' + item.Tipo.replace(/\s/g, '');
+
+                    divChartContainer.appendChild(divChart);
+                    divCol.appendChild(divChartContainer);
+                    container.appendChild(divCol);
+
+                    defineChart(item.Nome, item.Tipo);
+                });
+            } else {
+                console.error('Unexpected response format:', response);
+            }
+        }
+    };
+    xhr.send('whichCity=' + encodeURIComponent(value));
+}
+
+$(document).ready(function() {
+    
+    whichCharts();
+
 });
