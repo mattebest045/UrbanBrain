@@ -10,7 +10,7 @@
 // - Stati come Rilevamento incendi, Controllo accessi: [Pie Chart or Bar Chart]
 //   Grafici a torta per distribuire le proporzioni, oppure un grafico a barre per visualizzare gli stati ON/OFF. 
 
-session_start(); // Inizio a salvarmi la sessione dell'utente
+// session_start(); // Inizio a salvarmi la sessione dell'utente
 
 include("connessione_db.php");
 	
@@ -36,97 +36,97 @@ try{
 // Query per ricavare i dati della pioggia a Roma
 // Inizializza sessione con valori predefiniti
 // echo "<br>POST: ".$_POST['tipo_sensore'].", ".$_POST['interval']."<br>";
-if (!isset($_SESSION['tipo_sensore'])) {
-	$_SESSION['tipo_sensore'] = "Pioggia";
-}
-if (!isset($_SESSION['interval'])) {
-	$_SESSION['interval'] = "7 DAY";
-}
+// if (!isset($_SESSION['tipo_sensore'])) {
+// 	$_SESSION['tipo_sensore'] = "Pioggia";
+// }
+// if (!isset($_SESSION['interval'])) {
+// 	$_SESSION['interval'] = "7 DAY";
+// }
 
 // $citta =  $_GET['citta'] ?? $_SESSION['citta'];
 // $_SESSION['citta'] = $citta;
 
 // echo "Sensore: ".$_SESSION['tipo_sensore'].", Intervallo: ".$_SESSION['interval']."<br>";
 // Aggiorna sessione se sono presenti nuove richieste POST
-if (isset($_POST['interval'])) {
-	$_SESSION['interval'] = ($_POST['interval'] === "Ultimo Mese") ? "1 MONTH" : "7 DAY";
-}
-if (isset($_POST['sensor'])) {
-	$_SESSION['tipo_sensore'] = $_POST['sensor'];
-}
+// if (isset($_POST['interval'])) {
+// 	$_SESSION['interval'] = ($_POST['interval'] === "Ultimo Mese") ? "1 MONTH" : "7 DAY";
+// }
+// if (isset($_POST['sensor'])) {
+// 	$_SESSION['tipo_sensore'] = $_POST['sensor'];
+// }
 
 
 // Recupera valori dalla sessione
-$tipo_sensore = $_GET['tipo_sensore'] ?? $_SESSION['tipo_sensore'];
-$interval = $_GET['interval'] ?? $_SESSION['interval'];
-$citta =  $_GET['citta'] ?? $_SESSION['citta'];
+$tipo_sensore = $_GET['tipo_sensore'];
+$interval = $_GET['interval'];
+$citta =  $_GET['citta'];
 // echo "SENSORE: ".$tipo_sensore."<br/>".$interval."<br/>".$citta."<br>";
-if (isset($_POST['interval'])) {
-	$interval = ($_POST['interval'] === "Ultimo Mese") ? "1 MONTH" : "7 DAY"; 
-}
+// if (isset($_POST['interval'])) {
+// 	$interval = ($_POST['interval'] === "Ultimo Mese") ? "1 MONTH" : "7 DAY"; 
+// }
 
-if(isset($_POST['sensor'])){ 
-	switch ($_POST['sensor']) {
-		case "Pioggia":
-			$tipo_sensore = "Pioggia"; // vMax o Somma tot giornaliera
-			break;
-		case "Livello dell`acqua":
-			$tipo_sensore = "Livello dell`acqua"; //vMax
-			break;
-		case "Temperatura":
-			$tipo_sensore = "Temperatura"; // vMin, vMax
-			break;
-		case "Umidità":
-			$tipo_sensore = "Umidità"; // vMin, vMedio, vMax
-			break;
-		case "Luminosità":
-			$tipo_sensore = "Luminosità"; // vMedio, vMax
-			break;
-		case "Pressione atmosferica":
-			$tipo_sensore = "Pressione atmosferica"; // vMedio
-			break;
-		case "Qualità dell`aria":
-			$tipo_sensore = "Qualità dell`aria"; // vMax 
-			break;
-		case "Rumore":
-			$tipo_sensore = "Rumore"; // vMax
-			break;
-		case "Livello di CO2":
-			$tipo_sensore = "Livello di CO2"; // vMax
-			break;
-		case "Velocità del vento":
-			$tipo_sensore = "Velocità del vento"; // vMax
-			break;
-		case "Direzione del vento":
-			$tipo_sensore = "Direzione del vento"; // vMedio
-			break;
-		case "Radiazione UV":
-			$tipo_sensore = "Radiazione UV"; // vMax
-			break;
-		case "Consumo energetico":
-			$tipo_sensore = "Consumo energetico"; // vMedio
-			break;
-		case "Livello di PM2.5":// Guarda bar chart di 3bmeteo
-			$tipo_sensore = "Livello di PM2.5"; // vMax , potrei includerlo nella qualità aria
-			break;
-		case "Livello di PM10":
-			$tipo_sensore = "Livello di PM10"; // vMax, potrei includerlo nella qualità aria
-			break;
-		case "Rilevamento incendi":
-			$tipo_sensore = "Rilevamento incendi"; // vMax
-			break;
-		case "Rilevamento gas":
-			$tipo_sensore = "Rilevamento gas"; // vMax
-			break;
-		case "Vibrazioni":
-			$tipo_sensore = "Vibrazioni"; // vMax
-			break;
-		default:
-			// Valore predefinito se `$_POST['sensor']` non corrisponde
-			$tipo_sensore = "Sconosciuto";
-			break;
-	}		
-}
+// if(isset($_POST['sensor'])){ 
+// 	switch ($_POST['sensor']) {
+// 		case "Pioggia":
+// 			$tipo_sensore = "Pioggia"; // vMax o Somma tot giornaliera
+// 			break;
+// 		case "Livello dell`acqua":
+// 			$tipo_sensore = "Livello dell`acqua"; //vMax
+// 			break;
+// 		case "Temperatura":
+// 			$tipo_sensore = "Temperatura"; // vMin, vMax
+// 			break;
+// 		case "Umidità":
+// 			$tipo_sensore = "Umidità"; // vMin, vMedio, vMax
+// 			break;
+// 		case "Luminosità":
+// 			$tipo_sensore = "Luminosità"; // vMedio, vMax
+// 			break;
+// 		case "Pressione atmosferica":
+// 			$tipo_sensore = "Pressione atmosferica"; // vMedio
+// 			break;
+// 		case "Qualità dell`aria":
+// 			$tipo_sensore = "Qualità dell`aria"; // vMax 
+// 			break;
+// 		case "Rumore":
+// 			$tipo_sensore = "Rumore"; // vMax
+// 			break;
+// 		case "Livello di CO2":
+// 			$tipo_sensore = "Livello di CO2"; // vMax
+// 			break;
+// 		case "Velocità del vento":
+// 			$tipo_sensore = "Velocità del vento"; // vMax
+// 			break;
+// 		case "Direzione del vento":
+// 			$tipo_sensore = "Direzione del vento"; // vMedio
+// 			break;
+// 		case "Radiazione UV":
+// 			$tipo_sensore = "Radiazione UV"; // vMax
+// 			break;
+// 		case "Consumo energetico":
+// 			$tipo_sensore = "Consumo energetico"; // vMedio
+// 			break;
+// 		case "Livello di PM2.5":// Guarda bar chart di 3bmeteo
+// 			$tipo_sensore = "Livello di PM2.5"; // vMax , potrei includerlo nella qualità aria
+// 			break;
+// 		case "Livello di PM10":
+// 			$tipo_sensore = "Livello di PM10"; // vMax, potrei includerlo nella qualità aria
+// 			break;
+// 		case "Rilevamento incendi":
+// 			$tipo_sensore = "Rilevamento incendi"; // vMax
+// 			break;
+// 		case "Rilevamento gas":
+// 			$tipo_sensore = "Rilevamento gas"; // vMax
+// 			break;
+// 		case "Vibrazioni":
+// 			$tipo_sensore = "Vibrazioni"; // vMax
+// 			break;
+// 		default:
+// 			// Valore predefinito se `$_POST['sensor']` non corrisponde
+// 			$tipo_sensore = "Sconosciuto";
+// 			break;
+// 	}		
+// }
 
 try{
 	$sensori = [
@@ -192,14 +192,15 @@ try{
 					dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
 				GROUP BY Giorno 
 				ORDER BY Giorno ASC;";
-	}else {
-		session_unset(); // Rimuove tutti i valori contenuti in $_SESSION
-		echo "Errore: intervallo non valido."; // Termina lo script con un messaggio di errore
-		// Attendi 3 secondi
-		sleep(3);
-		// Reindirizza alla stessa pagina
-		header("Location: " . $_SERVER['PHP_SELF']);
-		exit();
+	} else {
+		// session_unset(); // Rimuove tutti i valori contenuti in $_SESSION
+		$value = [
+			'Errore' => 'Sensore non valido.'
+		];
+
+		echo json_encode($value)."_";
+		echo json_encode($tipo_sensore);
+		die();
 	}
 	$result = $pdo->query($sql);
 	// echo "SQL: ".$sql."<br>";
@@ -225,6 +226,11 @@ try{
 			$value[] = $data;
 		}					
 		// echo "Value: ".print_r($value);
+		if (empty($value)){
+			$value = [
+				'Errore' => 'Nessun dato disponibile.'
+			];
+		}
 		unset($result);
 	}else{
 		echo "No records matching your query were found.";
