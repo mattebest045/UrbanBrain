@@ -19,6 +19,10 @@
         <!-- Icona predefinita -->
         <link id="theme-icon" rel="icon" href="images/logo_scuro.png" type="image/gif" sizes="16x16">
 
+        <!-- Libreria per utilizzare md5 con il campo password prima che venga inviato -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+
         <script>
         // GESTIONE ICONA TITOLO PAGINA ------------------------------------------------------------
         function updateFavicon() {
@@ -36,13 +40,130 @@
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
         //------------------------------------------------------------------------------------------
 
+        // Script per impostare il valore del campo nascosto
+        document.addEventListener("DOMContentLoaded", function () {
+           // Ottieni l'URL corrente ed elimina il fragment 
+           // es: da http://localhost/UrbanBrain/#offcanvasExample 
+           // a http://localhost/UrbanBrain/
+            const currentUrl = window.location.href.split("#")[0].split("?")[0];
+            
+            // Imposta l'URL nel campo nascosto
+            document.getElementById("current-url").value = currentUrl;
+        });
         
         //------------------------------------------------------------------------------------------
+
+        // Prima dell'invio tramite post hasha la psw con l'md5
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector(".member-login-form");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Impedisce l'invio automatico del form
+
+                const passwordField = document.getElementById("member-login-password");
+
+                // Genera l'hash MD5 della password
+                const hashedPassword = CryptoJS.MD5(passwordField.value).toString();
+
+                // Sovrascrivi il valore del campo password con l'hash MD5
+                passwordField.value = hashedPassword;
+
+                console.log("Password hashata: ", hashedPassword);
+
+                // Invia il form
+                form.submit();
+            });
+        });
+
+        //------------------------------------------------------------------------------------------
+        
+        // Funzione per controllare se ci sono dei valori di errore o successo
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ricava la query string dall'URL
+            const queryParams = new URLSearchParams(window.location.search);
+
+            // Controlla se esiste un parametro 'errore' o 'successo'
+            const errore = queryParams.get("errore");
+            const successo = queryParams.get("successo");
+
+            if (errore) {
+                showPopup("errore", errore);
+            }
+
+            if (successo) {
+                showPopup("successo", successo);
+            }
+        });
+
+        // Funzione per mostrare un pop-up
+        function showPopup(type, message) {
+            const popup = document.querySelector(`.${type}`);
+            if (popup) {
+                popup.querySelector(".message").textContent = decodeURIComponent(message);
+                popup.style.display = "block";
+            }
+        }
+
+        // Funzione per chiudere il pop-up
+        function closePopup(type) {
+            const popup = document.querySelector(`.${type}`);
+            if (popup) {
+                popup.style.display = "none";
+            }
+        }
+
+        //------------------------------------------------------------------------------------------
+
         </script>
+
+        <!-- Style CSS per div.successo e div.errore -->
+        <style>
+            .errore, .successo {
+                display: none; /* Inizialmente nascosti */
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #f8d7da; /* Colore di errore */
+                color: #721c24; /* Testo di errore */
+                border: 1px solid #f5c6cb;
+                padding: 20px;
+                border-radius: 10px;
+                width: 300px;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .successo {
+                background-color: #d4edda; /* Colore di successo */
+                color: #155724; /* Testo di successo */
+                border: 1px solid #c3e6cb;
+            }
+
+            .close-btn {
+                background: none;
+                border: none;
+                color: inherit;
+                font-weight: bold;
+                cursor: pointer;
+                float: right;
+                font-size: 16px;
+            }
+        </style>
+
     </head>
     
     <body>
         <main>
+            <!-- Creazione div errore/successo -->
+            <div class="errore">
+                <button class="close-btn" onclick="closePopup('errore')">×</button>
+                <span class="message"></span>
+            </div>
+            <div class="successo">
+                <button class="close-btn" onclick="closePopup('successo')">×</button>
+                <span class="message"></span>
+            </div>
 
             <!-- Menu opzioni Navbar in alto -->
             <nav class="navbar navbar-expand-lg">                
@@ -116,28 +237,24 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body d-flex flex-column">
-                        <form class="custom-form member-login-form" action="#" method="post" role="form">
+                        <form class="custom-form member-login-form" action="php/login.php" method="post" role="form">
 
                             <div class="member-login-form-body">
                                 <div class="mb-4">
-                                    <label class="form-label mb-2" for="member-login-number">Username</label>
+                                    <label class="form-label mb-2" for="member-login-number">Email</label>
 
-                                    <input type="text" name="member-login-number" id="member-login-number" class="form-control" placeholder="Username" required>
+                                    <input type="text" name="member-login-number" id="member-login-number" class="form-control" placeholder="Email" required>
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="form-label mb-2" for="member-login-password">Password</label>
-
-                                    <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
+                                    <!-- Tolto il pattern momentaneamente per comodità -->
+                                    <input type="password" name="member-login-password" id="member-login-password" class="form-control" placeholder="Password" required="">
+                                    <!-- <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required=""> -->
                                 </div>
 
-                                <!-- <div class="form-check mb-4">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Remember me
-                                    </label>
-                                </div> -->
+                                <!-- Campo nascosto per l'URL -->
+                                <input type="hidden" name="url" id="current-url" value="">
 
                                 <div class="col-lg-5 col-md-7 col-8 mx-auto">
                                     <button type="submit" class="form-control">Login</button>

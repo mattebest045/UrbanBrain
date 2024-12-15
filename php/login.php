@@ -1,14 +1,5 @@
 <?php
 include("connessione_db.php");
-session_start(); // Inizio a salvarmi la sessione dell'utente
-// unset($_SESSION['url']);
-
-if((!isset($_GET['url'])) && (!isset($_SESSION['url']))) {
-    $location = "index.php";
-}else{
-    $location = $_GET['url'] ?? $_SESSION['url'];
-}
-$_SESSION['url'] = $location;
 
 function getUserDataByPermission($queryResult, $permesso) {
     // Controlla quante tuple sono presenti
@@ -23,7 +14,6 @@ function getUserDataByPermission($queryResult, $permesso) {
         3 => ['cittadino', 'superAdmin', 'operatore'] // Tre tuple: tutti i permessi
     ];
     }else{
-        echo "<br>muori<br>";
         $permessiMap = [
             1 => ['cittadino'], // Se c'è solo una tupla, è un cittadino
             2 => ['cittadino', 'operatore'], // Due tuple: cittadino e operatore/admin
@@ -62,7 +52,8 @@ function verificaPassword($id, $psw, $permesso) {
     echo "FUNCTION: ".$id.", ".$permesso.", ".$psw."<br>";
     // Controllo che il permesso sia valido
     if (!in_array($permesso, $permessiValidi)) {
-        die("Errore: Permesso non valido.");
+        $output = 'errore='.urlencode("Errore: Permesso non valido.");
+        header('location: '.$location.'?'.$output);
     }
     
     try{
@@ -75,18 +66,21 @@ function verificaPassword($id, $psw, $permesso) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':id' => $id,
-            ':psw' => md5($psw),
+            ':psw' => $psw, 
         ]);
       
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        var_dump($result);
         $ris = '';
         if($result){
             $ris = $result['STM'];
         }
-
+        var_dump($ris);
+        // PASSWORD CORRETTA
         if($ris){
-            echo "<br> PASSWORD CORRETTA! <br>";
+            echo "<br>PSW CORRETTAAAA<br>";
+            
+            // Attivo la session
+            session_start();
             $_SESSION['user_id'] = $id;
             $_SESSION['user_role'] = $permesso;
 
@@ -136,112 +130,126 @@ function verificaPassword($id, $psw, $permesso) {
             $queryResult = $stmt->fetchAll(PDO::FETCH_ASSOC); // Ottieni tutte le tuple
             try {
                 $userData = getUserDataByPermission($queryResult, $permesso);
-                print_r($userData); // Visualizza i dati
 
                 // Cicla su ogni campo della tupla e salva nella sessione
                 foreach ($userData as $campo => $valore) {
                     $_SESSION['user_' . $campo] = $valore;
                 }
+                var_dump($_SESSION);
+                
             } catch (Exception $e) {
                 echo "Errore: " . $e->getMessage();
+                $output = 'errore='.urlencode("ERRORE: qualcosa è andato storto...");
+                header('location: '.$location.'?'.$output);
             }
-
+            // Prima di reindirizzare alla pagina aggiungo nella tabella di log che l'utente si è loggato
+            date_default_timezone_set("Europe/Rome"); // Imposta il fuso orario per l'Italia
+            $dataAttuale = date("Y-m-d H:i:s", time()); // es output: 2024-12-14 15:20:34
+            $sql = "INSERT INTO `log`(`idUtente`, `Data`, `Descrizione`) 
+                    VALUES (:id,:dataTempo,:descrizione)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+                ':dataTempo' => $dataAttuale,
+                ':descrizione' => 'Ha effettuato il login'
+            ]);
+            
             // Close connection
             unset($pdo);   
-            sleep(3);
-            header('location:'.$location);
+            $output = 'successo='.urlencode('LOGIN AVVENUTO CON SUCCESSO');   
+            header('location: '.$location.'?'.$output);
+            die();
         }
         
     }catch(PDOException $e){
-        die("ERROR: Could not able to execute $sql." . $e->getMessage());
+        echo "ERROR: Could not able to execute $sql." . $e->getMessage();
+        $output = 'errore='.urlencode("ERRORE: qualcosa è andato storto...");
+        header('location: '.$location.'?'.$output);
     }
 }
 
-if(!empty($_POST)){
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-    echo "From POST-> Email: ".$email.", PSW: ".$password."<br>";
-    // Inizio a controllare se esiste la mail all'interno del mio database
-    try {
-        $sql = "SELECT 'utente' AS tipo, utente.IDUtente AS ID 
-                FROM utente 
-                WHERE utente.Email = :email                 
-                UNION                
-                SELECT 'operatore' AS tipo, operatore.IDOperatore AS ID 
-                FROM operatore 
-                WHERE operatore.Email = :email";
+if(empty($_POST)){
+    // La POST è vuota
+    $output = 'errore='.urlencode("ERROR: Tentativo di accesso non consentito, le autorità saranno lì a breve...");
+    header('location: '.$location.'?'.$output);
+}
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([':email' => $email]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if (!empty($result)) {
-            $permesso = $result['tipo'];
-            $id = $result['ID'];
-            echo "<br>Permesso: ".$permesso.", IDUTENTE: ".$id."<br>";
-            switch ($permesso) {
-                case 'utente':
-                    // Distinzione tra cittadino e superAdmin. 
-                    // In questo modo scopro il permesso di chi si registra
-                    $sql = "SELECT 'cittadino' AS ruolo
-                            FROM cittadino 
-                            WHERE IDCittadino = :id 
-                            UNION 
-                            SELECT 'superAdmin' AS ruolo 
-                            FROM superadmin 
-                            WHERE IDSuperAdmin = :id;";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute([':id' => $id]);
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    echo "VARDUMP RESULT: ".sizeof($result)."<br>";
-                    var_dump($result);
-                    // Creazione della lista
-                    $uroli = [];
-                    foreach ($result as $row) {
-                        $ruoli[] = $row['ruolo'];
-                    }
-                    echo "<br>Permesso 2: <br>";
-                    var_dump($ruoli);
-                    // Controllo se esiste la password è corretta o meno
-                    foreach($ruoli as $permesso){
-                        echo "<br>PERMESSO: ".$permesso."<br>";
-                        verificaPassword($id, $password, $permesso);
-                    }
-                    
-                    break;
-                case 'operatore':
-                    // Controllo se esiste la password è corretta o meno
+$location = $_POST['url'] ?? "index.php";
+$email = $_POST['member-login-number'] ?? '';
+$password = $_POST['member-login-password'] ?? ''; // Ricevo al psw già hashata
+echo "LOC: ".$location.", email: ".$email."<br>psw: ".$password."<br>md5(123): ".md5('1213');
+
+// Inizio a controllare se esiste la mail all'interno del mio database
+try {
+    $sql = "SELECT 'utente' AS tipo, utente.IDUtente AS ID 
+            FROM utente 
+            WHERE utente.Email = :email                 
+            UNION                
+            SELECT 'operatore' AS tipo, operatore.IDOperatore AS ID 
+            FROM operatore 
+            WHERE operatore.Email = :email";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':email' => $email]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!empty($result)) {
+        $permesso = $result['tipo'];
+        $id = $result['ID'];
+
+        echo "<br>Permesso: ".$permesso.", IDUTENTE: ".$id."<br>";
+        switch ($permesso) {
+            case 'utente':
+                // Distinzione tra cittadino e superAdmin. 
+                // In questo modo scopro il permesso di chi si registra
+                $sql = "SELECT 'cittadino' AS ruolo
+                        FROM cittadino 
+                        WHERE IDCittadino = :id 
+                        UNION 
+                        SELECT 'superAdmin' AS ruolo 
+                        FROM superadmin 
+                        WHERE IDSuperAdmin = :id;";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([':id' => $id]);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                echo "VARDUMP RESULT: ".sizeof($result)."<br>";
+                var_dump($result);
+                // Creazione della lista
+                $uroli = [];
+                foreach ($result as $row) {
+                    $ruoli[] = $row['ruolo'];
+                }
+                echo "<br>Permesso 2: <br>";
+                var_dump($ruoli);
+                // Controllo se esiste la password è corretta o meno
+                foreach($ruoli as $permesso){
+                    echo "<br>PERMESSO: ".$permesso."<br>";
                     verificaPassword($id, $password, $permesso);
-                    break;
-                default:
-                    echo "Errore: Permesso utente non riconosciuto.";
-                echo "ERRORE: PASSWORD NON CORRETTA";
-            }
-        } else {
-            echo "Email non trovata.";
+                }
+                
+                break;
+            case 'operatore':
+                // Controllo se esiste la password è corretta o meno
+                verificaPassword($id, $password, $permesso);
+                break;
+            default:
+                $output = 'errore='.urlencode("Errore: Permesso utente non riconosciuto.");
+                break;
+            $output = 'errore='.urlencode("PASSWORD NON CORRETTA");
         }
-
-    }catch(PDOException $e){
-        die("ERROR: Could not able to execute $sql." . $e->getMessage());
+    } else {
+        $output = 'errore='.urlencode("Errore: Email non trovata");
     }
+
     // Close connection
     unset($pdo);
+    die("output: ".$output);
+    header('location: '.$location.'?'.$output);
+
+}catch(PDOException $e){
+    echo "ERROR: Could not able to execute $sql." . $e->getMessage();
+    $output = 'errore='.urlencode("ERRORE: qualcosa è andato storto...");
+    header('location: '.$location.'?'.$output);
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
-</head>
-<body>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <input type="email" name="email" id="login-email" placeholder="email">
-        <input type="password" name="password" id="login-password" placeholder="psw">
-        <button type="submit">REGISTRATI</button>    
-    </form>
-</body>
-</html>

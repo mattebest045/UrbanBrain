@@ -23,9 +23,10 @@ def genera_password(password=None):
         characters = string.ascii_letters + string.digits + string.punctuation
         password = ''.join(random.choice(characters) for _ in range(12))
 
-    # Crittografa la password con SHA-256
-    sha_signature = hashlib.sha256(password.encode()).hexdigest()
-    return sha_signature
+    # Crittografa la password con MD5
+    md5_signature = hashlib.md5(password.encode()).hexdigest()
+
+    return md5_signature
 
 # Gnera una data per la registrazione tra il 2 settembre fino ad oggi
 def generaDataRegistrazione():
@@ -335,7 +336,6 @@ tipi_sensori = [
     "Rumore",
     "Livello di CO2",
     "Velocità del vento",
-    "Direzione del vento",
     "Pioggia",
     "Livello dell`acqua",
     "Radiazione UV",
@@ -344,8 +344,7 @@ tipi_sensori = [
     "Livello di PM10",
     "Rilevamento incendi",
     "Rilevamento gas",
-    "Vibrazioni",
-    "Illuminazione pubblica"
+    "Vibrazioni"
 ]
 configurazione_sensori = {
     "Temperatura": {"min": -20.0, "max": 50.0},  # Celsius [°C]
@@ -356,7 +355,6 @@ configurazione_sensori = {
     "Rumore": {"min": 30.0, "max": 130.0},  # Decibel [dB]
     "Livello di CO2": {"min": 300.0, "max": 5000.0},  # [ppm]
     "Velocità del vento": {"min": 0.0, "max": 40.0},  # [m/s]
-    "Direzione del vento": {"min": 0.0, "max": 360.0},  # Gradi [°]
     "Pioggia": {"min": 0.0, "max": 500.0},  # [mm/h]
     "Livello dell`acqua": {"min": 0.0, "max": 10.0},  # metri [m]
     "Radiazione UV": {"min": 0.0, "max": 11.0},  # Indice UV [UV]
@@ -432,7 +430,7 @@ def utente(n): # IDUtente, Nome, Cognome, DataNascita, Email, Telefono, Indirizz
     # Apre il file in modalità write e aggiunge la query
     with open("db_management/populamento/utente.sql", "w", encoding="utf-8") as file:
         query =(
-                f"ALTER TABLE utente AUTO_INCREMENT = 0;\n"
+                f"ALTER TABLE UTENTE AUTO_INCREMENT = 0;\n"
                 f"INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
                 f"VALUES ('Matteo', 'Bestetti', '2003-08-12', 'matteo.bestetti@studenti.unipr.it', '+39xxxxxxxxxx', 'indirizzo');\n"
                 f"INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
@@ -631,29 +629,36 @@ def sensore():  # IDSensore, idCitta, Posizione, Tipo, DataInstallazione, Stato
     
     print(f"Inseriti {len(salva_dati)} record nella tabella SENSORE.")
 
-def dato(): # idSensore, Data, Valore
+def dato():  # idSensore, Data, Valore
     global salva_dati
     fake = Faker()
-    #idSensore, Tipo = random.randrange(1, len(salva_dati)) # numero di tuple che ho io di sensori
+    valori_unici = set()  # Set per memorizzare le combinazioni uniche di (idSensore, Data)
+
     with open("db_management/populamento/dato.sql", "w", encoding="utf-8") as file:
-        for i in range(len(salva_dati)): # Range basato sui dati dei sensori
-            idSensore, Tipo = salva_dati[i]  
-            # print(f'{idSensore} -> {Tipo}')
+        for i in range(len(salva_dati)):  # Range basato sui dati dei sensori
+            idSensore, Tipo = salva_dati[i]
+
             for _ in range(random.randrange(64)):
-                # Genera la data in formato timestamp
-                Data = fake.date_time_between(start_date='-1m', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
+                while True:  # Ciclo per generare combinazioni uniche
+                    # Genera la data in formato timestamp
+                    Data = fake.date_time_between(start_date='-1m', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
+
+                    # Controlla se la combinazione (idSensore, Data) è unica
+                    if (idSensore, Data) not in valori_unici:
+                        valori_unici.add((idSensore, Data))  # Aggiungi la combinazione al set
+                        break  # Esci dal ciclo se la combinazione è unica
 
                 # Genera un valore realistico basato sul tipo di sensore
                 range_valori = configurazione_sensori.get(Tipo)
-                # Se non esiste un tipo di sensore configurato metto None
-                Valore = (round(random.uniform(range_valori["min"], range_valori["max"]), 2)) if (range_valori) else (None)
+                Valore = (round(random.uniform(range_valori["min"], range_valori["max"]), 2)) if range_valori else None
 
-                # print(f'{idSensore}, {Tipo}, {range_valori}, {Data}, {Valore}')
+                # Scrivi la query nel file
                 query = (
                     f"INSERT INTO dato (idSensore, Data, Valore) "
                     f"VALUES ('{idSensore}', '{Data}', '{Valore}');"
                 )
                 file.write(query + "\n")
+
     print(f"Inseriti i record nella tabella DATO.")
 
 def evento(n): # IDEvento, Nome, Luogo, NPosti, Descrizione, Data, Stato
@@ -712,11 +717,11 @@ def creazione(): # idCitta, idEvento, idOperatore, Data, Segnalazione
             #print(f'{idCitta}, {idEvento}, {idOperatore}, {Data}, {Segnalazione}')
     print("Eventi inseriti correttamente nella tabella CREAZIONE.")
 
-def partecipazione(): # idCitta, idEvento, idCittadino, DataPartecipazione, Segnalazione
+def partecipazione(): # idCitta, idEvento, idCittadino, Data, Segnalazione
     with open("db_management/populamento/partecipazione.sql", "w", encoding="utf-8") as file:
         for i in range(len(salva_eventi)):
             idCittadino = random.randrange(2, 201) # idCittadino parte da 2 perchè idUtente[0,1] sono di best e berta
-            DataPartecipazione = generaDataRegistrazione()
+            Data = generaDataRegistrazione()
             Segnalazione = Faker('it_IT').text(max_nb_chars=30) if random.random() < 0.3 else ""
             idEvento, Luogo = salva_eventi[i]
             #print(idEvento, Luogo)
@@ -728,8 +733,8 @@ def partecipazione(): # idCitta, idEvento, idCittadino, DataPartecipazione, Segn
                         idCitta = (j + 1)
                         break
             query = (
-                f"INSERT INTO partecipazione (idCitta, idEvento, idCittadino, DataPartecipazione, Segnalazione) "
-                f"VALUES ('{idCitta}', '{idEvento}', '{idCittadino}', '{DataPartecipazione}', '{Segnalazione}');"
+                f"INSERT INTO partecipazione (idCitta, idEvento, idCittadino, Data, Segnalazione) "
+                f"VALUES ('{idCitta}', '{idEvento}', '{idCittadino}', '{Data}', '{Segnalazione}');"
             )
             file.write(query + "\n")
             #print(f'{idCitta}, {idEvento}, {idCittadino}, {Data}, {Segnalazione}')
@@ -764,10 +769,11 @@ def segnalazione(): # IDSegnalazione, idCitta, idFeedback, idCittadino, Data, De
     print(f"Inseriti i record nella tabella SEGNALAZIONE.")
 
 def log(n): # IDLog, idUtente, Data, Descrizione
+    fake = Faker()
     with open("db_management/populamento/log.sql", "w", encoding="utf-8") as file:
         for _ in range(n):
             idUtente = random.randrange(1, 222)
-            Data = generaDataRegistrazione()
+            fake.date_time_between(start_date='-1m', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
             Descrizione = random.choice(descrizione_log).replace("'", "`")
             query = (
                     f"INSERT INTO log (idUtente, `Data`, Descrizione) "

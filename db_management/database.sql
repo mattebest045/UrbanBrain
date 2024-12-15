@@ -161,7 +161,7 @@ CREATE TABLE SEGNALAZIONE(
 CREATE TABLE LOG(
     IDLog int AUTO_INCREMENT,
     idUtente int not null,
-    `Data` date not null,
+    `Data` datetime not null,
     Descrizione text,
     PRIMARY KEY(IDLog, idUtente)
 );
