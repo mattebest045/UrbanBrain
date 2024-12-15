@@ -39,11 +39,11 @@ const configurazioneSensori = {
         range: { min: 0.0, max: 40.0 },
         grafico: "line"
     },
-    "Direzione del vento": {
-        unita: "°",
-        range: { min: 0.0, max: 360.0 },
-        grafico: "polarArea" // Grafico polare per direzioni
-    },
+    // "Direzione del vento": {
+    //     unita: "°",
+    //     range: { min: 0.0, max: 360.0 },
+    //     grafico: "Area" // Grafico polare per direzioni
+    // },
     "Pioggia": {
         unita: "mm",
         range: { min: 0.0, max: 500.0 },
@@ -136,41 +136,33 @@ function unicodeToUTF8(inputStr) {
     }); 
 }
 
-function createChart(container, type, title, dataSeries, color) {
-    console.log(container);
-    console.log(type);
-    console.log(title);
-    console.log(dataSeries);
+function noDataFoundAlert(id, sensor, color) {
+    console.log('No data found: ' + id);
     
-    if (dataSeries['Errore']) { 
-        Highcharts.chart(container, { 
-            chart: { 
-                type: type, 
-                backgroundColor: 'transparent',
-                linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-                stops: [
-                    [0, hexToRgba(color, 0.1)],
-                    [1, hexToRgba(color, 0.3)]
-                ],
-                borderRadius: 10
-            }, title: { 
-                text: title 
-            }, 
-            series: [],
-            annotations: [{ 
-                labels: [{ 
-                    point: { 
-                        x: 2, 
-                        y: 3, 
-                        xAxis: 0, 
-                        yAxis: 0 
-                    }, 
-                    text: 'Label di esempio' 
-                }] 
-            }]
-        }); 
-        return; 
-    }
+    // Trova il div
+    const divElement = document.getElementById(id);
+    divElement.style.cssText = 'width: -webkit-fill-available; height: 400px;';
+
+    // Crea il nuovo div interno e imposta i suoi stili
+    const innerDiv = document.createElement('div');
+    innerDiv.id = id + 'NoDataFound';
+    innerDiv.style.cssText = 'height: -webkit-fill-available; display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;';
+
+    // Crea il label con il testo e i suoi stili
+    const label = document.createElement('label');
+    label.style.backgroundColor = color;
+    label.innerHTML = '<h5 style="margin: 10px; font-weight: bold;">Nessun dato per ' + sensor + '.</h5>';
+
+    // Aggiungi gli elementi al DOM
+    innerDiv.appendChild(label);
+    divElement.appendChild(innerDiv);
+}
+
+function createChart(container, type, title, dataSeries, color) {
+    // console.log(container);
+    // console.log(type);
+    // console.log(title);
+    // console.log(dataSeries);
     
     // Estrai le categorie dall'oggetto dataSeries 
     const xLabels = dataSeries.map(item => item.Giorno); 
@@ -251,7 +243,8 @@ function defineChart(city, sensor, interval = '1 MONTH') {
                         var values = {
                             'Errore': 'Sensore non valido.'
                         };
-                        createChart(`chart${sensor.replace(/\s/g, '')}`, 'text', sensor, values, colori[0]);                    
+                        // console.log(sensor + ': ' + `chart${sensor.replace(/\s/g, '')}`);
+                        noDataFoundAlert(`chart${sensor.replace(/\s/g, '')}`, sensor, hexToRgba(colori[0], 0.3));                    
                     } else {
                         var values = JSON.parse(data[0]);
                         createChart(`chart${sensor.replace(/\s/g, '')}`, configurazioneSensori[sensor].grafico, sensor, values, colori[0]);
@@ -268,7 +261,6 @@ function defineChart(city, sensor, interval = '1 MONTH') {
     });
 }
 
-
 function whichCharts() {
     var value = document.getElementById('selectWhichCity').textContent;
     var xhr = new XMLHttpRequest();
@@ -281,12 +273,8 @@ function whichCharts() {
             var container = document.getElementById('chartsContainer');
             container.innerHTML = ''; // Clear the container before adding new elements
 
-            console.log(response);
             if (Array.isArray(response)) {
-                response.forEach(function(item) {
-                    // console.log(item.Nome);
-                    // console.log(item.Tipo);
-                    
+                response.forEach(function(item) {                    
                     var divCol = document.createElement('div');
                     divCol.className = 'col-md-6';
 
@@ -307,11 +295,72 @@ function whichCharts() {
             }
         }
     };
-    xhr.send('whichCity=' + encodeURIComponent(value));
+    xhr.send('city=' + encodeURIComponent(value));
 }
 
-$(document).ready(function() {
-    
+function getCities(selectCityDiv) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'php/query.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            console.log(response);
+
+            if (Array.isArray(response)) {
+                var dropdown = document.createElement('ul');
+                dropdown.className = 'city-dropdown';
+                response.forEach(function(item) {
+                    var cityItem = document.createElement('li');
+                    cityItem.textContent = item.Nome;
+                    cityItem.addEventListener('click', function() {
+                        selectCityDiv.textContent = item.Nome;
+                        document.body.removeChild(dropdown);
+                        whichCharts();
+                    });
+                    dropdown.appendChild(cityItem);
+                });
+
+                // Remove existing dropdown if it exists
+                var existingDropdown = document.querySelector('.city-dropdown');
+                if (existingDropdown) {
+                    document.body.removeChild(existingDropdown);
+                }
+
+                // Position dropdown
+                var rect = selectCityDiv.getBoundingClientRect(); 
+                dropdown.style.position = 'absolute'; 
+                dropdown.style.left = (rect.left + rect.width / 2 - dropdown.offsetWidth / 2) + 'px'; 
+                dropdown.style.top = (rect.bottom + window.scrollY) + 'px'; 
+                
+                document.body.appendChild(dropdown); 
+                
+                // Re-calculate position after adding to the DOM to ensure proper centering 
+                var dropdownRect = dropdown.getBoundingClientRect(); 
+                dropdown.style.left = (rect.left + rect.width / 2 - dropdownRect.width / 2) + 'px';
+            } else {
+                console.error('Unexpected response format:', response);
+            }
+        }
+    };
+    xhr.send('cities=true');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var selectCityDiv = document.getElementById('selectWhichCity');
+
     whichCharts();
 
+    selectCityDiv.addEventListener('click', function(event) {
+        event.stopPropagation();
+        getCities(selectCityDiv);
+    });
+
+    document.addEventListener('click', function(event) {
+        var dropdown = document.querySelector('.city-dropdown');
+        if (dropdown && !dropdown.contains(event.target)) {
+            document.body.removeChild(dropdown);
+        }
+    });
 });

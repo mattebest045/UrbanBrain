@@ -1,5 +1,5 @@
 -- Contenuto di utente.sql
-ALTER TABLE utente AUTO_INCREMENT = 0;
+ALTER TABLE `UTENTE` AUTO_INCREMENT = 0;
 INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) VALUES ('Matteo', 'Bestetti', '2003-08-12', 'matteo.bestetti@studenti.unipr.it', '+39xxxxxxxxxx', 'indirizzo');
 INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) VALUES ('Alessandro', 'Bertani', '2002-08-28', 'alessandro.bertani@studenti.unipr.it', '+39zxxxxxxxxx', 'indirizzo');
 INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) VALUES ('Leon', 'Pöschl', '1936-10-14', 'LeonPöschl36@gmx.at', '+430115771206', 'Hofstätterstraße 6, 8999 Schwanenstadt');
