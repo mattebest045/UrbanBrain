@@ -43,7 +43,7 @@
         // Script per impostare il valore del campo nascosto
         document.addEventListener("DOMContentLoaded", function () {
            // Ottieni l'URL corrente ed elimina il fragment 
-           // es: da http://localhost/UrbanBrain/#offcanvasExample 
+           // es: da http://localhost/UrbanBrain/?params=value#fragment 
            // a http://localhost/UrbanBrain/
             const currentUrl = window.location.href.split("#")[0].split("?")[0];
             
@@ -214,7 +214,7 @@
 
                                     <li><a class="dropdown-item" href="event-detail.html">Event Detail</a></li>
                                     
-                                    <li><a class="dropdown-item" href="dashboard.html">Sensor Data</a></li>
+                                    <li><a class="dropdown-item nav-sensor-data" href="dashboard.html" id="nav-sensor-data">Sensor Data</a></li>
                                 </ul>
                             </li>
                         </ul>
