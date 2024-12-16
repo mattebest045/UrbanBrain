@@ -1,3 +1,13 @@
+function extractCity(address) {
+    // Dividi l'indirizzo in base alle virgole
+    const parts = address.split(",");
+    if (parts.length > 1) {
+        // La città si trova tipicamente nel secondo segmento
+        return parts[1].trim();
+    }
+    return ""; // Ritorna una stringa vuota se l'indirizzo non è valido
+}
+
 // Funzione per controllare la sessione dell'utente
 function checkSession() {
     var url = "php/check_session.php"; // Percorso del file PHP
@@ -33,7 +43,39 @@ function checkSession() {
                 }    
             }
 
-            // Modifico h2 in section 2
+            // Modifico a tag in navbar
+            var sensorUrl = $(".nav-sensor-data");
+            if(sensorUrl.length !== 0){
+                if(data.status === "logged_in"){
+                    sensorUrl.attr("href", "dashboard.html");
+                }else{
+                    sensorUrl.attr("href", "index.html?errore="+encodeURIComponent('Per accedere alla pagina devi prima loggarti!'));
+                }
+            }
+
+            console.log('check ul:'+window.location.origin);
+            // Controllo se è registrato per entrare in dashboard.html
+            if (window.location.href.includes("UrbanBrain/dashboard.html") && data.status !== "logged_in") {
+                const baseUrl = window.location.origin; // Ottiene la base URL dinamicamente
+                location.replace(`${baseUrl}/UrbanBrain/index.html?errore=${encodeURIComponent('Per accedere alla pagina devi prima loggarti!')}`);
+            }else{
+                // modifico il valore della Città in dashboard.html
+                var city = document.getElementById('selectWhichCity');
+                console.log(city);
+                console.log('Indirizzo: '+data.user_Indirizzo);
+                console.log('Citta: '+extractCity(data.user_Indirizzo));
+                if(city.length !== 0){
+                    if(data.user_Indirizzo.length !== 0){
+                        
+                        city.innerHTML = extractCity(data.user_Indirizzo);
+                    }else{
+                        city.innerHTML = "Roma";
+                    }
+                }
+            }
+
+
+            // Modifico h2 in section 2 zona area_utente
             var welcomeName = $(".welcome_name");
             if(welcomeName !== 0){
                 welcomeName.text(data['user_Nome'] + ' ' + data['user_Cognome']);

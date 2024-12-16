@@ -432,9 +432,9 @@ def utente(n): # IDUtente, Nome, Cognome, DataNascita, Email, Telefono, Indirizz
         query =(
                 f"ALTER TABLE UTENTE AUTO_INCREMENT = 0;\n"
                 f"INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
-                f"VALUES ('Matteo', 'Bestetti', '2003-08-12', 'matteo.bestetti@studenti.unipr.it', '+39xxxxxxxxxx', 'indirizzo');\n"
+                f"VALUES ('Matteo', 'Bestetti', '2003-08-12', 'matteo.bestetti@studenti.unipr.it', '+39xxxxxxxxxx', 'Via delle Vigne 38, Milano');\n"
                 f"INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
-                f"VALUES ('Alessandro', 'Bertani', '2002-08-28', 'alessandro.bertani@studenti.unipr.it', '+39zxxxxxxxxx', 'indirizzo');"
+                f"VALUES ('Alessandro', 'Bertani', '2002-08-28', 'alessandro.bertani@studenti.unipr.it', '+39zxxxxxxxxx', 'Viale dei mille 1/A, Reggio Emilia');"
         )
         file.write(query + "\n")
     for i in range(n):
