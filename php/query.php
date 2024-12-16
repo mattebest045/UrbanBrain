@@ -1,12 +1,15 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['whichCity'])) { 
-    echo json_encode(getCharts($_POST['whichCity']));
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['city'])) { 
+    echo json_encode(getCharts($_POST['city']));
+    exit;
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cities'])) { 
+    echo json_encode(getCities());
     exit;
 }
 
 function getCharts($city) {
     include("connessione_db.php");
-
     try {
         // Query per ricavare tutte le città disponibili all'interno del nostro db
         $sql = "SELECT 
@@ -24,7 +27,6 @@ function getCharts($city) {
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':city', $city, PDO::PARAM_STR);
         $stmt->execute();
-
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Controlla se ci sono risultati
@@ -36,7 +38,31 @@ function getCharts($city) {
     } catch(PDOException $e) {
         die("ERROR: Could not able to execute $sql. " . $e->getMessage());
     }
+    unset($pdo);
+}
 
+function getCities() {
+    include("connessione_db.php");
+    try {
+        // Query per ricavare tutte le città disponibili all'interno del nostro db
+        $sql = "SELECT citta.Nome 
+                FROM citta 
+                GROUP by citta.Nome 
+                ORDER BY citta.Nome;
+                ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Controlla se ci sono risultati
+        if ($results) {
+            return $results;
+        } else {
+            return "Nessuna città trovata.";
+        }
+    } catch(PDOException $e) {
+        die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    }
     unset($pdo);
 }
 ?>

@@ -1,6 +1,16 @@
 <?php
+$os = PHP_OS; 
 $username = "root";
-$password = ""; // berta: '', best: 'root'
+
+if (strtoupper(substr($os, 0, 3)) === 'WIN') { 
+	$password = ""; // password BERTA
+} elseif (strtoupper($os) === 'DARWIN') { 
+	$password = "root"; // password BEST 
+} else { 
+	$password = ""; // password SCONOSCIUTO
+	// echo "Lo script viene eseguito su un altro sistema operativo: $os"; 
+}
+
 $host = "localhost";
 $database = "urbanbrain";
 

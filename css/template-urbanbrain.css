@@ -1458,6 +1458,33 @@ canvas {
 }
 
 
+/*---------------------------------------
+  SELECT BOX DASHBOARD               
+-----------------------------------------*/
+.city-dropdown {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid #ccc; */
+  border: none;
+  background-color: var(--custom-btn-bg-hover-color);
+  font-weight: var(--font-weight-bold);
+  position: absolute;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
 
+.city-dropdown li {
+  padding: 8px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--white-color) !important;
+  font-weight: var(--font-weight-bold) !important;
+}
 
-
+.city-dropdown li:hover {
+  background-color: var(--custom-btn-bg-color);
+  color: var(--custom-btn-bg-hover-color) !important;
+  font-weight: var(--font-weight-bold) !important;
+}
