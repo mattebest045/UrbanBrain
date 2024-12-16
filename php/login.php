@@ -95,7 +95,8 @@ function verificaPassword($id, $psw, $permesso) {
                         NULL AS OpEmail,
                         NULL AS OpTipo, 
                         NULL AS OpRuolo,
-                        NULL AS AdRuolo
+                        NULL AS AdRuolo, 
+                        cittadino.Stato AS Stato
                     FROM utente
                     JOIN cittadino ON utente.IDUtente = cittadino.IDCittadino
                     WHERE cittadino.IDCittadino = :id
@@ -108,7 +109,8 @@ function verificaPassword($id, $psw, $permesso) {
                         operatore.Email AS OpEmail,
                         operatore.Tipo AS OpTipo, 
                         operatore.Ruolo AS OpRuolo,
-                        NULL AS AdRuolo
+                        NULL AS AdRuolo,
+                        operatore.Stato AS Stato
                     FROM operatore
                     JOIN utente ON utente.IDUtente = operatore.IDOperatore
                     WHERE operatore.IDOperatore = :id
@@ -121,7 +123,8 @@ function verificaPassword($id, $psw, $permesso) {
 						NULL AS OpEmail,
                         NULL AS OpTipo, 
                         NULL AS OpRuolo,
-                        superadmin.Ruolo AS AdRuolo
+                        superadmin.Ruolo AS AdRuolo,
+                        superadmin.Stato AS Stato
                     FROM superadmin
                     JOIN utente ON utente.IDUtente = superadmin.IDSuperAdmin
                     WHERE superadmin.IDSuperAdmin = :id;";
@@ -243,7 +246,6 @@ try {
 
     // Close connection
     unset($pdo);
-    die("output: ".$output);
     header('location: '.$location.'?'.$output);
 
 }catch(PDOException $e){
