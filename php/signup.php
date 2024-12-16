@@ -195,19 +195,20 @@ $indirizzo = $_POST['member-signup-address'] ?? $_GET['member-signup-address'];
 $permission = $_POST['member-signup-permission'] ?? $_GET['member-signup-permission']; // Ricavo il valore del permesso (cittadino/operatore/admin)
 
 // campi ulteriori cittadino
-$citizenPsw = $_POST['member-signup-pasword-cit'] ?? '';
+$citizenPsw = $_POST['citizen-signup-pasword-cit'] ?? '';
 // campi ulteriori operatore
-$operatorType = $_POST['member-signup-type-op'] ?? '';
+$operatorType = $_POST['operator-signup-type-op'] ?? '';
 $operatorRole = $_POST['op-role'] ?? '';
-$operatorEmail = $_POST['member-signup-email-op'] ?? '';
-$operatorDateStart = $_POST['member-signup-date-start-op'] ?? '';
-$operatorDateEnd = $_POST['member-signup-date-end-op'] ?? '';
-$operatorPsw = $_POST['member-signup-password-op'] ?? '';
+$operatorEmail = $_POST['operator-signup-email-op'] ?? '';
+$operatorDateStart = $_POST['operator-signup-date-start-op'] ?? '';
+$operatorDateEnd = $_POST['operator-signup-date-end-op'] ?? '';
+$operatorPsw = $_POST['operator-signup-password-op'] ?? '';
 // campi ulteriori admin
-$adminRole = $_POST['member-signup-role-adm'] ?? '';
-$adminPsw = $_POST['member-signup-psw-adm'] ?? '';
+$adminRole = $_POST['admin-signup-role-adm'] ?? '';
+$adminPsw = $_POST['admin-signup-psw-adm'] ?? '';
 
-
+var_dump($_POST);
+die();
 // echo "<br>Nome: ".$nome."<br>Cognome: ".$cognome . 
 // "<br>Data Nascita: ".$dataNascita."<br>email: ".$email.
 // "<br>Indirizzo: ".$indirizzo."<br>Permission: ".$permission.

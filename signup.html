@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>UrbanBrain</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/template-urbanbrain.css" rel="stylesheet">
+
+        <!-- Icona predefinita -->
+        <link id="theme-icon" rel="icon" href="images/logo_scuro.png" type="image/gif" sizes="16x16">
+
+        <script>
+        // GESTIONE ICONA TITOLO PAGINA ------------------------------------------------------------
+        function updateFavicon() {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const iconLink = document.getElementById('theme-icon');
+            
+            if (isDarkMode) {
+            iconLink.href = 'images/logo_chiaro.png'; // Icona chiara per dark mode
+            } else {
+            iconLink.href = 'images/logo_scuro.png'; // Icona scura per light mode
+            }
+        }
+        updateFavicon();
+        // Rileva cambiamenti nella modalità tema e aggiorna l'icona
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+
+        // RACCOLTO NOME, COGNOME, PERMESSO --------------------------------------------------------
+        
+        function getQueryParamsAndAdjustFields() {
+            // Ricava la query string dall'URL
+            const queryParams = new URLSearchParams(window.location.search);
+
+            // Ricava i parametri dalla query string
+            const nome = queryParams.get("member-signup-name") ?? '';
+            const cognome = queryParams.get("member-signup-surname") ?? '';
+            const permesso = queryParams.get("member-signup-permission") ?? '';
+
+            // Inserisce i valori ricavati nei campi base
+            document.querySelector('[name="member-signup-name"]').value = nome;
+            document.querySelector('[name="member-signup-surname"]').value = cognome;
+            document.getElementById('h2-permesso').innerHTML = "Sign Up - " + permesso.toUpperCase();
+            // Gruppi di campi per ogni tipo di permesso
+            const citizenFields = [
+                "citizen-signup-password"
+            ];
+            const operatorFields = [
+                "operator-signup-email",
+                "operator-signup-job",
+                "operator-signup-task",
+                "operator-signup-job-first",
+                "operator-signup-job-last",
+                "operator-signup-password"
+            ];
+            const adminFields = [
+                "admin-signup-task",
+                "admin-signup-job-first",
+                "admin-signup-password"
+            ];
+
+            // Funzione per nascondere campi
+            function hideFields(fields) {
+                fields.forEach(field => {
+                    const divId = `div-${field}`;
+                    const element = document.getElementById(divId);
+                    if (element) {
+                        element.style.display = "none";
+                    }
+                });
+            }
+
+            // Funzione per mostrare campi
+            function showFields(fields) {
+                fields.forEach(field => {
+                    const divId = `div-${field}`;
+                    const element = document.getElementById(divId);
+                    if (element) {
+                        element.style.display = ""; // Ripristina il display di default
+                    }
+                });
+            }
+
+            // Nascondi tutti i campi
+            hideFields(citizenFields, "citizen");
+            hideFields(operatorFields, "operator");
+            hideFields(adminFields, "admin");
+
+            // Mostra i campi in base al permesso selezionato
+            if (permesso === "citizen") {
+                showFields(citizenFields, "citizen");
+            } else if (permesso === "operator") {
+                showFields(operatorFields, "operator");
+            } else if (permesso === "admin") {
+                showFields(adminFields, "admin");
+            }
+        }
+
+        // Chiama la funzione al caricamento della pagina
+        document.addEventListener("DOMContentLoaded", getQueryParamsAndAdjustFields);
+
+        
+        //------------------------------------------------------------------------------------------
+        </script>
+    </head>
+    
+    <body style="background-color: #3D405B;">
+        <main>
+
+            <!-- Menu opzioni Navbar in alto -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html" style="max-width: none !important;">
+                        <img src="images/logo_scuro.png" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
+                        <span class="navbar-brand-text">
+                            UrbanBrain
+                            <small>manage your city</small>
+                        </span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Login os Signup utente -->
+            
+            
+            <!-- Pagina inziale di presentazione -->
+            <section class="hero-section signup-hero-section d-flex justify-content-center align-items-center" id="section_1">
+
+                <div class="container">
+                    <div class="row pl-30-perc pr-30-perc">
+                        <h2 class="text-white" id="h2-permesso"></h2>
+                        <div class="signup-box-php">
+                            <div class="offcanvas-body d-flex flex-column">
+                                <form class="custom-form member-login-form" action="php/signup.php" method="post" role="form">
+
+                                    <div class="member-login-form-body">
+                                        <!-- Campi comuni a tutti -->
+                                        <div id="div-member-signup-name" class="mb-4">
+                                            <label class="form-label mb-2" for="member-signup-name">Name</label>
+                                            <input type="text" name="member-signup-name" id="member-signup-name" class="form-control" placeholder="Name" required="">
+                                        </div>
+
+                                        <div id="div-member-signup-surname" class="mb-4">
+                                            <label class="form-label mb-2" for="member-signup-surname">Surname</label>
+                                            <input type="text" name="member-signup-surname" id="member-signup-surname" class="form-control" placeholder="Surname" required="">
+                                        </div>
+
+                                        <div id="div-member-signup-birthday" class="mb-4">
+                                            <label class="form-label mb-2" for="member-signup-birthday">Birthday</label>
+                                            <input type="date" name="member-signup-birthday" id="member-signup-birthday" class="form-control" required="">
+                                        </div>
+
+                                        <div id="div-member-signup-email" class="mb-4">
+                                            <label class="form-label mb-2" for="member-signup-email">Personal email</label>
+                                            <input type="email" name="member-signup-email" id="member-signup-email" class="form-control" placeholder="Personal email" required="">
+                                        </div>
+
+                                        <div id="div-member-signup-phone" class="mb-4">
+                                            <label class="form-label mb-2" for="member-signup-phone">Phone</label>
+                                            <input type="tel" name="member-signup-phone" id="member-signup-phone" class="form-control" placeholder="Phone number" required="">
+                                        </div>
+
+                                        <div id="div-member-signup-address" class="mb-4">
+                                            <label class="form-label mb-2" for="member-signup-address">Address</label>
+                                            <input type="text" name="member-signup-address" id="member-signup-address" class="form-control" placeholder="Full address" required="">
+                                        </div>
+
+                                        <!-- cittadino -->
+                                        <div id="div-citizen-signup-password" class="mb-4">
+                                            <label class="form-label mb-2" for="citizen-signup-password">Password</label>
+                                            <input type="email" name="citizen-signup-password" id="citizen-signup-password" class="form-control" placeholder="Password" required="">
+                                        </div>
+
+                                        <!-- operatore -->
+                                        <div id="div-operator-signup-email" class="mb-4">
+                                            <label class="form-label mb-2" for="operator-signup-email">Work email</label>
+                                            <input type="email" name="operator-signup-email" id="operator-signup-email" class="form-control" placeholder="Work email" required="">
+                                        </div>
+
+                                        <div id="div-operator-signup-job" class="mb-4">
+                                            <label class="form-label mb-2" for="operator-signup-job">Job area</label>
+                                            <input type="text" name="operator-signup-job" id="operator-signup-job" class="form-control" placeholder="Job" required="">
+                                        </div>
+
+                                        <div id="div-operator-signup-task" class="mb-4">
+                                            <label class="form-label mb-2" for="operator-signup-task">Task</label>
+                                            <input type="text" name="operator-signup-task" id="operator-signup-task" class="form-control" placeholder="Task" required="">
+                                        </div>
+
+                                        <div id="div-operator-signup-job-first" class="mb-4">
+                                            <label class="form-label mb-2" for="operator-signup-job-first">From...</label>
+                                            <input type="date" name="operator-signup-job-first" id="operator-signup-job-first" class="form-control" required="" placeholder="Select your first day job">
+                                        </div>
+
+                                        <div id="div-operator-signup-job-last" class="mb-4">
+                                            <label class="form-label mb-2" for="operator-signup-job-last">To...</label>
+                                            <input type="date" name="operator-signup-job-last" id="operator-signup-job-last" class="form-control" required="" placeholder="Select your last day job">
+                                        </div>
+
+                                        <div id="div-operator-signup-password" class="mb-4">
+                                            <label class="form-label mb-2" for="operator-signup-password">Password</label>
+                                            <input type="email" name="operator-signup-password" id="operator-signup-password" class="form-control" placeholder="Password" required="">
+                                        </div>
+
+                                        <!-- admin -->
+                                        <div id="div-admin-signup-task" class="mb-4">
+                                            <label class="form-label mb-2" for="admin-signup-task">Task</label>
+                                            <input type="text" name="admin-signup-task" id="admin-signup-task" class="form-control" placeholder="Task" required="">
+                                        </div>
+
+                                        <div id="div-admin-signup-job-first" class="mb-4">
+                                            <label class="form-label mb-2" for="admin-signup-job-first">From...</label>
+                                            <input type="date" name="admin-signup-job-first" id="admin-signup-job-first" class="form-control" required="" placeholder="Select your first day job">
+                                        </div>
+
+                                        <div id="div-admin-signup-password" class="mb-4">
+                                            <label class="form-label mb-2" for="admin-signup-password">Password</label>
+                                            <input type="email" name="admin-signup-password" id="admin-signup-password" class="form-control" placeholder="Password" required="">
+                                        </div>
+
+                                        <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                            <button type="submit" class="form-control">Sign Up</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Paragrafo di presentazioni team -->
+            
+
+            <!-- Paragrafo newsletter -->
+            
+
+            <!-- Paragrafo gestione nuovi utenti -->
+
+
+            <!-- Paragrafo elenco eventi -->
+            
+
+            <!-- Paragrafo domande -->
+            
+        </main>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/animated-headline.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>

@@ -22,10 +22,14 @@ function checkSession() {
                     // Utente loggato
                     loginButton.text("Area Utente");
                     loginButton.attr("href", "area_utente.html");
+                    loginButton.attr("data-bs-toggle", "");
+                    loginButton.attr("aria-controls", "");
                 } else {
                     // Utente non loggato
                     loginButton.text("Login or Signup");
                     loginButton.attr("href", "#offcanvasExample");
+                    loginButton.attr("data-bs-toggle", "offcanvas");
+                    loginButton.attr("aria-controls", "offcanvasExample");
                 }    
             }
 

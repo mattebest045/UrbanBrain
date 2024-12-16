@@ -139,6 +139,15 @@ function verificaPassword($id, $psw, $permesso) {
                     $_SESSION['user_' . $campo] = $valore;
                 }
                 var_dump($_SESSION);
+                if(($_SESSION['user_Stato'] == '2') || ($_SESSION['user_Stato'] == '3')){
+                    $output = 'errore=';
+                    $output .= ($_SESSION['user_Stato'] == '2') ? urlencode("ERRORE: Il tuo account risulta sospeso.") : urlencode("ERRORE: Il tuo account risulta eliminato.");
+                    // Elimino la sessione
+                    session_unset();
+                    session_destroy();
+                    header('location: '.$location.'?'.$output);
+                    exit();
+                }
                 
             } catch (Exception $e) {
                 echo "Errore: " . $e->getMessage();
