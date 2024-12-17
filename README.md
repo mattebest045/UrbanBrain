@@ -5,7 +5,7 @@ Anno 2024
 
 ## **Smart City Management System**
 
-Il progetto si propone di sviluppare un servizio web innovativo per la gestione di una o più **smart city**, unendo tecnologia e sostenibilità per trasformare il modo in cui le città moderne operano e interagiscono con i cittadini. Il sistema offrirà funzionalità avanzate per monitorare e controllare diversi aspetti urbani, tra cui il traffico, la qualità dell'aria, l'illuminazione pubblica, il consumo energetico, la gestione dei rifiuti, e molto altro.
+Il progetto si propone di sviluppare un servizio web innovativo per la gestione di una o più **smart city**, unendo tecnologia e sostenibilità per trasformare il modo in cui le città moderne operano e interagiscono con i cittadini. Il sistema offrirà funzionalità avanzate per monitorare e controllare diversi aspetti urbani, tra cui la qualità dell'aria, l'illuminazione pubblica, il consumo energetico, la gestione dei rifiuti, e molto altro.
 
 Grazie all'integrazione di sensori IoT, dati in tempo reale e una solida infrastruttura basata su database relazionali, il servizio sarà in grado di analizzare e ottimizzare le operazioni urbane, riducendo gli sprechi e migliorando l'efficienza complessiva. L'obiettivo principale è quello di garantire un ambiente più sicuro, sostenibile ed efficiente per tutti gli abitanti, aumentando al contempo la trasparenza e l'accessibilità dei servizi pubblici.
 
@@ -24,7 +24,7 @@ In definitiva, questo progetto rappresenta un passo avanti verso la creazione di
 
 -   **Gestore**: MySQL
 -   **Modello**: Relazionale
--   **Struttura**: Basato su una serie di tabelle per il monitoraggio delle citò presenti nel database
+-   **Struttura**: Basato su una serie di tabelle per il monitoraggio delle città presenti nel database
 
 ### **Librerie e Framework**
 
@@ -41,7 +41,7 @@ In definitiva, questo progetto rappresenta un passo avanti verso la creazione di
 
 ## 📊 **Struttura del Database**
 
-### **Schema Concettuale o Schema E/R**
+### **Schema Concettuale**
 
 ![Schema E/R](https://mattebest045.github.io/UrbanBrain/desing_db/schema_scheletro.drawio.png)
 
@@ -64,7 +64,7 @@ In definitiva, questo progetto rappresenta un passo avanti verso la creazione di
 -   **Segnalazione**(**`IDSegnalazione`**, **`idCitta`**, **`idFeedback`**, **`idCittadino`**, `Data`, `Descrizione`, `Foto`)
 -   **Log**(**`IDLog`**, **`idUtente`**, **`Data`**, `Descrizione`)
 
-**Glossario**
+### **Glossario**
 Il campo **evidenziato** indica una chiava primaria.
 Il campo in *corsivo* indica un campo univoco.
 Per convenzione indichiamo come primary key un campo che inizia con "ID", mentre come foreign key un campo che inizia con "id", ad esempio: `IDSensore` (primary key) e `idSensore` (foreign key).

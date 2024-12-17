@@ -53,7 +53,6 @@ function checkSession() {
                 }
             }
 
-            console.log('check ul:'+window.location.origin);
             // Controllo se è registrato per entrare in dashboard.html
             if (window.location.href.includes("UrbanBrain/dashboard.html") && data.status !== "logged_in") {
                 const baseUrl = window.location.origin; // Ottiene la base URL dinamicamente
@@ -72,6 +71,12 @@ function checkSession() {
                         city.innerHTML = "Roma";
                     }
                 }
+            }
+
+            // Controllo se può accedere in area_utente
+            if (window.location.href.includes("UrbanBrain/area_utente.html") && data.status !== "logged_in") {
+                const baseUrl = window.location.origin; // Ottiene la base URL dinamicamente
+                location.replace(`${baseUrl}/UrbanBrain/index.html?errore=${encodeURIComponent('Per accedere alla pagina devi prima loggarti!')}`);
             }
 
 

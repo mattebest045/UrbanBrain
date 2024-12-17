@@ -59,9 +59,9 @@ function verificaPassword($id, $psw, $permesso) {
     try{
         // Costruzione della query
         $sql = "SELECT 1 AS STM
-                FROM $permesso 
+                FROM ".strtoupper($permesso)."
                 WHERE ID" . ucfirst($permesso) . " = :id 
-                  AND Password = :psw";
+                AND Password = :psw";
                   
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
@@ -88,46 +88,46 @@ function verificaPassword($id, $psw, $permesso) {
             // operatore -> Tipo, Ruolo, Email_operatore (potrei sovrascrivere il campo email)
             // superadmin -> Ruolo
             $sql = "SELECT 
-                        utente.Nome, 
-                        utente.Cognome, 
-                        utente.Indirizzo, 
-                        utente.Email AS Email, 
+                        UTENTE.Nome, 
+                        UTENTE.Cognome, 
+                        UTENTE.Indirizzo, 
+                        UTENTE.Email AS Email, 
                         NULL AS OpEmail,
                         NULL AS OpTipo, 
                         NULL AS OpRuolo,
                         NULL AS AdRuolo, 
-                        cittadino.Stato AS Stato
-                    FROM utente
-                    JOIN cittadino ON utente.IDUtente = cittadino.IDCittadino
-                    WHERE cittadino.IDCittadino = :id
+                        CITTADINO.Stato AS Stato
+                    FROM UTENTE
+                    JOIN CITTADINO ON UTENTE.IDUtente = CITTADINO.IDCittadino
+                    WHERE CITTADINO.IDCittadino = :id
                     UNION
                     SELECT 
-                        utente.Nome, 
-                        utente.Cognome, 
-                        utente.Indirizzo, 
+                        UTENTE.Nome, 
+                        UTENTE.Cognome, 
+                        UTENTE.Indirizzo, 
                         NULL AS Email,
-                        operatore.Email AS OpEmail,
-                        operatore.Tipo AS OpTipo, 
-                        operatore.Ruolo AS OpRuolo,
+                        OPERATORE.Email AS OpEmail,
+                        OPERATORE.Tipo AS OpTipo, 
+                        OPERATORE.Ruolo AS OpRuolo,
                         NULL AS AdRuolo,
-                        operatore.Stato AS Stato
-                    FROM operatore
-                    JOIN utente ON utente.IDUtente = operatore.IDOperatore
-                    WHERE operatore.IDOperatore = :id
+                        OPERATORE.Stato AS Stato
+                    FROM OPERATORE
+                    JOIN UTENTE ON UTENTE.IDUtente = OPERATORE.IDOperatore
+                    WHERE OPERATORE.IDOperatore = :id
                     UNION
                     SELECT 
-                        utente.Nome, 
-                        utente.Cognome, 
-                        utente.Indirizzo, 
-                        utente.Email AS Email, 
+                        UTENTE.Nome, 
+                        UTENTE.Cognome, 
+                        UTENTE.Indirizzo, 
+                        UTENTE.Email AS Email, 
 						NULL AS OpEmail,
                         NULL AS OpTipo, 
                         NULL AS OpRuolo,
-                        superadmin.Ruolo AS AdRuolo,
-                        superadmin.Stato AS Stato
-                    FROM superadmin
-                    JOIN utente ON utente.IDUtente = superadmin.IDSuperAdmin
-                    WHERE superadmin.IDSuperAdmin = :id;";
+                        SUPERADMIN.Ruolo AS AdRuolo,
+                        SUPERADMIN.Stato AS Stato
+                    FROM SUPERADMIN
+                    JOIN UTENTE ON UTENTE.IDUtente = SUPERADMIN.IDSuperAdmin
+                    WHERE SUPERADMIN.IDSuperAdmin = :id;";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([':id' => $id]);
             $queryResult = $stmt->fetchAll(PDO::FETCH_ASSOC); // Ottieni tutte le tuple
@@ -139,6 +139,7 @@ function verificaPassword($id, $psw, $permesso) {
                     $_SESSION['user_' . $campo] = $valore;
                 }
                 var_dump($_SESSION);
+                
                 if(($_SESSION['user_Stato'] == '2') || ($_SESSION['user_Stato'] == '3')){
                     $output = 'errore=';
                     $output .= ($_SESSION['user_Stato'] == '2') ? urlencode("ERRORE: Il tuo account risulta sospeso.") : urlencode("ERRORE: Il tuo account risulta eliminato.");
@@ -157,7 +158,7 @@ function verificaPassword($id, $psw, $permesso) {
             // Prima di reindirizzare alla pagina aggiungo nella tabella di log che l'utente si è loggato
             date_default_timezone_set("Europe/Rome"); // Imposta il fuso orario per l'Italia
             $dataAttuale = date("Y-m-d H:i:s", time()); // es output: 2024-12-14 15:20:34
-            $sql = "INSERT INTO `log`(`idUtente`, `Data`, `Descrizione`) 
+            $sql = "INSERT INTO `LOG`(`idUtente`, `Data`, `Descrizione`) 
                     VALUES (:id,:dataTempo,:descrizione)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
@@ -189,17 +190,17 @@ if(empty($_POST)){
 $location = $_POST['url'] ?? "index.php";
 $email = $_POST['member-login-number'] ?? '';
 $password = $_POST['member-login-password'] ?? ''; // Ricevo al psw già hashata
-echo "LOC: ".$location.", email: ".$email."<br>psw: ".$password."<br>md5(123): ".md5('1213');
+echo "LOC: ".$location.", email: ".$email."<br>psw: ".$password;
 
 // Inizio a controllare se esiste la mail all'interno del mio database
 try {
-    $sql = "SELECT 'utente' AS tipo, utente.IDUtente AS ID 
-            FROM utente 
-            WHERE utente.Email = :email                 
+    $sql = "SELECT 'utente' AS tipo, UTENTE.IDUtente AS ID 
+            FROM UTENTE 
+            WHERE UTENTE.Email = :email                 
             UNION                
-            SELECT 'operatore' AS tipo, operatore.IDOperatore AS ID 
-            FROM operatore 
-            WHERE operatore.Email = :email";
+            SELECT 'operatore' AS tipo, OPERATORE.IDOperatore AS ID 
+            FROM OPERATORE 
+            WHERE OPERATORE.Email = :email";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':email' => $email]);
@@ -215,11 +216,11 @@ try {
                 // Distinzione tra cittadino e superAdmin. 
                 // In questo modo scopro il permesso di chi si registra
                 $sql = "SELECT 'cittadino' AS ruolo
-                        FROM cittadino 
+                        FROM CITTADINO 
                         WHERE IDCittadino = :id 
                         UNION 
-                        SELECT 'superAdmin' AS ruolo 
-                        FROM superadmin 
+                        SELECT 'superadmin' AS ruolo 
+                        FROM SUPERADMIN 
                         WHERE IDSuperAdmin = :id;";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([':id' => $id]);

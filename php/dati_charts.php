@@ -34,60 +34,60 @@ try{
 	if (in_array($tipo_sensore, $sensori['valore_medio'])) {
 		// Codice per sensori con valore medio
 		$sql = "SELECT 
-					DATE(dato.Data) as Giorno,
-					AVG(dato.Valore) as ValoreMedio 
-				FROM dato 
-				JOIN sensore ON sensore.IDSensore = dato.idSensore 
-				JOIN citta ON citta.IDCitta = sensore.idCitta 
+					DATE(DATO.Data) as Giorno,
+					AVG(DATO.Valore) as ValoreMedio 
+				FROM DATO 
+				JOIN SENSORE ON SENSORE.IDSensore = DATO.idSensore 
+				JOIN CITTA ON CITTA.IDCitta = SENSORE.idCitta 
 				WHERE
-					citta.nome = '".$citta."' 
-					AND sensore.Tipo = '".$tipo_sensore."'
-					AND dato.Data >= DATE_SUB(CURDATE(), INTERVAL ".$interval.") 
+					CITTA.nome = '".$citta."' 
+					AND SENSORE.Tipo = '".$tipo_sensore."'
+					AND DATO.Data >= DATE_SUB(CURDATE(), INTERVAL ".$interval.") 
 				GROUP BY Giorno 
 				ORDER BY Giorno ASC;";
 	} elseif (in_array($tipo_sensore, $sensori['valore_max'])) {
 		// Codice per sensori con valore massimo
 		$sql = "SELECT 
-					DATE(dato.Data) as Giorno,  
-					MAX(dato.Valore) as ValoreMax 
-				FROM dato 
-				JOIN sensore ON sensore.IDSensore = dato.idSensore 
-				JOIN citta ON citta.IDCitta = sensore.idCitta 
+					DATE(DATO.Data) as Giorno,  
+					MAX(DATO.Valore) as ValoreMax 
+				FROM DATO 
+				JOIN SENSORE ON SENSORE.IDSensore = DATO.idSensore 
+				JOIN CITTA ON CITTA.IDCitta = SENSORE.idCitta 
 				WHERE 
-					citta.nome = '" . $citta . "' AND 
-					sensore.Tipo = '" . $tipo_sensore . "' AND 
-					dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
+					CITTA.nome = '" . $citta . "' AND 
+					SENSORE.Tipo = '" . $tipo_sensore . "' AND 
+					DATO.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
 				GROUP BY Giorno 
 				ORDER BY Giorno ASC;";
 	} elseif (in_array($tipo_sensore, $sensori['valore_min_max'])) {
 		// Codice per sensori con minimo e massimo
 		$sql = "SELECT 
-					DATE(dato.Data) as Giorno,  
-					MIN(dato.Valore) as ValoreMin, 
-					MAX(dato.Valore) as ValoreMax 
-				FROM dato 
-				JOIN sensore ON sensore.IDSensore = dato.idSensore 
-				JOIN citta ON citta.IDCitta = sensore.idCitta 
+					DATE(DATO.Data) as Giorno,  
+					MIN(DATO.Valore) as ValoreMin, 
+					MAX(DATO.Valore) as ValoreMax 
+				FROM DATO 
+				JOIN SENSORE ON SENSORE.IDSensore = DATO.idSensore 
+				JOIN CITTA ON CITTA.IDCitta = SENSORE.idCitta 
 				WHERE 
-					citta.nome = '" . $citta . "' AND 
-					sensore.Tipo = '" . $tipo_sensore . "' AND 
-					dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
+					CITTA.nome = '" . $citta . "' AND 
+					SENSORE.Tipo = '" . $tipo_sensore . "' AND 
+					DATO.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
 				GROUP BY Giorno 
 				ORDER BY Giorno ASC;";
 	} elseif (in_array($tipo_sensore, $sensori['valore_min_medio_max'])) {
 		// Codice per sensori con minimo, medio e massimo
 		$sql = "SELECT 
-					DATE(dato.Data) as Giorno, 
-					AVG(dato.Valore) as ValoreMedio, 
-					MIN(dato.Valore) as ValoreMin, 
-					MAX(dato.Valore) as ValoreMax 
-				FROM dato 
-				JOIN sensore ON sensore.IDSensore = dato.idSensore 
-				JOIN citta ON citta.IDCitta = sensore.idCitta 
+					DATE(DATO.Data) as Giorno, 
+					AVG(DATO.Valore) as ValoreMedio, 
+					MIN(DATO.Valore) as ValoreMin, 
+					MAX(DATO.Valore) as ValoreMax 
+				FROM DATO 
+				JOIN SENSORE ON SENSORE.IDSensore = DATO.idSensore 
+				JOIN CITTA ON CITTA.IDCitta = SENSORE.idCitta 
 				WHERE 
-					citta.nome = '" . $citta . "' AND 
-					sensore.Tipo = '" . $tipo_sensore . "' AND 
-					dato.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
+					CITTA.nome = '" . $citta . "' AND 
+					SENSORE.Tipo = '" . $tipo_sensore . "' AND 
+					DATO.Data >= DATE_SUB(CURDATE(), INTERVAL " . $interval . ") 
 				GROUP BY Giorno 
 				ORDER BY Giorno ASC;";
 	} else {

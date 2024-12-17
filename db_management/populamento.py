@@ -431,9 +431,9 @@ def utente(n): # IDUtente, Nome, Cognome, DataNascita, Email, Telefono, Indirizz
     with open("db_management/populamento/utente.sql", "w", encoding="utf-8") as file:
         query =(
                 f"ALTER TABLE UTENTE AUTO_INCREMENT = 0;\n"
-                f"INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
+                f"INSERT INTO UTENTE (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
                 f"VALUES ('Matteo', 'Bestetti', '2003-08-12', 'matteo.bestetti@studenti.unipr.it', '+39xxxxxxxxxx', 'Via delle Vigne 38, Milano');\n"
-                f"INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
+                f"INSERT INTO UTENTE (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
                 f"VALUES ('Alessandro', 'Bertani', '2002-08-28', 'alessandro.bertani@studenti.unipr.it', '+39zxxxxxxxxx', 'Viale dei mille 1/A, Reggio Emilia');"
         )
         file.write(query + "\n")
@@ -469,7 +469,7 @@ def utente(n): # IDUtente, Nome, Cognome, DataNascita, Email, Telefono, Indirizz
         # Apre il file in modalità append e aggiunge la query
         with open("db_management/populamento/utente.sql", "a", encoding="utf-8") as file:
             query =(
-                 f"INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
+                 f"INSERT INTO UTENTE (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo) "
                  f"VALUES ('{nome}', '{cognome}', '{data_nascita}', '{email}', '{telefono}', '{indirizzo}');"
             )
             file.write(query + "\n")
@@ -491,7 +491,7 @@ def cittadino(n): # IDCittadino, Stato, DataRegistrazione, Password
         # Apre il file in modalità append e aggiunge la query
         with open("db_management/populamento/cittadino.sql", "a", encoding="utf-8") as file:
             query = (
-                f"INSERT INTO cittadino (IDCittadino, Stato, DataRegistrazione, Password) "
+                f"INSERT INTO CITTADINO (IDCittadino, Stato, DataRegistrazione, Password) "
                 f"VALUES ('{IDCittadino}', '{Stato}', '{DataRegistrazione}', '{Password}');"
             )
             file.write(query + "\n")
@@ -521,7 +521,7 @@ def operatore(n): # IDOperatore, DataInizio, DataFine, Email, Tipo, Ruolo, Stato
             salva_operatore_eventi.append(IDOperatore)
         with open("db_management/populamento/operatore.sql", "a", encoding="utf-8") as file:
             query = (
-                f"INSERT INTO operatore (IDOperatore, DataInizio, DataFine, Email, Tipo, Ruolo, Stato, Password) "
+                f"INSERT INTO OPERATORE (IDOperatore, DataInizio, DataFine, Email, Tipo, Ruolo, Stato, Password) "
                 f"VALUES ('{IDOperatore}', '{DataInizio}', '{DataFine}', '{Email}', '{Tipo}', '{Ruolo}', '{Stato}', '{Password}');"
             )
             file.write(query + "\n")
@@ -533,9 +533,9 @@ def superadmin(): # IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAcc
     # print(f'{IDSuperAdmin[i]}, {Ruolo[i]}, {DataAssegnazioneRuolo[i]}, {Stato[i]}, {UltimoAccesso[i]}, {Password[i]}')
     with open("db_management/populamento/superadmin.sql", "w", encoding="utf-8") as file:
         query = (
-            f"INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) "
+            f"INSERT INTO SUPERADMIN (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) "
             f"VALUES ('1', 'System Administrator', '2024-11-02', '0', '2024-11-13 11:25:30', '{Password_1}');\n"
-            f"INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) "
+            f"INSERT INTO SUPERADMIN (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) "
             f"VALUES ('2', 'Cybersecurity Analyst', '2024-11-13', '0', '2024-11-13 11:25:31', '{Password_2}');"
         )
         file.write(query + "\n")
@@ -545,13 +545,13 @@ def superadmin(): # IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAcc
 def citta(): # IDCitta, Nome, Regione
     with open("db_management/populamento/citta.sql", "a", encoding="utf-8") as file:
         query = (
-            f"INSERT INTO citta (IDCitta, Nome, Regione) VALUES (-1, 'Online', 'N/A');"
+            f"INSERT INTO CITTA (IDCitta, Nome, Regione) VALUES (-1, 'Online', 'N/A');"
         )
         file.write(query + "\n")
         for i in range(len(citta_e_regioni)):
             Nome, Regione = citta_e_regioni[i]
             query = (
-                f"INSERT INTO citta (Nome, Regione) "
+                f"INSERT INTO CITTA (Nome, Regione) "
                 f"VALUES ('{Nome}', '{Regione}');"
             )
             file.write(query + "\n")
@@ -562,7 +562,7 @@ def risorsapubblica(): # IDRisorsaPubblica, Nome, Tipo
     with open("db_management/populamento/risorsaPubblica.sql", "w", encoding="utf-8") as file:
         for tipo, nomi in risorse_pubbliche.items():
             for nome in nomi:
-                query = f"INSERT INTO risorsapubblica (Nome, Tipo) VALUES ('{nome.replace("'", "`")}', '{tipo.replace("'", "`")}');"
+                query = f"INSERT INTO RISORSAPUBBLICA (Nome, Tipo) VALUES ('{nome.replace("'", "`")}', '{tipo.replace("'", "`")}');"
                 file.write(query + "\n")
     
     print(f"Inseriti i record nella tabella RISORSAPUBBLICA.")
@@ -588,7 +588,7 @@ def spesapubblica(n): # idRisorsaPubblica, idCitta, idOperatore, Data, Costo, St
             Stato = random.randrange(4)  # Valore di stato da 0 a 3
 
             query = (
-                f"INSERT INTO spesapubblica (IDRisorsaPubblica, IDCitta, IDOperatore, Data, Costo, Stato) "
+                f"INSERT INTO SPESAPUBBLICA (IDRisorsaPubblica, IDCitta, IDOperatore, Data, Costo, Stato) "
                 f"VALUES ('{idRisorsaPubblica}', '{idCitta}', '{idOperatore}', '{Data}', '{Costo}', '{Stato}');"
             )
             file.write(query + "\n")
@@ -621,7 +621,7 @@ def sensore():  # IDSensore, idCitta, Posizione, Tipo, DataInstallazione, Stato
                 salva_dati.append([IDSensore, Tipo])  
                 # print(f'Iterazione {idCitta},{i}: {salva_dati}')
                 query = (
-                    f"INSERT INTO sensore (IDSensore, idCitta, Latitudine, Longitudine, Tipo, DataInstallazione, Stato) "
+                    f"INSERT INTO SENSORE (IDSensore, idCitta, Latitudine, Longitudine, Tipo, DataInstallazione, Stato) "
                     f"VALUES ('{IDSensore}', '{idCitta}', '{latitudine}', '{longitudine}', '{Tipo}', '{DataInstallazione}', '{Stato}');"
                 )
                 file.write(query + "\n")
@@ -654,7 +654,7 @@ def dato():  # idSensore, Data, Valore
 
                 # Scrivi la query nel file
                 query = (
-                    f"INSERT INTO dato (idSensore, Data, Valore) "
+                    f"INSERT INTO DATO (idSensore, Data, Valore) "
                     f"VALUES ('{idSensore}', '{Data}', '{Valore}');"
                 )
                 file.write(query + "\n")
@@ -685,7 +685,7 @@ def evento(n): # IDEvento, Nome, Luogo, NPosti, Descrizione, Data, Stato
             salva_eventi.append([IDEvento, Luogo])
 
             query = (
-                f"INSERT INTO evento (Nome, Luogo, NPosti, Descrizione, `Data`, Stato) "
+                f"INSERT INTO EVENTO (Nome, Luogo, NPosti, Descrizione, `Data`, Stato) "
                 f"VALUES ('{Nome}', '{Luogo}', '{NPosti}', '{Descrizione}', '{Data}', '{Stato}');"
             )
             file.write(query + "\n")
@@ -710,7 +710,7 @@ def creazione(): # idCitta, idEvento, idOperatore, Data, Segnalazione
                         idCitta = (j + 1)
                         break
             query = (
-                f"INSERT INTO creazione (idCitta, idEvento, idOperatore, `Data`, Segnalazione) "
+                f"INSERT INTO CREAZIONE (idCitta, idEvento, idOperatore, `Data`, Segnalazione) "
                 f"VALUES ('{idCitta}', '{idEvento}', '{idOperatore}', '{Data}', '{Segnalazione}');"
             )
             file.write(query + "\n")
@@ -733,7 +733,7 @@ def partecipazione(): # idCitta, idEvento, idCittadino, Data, Segnalazione
                         idCitta = (j + 1)
                         break
             query = (
-                f"INSERT INTO partecipazione (idCitta, idEvento, idCittadino, Data, Segnalazione) "
+                f"INSERT INTO PARTECIPAZIONE (idCitta, idEvento, idCittadino, Data, Segnalazione) "
                 f"VALUES ('{idCitta}', '{idEvento}', '{idCittadino}', '{Data}', '{Segnalazione}');"
             )
             file.write(query + "\n")
@@ -744,7 +744,7 @@ def feedback(): # IDFeedback, Tipo
     with open("db_management/populamento/feedback.sql", "w", encoding="utf-8") as file:
         for tipo in tipi_feedback:
             query = (
-                f"INSERT INTO feedback (Tipo) "
+                f"INSERT INTO FEEDBACK (Tipo) "
                 f"VALUES ('{tipo}');"
             )
             file.write(query + "\n")
@@ -761,7 +761,7 @@ def segnalazione(): # IDSegnalazione, idCitta, idFeedback, idCittadino, Data, De
             Descrizione = Faker('it_IT').text(max_nb_chars=256)
             Foto = Faker('it_IT').file_name(extension="jpg") if random.random() < 0.8 else ""
             query = (
-                f"INSERT INTO segnalazione (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) "
+                f"INSERT INTO SEGNALAZIONE (idCitta, idFeedback, idCittadino, `Data`, Descrizione, Foto) "
                 f"VALUES ('{idCitta}', '{idFeedback}', '{idCittadino}', '{Data}', '{Descrizione}', '{Foto}');"
             )
             file.write(query + "\n")
@@ -773,10 +773,10 @@ def log(n): # IDLog, idUtente, Data, Descrizione
     with open("db_management/populamento/log.sql", "w", encoding="utf-8") as file:
         for _ in range(n):
             idUtente = random.randrange(1, 222)
-            fake.date_time_between(start_date='-1m', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
+            Data = fake.date_time_between(start_date='-1m', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
             Descrizione = random.choice(descrizione_log).replace("'", "`")
             query = (
-                    f"INSERT INTO log (idUtente, `Data`, Descrizione) "
+                    f"INSERT INTO LOG (idUtente, `Data`, Descrizione) "
                     f"VALUES ('{idUtente}', '{Data}', '{Descrizione}');"
                 )
             file.write(query + "\n")
