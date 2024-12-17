@@ -186,13 +186,13 @@ $ruoli_superadmin = [
     "Cybersecurity Analyst" # Analizza costantemente la sicurezza dei sistemi per rilevare e prevenire potenziali minacce.")
 ];
 
-$nome = $_POST['member-signup-name'] ?? $_GET['member-signup-name'];
-$cognome = $_POST['member-signup-surname'] ?? $_GET['member-signup-surname'];
-$dataNascita = $_POST['member-signup-birthday'] ?? $_GET['member-signup-birthday'];
-$email = $_POST['member-signup-email'] ?? $_GET['member-signup-email'];
-$telefono = $_POST['member-signup-phone'] ?? $_GET['member-signup-phone'];
-$indirizzo = $_POST['member-signup-address'] ?? $_GET['member-signup-address'];
-$permission = $_POST['member-signup-permission'] ?? $_GET['member-signup-permission']; // Ricavo il valore del permesso (cittadino/operatore/admin)
+$nome = $_POST['member-signup-name'] ;
+$cognome = $_POST['member-signup-surname'];
+$dataNascita = $_POST['member-signup-birthday'];
+$email = $_POST['member-signup-email'];
+$telefono = $_POST['member-signup-phone'];
+$indirizzo = $_POST['member-signup-address'];
+$permission = $_POST['member-signup-permission']; // Ricavo il valore del permesso (cittadino/operatore/admin)
 
 // campi ulteriori cittadino
 $citizenPsw = $_POST['citizen-signup-pasword-cit'] ?? '';
@@ -208,14 +208,6 @@ $adminRole = $_POST['admin-signup-role-adm'] ?? '';
 $adminPsw = $_POST['admin-signup-psw-adm'] ?? '';
 
 var_dump($_POST);
-die();
-// echo "<br>Nome: ".$nome."<br>Cognome: ".$cognome . 
-// "<br>Data Nascita: ".$dataNascita."<br>email: ".$email.
-// "<br>Indirizzo: ".$indirizzo."<br>Permission: ".$permission.
-// "<br>Cittadino PSW: ".$citizenPsw.
-// "<br>Operatore TYPE: ".$operatorType.", Ruolo: ".$operatorRole.", DateStart: ".$operatorDateStart.", DateEnd: ".$operatorDateEnd.
-// "<br>Admin Role: ".$adminRole.", PSW: ".$adminPsw."<br>";
-
 
 // echo "Permission: ".$permission;
 // DA FARE LA QUERY PER IL RUOLO ADMIN
@@ -225,8 +217,8 @@ try{
         // Scrivo query per utente (controlla se l'utente esiste già)
         if (!isset($IDUtente)) {
             // Esegui una query preparata per verificare se l'utente esiste già
-            $sql = "SELECT utente.IDUtente
-                    FROM utente
+            $sql = "SELECT UTENTE.IDUtente
+                    FROM UTENTE
                     WHERE Nome = :nome
                       AND Cognome = :cognome
                       AND DataNascita = :dataNascita
@@ -246,7 +238,7 @@ try{
                 $IDUtente = $stmt->fetch()['IDUtente'];
             } else {
                 // Se l'utente non esiste ancora, inseriscilo
-                $sqlInsert = "INSERT INTO utente (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo)
+                $sqlInsert = "INSERT INTO UTENTE (Nome, Cognome, DataNascita, Email, Telefono, Indirizzo)
                               VALUES (:nome, :cognome, :dataNascita, :email, :telefono, :indirizzo)";
                 
                 $stmtInsert = $pdo->prepare($sqlInsert);
@@ -270,7 +262,7 @@ try{
         // Mappatura dei permessi a query e parametri
         $insertQueries = [
             'citizen' => [
-                'query' => "INSERT INTO `cittadino`(`IDCittadino`, `Stato`, `DataRegistrazione`, `Password`) 
+                'query' => "INSERT INTO `CITTADINO`(`IDCittadino`, `Stato`, `DataRegistrazione`, `Password`) 
                             VALUES (:id, :stato, :dataRegistrazione, :password)",
                 'params' => [
                     ':id' => $IDUtente,
@@ -280,7 +272,7 @@ try{
                 ]
             ],
             'operator' => [
-                'query' => "INSERT INTO `operatore`(`IDOperatore`, `DataInizio`, `DataFine`, `Email`, `Tipo`, `Ruolo`, `Stato`, `Password`)
+                'query' => "INSERT INTO `OPERATORE`(`IDOperatore`, `DataInizio`, `DataFine`, `Email`, `Tipo`, `Ruolo`, `Stato`, `Password`)
                             VALUES (:id, :dataInizio, :dataFine, :email, :tipo, :ruolo, :stato, :password)",
                 'params' => [
                     ':id' => $IDUtente,
@@ -294,7 +286,7 @@ try{
                 ]
             ],
             'admin' => [
-                'query' => "INSERT INTO `superadmin`(`IDSuperAdmin`, `Ruolo`, `DataAssegnazioneRuolo`, `Stato`, `UltimoAccesso`, `Password`) 
+                'query' => "INSERT INTO `SUPERADMIN`(`IDSuperAdmin`, `Ruolo`, `DataAssegnazioneRuolo`, `Stato`, `UltimoAccesso`, `Password`) 
                             VALUES (:id, :ruolo, :dataAssegnazione, :stato, :ultimoAccesso, :password)",
                 'params' => [
                     ':id' => $IDUtente,
@@ -350,10 +342,10 @@ try{
             }
         }
     }elseif($permission == $validPermissions[2]){ // Admin
-        $sql = "SELECT superadmin.Ruolo
-                FROM superadmin
-                GROUP BY superadmin.Ruolo
-                ORDER BY superadmin.Ruolo ASC;";
+        $sql = "SELECT SUPERADMIN.Ruolo
+                FROM SUPERADMIN
+                GROUP BY Ruolo
+                ORDER BY Ruolo ASC;";
         $result = $pdo->query($sql);
         if ($result->rowCount() > 0) {
             echo "<br>BElla<br>";

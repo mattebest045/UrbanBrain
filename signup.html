@@ -35,6 +35,57 @@
         // Rileva cambiamenti nella modalità tema e aggiorna l'icona
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
 
+        //------------------------------------------------------------------------------------------
+
+        // Script per impostare il valore del campo nascosto
+        document.addEventListener("DOMContentLoaded", function () {
+           // Ottieni l'URL corrente ed elimina il fragment 
+           // es: da http://localhost/UrbanBrain/?params=value#fragment 
+           // a http://localhost/UrbanBrain/
+            const currentUrl = window.location.href.split("#")[0].split("?")[0];
+            
+            // Imposta l'URL nel campo nascosto
+            document.getElementById("current-url").value = currentUrl;
+        });
+
+
+        // ----------------------------------------------------------------------------------------
+
+        // Funzione per controllare se ci sono dei valori di errore o successo
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ricava la query string dall'URL
+            const queryParams = new URLSearchParams(window.location.search);
+
+            // Controlla se esiste un parametro 'errore' o 'successo'
+            const errore = queryParams.get("errore");
+            const successo = queryParams.get("successo");
+
+            if (errore) {
+                showPopup("errore", errore);
+            }
+
+            if (successo) {
+                showPopup("successo", successo);
+            }
+        });
+
+        // Funzione per mostrare un pop-up
+        function showPopup(type, message) {
+            const popup = document.querySelector(`.${type}`);
+            if (popup) {
+                popup.querySelector(".message").textContent = decodeURIComponent(message);
+                popup.style.display = "block";
+            }
+        }
+
+        // Funzione per chiudere il pop-up
+        function closePopup(type) {
+            const popup = document.querySelector(`.${type}`);
+            if (popup) {
+                popup.style.display = "none";
+            }
+        }
+
         // RACCOLTO NOME, COGNOME, PERMESSO --------------------------------------------------------
         
         function getQueryParamsAndAdjustFields() {
@@ -50,6 +101,8 @@
             document.querySelector('[name="member-signup-name"]').value = nome;
             document.querySelector('[name="member-signup-surname"]').value = cognome;
             document.getElementById('h2-permesso').innerHTML = "Sign Up - " + permesso.toUpperCase();
+
+
             // Gruppi di campi per ogni tipo di permesso
             const citizenFields = [
                 "citizen-signup-password"
@@ -72,9 +125,13 @@
             function hideFields(fields) {
                 fields.forEach(field => {
                     const divId = `div-${field}`;
-                    const element = document.getElementById(divId);
-                    if (element) {
-                        element.style.display = "none";
+                    const divElement = document.getElementById(divId);
+                    if (divElement) {
+                        divElement.style.display = "none"; // Nascondi il div
+                        const inputElement = divElement.querySelector("input, select, textarea");
+                        if (inputElement) {
+                            inputElement.removeAttribute("required"); // Rimuovi l'attributo required
+                        }
                     }
                 });
             }
@@ -83,12 +140,17 @@
             function showFields(fields) {
                 fields.forEach(field => {
                     const divId = `div-${field}`;
-                    const element = document.getElementById(divId);
-                    if (element) {
-                        element.style.display = ""; // Ripristina il display di default
+                    const divElement = document.getElementById(divId);
+                    if (divElement) {
+                        divElement.style.display = ""; // Mostra il div (display di default)
+                        const inputElement = divElement.querySelector("input, select, textarea");
+                        if (inputElement) {
+                            inputElement.setAttribute("required", ""); // Ripristina l'attributo required
+                        }
                     }
                 });
             }
+
 
             // Nascondi tutti i campi
             hideFields(citizenFields, "citizen");
@@ -97,11 +159,14 @@
 
             // Mostra i campi in base al permesso selezionato
             if (permesso === "citizen") {
-                showFields(citizenFields, "citizen");
+                showFields(citizenFields);
+                document.getElementById('member-signup-permission').innerHTML = "citizen"; 
             } else if (permesso === "operator") {
-                showFields(operatorFields, "operator");
+                showFields(operatorFields);
+                document.getElementById('member-signup-permission').innerHTML = "operator";
             } else if (permesso === "admin") {
-                showFields(adminFields, "admin");
+                showFields(adminFields);
+                document.getElementById('member-signup-permission').innerHTML = "admin";
             }
         }
 
@@ -143,6 +208,8 @@
                                 <form class="custom-form member-login-form" action="php/signup.php" method="post" role="form">
 
                                     <div class="member-login-form-body">
+                                        <input type="hidden" name="current-url" id="current-url" value="index.html">
+                                        <input type="hidden" name="member-signup-permission" id="member-signup-permission" value="no_role">
                                         <!-- Campi comuni a tutti -->
                                         <div id="div-member-signup-name" class="mb-4">
                                             <label class="form-label mb-2" for="member-signup-name">Name</label>
