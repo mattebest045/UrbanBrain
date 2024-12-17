@@ -1,12 +1,12 @@
 function extractCity(address) {
-    // Dividi l'indirizzo in base alle virgole
-    const parts = address.split(",");
-    if (parts.length > 1) {
-        // La città si trova tipicamente nel secondo segmento
-        return parts[1].trim();
+    console.log("Indirizzo ricevuto:", address); // Stampa il valore di address per debug
+    if (!address || typeof address !== "string") {
+        return "";
     }
-    return ""; // Ritorna una stringa vuota se l'indirizzo non è valido
+    const parts = address.split(",");
+    return parts.length > 1 ? parts[1].trim() : "";
 }
+
 
 // Funzione per controllare la sessione dell'utente
 function checkSession() {
