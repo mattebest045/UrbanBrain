@@ -1,7 +1,7 @@
 <?php
 
 $username = "root"; 		// locale 'root'	 		altervista 'urbanbrain'
-$password = '';					// locale ''				altervista ''
+$password = 'root';					// locale ''				altervista ''
 $host = "localhost";			// locale 'localhost'		altervista 'localhost'
 $database = "urbanbrain"; 	// locale 'urbanbrain'	 	altervista 'my_urbanbrain'
 

@@ -236,7 +236,7 @@ function defineChart(city, sensor, interval = '1 MONTH') {
             try {
                 if (data.error) {
                     console.error(data.error);
-                    alert("Errore nel caricamento dei dati: " + data.error);
+                    // alert("Errore nel caricamento dei dati: " + data.error);
                 } else {
                     var sensor = unicodeToUTF8(data[1].replaceAll('"', ''));
                     if (!isJSON(data[0])){
@@ -252,7 +252,7 @@ function defineChart(city, sensor, interval = '1 MONTH') {
                 }
             } catch (e) {
                 console.error("Errore nel parsing JSON:", e);
-                alert("Errore nel parsing dei dati JSON.");
+                // alert("Errore nel parsing dei dati JSON.");
             }    
         },
         error: function(xhr, status, error) {
