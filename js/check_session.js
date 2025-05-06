@@ -10,7 +10,7 @@ function extractCity(address) {
 
 // Funzione per controllare la sessione dell'utente
 function checkSession() {
-    var url = "php/check_session.php"; // Percorso del file PHP
+    var url = "../php/check_session"; // Percorso del file PHP
     var data = {}; // Nessun dato necessario per questa richiesta
 
     // Richiesta AJAX
@@ -59,16 +59,16 @@ function checkSession() {
                 location.replace(`${baseUrl}/UrbanBrain/index.html?errore=${encodeURIComponent('Per accedere alla pagina devi prima loggarti!')}`);
             }else{
                 // modifico il valore della Città in dashboard.html
-                var city = document.getElementById('selectWhichCity');
+                var city = document.getElementById('selectWhichCity').innerHTML;
                 console.log(city);
                 console.log('Indirizzo: '+data.user_Indirizzo);
                 console.log('Citta: '+extractCity(data.user_Indirizzo));
                 if(city.length !== 0){
                     if(data.user_Indirizzo.length !== 0){
                         
-                        city.innerHTML = extractCity(data.user_Indirizzo);
+                        city = extractCity(data.user_Indirizzo);
                     }else{
-                        city.innerHTML = "Roma";
+                        city = "Roma";
                     }
                 }
             }
