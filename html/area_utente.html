@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Area Utente</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/template-urbanbrain.css">
+
+        <!-- Icona predefinita -->
+        <link id="theme-icon" rel="icon" href="images/logo_scuro.png" type="image/gif" sizes="16x16">
+
+        <!-- Libreria per utilizzare md5 con il campo password prima che venga inviato -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+
+        <script>
+        // GESTIONE ICONA TITOLO PAGINA ------------------------------------------------------------
+        function updateFavicon() {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const iconLink = document.getElementById('theme-icon');
+            
+            if (isDarkMode) {
+            iconLink.href = 'images/logo_chiaro.png'; // Icona chiara per dark mode
+            } else {
+            iconLink.href = 'images/logo_scuro.png'; // Icona scura per light mode
+            }
+        }
+        updateFavicon();
+        // Rileva cambiamenti nella modalità tema e aggiorna l'icona
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+        //------------------------------------------------------------------------------------------
+
+        // Script per impostare il valore del campo nascosto
+        document.addEventListener("DOMContentLoaded", function () {
+           // Ottieni l'URL corrente ed elimina il fragment 
+           // es: da http://localhost/UrbanBrain/#offcanvasExample 
+           // a http://localhost/UrbanBrain/
+            const currentUrl = window.location.href.split("#")[0].split("?")[0];
+            
+            // Imposta l'URL nel campo nascosto
+            document.getElementById("current-url").value = currentUrl;
+        });
+        
+        //------------------------------------------------------------------------------------------
+
+        // Prima dell'invio tramite post hasha la psw con l'md5
+        // In questa pagina non serve
+
+        //------------------------------------------------------------------------------------------
+        
+        // Funzione per controllare se ci sono dei valori di errore o successo
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ricava la query string dall'URL
+            const queryParams = new URLSearchParams(window.location.search);
+
+            // Controlla se esiste un parametro 'errore' o 'successo'
+            const errore = queryParams.get("errore");
+            const successo = queryParams.get("successo");
+
+            if (errore) {
+                showPopup("errore", errore);
+            }
+
+            if (successo) {
+                showPopup("successo", successo);
+            }
+        });
+
+        // Funzione per mostrare un pop-up
+        function showPopup(type, message) {
+            const popup = document.querySelector(`.${type}`);
+            if (popup) {
+                popup.querySelector(".message").textContent = decodeURIComponent(message);
+                popup.style.display = "block";
+            }
+        }
+
+        // Funzione per chiudere il pop-up
+        function closePopup(type) {
+            const popup = document.querySelector(`.${type}`);
+            if (popup) {
+                popup.style.display = "none";
+            }
+        }
+
+        //------------------------------------------------------------------------------------------
+
+        //------------------------------------------------------------------------------------------
+        </script>
+
+        <!-- Style CSS per div.successo e div.errore -->
+        <style>
+            .errore, .successo {
+                display: none; /* Inizialmente nascosti */
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #f8d7da; /* Colore di errore */
+                color: #721c24; /* Testo di errore */
+                border: 1px solid #f5c6cb;
+                padding: 20px;
+                border-radius: 10px;
+                width: 300px;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .successo {
+                background-color: #d4edda; /* Colore di successo */
+                color: #155724; /* Testo di successo */
+                border: 1px solid #c3e6cb;
+            }
+
+            .close-btn {
+                background: none;
+                border: none;
+                color: inherit;
+                font-weight: bold;
+                cursor: pointer;
+                float: right;
+                font-size: 16px;
+            }
+        </style>
+
+    </head>
+    
+    <body>
+        <main>
+            <!-- Creazione div errore/successo -->
+            <div class="errore">
+                <button class="close-btn" onclick="closePopup('errore')">×</button>
+                <span class="message"></span>
+            </div>
+            <div class="successo">
+                <button class="close-btn" onclick="closePopup('successo')">×</button>
+                <span class="message"></span>
+            </div>
+
+            <!-- Menu opzioni Navbar in alto -->
+            <nav class="navbar navbar-expand-lg">                
+                <div class="container">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html" style="max-width: none !important;">
+                        <img src="images/logo_scuro.png" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
+                        <span class="navbar-brand-text">
+                            UrbanBrain
+                            <small>manage your city</small>
+                        </span>
+                    </a>
+
+                    <!-- Login button da mobile - DEFAULT HIDDEN -->
+                    <div class="d-lg-none ms-auto me-3">
+                        <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Login or Signup</a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_2">About Us</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">Membership</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_5">Contact</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="event-listing.html">Event Listing</a></li>
+
+                                    <li><a class="dropdown-item" href="event-detail.html">Event Detail</a></li>
+                                    
+                                    <li><a class="dropdown-item" href="dashboard.html">Sensor Data</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="d-none d-lg-block ms-lg-3">
+                            <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Login or Signup</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Login os Signup utente -->
+            <div class="offcanvas offcanvas-end overflow-y-scroll overflow-x-hidden" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">                
+                <!-- Login utente -->
+                <div class="login-box">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Member Login</h5>
+                        
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column">
+                        <form class="custom-form member-login-form" action="php/login.php" method="post" role="form">
+
+                            <div class="member-login-form-body">
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-login-number">Email</label>
+
+                                    <input type="text" name="member-login-number" id="member-login-number" class="form-control" placeholder="Email" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-login-password">Password</label>
+                                    <!-- Tolto il pattern momentaneamente per comodità -->
+                                    <input type="password" name="member-login-password" id="member-login-password" class="form-control" placeholder="Password" required="">
+                                    <!-- <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required=""> -->
+                                </div>
+
+                                <!-- Campo nascosto per l'URL -->
+                                <input type="hidden" name="url" id="current-url" value="">
+
+                                <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                    <button type="submit" class="form-control">Login</button>
+                                </div>
+
+                                <div class="text-center my-4">
+                                    <a href="#">Forgotten password?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Signup utente -->
+                <div class="signup-box">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">New member Sign Up</h5>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column">
+                        <form class="custom-form member-login-form" action="signup_test.php" method="get" role="form">
+
+                            <div class="member-login-form-body">
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-name">Name</label>
+
+                                    <input type="text" name="member-signup-name" id="memember-signup-name" class="form-control" placeholder="Name" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-surname">Surname</label>
+
+                                    <input type="text" name="member-signup-surname" id="memember-signup-surname" class="form-control" placeholder="Surname" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-birthday">Birthday</label>
+
+                                    <input type="date" name="member-signup-birthday" id="member-signup-birthday" class="form-control" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-email">Email</label>
+
+                                    <input type="email" name="member-signup-email" id="member-signup-email" class="form-control" placeholder="Email" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-phone">Phone</label>
+
+                                    <input type="tel" name="member-signup-phone" id="member-signup-phone" class="form-control" placeholder="Phone number" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-address">Address</label>
+
+                                    <input type="text" name="member-signup-address" id="member-signup-address" class="form-control" placeholder="Full address" required="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label mb-2" for="member-signup-permission">User permissions</label>
+
+                                    <select name="member-signup-permission" id="member-signup-permission" class="form-control" placeholder="Select a permission" required="">
+                                        <option value="" selected disabled hidden>Choose a permission..</option>
+                                        <option value="citizen">Citizen</option>
+                                        <option value="operator">Operator</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                    <button type="submit" class="form-control">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contatto  -->
+                <div class="mt-auto">
+                    <p>
+                        <strong class="text-white me-3">Any Questions?</strong>
+
+                        <!-- <a href="mailto: matteo.bestetti@studenti.unipr.it" class="contact-link">
+                            info@urbanbrain.it
+                        </a> -->
+                        <a href="mailto: alessandro.bertani@studenti.unipr.it" class="contact-link">
+                            info@urbanbrain.it
+                        </a>
+                    </p>
+                </div>
+
+
+                <!-- Disegno onda in basso -->
+                <footer class="site-footer svg-footer-login">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                </footer>
+            </div>
+            
+            <!-- Pagina inziale di presentazione -->
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+
+                <div class="section-overlay"></div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                            <h2 class="text-white">Welcome Back</h2>
+
+                            <!-- In questo h1 ci inserisco con ajax nome e cognome utente -->
+                            <h1 class="cd-headline rotate-1 text-white welcome_name mb-4 pb-2">
+                                
+                            </h1>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="d-flex flex-column gap-3 align-items-center">
+                                <form action="php/logout.php" method="post">
+                                    <!-- Bottone Logout -->
+                                    <button class="btn btn-primary w-75" name="logoutButton" id="logoutButton" type="submit">
+                                        Logout
+                                    </button>
+                                    
+                                    <!-- Bottone Elimina Account -->
+                                    <button class="btn btn-danger w-75" name="deleteAccountButton" id="deleteAccountButton" type="submit">
+                                        Elimina Account
+                                    </button>
+                                </form>
+                                
+                                <!-- Bottone Modifica Dati -->
+                                <!-- <button class="btn btn-secondary w-75" id="editDataButton" type="submit">
+                                    Modifica Dati
+                                </button> -->
+                            </div>
+                        </div>
+                        
+                        
+
+                    </div>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+            </section>
+
+            <!-- Paragrafo elenco degli eventi principali -->
+            <section class="events-section section-bg section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12">
+                            <h2 class="mb-lg-3">Upcoming Events</h2>
+                        </div>
+
+                        <div class="row custom-block mb-3">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">24</h6>
+                                    
+                                    <strong class="text-white">Feb 2048</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="event-detail.html">
+                                        <img src="images/professional-golf-player.jpg" class="custom-block-image img-fluid" alt="">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="event-detail.html" class="events-title mb-3">Private activities</a>
+
+                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Location:</span>
+
+                                                <p class="mb-0">National Center, NYC</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Ticket:</span>
+
+                                                <p class="mb-0">$250</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center ms-lg-auto">
+                                            <a href="event-detail.html" class="btn custom-btn">Buy Ticket</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row custom-block custom-block-bg">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">28</h6>
+                                    
+                                    <strong class="text-white">Feb 2048</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="event-detail.html">
+                                        <img src="images/girl-taking-selfie-with-friends-golf-field.jpg" class="custom-block-image img-fluid" alt="">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="event-detail.html" class="events-title mb-3">Group tournament activities</a>
+
+                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Location:</span>
+
+                                                <p class="mb-0">National Center, NYC</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Ticket:</span>
+
+                                                <p class="mb-0">$350</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center ms-lg-auto">
+                                            <a href="event-detail.html" class="btn custom-btn">Buy Ticket</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione  -->
+            <section class="contact-section section-padding" id="section_5">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-5 col-12">
+                            <form action="#" method="post" class="custom-form contact-form" role="form">
+                                <h2 class="mb-4 pb-2">Contact Tiya</h2>
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
+                                            
+                                            <label for="floatingInput">Full Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-12"> 
+                                        <div class="form-floating">
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
+                                            
+                                            <label for="floatingInput">Email address</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="message" name="message" placeholder="Describe message here"></textarea>
+                                            
+                                            <label for="floatingTextarea">Message</label>
+                                        </div>
+
+                                        <button type="submit" class="form-control">Submit Form</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="contact-info mt-5">
+                                <div class="contact-info-item">
+                                    <div class="contact-info-body">
+                                        <strong>Parma, UniPR Campus</strong>
+
+                                        <p class="mt-2 mb-1">
+                                            <a href="tel: 010-020-0340" class="contact-link">
+                                                (+39) 
+                                                1234567890
+                                            </a>
+                                        </p>
+
+                                        <p class="mb-0">
+                                            <a href="mailto:info@company.com" class="contact-link">
+                                                info@company.com
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <div class="contact-info-footer">
+                                        <a href="#">Directions</a>
+                                    </div>
+                                </div>
+
+                                <img src="images/WorldMap.svg" class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12 me-auto mb-5 mb-lg-0">
+                        <a class="navbar-brand d-flex align-items-center" href="index.html">
+                            <img src="images/logo_scuro.png" class="navbar-brand-image img-fluid" alt="">
+                            <span class="navbar-brand-text">
+                                UrbanBrain
+                                <small>Manage Your City</small>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-12">
+                        <h5 class="site-footer-title mb-4">Join Us</h5>
+
+                        <p class="d-flex border-bottom pb-3 mb-3 me-lg-3">
+                            <span>Mon-Fri</span>
+                            6:00 AM - 6:00 PM
+                        </p>
+
+                        <p class="d-flex me-lg-3">
+                            <span>Sat-Sun</span>
+                            6:30 AM - 8:30 PM
+                        </p>
+                        <br>
+                        <p class="copyright-text">Copyright © 2048 Tiya Golf Club</p>
+                    </div>
+
+                        <div class="col-lg-2 col-12 ms-auto">
+                            <ul class="social-icon mt-lg-5 mt-3 mb-4">
+                                <li class="social-icon-item">
+                                    <a href="#" class="social-icon-link bi-instagram"></a>
+                                </li>
+
+                                <li class="social-icon-item">
+                                    <a href="#" class="social-icon-link bi-twitter"></a>
+                                </li>
+
+                                <li class="social-icon-item">
+                                    <a href="#" class="social-icon-link bi-whatsapp"></a>
+                                </li>
+                            </ul>
+                            <p class="copyright-text">Design: <a rel="nofollow" href="https://templatemo.com/tm-587-tiya-golf-club" target="_blank">TemplateMo</a></p>
+                            
+                        </div>
+
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#81B29A" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/animated-headline.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- Script per vedere se l'utente è registrato o meno -->
+        <script src="js/check_session.js"></script>
+    </body>
+</html>
