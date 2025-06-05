@@ -1,0 +1,89 @@
+Project urbanbrain {
+  database_type: "MySQL"
+}
+
+/* Table: utenti */
+Table utenti {
+  id int [pk, increment]
+  tipo varchar(255)
+  nome varchar(255)
+  cognome varchar(255)
+  dataNascita date
+  email varchar(255) [unique]
+  telefono varchar(255) [unique]
+  indirizzo varchar(255)
+  password varchar(255)
+  stato int
+  createdAt datetime
+  updatedAt datetime
+}
+
+/* Table: eventi */
+Table eventi {
+  id int [pk, increment]
+  nome varchar(255)
+  luogo varchar(255)
+  posti int
+  descrizione text
+  data date
+  stato int
+  createdAt datetime
+  updatedAt datetime
+}
+
+/* Table: creazione_evento */
+Table creazione_evento {
+  idEvento int
+  idUtente int
+  segnalazione text
+  createdAt datetime
+  updatedAt datetime
+
+  Primary Key (idEvento, idUtente)
+  Indexes {
+    (idUtente)
+  }
+}
+
+/* Table: partecipa_evento */
+Table partecipa_evento {
+  idEvento int
+  idUtente int
+  segnalazione text
+  createdAt datetime
+  updatedAt datetime
+  star int
+  descrizione text
+  foto text
+
+  Primary Key (idEvento, idUtente)
+  Indexes {
+    (idUtente)
+  }
+}
+
+/* Table: segnalazioni */
+Table segnalazioni {
+  idSegnalazione int [pk, increment]
+  idUtente int
+  citta varchar(255)
+  indirizzo varchar(255)
+  data date
+  descrizione text
+  foto varchar(255)
+  createdAt datetime
+  updatedAt datetime
+
+  Indexes {
+    (idUtente)
+  }
+}
+
+/* Foreign key relationships */
+Ref: creazione_evento.idEvento > eventi.id
+Ref: creazione_evento.idUtente > utenti.id
+
+Ref: partecipa_evento.idEvento > eventi.id
+Ref: partecipa_evento.idUtente > utenti.id
+
+Ref: segnalazioni.idUtente > utenti.id [update: cascade]
