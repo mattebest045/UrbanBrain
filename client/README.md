@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# UrbanBrain v2.0.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Basi di Dati - Ingegneria delle Tecnologie Informatiche**  
+Università degli Studi di Parma, Anno 2025
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+UrbanBrain v2.0.0 è l'evoluzione del nostro progetto full-stack per la gestione intelligente delle smart city. Mantenendo l'idea di fondo—coniugare tecnologia e sostenibilità per monitorare e ottimizzare le dinamiche urbane—abbiamo deciso di abbracciare tecnologie moderne:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Backend:** sviluppato in Node.js,
+- **ORM:** interfacciato tramite Sequelize ORM,
+- **Database:** connesso tramite un database relazionale MySQL,
+- **Frontend:** realizzato con React.js.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In sostituzione dei precedenti dati fittizi memorizzati internamente, ora il sistema integra dati metereologici in tempo reale tramite API, garantendo maggiore scalabilità ed efficienza.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Approfondimento
 
-### `npm run build`
+Il progetto mira a trasformare il modo in cui le città operano. Attraverso l'utilizzo di sensori IoT e dati reali, il sistema monitora aspetti cruciali dell’ambiente urbano, quali qualità dell'aria, illuminazione pubblica, consumo energetico e gestione dei rifiuti. Queste informazioni, elaborate in tempo reale, permettono di ottimizzare le operazioni urbane, riducendo sprechi e migliorando la qualità della vita dei cittadini.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Una componente innovativa di UrbanBrain v2.0.0 è l'integrazione di una piattaforma social, concepita per favorire la partecipazione attiva degli utenti. I cittadini possono inviare commenti, suggerimenti e segnalazioni direttamente alle autorità competenti, creando un canale di comunicazione bidirezionale che non solo migliora la gestione della città, ma consente anche un intervento tempestivo in caso di criticità.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Questo approccio non solo dimostra la capacità del team di realizzare un’applicazione full-stack, ma evidenzia l'importanza di integrare dati reali e tecnologie moderne per rispondere in modo efficace alle sfide quotidiane delle smart city.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Tecnologie Utilizzate
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Backend:** Node.js
+- **ORM:** Sequelize
+- **Database:** MySQL
+- **Frontend:** React.js
+- **Dati Meteo:** API per l'integrazione in tempo reale dei dati metereologici
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
