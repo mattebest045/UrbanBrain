@@ -28,8 +28,13 @@ const validateInfoEvent = [
 
 
 const validateStateEvent = [
+    body('id')
+        .notEmpty().withMessage('ID è obbligatorio')
+        .trim()
+        .isInt({ min: 1 }).withMessage('ID Evento non inserito.'),
+
     body('stato')
-        .optional()
+        .notEmpty().withMessage('Lo stato è obbligatorio')
         .isInt({ min: 0, max: 3 }).withMessage('Lo stato deve essere un numero tra 0 e 3'),
 ]
 module.exports = { validateInfoEvent, validateStateEvent };

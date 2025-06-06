@@ -13,7 +13,7 @@
 ];
 ```
 
-# > User
+# User
 
 ## Registration
 
@@ -84,9 +84,51 @@ data?: {
 http://localhost:3001/user/modify
 
 ```ts
-BasicInfo(validateToken)
+BasicInfo(validateModifyUser, validateToken)
 // Response
 success: bool,
 message: string,
 data?: { }
+```
+
+## Modify
+
+http://localhost:3001/user/modify/password
+
+```ts
+BasicInfo(validatePasswordUser, validateToken)
+// Response
+success: bool,
+message: string,
+data?: { }
+```
+
+## Modify State By Email
+
+http://localhost:3001/user/modify/by-email/state
+
+```ts
+BasicInfo(validateState, validateToken)
+// Response
+success: bool,
+message?: string,
+data?: {
+    id: int,
+    stato: int
+}
+```
+
+## Modify State By Email
+
+http://localhost:3001/user/modify/:id/state
+
+```ts
+BasicInfo(validateState, validateToken)
+// Response
+success: bool,
+message?: string,
+data?: {
+    id: int,
+    stato: int
+}
 ```
