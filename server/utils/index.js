@@ -5,5 +5,6 @@ const { generateToken } = require('./jwt');
 module.exports = {
     constants,
     ...require('./server_response'),
+    ...require('./capitalizeWordOfString'),
     generateToken,
 };

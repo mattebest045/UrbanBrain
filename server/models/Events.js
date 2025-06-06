@@ -28,6 +28,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       stato: {
         type: DataTypes.INTEGER,
+        /**
+         * 0: stato di attivazione
+         * 1: attivo
+         * 2: warning
+         * 3: bannato
+         */
         validate: {
           min: 0,
           max: 3,

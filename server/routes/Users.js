@@ -7,12 +7,11 @@ const {
     validateState } = require('../middlewares/validate/validateUser');
 const { validationResult } = require('express-validator');
 const router = express.Router()
-const { Users, CreateEvents, JoinEvents, Reports } = require('../models')
+const { Users } = require('../models')
 const { constants, sendResponse, generateToken } = require('../utils')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
-const { where } = require('sequelize');
 
 /**
  * @description Create new User
@@ -35,7 +34,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
         sanitizedData.password = hashedPassword
         sanitizedData.stato = 0
 
-        console.log(sanitizedData)
+        // console.log(sanitizedData)
 
         const newUser = await Users.create({
             tipo: sanitizedData.tipo,
@@ -43,7 +42,6 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
             cognome: sanitizedData.cognome,
             dataNascita: sanitizedData.dataNascita,
             email: sanitizedData.email,
-            telefono: sanitizedData.telefono,
             indirizzo: sanitizedData.indirizzo,
             password: sanitizedData.password,
             stato: sanitizedData.stato
@@ -67,7 +65,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
         sendResponse(res, constants.RESOURCE_CREATED, true, "Registered Successfully!", { token: accessToken, user: { id: user.id, tipo: user.tipo, nome: user.nome, cognome: user.cognome, } })
     } catch (err) {
         if (err.name === 'SequelizeUniqueConstraintError') {
-            return sendResponse(res, constants.CONFLICT, false, 'Email o Telefono già registrati')
+            return sendResponse(res, constants.CONFLICT, false, 'Email già registrata')
         }
 
         console.error('Errore nella POST /user: ', err)
@@ -127,9 +125,9 @@ router.post("/login", validateLoginUser, async (req, res, next) => {
  * @route GET /user/basicinfo
  * @access Private
  */
-router.get("/basicinfo/:id", validateToken, async (req, res) => {
+router.get("/basicinfo/", validateToken, async (req, res) => {
     try {
-        const id = req.params.id
+        const id = req.user.id
         // Ricavo tutto tranne il campo password perché non mi serve
         const basicInfo = await Users.findByPk(id, {
             attributes: { exclude: ['password'] },
@@ -175,7 +173,7 @@ router.put('/modify', validateModifyUser, validateToken, async (req, res) => {
             return sendResponse(res, constants.NOT_FOUND, false, "Post non trovato o nessuna modifica necessaria.");
         }
 
-        sendResponse(res, constants.OK, true, "Post aggiornato con successo.");
+        sendResponse(res, constants.OK, true, "Utente aggiornato con successo.");
     } catch (err) {
         console.error('Errore nella PUT /user/modify: ', err)
         sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
@@ -327,4 +325,5 @@ router.delete('/', validateToken, async (req, res) => {
         return sendResponse(res, constants.SERVER_ERROR, false, "Internal server error");
     }
 })
+
 module.exports = router

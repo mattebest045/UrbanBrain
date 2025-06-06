@@ -32,10 +32,6 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
         },
       },
-      telefono: {
-        type: DataTypes.STRING,
-        unique: true,
-      },
       indirizzo: {
         type: DataTypes.STRING,
       },

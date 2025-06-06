@@ -1,13 +1,13 @@
 const { body } = require('express-validator');
-
-const capitalizeWords = (str) => {
-    return str
-        .toLowerCase()
-        .split(' ')
-        .filter(Boolean)
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-};
+const { capitalizeWords } = require('../../utils/capitalizeWordOfString')
+// const capitalizeWords = (str) => {
+//     return str
+//         .toLowerCase()
+//         .split(' ')
+//         .filter(Boolean)
+//         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+//         .join(' ');
+// };
 
 const validateRegisterUser = [
     body('tipo')
@@ -35,11 +35,6 @@ const validateRegisterUser = [
         .isEmail().withMessage('Email non valida')
         .normalizeEmail()
         .customSanitizer(email => email.toLowerCase()),
-
-    body('telefono')
-        .optional()
-        .trim()
-        .isMobilePhone('it-IT').withMessage('Telefono non valido'),
 
     body('indirizzo')
         .optional()
