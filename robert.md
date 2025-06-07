@@ -1,4 +1,4 @@
-> ℹ️ **NOTA**: Eventuali errori catturati dal validation[Campo] verranno inviati come risposta nel campo `data` in questo modo:
+> ℹ️ **NOTA**: Eventuali errori di un parametro ricevuto verranno inviati come risposta nel campo `data` in questo modo:
 
 ```ts
 // Eventuali Errori
@@ -17,6 +17,7 @@
 
 ## Registration
 
+`POST`
 http://localhost:3001/user/
 
 ```ts
@@ -37,6 +38,7 @@ data?: {
 
 ## Login
 
+`POST`
 http://localhost:3001/user/login
 
 ```ts
@@ -57,10 +59,13 @@ data?: {
 
 ## Basic Info
 
+`GET`
 http://localhost:3001/user/basicinfo/
 
 ```ts
-BasicInfo(validateToken)
+BasicInfo({
+    header: {accessToken: validateToken}
+})
 // Response
 success: bool,
 message: string,
@@ -81,10 +86,13 @@ data?: {
 
 ## Modify
 
+`PUT`
 http://localhost:3001/user/modify
 
 ```ts
-BasicInfo(validateModifyUser, validateToken)
+BasicInfo({nome: string, cognome: string, dataNascita: date, email: string}, {
+    header: {accessToken: validateToken}
+})
 // Response
 success: bool,
 message: string,
@@ -93,10 +101,13 @@ data?: { }
 
 ## Modify
 
+`PUT`
 http://localhost:3001/user/modify/password
 
 ```ts
-BasicInfo(validatePasswordUser, validateToken)
+BasicInfo({oldPassword: string, newPasseord: string}, {
+    header: {accessToken: validateToken}
+})
 // Response
 success: bool,
 message: string,
@@ -105,10 +116,13 @@ data?: { }
 
 ## Modify State By Email
 
+`PUT`
 http://localhost:3001/user/modify/by-email/state
 
 ```ts
-BasicInfo(validateState, validateToken)
+BasicInfo({stato: int, email: string}, {
+    header: {accessToken: validateToken}
+})
 // Response
 success: bool,
 message?: string,
@@ -120,10 +134,13 @@ data?: {
 
 ## Modify State By Email
 
+`PUT`
 http://localhost:3001/user/modify/:id/state
 
 ```ts
-BasicInfo(validateState, validateToken)
+BasicInfo({stato: int, id: int}, {
+    header: {accessToken: validateToken}
+})
 // Response
 success: bool,
 message?: string,
@@ -131,4 +148,105 @@ data?: {
     id: int,
     stato: int
 }
+```
+
+## Delete
+
+`DELETE`
+http://localhost:3001/user/
+
+```ts
+Delete({
+    header: {accessToken: validateToken}
+})
+// Response
+success: true,
+message: string,
+data?: {}
+```
+
+# Event
+
+## Create Event
+
+> ℹ️ **NOTA**: Un operatore/admin che crea un evento viene direttamente aggiunto anche in CreateEvents
+> `POST`
+> http://localhost:3001/event/
+
+```ts
+CreateEvent({nome: string, luogo: string, posti: int, descrizione:strign, data: date, segnalazione: text }, {
+    header: {accessToken: validateToken}
+})
+// Response
+success: true,
+message: string,
+data?: {}
+```
+
+## Get Events From City
+
+`GET`
+http://localhost:3001/event/city/:city
+
+```ts
+GetEvents(citta: stringa)
+// Response
+success: true,
+message: string,
+data?: [{
+    "id": int,
+    "nome": string,
+    "luogo": string,
+    "posti": int,
+    "descrizione": text,
+    "data": date,
+    "stato": int,
+    "createdAt": timestamp,
+    "updatedAt": timestamp
+    },...]
+```
+
+## Modify State Event
+
+`PUT`
+http://localhost:3001/event/modify/state
+
+```ts
+ModifyState(stato: int, id: int, {
+    header: {accessToken: validateToken}
+})
+// Response
+success: true,
+message: string,
+data?: {}
+```
+
+## Modify info Event
+
+`PUT`
+http://localhost:3001/event/modify/:id
+
+```ts
+modifyEvent({nome: string, luogo: string, posti: int, descrizione: text, data: date}, , {
+    header: {accessToken: validateToken}
+})
+// Result
+success: true,
+message: string,
+data?: {}
+```
+
+## Delete Event
+
+`DELETE`
+http://localhost:3001/event/:id
+
+```ts
+deleteEvent(, {
+    header: {accessToken: validateToken}
+})
+// Result
+success: true,
+message: string,
+data?: {}
 ```

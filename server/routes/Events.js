@@ -5,7 +5,7 @@ const {
     validateStateEvent } = require('../middlewares/validate/validateEvent');
 const { validationResult } = require('express-validator');
 
-const { Events } = require('../models')
+const { Events, CreateEvents } = require('../models')
 const { constants, sendResponse } = require('../utils')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
@@ -13,9 +13,10 @@ const requireRole = require('../middlewares/requiredRole')
 const { Op } = require("sequelize");
 
 /**
- * @description Create an event
+ * @description Create an event and auto-join the creator
  * @route POST /event/
  * @access private
+ * @note Only admin or operator
  */
 router.post('/', validateInfoEvent, validateToken, requireRole('admin', 'operatore'), async (req, res, next) => {
     try {
@@ -29,7 +30,8 @@ router.post('/', validateInfoEvent, validateToken, requireRole('admin', 'operato
 
         // Aggiungo il campo stato: 
         sanitizedData.stato = 0
-        const updatedEvent = await Events.create({
+        // Creo l'evento
+        const newEvent = await Events.create({
             nome: sanitizedData.nome,
             luogo: sanitizedData.luogo,
             posti: sanitizedData.posti,
@@ -38,11 +40,21 @@ router.post('/', validateInfoEvent, validateToken, requireRole('admin', 'operato
             stato: sanitizedData.stato
         })
 
-        if (!updatedEvent) {
+        if (!newEvent) {
             return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nella creazione dell\'evento')
         }
 
-        sendResponse(res, constants.RESOURCE_CREATED, true, 'Evento creato con successo', updatedEvent)
+        // Aggiungo chi ha creato l'evento
+        const segnalazione = 'Creatore Evento. ' + req.body.segnalazione
+        const newCreateEvent = await CreateEvents.create({
+            idEvento: newEvent.id,
+            idUtente: req.user.id,
+            segnalazione: segnalazione
+        })
+
+        if (!newCreateEvent) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta del creatore dell\'evento')
+
+        sendResponse(res, constants.RESOURCE_CREATED, true, 'Evento creato con successo')
     } catch (err) {
         console.error('Errore nella POST /event: ', err)
         sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
@@ -77,7 +89,7 @@ router.get('/city/:city', async (req, res, next) => {
 })
 
 /**
- * @description Modify status Event
+ * @description Modify state Event
  * @route PUT /event/modify/status
  * @access private
  * @note Only Admin or Operator
@@ -153,9 +165,9 @@ router.delete('/:id', validateToken, requireRole('admin', 'operatore'), async (r
     try {
 
         const id = req.params.id
-        const deleted = await Users.destroy({
+        const deleted = await Events.destroy({
             where: {
-                id: req.user.id
+                id: id
             }
         });
 

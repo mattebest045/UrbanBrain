@@ -24,6 +24,11 @@ const validateInfoEvent = [
     body('data')
         .notEmpty().withMessage('La data è obbligatoria')
         .isDate().withMessage('La data deve essere in formato valido (YYYY-MM-DD)'),
+
+    body('segnalazione')
+        .optional()
+        .trim()
+        .isLength({ max: 1000 }).withMessage('La descrizione può avere massimo 1000 caratteri'),
 ];
 
 
