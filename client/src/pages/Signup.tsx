@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserPlus, Mail, Lock, Eye, EyeOff, User, Zap, Shield, Settings, Heart } from 'lucide-react';
+import api from '../api';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -39,10 +40,38 @@ const Signup = () => {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Signup attempt:', formData);
-    // Handle signup logic here
+    
+    try {
+      // Invio i dati al backend tramite axios
+      const response = await api.post('/user/', {
+        nome: formData.firstName,
+        cognome: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+        tipo: formData.role
+      });
+
+      if(response.status === 201){
+        // Gestione successo inserimento nuovo utente a db
+        console.log('Nuovo utente creato:', response.data);
+
+        // Salvataggio token JWT
+        localStorage.setItem('token', response.data.token);
+
+        // Reindirizzamento utente
+        window.location.href = '/login';
+      } else {
+        // Gestione fallimento inserimento nuovo utente a db
+        console.error('Errore nella registrazione:', response.status);
+        alert('Errore durante la registrazione!')
+      }
+    } catch(error) {
+      console.error('Errore nella richiesta:', error);
+      alert('Errore durante la comunicazione con il server!')
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -240,10 +269,7 @@ const Signup = () => {
             </div>
 
             {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full btn-primary flex items-center justify-center space-x-2"
-            >
+            <button type="submit" className="w-full btn-primary flex items-center justify-center space-x-2">
               <UserPlus className="h-4 w-4" />
               <span>Create Account</span>
             </button>
@@ -254,10 +280,7 @@ const Signup = () => {
         <div className="text-center">
           <p className="text-muted-foreground">
             Already have an account?{' '}
-            <Link
-              to="/login"
-              className="text-primary hover:text-primary/80 font-medium transition-colors"
-            >
+            <Link to="/login" className="text-primary hover:text-primary/80 font-medium transition-colors">
               Sign in here
             </Link>
           </p>

@@ -26,19 +26,11 @@ const validateRegisterUser = [
         .notEmpty().withMessage('Il cognome è obbligatorio')
         .customSanitizer(capitalizeWords),
 
-    body('dataNascita')
-        .optional()
-        .isDate().withMessage('Data non valida'),
-
     body('email')
         .trim()
         .isEmail().withMessage('Email non valida')
         .normalizeEmail()
         .customSanitizer(email => email.toLowerCase()),
-
-    body('indirizzo')
-        .optional()
-        .trim(),
 
     body('password')
         .trim()
@@ -68,10 +60,6 @@ const validateModifyUser = [
         .optional()
         .trim()
         .customSanitizer(capitalizeWords),
-
-    body('dataNascita')
-        .optional()
-        .isDate().withMessage('Data non valida'),
 
     body('indirizzo')
         .optional()

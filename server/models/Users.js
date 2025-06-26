@@ -21,9 +21,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      dataNascita: {
-        type: DataTypes.DATEONLY,
-      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -31,9 +28,6 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isEmail: true,
         },
-      },
-      indirizzo: {
-        type: DataTypes.STRING,
       },
       password: {
         type: DataTypes.STRING,

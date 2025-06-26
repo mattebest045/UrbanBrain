@@ -15,7 +15,7 @@ const { validateToken } = require('../middlewares/AuthMiddleware');
 
 /**
  * @description Create new User
- * @route POST /users/
+ * @route POST /user/
  * @access Public
  */
 router.post("/", validateRegisterUser, async (req, res, next) => {
@@ -40,9 +40,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
             tipo: sanitizedData.tipo,
             nome: sanitizedData.nome,
             cognome: sanitizedData.cognome,
-            dataNascita: sanitizedData.dataNascita,
             email: sanitizedData.email,
-            indirizzo: sanitizedData.indirizzo,
             password: sanitizedData.password,
             stato: sanitizedData.stato
         })
@@ -62,7 +60,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
 
         // console.log("Token: " + accessToken)
 
-        sendResponse(res, constants.RESOURCE_CREATED, true, "Registered Successfully!", { token: accessToken, user: { id: user.id, tipo: user.tipo, nome: user.nome, cognome: user.cognome, } })
+        sendResponse(res, constants.RESOURCE_CREATED, true, "Registered Successfully!", { token: accessToken, user: { id: newUser.id, tipo: newUser.tipo, nome: newUser.nome, cognome: newUser.cognome } })
     } catch (err) {
         if (err.name === 'SequelizeUniqueConstraintError') {
             return sendResponse(res, constants.CONFLICT, false, 'Email già registrata')
@@ -160,13 +158,11 @@ router.put('/modify', validateModifyUser, validateToken, async (req, res) => {
             return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
         }
 
-        const { nome, cognome, dataNascita, indirizzo } = req.body
+        const { nome, cognome } = req.body
 
         const [updatedRows] = await Users.update({
             nome: nome,
-            cognome: cognome,
-            dataNascita: dataNascita,
-            indirizzo: indirizzo
+            cognome: cognome
         }, { where: { id: id } });
 
         if (updatedRows === 0) {
