@@ -1,5 +1,6 @@
-const { body } = require('express-validator');
-const { capitalizeWords } = require('../../utils/capitalizeWordOfString')
+const { body, param } = require('express-validator');
+const { sendResponse, constants, capitalizeWords } = require('../../utils');
+
 
 const validateRegisterUser = [
     body('tipo')
@@ -18,19 +19,11 @@ const validateRegisterUser = [
         .notEmpty().withMessage('Il cognome è obbligatorio')
         .customSanitizer(capitalizeWords),
 
-    body('dataNascita')
-        .optional()
-        .isDate().withMessage('Data non valida'),
-
     body('email')
         .trim()
         .isEmail().withMessage('Email non valida')
         .normalizeEmail()
         .customSanitizer(email => email.toLowerCase()),
-
-    body('indirizzo')
-        .optional()
-        .trim(),
 
     body('password')
         .trim()
@@ -93,5 +86,29 @@ const validateState = [
     body('stato')
         .notEmpty().withMessage('Il campo "stato" è obbligatorio')
         .isInt({ min: 0, max: 3 }).withMessage('Il valore di "stato" deve essere un numero intero tra 0 e 3'),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', errors.array());
+        }
+        next();
+    }
 ]
-module.exports = { validateRegisterUser, validateLoginUser, validateModifyUser, validatePasswordUser, validateState } 
+
+const validateIdUserParam = [
+    param('id')
+        .isInt().withMessage('L\'ID deve essere un numero intero')
+        .toInt()
+        .customSanitizer(id => parseInt(id, 10)),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', errors.array());
+        }
+        next();
+    }
+];
+
+module.exports = { validateRegisterUser, validateLoginUser, validateModifyUser, validatePasswordUser, validateState, validateIdUserParam } 

@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const { validateInfoCreateEvent } = require('../middlewares/validate/validateCreateEvent');
+const { validateInfoEvent, validateIdEventParam } = require('../middlewares/validate/validateCreateJoinEvent');
 const { validationResult } = require('express-validator');
-
 const { CreateEvents } = require('../models')
 const { constants, sendResponse } = require('../utils')
 require('dotenv').config()
@@ -10,18 +9,13 @@ const { validateToken } = require('../middlewares/AuthMiddleware');
 const requireRole = require('../middlewares/requiredRole')
 
 /**
- * @description Operator Joins into Event already Created
- * @route POST /createEvent/
+ * @description Modify an event
+ * @route PUT /createEvent/:id
  * @access private
- * @note only Operator 
+ * @note only Operator who's created this event
  */
-router.post('/', validateToken, requireRole('operatore'), validateInfoCreateEvent, async (req, res, next) => {
+router.put('/', validateToken, requireRole('operatore'), validateInfoEvent, async (req, res, next) => {
     try {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
-        }
-
         const { idUtente, idEvento, segnalazione } = req.body
 
         // Controllo se esiste l'id evento esiste
@@ -34,7 +28,39 @@ router.post('/', validateToken, requireRole('operatore'), validateInfoCreateEven
             segnalazione: segnalazione
         })
 
-        if (!segnalazione) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta dell\'evento')
+        if (!newCreatedEvent) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta dell\'evento')
+
+        sendResponse(res, constants.RESOURCE_CREATED, true, 'Operatore aggiunto all\'evento correttamente')
+    } catch (err) {
+        console.error('Errore nella POST /create-event: ', err)
+        sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
+    }
+})
+
+/**
+ * @description Operator Joins into Event already Created
+ * @route POST /createEvent/:id
+ * @access private
+ * @note only Operator 
+ */
+router.post('/:id', validateToken, validateIdEventParam, requireRole('operatore'), validateInfoEvent, async (req, res, next) => {
+    try {
+        const { idUtente } = req.user.idUtente
+        const { idEvento } = req.params.id
+
+        const { segnalazione } = req.body
+
+        // Controllo se esiste l'id evento esiste
+        const checkEvento = Events.findByPk(idEvento)
+        if (!checkEvento) return sendResponse(res, constants.BAD_REQUEST, false, 'Evento selezionato inesistente')
+
+        const newCreatedEvent = await CreateEvents.create({
+            idEvento,
+            idUtente,
+            segnalazione
+        });
+
+        if (!newCreatedEvent) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta dell\'evento')
 
         sendResponse(res, constants.RESOURCE_CREATED, true, 'Operatore aggiunto all\'evento correttamente')
     } catch (err) {
@@ -45,12 +71,11 @@ router.post('/', validateToken, requireRole('operatore'), validateInfoCreateEven
 
 /**
  * @description Operator no longer participates in the event
- * @route DELETE /:id
+ * @route DELETE /createEvent/:id
  * @access private
  */
-router.delete('/:id', validateToken, async (req, res) => {
+router.delete('/:id', validateToken, validateIdEventParam, requireRole('operatore'), async (req, res) => {
     try {
-
         const id = req.params.id
         const deleted = await CreateEvents.destroy({
             where: {
@@ -68,4 +93,5 @@ router.delete('/:id', validateToken, async (req, res) => {
         return sendResponse(res, constants.SERVER_ERROR, false, "Internal server error");
     }
 })
+
 module.exports = router

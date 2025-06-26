@@ -21,9 +21,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      dataNascita: {
-        type: DataTypes.DATEONLY,
-      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -31,9 +28,6 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isEmail: true,
         },
-      },
-      indirizzo: {
-        type: DataTypes.STRING,
       },
       password: {
         type: DataTypes.STRING,
@@ -59,8 +53,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Utente.associate = function (models) {
-    Utente.hasMany(models.JoinEvent, { foreignKey: 'idUtente' });
-    Utente.hasMany(models.CreateEvent, { foreignKey: 'idUtente' });
+    Utente.hasMany(models.JoinEvents, { foreignKey: 'idUtente' });
+    Utente.hasMany(models.CreateEvents, { foreignKey: 'idUtente' });
     Utente.hasMany(models.Reports, { foreignKey: 'idUtente' });
   };
 
