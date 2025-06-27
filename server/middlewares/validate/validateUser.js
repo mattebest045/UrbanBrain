@@ -54,10 +54,6 @@ const validateModifyUser = [
         .trim()
         .customSanitizer(capitalizeWords),
 
-    body('dataNascita')
-        .optional()
-        .isDate().withMessage('Data non valida'),
-
     body('indirizzo')
         .optional()
         .trim(),

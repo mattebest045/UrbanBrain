@@ -19,7 +19,7 @@ const requireRole = require('../middlewares/requiredRole')
 /**
  * @description Create new User
  * @route POST /user/
- * @access public
+ * @access Public
  */
 router.post("/", validateRegisterUser, async (req, res, next) => {
     try {
@@ -57,7 +57,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
 
         // console.log("Token: " + accessToken)
 
-        sendResponse(res, constants.RESOURCE_CREATED, true, "Registered Successfully!", { token: accessToken, user: { id: newUser.id, tipo: newUser.tipo, nome: newUser.nome, cognome: newUser.cognome, } })
+        sendResponse(res, constants.RESOURCE_CREATED, true, "Registered Successfully!", { token: accessToken, user: { id: newUser.id, tipo: newUser.tipo, nome: newUser.nome, cognome: newUser.cognome } })
     } catch (err) {
         if (err.name === 'SequelizeUniqueConstraintError') {
             return sendResponse(res, constants.CONFLICT, false, 'Email già registrata')
@@ -142,11 +142,12 @@ router.get("/basicinfo", validateToken, async (req, res) => {
  */
 router.put('/modify', validateModifyUser, validateToken, async (req, res) => {
     try {
+        const id = req.user.id // Se il token è valido, inserisco i dati nel jwt all'interno di req.user
         const { nome, cognome } = req.body
 
         const [updatedRows] = await Users.update({
             nome: nome,
-            cognome: cognome,
+            cognome: cognome
         }, { where: { id: id } });
 
         if (updatedRows === 0) {

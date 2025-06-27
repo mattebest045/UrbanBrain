@@ -22,7 +22,7 @@ app.use('/create-event', routerCreateEvent)
 app.use('/weather', routerWeather)
 
 // Creo prima la connessione con il db, sequelize crea eventuali tabelle non presenti nel db che sono presenti nel nostro folder models/
-// sync({ alter: true }) solo quando serve
+// sync({ alter: true }) solo quando serve -> NB: abilita le modifiche create nella cartella models!
 db.sequelize.sync().then(() => {
     app.listen(port, () => {
         console.log(`Server is running on port ${port}`);
