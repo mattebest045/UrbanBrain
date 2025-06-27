@@ -13,6 +13,24 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      tipo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { // Validazione per il tipo di evento
+          isIn: [['all', 'music', 'food', 'sports', 'business', 'community', 'privato']],
+        },
+      },
+      organizzatore: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      emailOrganizzatore: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+        },
+      },
       luogo: {
         type: DataTypes.STRING,
         allowNull: false,

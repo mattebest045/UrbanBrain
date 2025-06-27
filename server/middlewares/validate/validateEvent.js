@@ -7,6 +7,12 @@ const validateInfoEvent = [
         .notEmpty().withMessage('Il nome è obbligatorio')
         .isLength({ max: 255 }).withMessage('Il nome può avere massimo 255 caratteri'),
 
+    body('tipo')
+        .notEmpty().withMessage('Il tipo di evento è obbligatorio')
+        .isIn(['all', 'music', 'food', 'sports', 'business', 'community', 'privato'])
+        .withMessage('Il tipo di evento deve essere uno tra: all, music, food, sports, business, community, privato')
+        .customSanitizer(value => capitalizeWords(value)),
+
     body('luogo')
         .trim()
         .notEmpty().withMessage('Il luogo è obbligatorio')

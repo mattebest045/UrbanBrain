@@ -12,7 +12,7 @@ const { constants, sendResponse } = require('../utils')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
 const requireRole = require('../middlewares/requiredRole')
-const { Op } = require("sequelize");
+const { Op, or } = require("sequelize");
 
 /**
  * @description Create an event and auto-join the creator
@@ -26,12 +26,15 @@ router.post('/', validateToken, requireRole('admin', 'operatore'), upload.single
         const file = req.file;
         const filename = file?.filename ?? 'default.jpg';
         const filepath = file?.path ?? path.join('uploads/events', 'default.jpg');
-
+        const organizzatore = req.user.nome + ' ' + req.user.cognome;
         // Aggiungo il campo stato: 
         sanitizedData.stato = 0
         // Creo l'evento
         const newEvent = await Events.create({
             nome: sanitizedData.nome,
+            tipo: sanitizedData.tipo,
+            organizzatore: organizzatore,
+            emailOrganizzatore: req.user.email,
             luogo: sanitizedData.luogo,
             posti: sanitizedData.posti,
             descrizione: sanitizedData.descrizione,
@@ -68,7 +71,7 @@ router.post('/', validateToken, requireRole('admin', 'operatore'), upload.single
  * @access private
  * @note Only Admin or Operator
  */
-router.put('/modify/state', validateStateEvent, validateToken, requireRole('admin', 'operatore'), async (req, res, next) => {
+router.put('/modify/state', validateStateEvent, validateToken, requireRole('admin'), async (req, res, next) => {
     try {
         const { stato, id } = req.body
 
@@ -100,6 +103,9 @@ router.get('/city/:city', async (req, res, next) => {
             where: {
                 luogo: {
                     [Op.like]: `%${citta}`
+                },
+                stato: {
+                    [Op.or]: [0, 1, 2] // Considera solo eventi in stato di attivazione, attivi o warning
                 }
             }
         });
@@ -138,6 +144,7 @@ router.put('/modify/:id', validateToken, validateIdEventParam, validateInfoEvent
 
         const updatedEvent = await Events.update({
             nome: sanitizedData.nome,
+            tipo: sanitizedData.tipo,
             luogo: sanitizedData.luogo,
             posti: sanitizedData.posti,
             descrizione: sanitizedData.descrizione,
