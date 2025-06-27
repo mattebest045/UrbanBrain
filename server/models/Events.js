@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Evento = sequelize.define(
+  const Events = sequelize.define(
     'Events',
     {
       id: {
@@ -13,9 +13,37 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      tipo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { // Validazione per il tipo di evento
+          isIn: [['all', 'music', 'food', 'sports', 'business', 'community', 'privato']],
+        },
+      },
+      organizzatore: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      emailOrganizzatore: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+        },
+      },
       luogo: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      prezzo: {
+        type: DataTypes.DECIMAL(5, 2),
+        defaultValue: 0.00,
+      },
+      filename: {
+        type: DataTypes.STRING,
+      },
+      path: {
+        type: DataTypes.STRING,
       },
       posti: {
         type: DataTypes.INTEGER,
@@ -46,10 +74,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Evento.associate = function (models) {
-    Evento.hasMany(models.JoinEvent, { foreignKey: 'idEvento' });
-    Evento.hasMany(models.CreateEvent, { foreignKey: 'idEvento' });
+  Events.associate = function (models) {
+    Events.hasMany(models.JoinEvents, { foreignKey: 'idEvents' });
+    Events.hasMany(models.CreateEvents, { foreignKey: 'idEvents' });
   };
 
-  return Evento;
+  return Events;
 };

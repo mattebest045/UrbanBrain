@@ -29,7 +29,7 @@ const generateToken = (user) => {
         cognome: user.cognome,
         email: user.email
     }, process.env.JWT_STRING, {
-        expiresIn: "15m"
+        expiresIn: "1h"
     });
 }
 

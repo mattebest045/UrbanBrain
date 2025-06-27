@@ -1,11 +1,17 @@
-const { body } = require('express-validator');
-const { capitalizeWords } = require('../../utils')
+const { body, param } = require('express-validator');
+const { sendResponse, constants, capitalizeWords } = require('../../utils');
 
 const validateInfoEvent = [
     body('nome')
         .trim()
         .notEmpty().withMessage('Il nome è obbligatorio')
         .isLength({ max: 255 }).withMessage('Il nome può avere massimo 255 caratteri'),
+
+    body('tipo')
+        .notEmpty().withMessage('Il tipo di evento è obbligatorio')
+        .isIn(['all', 'music', 'food', 'sports', 'business', 'community', 'privato'])
+        .withMessage('Il tipo di evento deve essere uno tra: all, music, food, sports, business, community, privato')
+        .customSanitizer(value => capitalizeWords(value)),
 
     body('luogo')
         .trim()
@@ -14,7 +20,8 @@ const validateInfoEvent = [
 
     body('posti')
         .optional()
-        .isInt({ min: 1 }).withMessage('Il numero di posti deve essere un intero positivo'),
+        .toInt('Il numero deve essere convertito')
+        .isInt({ min: 0 }).withMessage('Il numero di posti deve essere un intero positivo'),
 
     body('descrizione')
         .optional()
@@ -24,12 +31,60 @@ const validateInfoEvent = [
     body('data')
         .notEmpty().withMessage('La data è obbligatoria')
         .isDate().withMessage('La data deve essere in formato valido (YYYY-MM-DD)'),
+
+    body('prezzo')
+        .notEmpty().withMessage('Il prezzo è obbligatorio')
+        .toFloat()
+        .isFloat({ min: 0, max: 999.99 }).withMessage('Il prezzo deve avere massimo 3 cifre intere e 2 decimali')
+        .matches(/^\d{1,3}(\.\d{1,2})?$/).withMessage('Il prezzo deve avere massimo 3 cifre intere e 2 decimali'),
+
+    body('segnalazione')
+        .optional()
+        .trim()
+        .isLength({ max: 1000 }).withMessage('La descrizione può avere massimo 1000 caratteri'),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', errors.array());
+        }
+        next();
+    }
 ];
 
 
 const validateStateEvent = [
+    body('id')
+        .notEmpty().withMessage('ID è obbligatorio')
+        .trim()
+        .isInt({ min: 1 }).withMessage('ID Evento non inserito.'),
+
     body('stato')
-        .optional()
+        .notEmpty().withMessage('Lo stato è obbligatorio')
         .isInt({ min: 0, max: 3 }).withMessage('Lo stato deve essere un numero tra 0 e 3'),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', errors.array());
+        }
+        next();
+    }
 ]
-module.exports = { validateInfoEvent, validateStateEvent };
+
+const validateIdEventParam = [
+    param('id')
+        .isInt().withMessage('L\'ID deve essere un numero intero')
+        .toInt()
+        .customSanitizer(id => parseInt(id, 10)),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', errors.array());
+        }
+        next();
+    }
+];
+
+module.exports = { validateInfoEvent, validateStateEvent, validateIdEventParam };

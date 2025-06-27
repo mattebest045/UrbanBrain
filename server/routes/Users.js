@@ -4,7 +4,8 @@ const {
     validateLoginUser,
     validateModifyUser,
     validatePasswordUser,
-    validateState } = require('../middlewares/validate/validateUser');
+    validateState,
+    validateIdUserParam } = require('../middlewares/validate/validateUser');
 const { validationResult } = require('express-validator');
 const router = express.Router()
 const { Users } = require('../models')
@@ -12,20 +13,16 @@ const { constants, sendResponse, generateToken } = require('../utils')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
+const requireRole = require('../middlewares/requiredRole')
+
 
 /**
  * @description Create new User
- * @route POST /users/
- * @access Public
+ * @route POST /user/
+ * @access public
  */
 router.post("/", validateRegisterUser, async (req, res, next) => {
     try {
-        console.log('body: ', req.body)
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
-        }
-
         const sanitizedData = req.body;
 
         const hashedPassword = await bcrypt.hash(sanitizedData.password, Number(process.env.PSW_SALT));
@@ -40,9 +37,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
             tipo: sanitizedData.tipo,
             nome: sanitizedData.nome,
             cognome: sanitizedData.cognome,
-            dataNascita: sanitizedData.dataNascita,
             email: sanitizedData.email,
-            indirizzo: sanitizedData.indirizzo,
             password: sanitizedData.password,
             stato: sanitizedData.stato
         })
@@ -62,7 +57,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
 
         // console.log("Token: " + accessToken)
 
-        sendResponse(res, constants.RESOURCE_CREATED, true, "Registered Successfully!", { token: accessToken, user: { id: user.id, tipo: user.tipo, nome: user.nome, cognome: user.cognome, } })
+        sendResponse(res, constants.RESOURCE_CREATED, true, "Registered Successfully!", { token: accessToken, user: { id: newUser.id, tipo: newUser.tipo, nome: newUser.nome, cognome: newUser.cognome, } })
     } catch (err) {
         if (err.name === 'SequelizeUniqueConstraintError') {
             return sendResponse(res, constants.CONFLICT, false, 'Email già registrata')
@@ -76,17 +71,10 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
 /**
  * @description Login
  * @route POST /user/login
- * @access Public
+ * @access public
  */
 router.post("/login", validateLoginUser, async (req, res, next) => {
-
     try {
-        console.log('body: ', req.body)
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
-        }
-
         const { email, password } = req.body;
 
         // Controllo se lo user è presente nel db
@@ -123,9 +111,9 @@ router.post("/login", validateLoginUser, async (req, res, next) => {
 /**
  * @description Get Basic Info from user
  * @route GET /user/basicinfo
- * @access Private
+ * @access private
  */
-router.get("/basicinfo/", validateToken, async (req, res) => {
+router.get("/basicinfo", validateToken, async (req, res) => {
     try {
         const id = req.user.id
         // Ricavo tutto tranne il campo password perché non mi serve
@@ -134,7 +122,7 @@ router.get("/basicinfo/", validateToken, async (req, res) => {
             // Commento la riga perchè da errore e non capisco il motivo
             // include: [CreateEvents, JoinEvents, Reports]
         })
-        console.log(basicInfo)
+        // console.log(basicInfo)
         if (!basicInfo) {
             return sendResponse(res, constants.NOT_FOUND, false, 'Utente non trovato');
         }
@@ -150,23 +138,15 @@ router.get("/basicinfo/", validateToken, async (req, res) => {
 /**
  * @description Modify Info User
  * @route PUT /user/modify
- * @access Private
+ * @access private
  */
 router.put('/modify', validateModifyUser, validateToken, async (req, res) => {
     try {
-        const id = req.user.id // Se il token è valido, inserisco i dati nel jwt all'interno di req.user
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
-        }
-
-        const { nome, cognome, dataNascita, indirizzo } = req.body
+        const { nome, cognome } = req.body
 
         const [updatedRows] = await Users.update({
             nome: nome,
             cognome: cognome,
-            dataNascita: dataNascita,
-            indirizzo: indirizzo
         }, { where: { id: id } });
 
         if (updatedRows === 0) {
@@ -183,14 +163,9 @@ router.put('/modify', validateModifyUser, validateToken, async (req, res) => {
 /**
  * @description Modify User's password
  * @route PUT /user/modify/password
- * @access Private
+ * @access private
  */
 router.put('/modify/password', validatePasswordUser, validateToken, async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
-    }
-
     const { oldPassword, newPassword } = req.body
 
     try {
@@ -214,35 +189,26 @@ router.put('/modify/password', validatePasswordUser, validateToken, async (req, 
 
 /**
  * @description Modify User's state: Only admin can change state of other users, using his email
- * @route PUT /user/modify/state/:id
- * @access Private - ONLY ADMIN
+ * @route PUT /user/modify/by-email/state
+ * @access private 
+ * @note ONLY ADMIN
  * @field stato: 0: stato di attivazione
  *               1: attivo
  *               2: warning
  *               3: bannato
  */
-router.put('/modify/by-email/state', validateState, validateToken, async (req, res) => {
+router.put('/modify/by-email/state', validateState, validateToken, requireRole('admin'), async (req, res) => {
     try {
-        // 1) validazione express-validator   
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
-        }
-
-        // 2) controllo che sia admin
-        const tipo = req.user.tipo
-        if (tipo !== 'admin') return sendResponse(res, constants.UNAUTHORIZED, false, 'Operazione non permessa.')
-
-        // 3) prendo email e nuovo stato dal body
+        // 1) prendo email e nuovo stato dal body
         const { stato, email } = req.body
 
-        // 4) recupero l’utente per email
+        // 2) recupero l’utente per email
         const user = await Users.findOne({ where: { email: email }, attributes: { exclude: ['password'] } })
         if (!user) {
             return sendResponse(res, constants.NOT_FOUND, false, 'Utente non trovato');
         }
 
-        // 5) aggiorno lo stato
+        // 3) aggiorno lo stato
         const [updatedRows] = await Users.update({
             stato: stato,
         }, { where: { id: user.id } });
@@ -251,7 +217,7 @@ router.put('/modify/by-email/state', validateState, validateToken, async (req, r
             return sendResponse(res, constants.NOT_FOUND, false, "Post non trovato o nessuna modifica necessaria.");
         }
 
-        // 6) restituisco l’id e il nuovo stato
+        // 4) restituisco l’id e il nuovo stato
         sendResponse(res, constants.OK, true, "", { id: user.id, stato: updatedRows.stato })
     } catch (err) {
         console.error('Errore nella POST /user: ', err)
@@ -262,19 +228,15 @@ router.put('/modify/by-email/state', validateState, validateToken, async (req, r
 /**
  * @description Modify User's state: Only admin can change state of other users, using his id
  * @route PUT /user/modify/state/:id
- * @access Private - ONLY ADMIN
+ * @access private 
+ * @note ONLY ADMIN
  * @field stato: 0: stato di attivazione
  *               1: attivo
  *               2: warning
  *               3: bannato
  */
-router.put('/modify/:id/state', validateState, validateToken, async (req, res) => {
+router.put('/modify/:id/state', validateIdUserParam, validateState, validateToken, async (req, res) => {
     try {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return sendResponse(res, constants.BAD_REQUEST, false, 'Dati non validi', errors.array())
-        }
-
         const tipo = req.user.tipo
         if (tipo !== 'admin') return sendResponse(res, constants.UNAUTHORIZED, false, 'Operazione non permessa.')
 
@@ -305,7 +267,7 @@ router.put('/modify/:id/state', validateState, validateToken, async (req, res) =
 /**
  * @description Delete user account
  * @route DELETE /user/
- * @access Private
+ * @access private
  */
 router.delete('/', validateToken, async (req, res) => {
     try {
