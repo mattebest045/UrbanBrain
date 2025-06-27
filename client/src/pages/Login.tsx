@@ -2,16 +2,45 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LogIn, Mail, Lock, Eye, EyeOff, Zap } from 'lucide-react';
+import api from '../api';
+import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Login attempt:', { email, password });
-    // Handle login logic here
+    
+    try {
+      // Invio i dati al backend tramite axios
+      const response = await api.post('/user/login', {
+        email: email,
+        password: password
+      });
+
+      if(response.data.success){
+        // Gestione successo inserimento nuovo utente a db
+        console.log('Utente loggato:', response.data);
+
+        // Salvataggio token JWT
+        localStorage.setItem('token', response.data.token);
+
+        // Reindirizzamento utente
+        navigate('/');
+      } else {
+        // Gestione fallimento inserimento nuovo utente a db
+        console.error('Errore nella registrazione:', response.status);
+        toast.error('Errore nella registrazione');
+      }
+    } catch(error) {
+      console.error('Errore nella richiesta:', error);
+      toast.error('Errore nella richiesta');
+    }
   };
 
   return (
