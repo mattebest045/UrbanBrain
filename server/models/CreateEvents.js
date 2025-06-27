@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const CreateEvent = sequelize.define(
-    'CreateEvent',
+  const CreateEvents = sequelize.define(
+    'CreateEvents',
     {
       idEvento: {
         type: DataTypes.INTEGER,
@@ -29,10 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  CreateEvent.associate = function (models) {
-    CreateEvent.belongsTo(models.Users, { foreignKey: 'idUtente' });
-    CreateEvent.belongsTo(models.Events, { foreignKey: 'idEvento' });
+  CreateEvents.associate = function (models) {
+    CreateEvents.belongsTo(models.Users, { foreignKey: 'idUtente' });
+    CreateEvents.belongsTo(models.Events, { foreignKey: 'idEvento' });
   };
 
-  return CreateEvent;
+  return CreateEvents;
 };

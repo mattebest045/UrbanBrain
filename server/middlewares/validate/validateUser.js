@@ -1,13 +1,6 @@
-const { body } = require('express-validator');
-const { capitalizeWords } = require('../../utils/capitalizeWordOfString')
-// const capitalizeWords = (str) => {
-//     return str
-//         .toLowerCase()
-//         .split(' ')
-//         .filter(Boolean)
-//         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-//         .join(' ');
-// };
+const { body, param } = require('express-validator');
+const { sendResponse, constants, capitalizeWords } = require('../../utils');
+
 
 const validateRegisterUser = [
     body('tipo')
@@ -89,5 +82,29 @@ const validateState = [
     body('stato')
         .notEmpty().withMessage('Il campo "stato" è obbligatorio')
         .isInt({ min: 0, max: 3 }).withMessage('Il valore di "stato" deve essere un numero intero tra 0 e 3'),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', errors.array());
+        }
+        next();
+    }
 ]
-module.exports = { validateRegisterUser, validateLoginUser, validateModifyUser, validatePasswordUser, validateState } 
+
+const validateIdUserParam = [
+    param('id')
+        .isInt().withMessage('L\'ID deve essere un numero intero')
+        .toInt()
+        .customSanitizer(id => parseInt(id, 10)),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', errors.array());
+        }
+        next();
+    }
+];
+
+module.exports = { validateRegisterUser, validateLoginUser, validateModifyUser, validatePasswordUser, validateState, validateIdUserParam } 

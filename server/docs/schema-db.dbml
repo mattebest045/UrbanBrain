@@ -1,3 +1,4 @@
+/* dbdocs build docs/schema-db.dbml --project UrbanBrain2.0 */
 Project urbanbrain {
   database_type: "MySQL"
 }
@@ -10,7 +11,6 @@ Table utenti {
   cognome varchar(255)
   dataNascita date
   email varchar(255) [unique]
-  telefono varchar(255) [unique]
   indirizzo varchar(255)
   password varchar(255)
   stato int
