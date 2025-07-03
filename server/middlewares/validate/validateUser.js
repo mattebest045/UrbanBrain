@@ -19,11 +19,17 @@ const validateRegisterUser = [
         .notEmpty().withMessage('Il cognome è obbligatorio')
         .customSanitizer(capitalizeWords),
 
+    body('luogo')
+        .trim()
+        .notEmpty().withMessage('Il luogo è obbligatorio')
+        .customSanitizer(capitalizeWords),
+
     body('email')
         .trim()
         .isEmail().withMessage('Email non valida')
         .normalizeEmail()
         .customSanitizer(email => email.toLowerCase()),
+
 
     body('password')
         .trim()

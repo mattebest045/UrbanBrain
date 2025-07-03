@@ -23,6 +23,12 @@ const requireRole = require('../middlewares/requiredRole')
  */
 router.post("/", validateRegisterUser, async (req, res, next) => {
     try {
+        // Controllo se ci sono errori di validazione
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore di validazione', { errors: errors.array() });
+        }
+
         const sanitizedData = req.body;
 
         const hashedPassword = await bcrypt.hash(sanitizedData.password, Number(process.env.PSW_SALT));
@@ -31,12 +37,14 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
         sanitizedData.password = hashedPassword
         sanitizedData.stato = 0
 
+        console.table(sanitizedData)
         // console.log(sanitizedData)
 
         const newUser = await Users.create({
             tipo: sanitizedData.tipo,
             nome: sanitizedData.nome,
             cognome: sanitizedData.cognome,
+            luogo: sanitizedData.luogo,
             email: sanitizedData.email,
             password: sanitizedData.password,
             stato: sanitizedData.stato

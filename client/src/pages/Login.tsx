@@ -1,12 +1,12 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LogIn, Mail, Lock, Eye, EyeOff, Zap } from 'lucide-react';
 import api from '../api';
-import { toast } from 'sonner';
+import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const { toast } = useToast();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -15,31 +15,35 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Login attempt:', { email, password });
-    
+
     try {
       // Invio i dati al backend tramite axios
       const response = await api.post('/user/login', {
         email: email,
-        password: password
+        password: password,
       });
 
-      if(response.data.success){
+      if (response.data.success) {
         // Gestione successo inserimento nuovo utente a db
         console.log('Utente loggato:', response.data);
 
         // Salvataggio token JWT
         localStorage.setItem('token', response.data.token);
 
+        toast({
+          title: 'Login effettuato',
+          description: 'Benvenuto su UrbanBrain!',
+        });
+
         // Reindirizzamento utente
         navigate('/');
-      } else {
-        // Gestione fallimento inserimento nuovo utente a db
-        console.error('Errore nella registrazione:', response.status);
-        toast.error('Errore nella registrazione');
       }
-    } catch(error) {
+    } catch (error: any) {
       console.error('Errore nella richiesta:', error);
-      toast.error('Errore nella richiesta');
+      toast({
+        title: 'Errore di login',
+        description: error.response.data.message || 'Credenziali non valide',
+      });
     }
   };
 
@@ -57,9 +61,7 @@ const Login = () => {
           <h2 className="text-3xl font-bold">
             Welcome back to <span className="gradient-text">UrbanBrain</span>
           </h2>
-          <p className="mt-2 text-muted-foreground">
-            Sign in to access your smart city dashboard
-          </p>
+          <p className="mt-2 text-muted-foreground">Sign in to access your smart city dashboard</p>
         </div>
 
         {/* Login Form */}
@@ -175,7 +177,7 @@ const Login = () => {
               </button>
               <button className="btn-secondary">
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                 </svg>
                 <span className="ml-2">Twitter</span>
               </button>

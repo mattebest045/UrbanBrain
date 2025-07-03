@@ -1,17 +1,31 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { UserPlus, Mail, Lock, Eye, EyeOff, User, Zap, Shield, Settings, Heart } from 'lucide-react';
+import {
+  UserPlus,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  User,
+  Zap,
+  Shield,
+  Settings,
+  Heart,
+  MapPinHouse,
+} from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 import api from '../api';
 
 const Signup = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    location: '',
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'citizen'
+    role: 'citizen',
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -22,62 +36,69 @@ const Signup = () => {
       label: 'Admin',
       description: 'Full system access and management capabilities',
       icon: Shield,
-      color: 'text-red-400'
+      color: 'text-red-400',
     },
     {
       id: 'operator',
       label: 'Operator',
       description: 'Manage city services and monitor operations',
       icon: Settings,
-      color: 'text-blue-400'
+      color: 'text-blue-400',
     },
     {
       id: 'citizen',
       label: 'Citizen',
       description: 'Access city information and community features',
       icon: Heart,
-      color: 'text-green-400'
-    }
+      color: 'text-green-400',
+    },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Signup attempt:', formData);
-    
+
     try {
       // Invio i dati al backend tramite axios
       const response = await api.post('/user/', {
         nome: formData.firstName,
         cognome: formData.lastName,
+        luogo: formData.location,
         email: formData.email,
         password: formData.password,
-        tipo: formData.role
+        tipo: formData.role,
       });
 
-      if(response.status === 201){
+      if (response.data.success) {
         // Gestione successo inserimento nuovo utente a db
         console.log('Nuovo utente creato:', response.data);
 
         // Salvataggio token JWT
         localStorage.setItem('token', response.data.token);
 
+        toast({
+          title: 'Registrazione completata',
+          description: 'Il tuo account è stato creato con successo!',
+        });
+
         // Reindirizzamento utente
-        window.location.href = '/login';
-      } else {
-        // Gestione fallimento inserimento nuovo utente a db
-        console.error('Errore nella registrazione:', response.status);
-        alert('Errore durante la registrazione!')
+        window.location.href = '/';
       }
-    } catch(error) {
+    } catch (error: any) {
       console.error('Errore nella richiesta:', error);
-      alert('Errore durante la comunicazione con il server!')
+      toast({
+        title: 'Errore di registrazione',
+        description:
+          error.response.data.message || 'Si è verificato un errore durante la registrazione.',
+        variant: 'destructive',
+      });
     }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -136,6 +157,26 @@ const Signup = () => {
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                   placeholder="Last name"
+                />
+              </div>
+            </div>
+
+            {/* Location Field */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Location
+              </label>
+              <div className="relative">
+                <MapPinHouse className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <input
+                  id="location"
+                  name="location"
+                  type="text"
+                  required
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  className="w-full pl-10 pr-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                  placeholder="Enter your location (e.g. Parma)"
                 />
               </div>
             </div>
@@ -215,9 +256,7 @@ const Signup = () => {
 
             {/* Role Selection */}
             <div>
-              <label className="block text-sm font-medium mb-4">
-                Select Your Role
-              </label>
+              <label className="block text-sm font-medium mb-4">Select Your Role</label>
               <div className="space-y-3">
                 {roles.map((role) => {
                   const Icon = role.icon;
@@ -262,14 +301,20 @@ const Signup = () => {
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link to="/privacy" className="text-primary hover:text-primary/80 transition-colors">
+                <Link
+                  to="/privacy"
+                  className="text-primary hover:text-primary/80 transition-colors"
+                >
                   Privacy Policy
                 </Link>
               </span>
             </div>
 
             {/* Submit Button */}
-            <button type="submit" className="w-full btn-primary flex items-center justify-center space-x-2">
+            <button
+              type="submit"
+              className="w-full btn-primary flex items-center justify-center space-x-2"
+            >
               <UserPlus className="h-4 w-4" />
               <span>Create Account</span>
             </button>
@@ -280,7 +325,10 @@ const Signup = () => {
         <div className="text-center">
           <p className="text-muted-foreground">
             Already have an account?{' '}
-            <Link to="/login" className="text-primary hover:text-primary/80 font-medium transition-colors">
+            <Link
+              to="/login"
+              className="text-primary hover:text-primary/80 font-medium transition-colors"
+            >
               Sign in here
             </Link>
           </p>
