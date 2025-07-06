@@ -25,6 +25,7 @@ const generateToken = (user) => {
     return sign({
         id: user.id,
         tipo: user.tipo,
+        luogo: user.luogo,
         nome: user.nome,
         cognome: user.cognome,
         email: user.email

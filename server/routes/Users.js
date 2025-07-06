@@ -58,6 +58,7 @@ router.post("/", validateRegisterUser, async (req, res, next) => {
         const accessToken = generateToken({
             id: newUser.id,
             tipo: newUser.tipo,
+            luogo: newUser.luogo,
             nome: newUser.nome,
             cognome: newUser.cognome,
             email: newUser.email
@@ -104,6 +105,7 @@ router.post("/login", validateLoginUser, async (req, res, next) => {
             const accessToken = generateToken({
                 id: user.id,
                 tipo: user.tipo,
+                luogo: user.luogo,
                 nome: user.nome,
                 cognome: user.cognome,
                 email: user.email

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuth } from '../hooks/AuthContext';
 import { Link } from 'react-router-dom';
 import { LogIn, Mail, Lock, Eye, EyeOff, Zap } from 'lucide-react';
 import api from '../api';
@@ -7,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const { toast } = useToast();
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +30,15 @@ const Login = () => {
         console.log('Utente loggato:', response.data);
 
         // Salvataggio token JWT
-        localStorage.setItem('token', response.data.token);
+        const success = login(response.data.data.token);
+        if (!success) {
+          toast({
+            title: 'Errore di autenticazione',
+            description: 'Impossibile salvare il token di accesso',
+          });
+          return;
+        }
+        // localStorage.setItem('token', response.data.token);
 
         toast({
           title: 'Login effettuato',

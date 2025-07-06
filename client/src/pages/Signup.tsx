@@ -14,9 +14,13 @@ import {
   MapPinHouse,
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '../hooks/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import api from '../api';
 
 const Signup = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     firstName: '',
@@ -25,7 +29,7 @@ const Signup = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'citizen',
+    role: 'cittadino', // Default role
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -46,7 +50,7 @@ const Signup = () => {
       color: 'text-blue-400',
     },
     {
-      id: 'citizen',
+      id: 'cittadino',
       label: 'Citizen',
       description: 'Access city information and community features',
       icon: Heart,
@@ -68,7 +72,7 @@ const Signup = () => {
         password: formData.password,
         tipo: formData.role,
       });
-
+      console.log('Response from server:', response.data);
       if (response.data.success) {
         // Gestione successo inserimento nuovo utente a db
         console.log('Nuovo utente creato:', response.data);
@@ -82,10 +86,19 @@ const Signup = () => {
         });
 
         // Reindirizzamento utente
-        window.location.href = '/';
+        const success = login(response.data.data.token);
+        if (!success) {
+          toast({
+            title: 'Errore di autenticazione',
+            description: 'Impossibile salvare il token di accesso',
+            variant: 'destructive',
+          });
+          return;
+        }
+        navigate('/');
       }
     } catch (error: any) {
-      console.error('Errore nella richiesta:', error);
+      console.error('Errore nella richiesta:', error.response.data);
       toast({
         title: 'Errore di registrazione',
         description:
