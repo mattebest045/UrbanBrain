@@ -120,10 +120,10 @@ router.post("/login", validateLoginUser, async (req, res, next) => {
 
 /**
  * @description Get Basic Info from user
- * @route GET /user/basicinfo
+ * @route GET /user/profile
  * @access private
  */
-router.get("/basicinfo", validateToken, async (req, res) => {
+router.get("/profile", validateToken, async (req, res) => {
     try {
         const id = req.user.id
         // Ricavo tutto tranne il campo password perché non mi serve
@@ -153,15 +153,16 @@ router.get("/basicinfo", validateToken, async (req, res) => {
 router.put('/modify', validateModifyUser, validateToken, async (req, res) => {
     try {
         const id = req.user.id // Se il token è valido, inserisco i dati nel jwt all'interno di req.user
-        const { nome, cognome } = req.body
+        const { nome, cognome, luogo } = req.body
 
         const [updatedRows] = await Users.update({
             nome: nome,
-            cognome: cognome
+            cognome: cognome,
+            luogo: luogo
         }, { where: { id: id } });
 
         if (updatedRows === 0) {
-            return sendResponse(res, constants.NOT_FOUND, false, "Post non trovato o nessuna modifica necessaria.");
+            return sendResponse(res, constants.NOT_FOUND, false, "Utente non trovato o nessuna modifica necessaria.");
         }
 
         sendResponse(res, constants.OK, true, "Utente aggiornato con successo.");
@@ -177,16 +178,16 @@ router.put('/modify', validateModifyUser, validateToken, async (req, res) => {
  * @access private
  */
 router.put('/modify/password', validatePasswordUser, validateToken, async (req, res) => {
-    const { oldPassword, newPassword } = req.body
-
+    // const { oldPassword, newPassword } = req.body
+    const { newPassword } = req.body
     try {
         // Controllo se lo user è presente nel db
         const user = await Users.findOne({ where: { id: req.user.id } });
         // Utilizzo stato 401 per rendere più difficile possibile user enumeration
         if (!user) return sendResponse(res, constants.UNAUTHORIZED, false, "User Doesn't Exist!");
 
-        const match = await bcrypt.compare(oldPassword, user.password);
-        if (!match) return sendResponse(res, constants.UNAUTHORIZED, false, "Wrong Old Password Entered!");
+        // const match = await bcrypt.compare(oldPassword, user.password);
+        // if (!match) return sendResponse(res, constants.UNAUTHORIZED, false, "Wrong Old Password Entered!");
 
         const hashedNewPassword = await bcrypt.hash(newPassword, Number(process.env.PSW_SALT));
         await Users.update({ password: hashedNewPassword }, { where: { id: user.id } });

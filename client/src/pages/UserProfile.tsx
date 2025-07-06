@@ -1,37 +1,112 @@
-
-import React, { useState } from 'react';
-import { 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Calendar, 
-  Edit3, 
-  Save, 
-  X,
-  Shield,
-  Settings,
-  Heart,
+import React, { useEffect, useState } from 'react';
+import {
   Activity,
   Award,
   Bell,
-  Lock
+  Calendar,
+  Edit3,
+  Eye,
+  EyeOff,
+  Heart,
+  Lock,
+  Mail,
+  MapPin,
+  User,
+  Phone,
+  Save,
+  Search,
+  Settings,
+  Send,
+  Shield,
+  X,
 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
+import api from '@/api';
+import { useAuth } from '@/hooks/AuthContext';
+import { UserProfile as UserProfileType, UserStatusMap } from '@/types/userProfile';
 
 const UserProfile = () => {
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [profileData, setProfileData] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john.doe@example.com',
-    phone: '+1 (555) 123-4567',
-    location: 'New York, NY',
-    role: 'citizen',
-    joinDate: '2024-01-15',
-    bio: 'Passionate about smart city technologies and community engagement. Active participant in local environmental initiatives.'
+  const [loading, setLoading] = useState(true);
+  const [profileData, setProfileData] = useState<UserProfileType>({
+    nome: '',
+    cognome: '',
+    email: '',
+    luogo: '',
+    tipo: 'citizen', // Default role, can be 'citizen', 'operator', or 'admin'
+    createdAt: '', // ISO date string
+    stato: 1, // Default status
+    id: '', // User ID
   });
-
+  const { updateUserProfile, logout } = useAuth();
   const [editData, setEditData] = useState(profileData);
+  const [accountSearch, setAccountSearch] = useState('');
+  const [accountStatus, setAccountStatus] = useState(1);
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+
+  // const [profileData, setProfileData] = useState({
+  //   nome: 'John',
+  //   cognome: 'Doe',
+  //   email: 'john.doe@example.com',
+  //   phone: '+1 (555) 123-4567',
+  //   luogo: 'New York, NY',
+  //   role: 'admin', // Change to 'citizen', 'operator', or 'admin' to test
+  //   joinDate: '2024-01-15'
+  // });
+  const fetchProfile = async () => {
+    try {
+      const token = localStorage.getItem('accessToken');
+      console.log('Token:', token);
+      if (!token) throw new Error('Token mancante');
+
+      const response = await api.get('/user/profile', {
+        headers: {
+          accessToken: token, // questo deve corrispondere a req.header("accessToken")
+        },
+      });
+      setProfileData(response.data.data);
+    } catch (err: any) {
+      console.table(err);
+      // Gestione degli errori, ad esempio mostrare un messaggio all'utente
+      console.error('Errore nel recupero del profilo:', err);
+      const status = err?.response?.statusCode;
+      console.log('Status code:', status);
+      if (status === 498) {
+        // Token scaduto
+        localStorage.removeItem('accessToken');
+        toast({
+          title: 'Session Expired',
+          description: 'Please log in again.',
+          variant: 'destructive',
+        });
+      } else {
+        // Altri errori
+        toast({
+          title: 'Error',
+          description:
+            'Your session has expired or you are not authorized to view this page. Please log in again.',
+          variant: 'destructive',
+        });
+        // Redirect alla pagina di login
+        navigate('/login');
+      }
+      // console.error('Errore nel recupero profilo:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  if (loading) return <p>Caricamento profilo...</p>;
+  if (!profileData) return <p>Impossibile caricare i dati utente.</p>;
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -41,6 +116,56 @@ const UserProfile = () => {
   const handleSave = () => {
     setProfileData(editData);
     setIsEditing(false);
+    // Add API call to save changes
+    try {
+      const token = localStorage.getItem('accessToken');
+      if (!token) throw new Error('Token mancante');
+      api.put('/user/modify', editData, {
+        headers: {
+          accessToken: token,
+        },
+      });
+      // Aggiorno anche la label nella navbar
+      updateUserProfile(editData.nome, editData.cognome, editData.luogo);
+      toast({
+        title: 'Profile Updated',
+        description: 'Your profile has been successfully updated.',
+      });
+    } catch (err: any) {
+      console.error('Errore nel salvataggio del profilo:', err);
+      toast({
+        title: 'Error',
+        description: 'Failed to update profile. Please try again later.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const deleteAccount = async () => {
+    try {
+      const token = localStorage.getItem('accessToken');
+      if (!token) throw new Error('Token mancante');
+      await api.delete('/user/', {
+        headers: {
+          accessToken: token,
+        },
+      });
+      logout();
+      toast({
+        title: 'Account Deleted',
+        description: 'Your account has been successfully deleted.',
+        variant: 'destructive',
+      });
+    } catch (err: any) {
+      console.error("Errore nella cancellazione dell'account:", err);
+      toast({
+        title: 'Error',
+        description: 'Failed to delete account. Please try again later.',
+        variant: 'destructive',
+      });
+    }
+    // Redirect to home or login page
+    navigate('/');
   };
 
   const handleCancel = () => {
@@ -48,32 +173,93 @@ const UserProfile = () => {
     setIsEditing(false);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditData({
       ...editData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const getRoleInfo = (role: string) => {
-    switch (role) {
+  const handleAccountManagement = () => {
+    console.log('Managing account:', accountSearch, 'Status:', accountStatus);
+    alert(`Account ${accountSearch} status updated to ${getStatusLabel(accountStatus)}`);
+    setAccountSearch('');
+  };
+
+  const handlePasswordChange = async () => {
+    try {
+      const token = localStorage.getItem('accessToken');
+      if (!token) throw new Error('Token mancante');
+      await api.put(
+        '/user/modify/password',
+        { newPassword },
+        {
+          headers: {
+            accessToken: token,
+          },
+        }
+      );
+      toast({
+        title: 'Password Changed',
+        description: 'Your password has been successfully changed.',
+      });
+      setShowPasswordForm(false);
+      setNewPassword('');
+    } catch (err: any) {
+      console.error('Errore nel cambio password:', err);
+      toast({
+        title: 'Error',
+        description: 'Failed to change password. Please try again later.',
+        variant: 'destructive',
+      });
+    }
+  };
+  const getRoleInfo = (tipo: string) => {
+    switch (tipo) {
       case 'admin':
-        return { label: 'Administrator', icon: Shield, color: 'text-red-400', bgColor: 'bg-red-400/10' };
-      case 'operator':
-        return { label: 'City Operator', icon: Settings, color: 'text-blue-400', bgColor: 'bg-blue-400/10' };
+        return {
+          label: 'Administrator',
+          icon: Shield,
+          color: 'text-red-400',
+          bgColor: 'bg-red-400/10',
+        };
+      case 'operatore':
+        return {
+          label: 'City Operator',
+          icon: Settings,
+          color: 'text-blue-400',
+          bgColor: 'bg-blue-400/10',
+        };
       default:
-        return { label: 'Citizen', icon: Heart, color: 'text-green-400', bgColor: 'bg-green-400/10' };
+        return {
+          label: 'cittadino',
+          icon: Heart,
+          color: 'text-green-400',
+          bgColor: 'bg-green-400/10',
+        };
     }
   };
 
-  const roleInfo = getRoleInfo(profileData.role);
+  const getStatusLabel = (status: number): string => {
+    const statusLabels: Record<number, string> = {
+      0: 'Inactive',
+      1: 'Active',
+      2: 'Warning',
+      3: 'Banned',
+    };
+    return statusLabels[status] || 'Unknown';
+  };
+
+  const roleInfo = getRoleInfo(profileData.tipo);
   const RoleIcon = roleInfo.icon;
 
   const stats = [
-    { label: 'Events Attended', value: '12', icon: Calendar },
-    { label: 'Community Score', value: '847', icon: Award },
-    { label: 'Days Active', value: '156', icon: Activity },
-    { label: 'Contributions', value: '23', icon: Heart },
+    { label: 'Account Status', value: UserStatusMap[profileData.stato], icon: Award },
+    {
+      label: 'Member Since',
+      value: new Date(profileData.createdAt).toLocaleDateString('it-IT'),
+      icon: Activity,
+    },
   ];
 
   return (
@@ -81,14 +267,11 @@ const UserProfile = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">
-            User Profile
-          </h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">User Profile</h1>
           <p className="text-muted-foreground text-lg">
             Manage your personal information and preferences
           </p>
         </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Profile Card */}
           <div className="lg:col-span-2">
@@ -130,21 +313,23 @@ const UserProfile = () => {
                     <div className="w-24 h-24 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center">
                       <User className="h-12 w-12 text-white" />
                     </div>
-                    <div className={`absolute -bottom-2 -right-2 p-2 rounded-full ${roleInfo.bgColor}`}>
+                    <div
+                      className={`absolute -bottom-2 -right-2 p-2 rounded-full ${roleInfo.bgColor}`}
+                    >
                       <RoleIcon className={`h-4 w-4 ${roleInfo.color}`} />
                     </div>
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold">
-                      {profileData.firstName} {profileData.lastName}
+                      {profileData.nome} {profileData.cognome}
                     </h3>
-                    <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full ${roleInfo.bgColor}`}>
+                    <div
+                      className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full ${roleInfo.bgColor}`}
+                    >
                       <RoleIcon className={`h-4 w-4 ${roleInfo.color}`} />
                       <span className={`font-medium ${roleInfo.color}`}>{roleInfo.label}</span>
                     </div>
-                    <p className="text-muted-foreground mt-2">
-                      Member since {new Date(profileData.joinDate).toLocaleDateString()}
-                    </p>
+                    <p className="text-muted-foreground mt-2">Email {profileData.email || 'N/A'}</p>
                   </div>
                 </div>
 
@@ -155,15 +340,16 @@ const UserProfile = () => {
                     {isEditing ? (
                       <input
                         type="text"
-                        name="firstName"
-                        value={editData.firstName}
+                        name="nome"
+                        value={editData.nome}
                         onChange={handleInputChange}
+                        placeholder="Enter your first name"
                         className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                       />
                     ) : (
                       <div className="flex items-center space-x-2 px-4 py-3 bg-background/30 rounded-lg">
                         <User className="h-4 w-4 text-muted-foreground" />
-                        <span>{profileData.firstName}</span>
+                        <span>{profileData.nome}</span>
                       </div>
                     )}
                   </div>
@@ -173,86 +359,35 @@ const UserProfile = () => {
                     {isEditing ? (
                       <input
                         type="text"
-                        name="lastName"
-                        value={editData.lastName}
+                        name="cognome"
+                        value={editData.cognome}
                         onChange={handleInputChange}
+                        placeholder="Enter your last name"
                         className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                       />
                     ) : (
                       <div className="flex items-center space-x-2 px-4 py-3 bg-background/30 rounded-lg">
                         <User className="h-4 w-4 text-muted-foreground" />
-                        <span>{profileData.lastName}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Email</label>
-                    {isEditing ? (
-                      <input
-                        type="email"
-                        name="email"
-                        value={editData.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
-                      />
-                    ) : (
-                      <div className="flex items-center space-x-2 px-4 py-3 bg-background/30 rounded-lg">
-                        <Mail className="h-4 w-4 text-muted-foreground" />
-                        <span>{profileData.email}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Phone</label>
-                    {isEditing ? (
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={editData.phone}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
-                      />
-                    ) : (
-                      <div className="flex items-center space-x-2 px-4 py-3 bg-background/30 rounded-lg">
-                        <Phone className="h-4 w-4 text-muted-foreground" />
-                        <span>{profileData.phone}</span>
+                        <span>{profileData.cognome}</span>
                       </div>
                     )}
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium mb-2">Location</label>
+                    <label className="block text-sm font-medium mb-2">location</label>
                     {isEditing ? (
                       <input
                         type="text"
-                        name="location"
-                        value={editData.location}
+                        name="luogo"
+                        value={editData.luogo}
                         onChange={handleInputChange}
+                        placeholder="Enter your location"
                         className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                       />
                     ) : (
                       <div className="flex items-center space-x-2 px-4 py-3 bg-background/30 rounded-lg">
                         <MapPin className="h-4 w-4 text-muted-foreground" />
-                        <span>{profileData.location}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium mb-2">Bio</label>
-                    {isEditing ? (
-                      <textarea
-                        name="bio"
-                        value={editData.bio}
-                        onChange={handleInputChange}
-                        rows={3}
-                        className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
-                      />
-                    ) : (
-                      <div className="px-4 py-3 bg-background/30 rounded-lg">
-                        <p className="text-muted-foreground">{profileData.bio}</p>
+                        <span>{profileData.luogo}</span>
                       </div>
                     )}
                   </div>
@@ -280,28 +415,142 @@ const UserProfile = () => {
                   );
                 })}
               </div>
-            </div>
 
-            {/* Quick Actions */}
-            <div className="glass-morphism p-6 rounded-xl">
-              <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
-              <div className="space-y-3">
-                <button className="w-full btn-secondary flex items-center space-x-2">
-                  <Bell className="h-4 w-4" />
-                  <span>Notification Settings</span>
-                </button>
-                <button className="w-full btn-secondary flex items-center space-x-2">
-                  <Lock className="h-4 w-4" />
-                  <span>Change Password</span>
-                </button>
-                <button className="w-full btn-secondary flex items-center space-x-2">
-                  <Settings className="h-4 w-4" />
-                  <span>Account Settings</span>
-                </button>
+              {/* Role-based Action Buttons */}
+              <div className="mt-6 space-y-3">
+                {profileData.tipo === 'citizen' && (
+                  <button className="w-full btn-secondary flex items-center space-x-2">
+                    <Bell className="h-4 w-4" />
+                    <span>My Subscriptions</span>
+                  </button>
+                )}
+
+                {profileData.tipo === 'operator' && (
+                  <button className="w-full btn-secondary flex items-center space-x-2">
+                    <Calendar className="h-4 w-4" />
+                    <span>My Events</span>
+                  </button>
+                )}
+
+                {profileData.tipo === 'admin' && (
+                  <>
+                    <button className="w-full btn-secondary flex items-center space-x-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>Events I Participate In</span>
+                    </button>
+                    <button className="w-full btn-secondary flex items-center space-x-2">
+                      <Settings className="h-4 w-4" />
+                      <span>Events I Created</span>
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
         </div>
+        <div className="h-4 w-full"></div>
+        {/* Quick Actions */}
+        <div className="glass-morphism p-6 rounded-xl">
+          <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
+
+          <div className="space-y-3">
+            {!showPasswordForm ? (
+              <button
+                onClick={() => setShowPasswordForm(true)}
+                className="w-full flex items-center space-x-2 px-4 py-2 rounded-md bg-muted hover:bg-muted/70 transition"
+              >
+                <Lock className="h-4 w-4" />
+                <span>Change Password</span>
+              </button>
+            ) : (
+              <div className="space-y-4">
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className="w-full px-3 py-2 rounded-md border border-input bg-background text-sm"
+                    placeholder="New Password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {showPassword ? <EyeOff /> : <Eye />}
+                  </button>
+                  <div className="flex justify-between gap-2">
+                    <button
+                      onClick={handlePasswordChange}
+                      className="flex-1 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition flex items-center justify-center gap-2"
+                    >
+                      <Send className="w-4 h-4" />
+                      Save
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowPasswordForm(false);
+                        setNewPassword('');
+                      }}
+                      className="flex-1 px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80 transition flex items-center justify-center gap-2"
+                    >
+                      <X className="w-4 h-4" />
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <button
+              onClick={deleteAccount}
+              className="w-full flex items-center space-x-2 px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 text-white transition"
+            >
+              <Settings className="h-4 w-4" />
+              <span>Delete Account</span>
+            </button>
+          </div>
+        </div>
+        Account Management Panel - Admin Only
+        {profileData.tipo === 'admin' && (
+          <div className="glass-morphism p-6 rounded-xl mt-6">
+            <h3 className="text-lg font-bold mb-4">Account Management</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">User ID or Email</label>
+                <input
+                  type="text"
+                  value={accountSearch}
+                  onChange={(e) => setAccountSearch(e.target.value)}
+                  placeholder="Enter user ID or email address"
+                  className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Account Status</label>
+                <select
+                  value={accountStatus}
+                  onChange={(e) => setAccountStatus(parseInt(e.target.value))}
+                  className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                >
+                  <option value={0}>Inactive</option>
+                  <option value={1}>Active</option>
+                  <option value={2}>Warning</option>
+                  <option value={3}>Banned</option>
+                </select>
+              </div>
+              <button
+                onClick={handleAccountManagement}
+                disabled={!accountSearch.trim()}
+                className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Settings className="h-4 w-4" />
+                <span>Update Account Status</span>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -16,12 +16,15 @@ interface AuthState {
   isLoading: boolean;
   login: (token: string) => boolean;
   logout: () => void;
+  updateUserProfile: (nome: string, cognome: string, luogo: string) => void;
 }
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [authState, setAuthState] = useState<Omit<AuthState, 'login' | 'logout'>>({
+  const [authState, setAuthState] = useState<
+    Omit<AuthState, 'login' | 'logout' | 'updateUserProfile'>
+  >({
     isAuthenticated: false,
     user: null,
     token: null,
@@ -84,8 +87,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
 
+  const updateUserProfile = useCallback((nome: string, cognome: string, luogo: string) => {
+    setAuthState((prev) => ({
+      ...prev,
+      user: prev.user ? { ...prev.user, nome, cognome, luogo } : null,
+    }));
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ ...authState, login, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ ...authState, login, logout, updateUserProfile }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

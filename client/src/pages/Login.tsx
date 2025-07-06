@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../hooks/AuthContext';
+import { useAuth } from '@/hooks/AuthContext';
 import { Link } from 'react-router-dom';
 import { LogIn, Mail, Lock, Eye, EyeOff, Zap } from 'lucide-react';
 import api from '../api';
