@@ -20,11 +20,20 @@ import {
   Shield,
   X,
 } from 'lucide-react';
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import api from '@/api';
 import { useAuth } from '@/hooks/AuthContext';
 import { UserProfile as UserProfileType, UserStatusMap } from '@/types/userProfile';
+import { useDebounce } from '@/hooks/useDebounce';
+import { get } from 'http';
 
 const UserProfile = () => {
   const { toast } = useToast();
@@ -48,16 +57,11 @@ const UserProfile = () => {
   const [accountStatus, setAccountStatus] = useState(1);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
   const [newPassword, setNewPassword] = useState('');
+  // Gestione della ricerca degli utenti per l'amministratore
+  const debouncedSearch = useDebounce(accountSearch, 400);
+  const [userResults, setUserResults] = useState<UserProfileType[]>([]);
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
 
-  // const [profileData, setProfileData] = useState({
-  //   nome: 'John',
-  //   cognome: 'Doe',
-  //   email: 'john.doe@example.com',
-  //   phone: '+1 (555) 123-4567',
-  //   luogo: 'New York, NY',
-  //   role: 'admin', // Change to 'citizen', 'operator', or 'admin' to test
-  //   joinDate: '2024-01-15'
-  // });
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem('accessToken');
@@ -101,9 +105,32 @@ const UserProfile = () => {
     }
   };
 
+  const fetchUsers = async () => {
+    try {
+      const token = localStorage.getItem('accessToken');
+      const res = await api.get(`/user/search?q=${debouncedSearch}`, {
+        headers: {
+          accessToken: token, // questo deve corrispondere a req.header("accessToken")
+        },
+      });
+      setUserResults(res.data.data); // array di utenti trovati
+      console.log('Search results: ', userResults);
+    } catch (err) {
+      console.error('Errore nel recupero utenti:', err);
+      setUserResults([]);
+    }
+  };
+
   useEffect(() => {
     fetchProfile();
-  }, []);
+
+    if (!debouncedSearch.trim()) {
+      setUserResults([]);
+      return;
+    }
+
+    fetchUsers();
+  }, [debouncedSearch]);
 
   if (loading) return <p>Caricamento profilo...</p>;
   if (!profileData) return <p>Impossibile caricare i dati utente.</p>;
@@ -180,11 +207,11 @@ const UserProfile = () => {
     });
   };
 
-  const handleAccountManagement = () => {
-    console.log('Managing account:', accountSearch, 'Status:', accountStatus);
-    alert(`Account ${accountSearch} status updated to ${getStatusLabel(accountStatus)}`);
-    setAccountSearch('');
-  };
+  // const handleAccountManagement = () => {
+  //   console.log('Managing account:', accountSearch, 'Status:', accountStatus);
+  //   alert(`Account ${accountSearch} status updated to ${getStatusLabel(accountStatus)}`);
+  //   setAccountSearch('');
+  // };
 
   const handlePasswordChange = async () => {
     try {
@@ -261,6 +288,37 @@ const UserProfile = () => {
       icon: Activity,
     },
   ];
+
+  const handleAccountManagement = async () => {
+    if (!selectedUserId) return;
+
+    try {
+      const token = localStorage.getItem('accessToken');
+      await api.put(
+        `/user/modify/state/${selectedUserId}`,
+        {
+          stato: accountStatus,
+        },
+        {
+          headers: {
+            accessToken: token, // questo deve corrispondere a req.header("accessToken")
+          },
+        }
+      );
+      toast({
+        title: 'Stato aggiornato con successo',
+        description: `L'utente con ID ${selectedUserId} ha ora lo stato ${getStatusLabel(
+          accountStatus
+        )}`,
+      });
+      setAccountSearch('');
+      setSelectedUserId(null);
+      setUserResults([]);
+    } catch (err) {
+      console.error("Errore nell'aggiornamento dello stato:", err);
+      toast({ title: "Errore nell'aggiornamento dello stato", variant: 'destructive' });
+    }
+  };
 
   return (
     <div className="min-h-screen py-8">
@@ -527,6 +585,59 @@ const UserProfile = () => {
                   className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                 />
               </div>
+              {userResults.length > 0 && (
+                <div>
+                  <label className="block text-sm font-medium mb-2">Select User</label>
+                  {/* <select
+                    value={selectedUserId ?? ''}
+                    onChange={(e) => setSelectedUserId(Number(e.target.value))}
+                    className="w-full px-4 py-3 bg-background/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+                  >
+                    <option value="" disabled>
+                      Select a user
+                    </option>
+                    {userResults.map((user) => (
+                      <option key={user.id} value={user.id}>
+                        #{user.id} – {user.email} – {user.tipo} – {user.stato}
+                      </option>
+                    ))}
+                  </select> */}
+                  <Select
+                    value={selectedUserId?.toString() ?? ''}
+                    onValueChange={(value) => setSelectedUserId(Number(value))}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Seleziona un utente" />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-60 overflow-y-auto">
+                      <SelectItem
+                        value="placeholder"
+                        disabled
+                        className="text-muted-foreground italic"
+                      >
+                        Seleziona un utente
+                      </SelectItem>
+                      {userResults.map((user) => (
+                        <SelectItem
+                          key={user.id}
+                          value={user.id.toString()}
+                          className="text-sm font-mono px-2 py-1"
+                        >
+                          <div className="flex flex-col">
+                            <span className="text-sm font-semibold">
+                              #{user.id} – {user.email}
+                            </span>
+                            <span className="text-xs text-gray-500">
+                              {user.tipo} – {getStatusLabel(user.stato)}
+                            </span>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
+
               <div>
                 <label className="block text-sm font-medium mb-2">Account Status</label>
                 <select

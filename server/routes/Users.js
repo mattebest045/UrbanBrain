@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
 const requireRole = require('../middlewares/requiredRole')
-
+const { Op } = require('sequelize');
 
 /**
  * @description Create new User
@@ -144,6 +144,54 @@ router.get("/profile", validateToken, async (req, res) => {
     }
 })
 
+/** * @description Search for users by ID or email
+ * @route GET /user/search  
+ * @access private
+ * @note ONLY ADMIN
+ * @param {string} q - ID or email to search for
+ * @returns {Array} - Array of user objects matching the search criteria
+ * @example
+ * GET /user/search?q=123
+ */
+router.get('/search', validateToken, requireRole('admin'), async (req, res) => {
+    const { q } = req.query;
+
+    if (!q || typeof q !== 'string') {
+        return sendResponse(res, constants.BAD_REQUEST, false, 'Richiesta mancante o non valida');
+    }
+    console.log(`Searching for users with query: ${q}`);
+    try {
+        let users;
+
+        if (/^\d+$/.test(q)) {
+            // Se è un numero → cerca per ID
+            const user = await Users.findByPk(Number(q), { attributes: { exclude: ['password'] }, });
+            users = user ? [user] : [];
+        } else {
+            // Altrimenti cerca per email (case insensitive)
+            users = await Users.findAll({
+                where: {
+                    email: { [Op.like]: `%${q}%` },
+                },
+            }, { attributes: { exclude: ['password'] }, });
+        }
+
+        //         const users = await User.findAll({
+        //   where: {
+        //     [Op.or]: [
+        //       { id: isNaN(Number(q)) ? -1 : Number(q) }, // fallback su -1 se non è numero
+        //       { email: { [Op.like]: `%${q}%` } }
+        //     ]
+        //   }
+        // });
+        console.log(`Found ${users.length} users matching the query.`);
+        return sendResponse(res, constants.OK, true, '', users);
+    } catch (err) {
+        console.error(err);
+        return sendResponse(res, constants.SERVER_ERROR, false, 'Errore interno del server');
+    }
+});
+
 
 /**
  * @description Modify Info User
@@ -208,6 +256,7 @@ router.put('/modify/password', validatePasswordUser, validateToken, async (req, 
  *               1: attivo
  *               2: warning
  *               3: bannato
+ * @deprecated
  */
 router.put('/modify/by-email/state', validateState, validateToken, requireRole('admin'), async (req, res) => {
     try {
@@ -239,7 +288,7 @@ router.put('/modify/by-email/state', validateState, validateToken, requireRole('
 
 /**
  * @description Modify User's state: Only admin can change state of other users, using his id
- * @route PUT /user/modify/state/:id
+ * @route PUT /user/modify/:id/state
  * @access private 
  * @note ONLY ADMIN
  * @field stato: 0: stato di attivazione
@@ -247,14 +296,13 @@ router.put('/modify/by-email/state', validateState, validateToken, requireRole('
  *               2: warning
  *               3: bannato
  */
-router.put('/modify/:id/state', validateIdUserParam, validateState, validateToken, async (req, res) => {
+// 
+router.put('/modify/state/:id', validateIdUserParam, validateState, validateToken, requireRole('admin'), async (req, res) => {
     try {
-        const tipo = req.user.tipo
-        if (tipo !== 'admin') return sendResponse(res, constants.UNAUTHORIZED, false, 'Operazione non permessa.')
-
         const id = req.params.id
         const { stato } = req.body
 
+        console.log(`Modifica stato utente con ID: ${id}, nuovo stato: ${stato}`)
         const user = await Users.findByPk(id, { attributes: { exclude: ['password'] } })
         console.log(user)
         if (!user) {
