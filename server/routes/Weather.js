@@ -37,7 +37,7 @@ router.get('/:city', validateCityParam, async (req, res) => {
             latitude,
             longitude,
             current: 'temperature_2m,apparent_temperature,precipitation,weathercode,cloudcover,wind_speed_10m,visibility,pressure_msl',
-            daily: 'temperature_2m_max,temperature_2m_min,weathercode',
+            daily: 'temperature_2m_max,temperature_2m_min,temperature_2m_mean,weathercode,apparent_temperature_mean,cloud_cover_mean,wind_speed_10m_mean,visibility_mean,pressure_msl_mean',
             timezone: 'auto'
         };
 

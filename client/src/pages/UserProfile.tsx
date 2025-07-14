@@ -33,7 +33,6 @@ import api from '@/api';
 import { useAuth } from '@/hooks/AuthContext';
 import { UserProfile as UserProfileType, UserStatusMap } from '@/types/userProfile';
 import { useDebounce } from '@/hooks/useDebounce';
-import { get } from 'http';
 
 const UserProfile = () => {
   const { toast } = useToast();
@@ -206,12 +205,6 @@ const UserProfile = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  // const handleAccountManagement = () => {
-  //   console.log('Managing account:', accountSearch, 'Status:', accountStatus);
-  //   alert(`Account ${accountSearch} status updated to ${getStatusLabel(accountStatus)}`);
-  //   setAccountSearch('');
-  // };
 
   const handlePasswordChange = async () => {
     try {
