@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { validateInfoEvent, validateIdEventParam } = require('../middlewares/validate/validateCreateJoinEvent');
 const { validationResult } = require('express-validator');
-const { CreateEvents } = require('../models')
+const { Events, CreateEvents } = require('../models')
 const { constants, sendResponse } = require('../utils')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
@@ -45,14 +45,23 @@ router.put('/', validateToken, requireRole('operatore'), validateInfoEvent, asyn
  */
 router.post('/:id', validateToken, validateIdEventParam, requireRole('operatore'), validateInfoEvent, async (req, res, next) => {
     try {
-        const { idUtente } = req.user.idUtente
-        const { idEvento } = req.params.id
-
+        const idUtente = req.user.id
+        const idEvento = req.params.id
         const { segnalazione } = req.body
 
+        console.log('idEvento: ', req.params)
         // Controllo se esiste l'id evento esiste
         const checkEvento = Events.findByPk(idEvento)
         if (!checkEvento) return sendResponse(res, constants.BAD_REQUEST, false, 'Evento selezionato inesistente')
+
+        // Controllo se l'operatore si è già iscritto per partecipare a questo evento
+        const checkJoinEvento = await CreateEvents.findOne({
+            where: {
+                idUtente: idUtente,
+                idEvento: idEvento
+            }
+        })
+        if (checkJoinEvento) return sendResponse(res, constants.CONFLICT, false, 'Ti sei già proposto per quest\'evento!!!')
 
         const newCreatedEvent = await CreateEvents.create({
             idEvento,

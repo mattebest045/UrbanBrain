@@ -32,9 +32,13 @@ module.exports = (sequelize, DataTypes) => {
       descrizione: {
         type: DataTypes.TEXT,
       },
-      foto: {
-        type: DataTypes.TEXT,
-      },
+      stato: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0, // Default to 'Inactive'
+        validate: {
+          isIn: [[0, 1, 2, 3]], // Valid states: Inactive, Active, Queue, Banned
+        },
+      }
     },
     {
       tableName: 'partecipa_evento',
@@ -43,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   JoinEvents.associate = function (models) {
-    JoinEvents.belongsTo(models.Users, { foreignKey: 'idUtente' });
-    JoinEvents.belongsTo(models.Events, { foreignKey: 'idEvento' });
+    JoinEvents.belongsTo(models.Users, { foreignKey: 'idUtente', targetKey: 'id', onDelete: 'CASCADE' });
+    JoinEvents.belongsTo(models.Events, { foreignKey: 'idEvento', targetKey: 'id', onDelete: 'CASCADE' });
   };
 
   return JoinEvents;

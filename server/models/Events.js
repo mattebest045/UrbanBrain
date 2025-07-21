@@ -9,16 +9,17 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
-      nome: {
+      titolo: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      tipo: {
+      categoria: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: { // Validazione per il tipo di evento
-          isIn: [['all', 'music', 'food', 'sports', 'business', 'community', 'privato']],
+          isIn: [['All Events', 'Music', 'Food & Drink', 'Sport', 'Business', 'Community']],
         },
+
       },
       organizzatore: {
         type: DataTypes.STRING,
@@ -45,14 +46,15 @@ module.exports = (sequelize, DataTypes) => {
       path: {
         type: DataTypes.STRING,
       },
-      posti: {
+      postiDisponibili: {
         type: DataTypes.INTEGER,
       },
       descrizione: {
         type: DataTypes.TEXT,
       },
       data: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
+        allowNull: false,
       },
       stato: {
         type: DataTypes.INTEGER,
@@ -75,8 +77,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Events.associate = function (models) {
-    Events.hasMany(models.JoinEvents, { foreignKey: 'idEvents' });
-    Events.hasMany(models.CreateEvents, { foreignKey: 'idEvents' });
+    Events.hasMany(models.JoinEvents, { foreignKey: 'idEvento', onDelete: 'CASCADE' });
+    Events.hasMany(models.CreateEvents, { foreignKey: 'idEvento', onDelete: 'CASCADE' });
   };
 
   return Events;

@@ -1,19 +1,22 @@
-const { body, param } = require('express-validator');
+const { body, param, validationResult } = require('express-validator');
 const { sendResponse, constants, capitalizeWords } = require('../../utils');
+const { options } = require('../../routes/Events');
 
 const validateInfoEvent = [
-    body('nome')
+    body('titolo')
+        .optional()
         .trim()
         .notEmpty().withMessage('Il nome è obbligatorio')
         .isLength({ max: 255 }).withMessage('Il nome può avere massimo 255 caratteri'),
 
-    body('tipo')
+    body('categoria')
         .notEmpty().withMessage('Il tipo di evento è obbligatorio')
-        .isIn(['all', 'music', 'food', 'sports', 'business', 'community', 'privato'])
-        .withMessage('Il tipo di evento deve essere uno tra: all, music, food, sports, business, community, privato')
+        .isIn(['All Events', 'Music', 'Food & Drink', 'Sport', 'Business', 'Community'])
+        .withMessage('Il tipo di evento deve essere uno tra: All Events, Music, Food & Drink, Sport, Business, Community')
         .customSanitizer(value => capitalizeWords(value)),
 
     body('luogo')
+        .optional()
         .trim()
         .notEmpty().withMessage('Il luogo è obbligatorio')
         .isLength({ max: 255 }).withMessage('Il luogo può avere massimo 255 caratteri'),
@@ -29,19 +32,38 @@ const validateInfoEvent = [
         .isLength({ max: 1000 }).withMessage('La descrizione può avere massimo 1000 caratteri'),
 
     body('data')
+        .optional()
         .notEmpty().withMessage('La data è obbligatoria')
-        .isDate().withMessage('La data deve essere in formato valido (YYYY-MM-DD)'),
+        .custom((value) => {
+            const parsed = new Date(value);
+            if (isNaN(parsed.getTime())) {
+                throw new Error('La data deve essere in formato valido (YYYY-MM-DDTHH:mm)');
+            }
+            return true;
+        }),
 
     body('prezzo')
+        .optional()
         .notEmpty().withMessage('Il prezzo è obbligatorio')
         .toFloat()
         .isFloat({ min: 0, max: 999.99 }).withMessage('Il prezzo deve avere massimo 3 cifre intere e 2 decimali')
         .matches(/^\d{1,3}(\.\d{1,2})?$/).withMessage('Il prezzo deve avere massimo 3 cifre intere e 2 decimali'),
 
-    body('segnalazione')
+    body('postiDisponibili')
+        .optional()
+        .toInt()
+        .isInt({ min: 0, max: 999 }),
+
+    body('organizzatore')
         .optional()
         .trim()
-        .isLength({ max: 1000 }).withMessage('La descrizione può avere massimo 1000 caratteri'),
+        .isLength({ max: 255 }).withMessage('Il nome organizzatore può avere massimo 255 caratteri'),
+
+    body('emailOrganizzatore')
+        .optional()
+        .isEmail().withMessage('Email non valida')
+        .normalizeEmail()
+        .customSanitizer(email => email.toLowerCase()),
 
     (req, res, next) => {
         const errors = validationResult(req);

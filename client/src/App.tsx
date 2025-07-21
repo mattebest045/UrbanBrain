@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import WeatherDashboard from './pages/WeatherDashboard';
 import Events from './pages/Events';
+import CreateEvent from './pages/CreateEvent';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import UserProfile from './pages/UserProfile';
@@ -27,6 +28,7 @@ const App = () => (
               <Route path="/" element={<HomePage />} />
               <Route path="/weather" element={<WeatherDashboard />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/create-event" element={<CreateEvent />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/profile" element={<UserProfile />} />

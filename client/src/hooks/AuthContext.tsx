@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 interface AuthUser {
-  id: string;
+  id: number;
   tipo: string;
   luogo: string;
   nome?: string;

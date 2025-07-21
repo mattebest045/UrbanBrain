@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { validateInfoEvent } = require('../middlewares/validate/validateCreateJoinEvent');
+const { validateInfoEvent, validateIdEventParam } = require('../middlewares/validate/validateCreateJoinEvent');
 const { validationResult } = require('express-validator');
-const { JoinEvents } = require('../models')
+const { Events, JoinEvents } = require('../models')
 const { constants, sendResponse } = require('../utils')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
@@ -16,17 +16,26 @@ const requireRole = require('../middlewares/requiredRole')
  */
 router.post('/', validateToken, requireRole('cittadino'), validateInfoEvent, async (req, res, next) => {
     try {
-        const { idUtente } = req.user.idUtente
+        const idUtente = req.user.id
         const { idEvento, segnalazione } = req.body
 
         // Controllo se esiste l'id evento esiste
         const checkEvento = Events.findByPk(idEvento)
         if (!checkEvento) return sendResponse(res, constants.BAD_REQUEST, false, 'Evento selezionato inesistente')
 
+        // Controllo se l'utente si è già iscritto a questo evento
+        const checkJoinEvento = await JoinEvents.findOne({
+            where: {
+                idUtente: idUtente,
+                idEvento: idEvento
+            }
+        })
+        if (checkJoinEvento) return sendResponse(res, constants.CONFLICT, false, 'Ti sei già iscritto a quest\'evento!!!')
+
         const newCreatedEvent = await JoinEvents.create({
-            idEvento,
-            idUtente,
-            segnalazione
+            idEvento: idEvento,
+            idUtente: idUtente,
+            segnalazione: segnalazione
         });
 
         if (!newCreatedEvent) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta dell\'evento')

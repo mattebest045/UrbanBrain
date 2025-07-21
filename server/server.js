@@ -6,6 +6,7 @@ const cors = require('cors');
 const routerUser = require('./routes/Users')
 const routerEvent = require('./routes/Events')
 const routerCreateEvent = require('./routes/CreateEvents')
+const routerJoinEvent = require('./routes/JoinEvents')
 const routerWeather = require('./routes/Weather');
 
 const port = Number(process.env.SERVER_PORT) || 3001;
@@ -19,6 +20,7 @@ app.use('/uploads/events', express.static(path.join(__dirname, 'uploads/events')
 app.use('/user', routerUser)
 app.use('/event', routerEvent)
 app.use('/create-event', routerCreateEvent)
+app.use('/join-event', routerJoinEvent)
 app.use('/weather', routerWeather)
 
 // Creo prima la connessione con il db, sequelize crea eventuali tabelle non presenti nel db che sono presenti nel nostro folder models/

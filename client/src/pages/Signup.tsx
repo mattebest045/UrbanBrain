@@ -60,7 +60,6 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Signup attempt:', formData);
 
     try {
       // Invio i dati al backend tramite axios
@@ -72,11 +71,7 @@ const Signup = () => {
         password: formData.password,
         tipo: formData.role,
       });
-      console.log('Response from server:', response.data);
       if (response.data.success) {
-        // Gestione successo inserimento nuovo utente a db
-        console.log('Nuovo utente creato:', response.data);
-
         // Salvataggio token JWT
         localStorage.setItem('token', response.data.token);
 

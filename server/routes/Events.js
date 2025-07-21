@@ -7,12 +7,12 @@ const {
 const multer = require('multer')
 const path = require('path')
 const upload = require('../utils/uploads')
-const { Events, CreateEvents } = require('../models')
+const { Events, CreateEvents, JoinEvents } = require('../models')
 const { constants, sendResponse } = require('../utils')
 require('dotenv').config()
 const { validateToken } = require('../middlewares/AuthMiddleware');
 const requireRole = require('../middlewares/requiredRole')
-const { Op, or } = require("sequelize");
+const { Op, fn, col } = require("sequelize");
 
 /**
  * @description Create an event and auto-join the creator
@@ -26,17 +26,20 @@ router.post('/', validateToken, requireRole('admin', 'operatore'), upload.single
         const file = req.file;
         const filename = file?.filename ?? 'default.jpg';
         const filepath = file?.path ?? path.join('uploads/events', 'default.jpg');
-        const organizzatore = req.user.nome + ' ' + req.user.cognome;
+        const organizzatore = req.body.organizzatore ? req.body.organizzatore : req.user.nome + ' ' + req.user.cognome;
+        const emailOrganizzatore = req.body.emailOrganizzatore ? req.body.emailOrganizzatore : req.user.email
         // Aggiungo il campo stato: 
         sanitizedData.stato = 0
+        console.log(sanitizedData)
+        console.log('filename: ', filename, ', filepath: ', filepath)
         // Creo l'evento
         const newEvent = await Events.create({
-            nome: sanitizedData.nome,
-            tipo: sanitizedData.tipo,
+            titolo: sanitizedData.titolo,
+            categoria: sanitizedData.categoria,
             organizzatore: organizzatore,
-            emailOrganizzatore: req.user.email,
+            emailOrganizzatore: emailOrganizzatore,
             luogo: sanitizedData.luogo,
-            posti: sanitizedData.posti,
+            postiDisponibili: sanitizedData.postiDisponibili,
             descrizione: sanitizedData.descrizione,
             data: sanitizedData.data,
             stato: sanitizedData.stato,
@@ -53,7 +56,7 @@ router.post('/', validateToken, requireRole('admin', 'operatore'), upload.single
         const newCreateEvent = await CreateEvents.create({
             idEvento: newEvent.id,
             idUtente: req.user.id,
-            segnalazione: segnalazione
+            segnalazione: `Creato evento ${sanitizedData.titolo}`
         })
 
         if (!newCreateEvent) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta del creatore dell\'evento')
@@ -105,10 +108,27 @@ router.get('/city/:city', async (req, res, next) => {
                     [Op.like]: `%${citta}`
                 },
                 stato: {
-                    [Op.or]: [0, 1, 2] // Considera solo eventi in stato di attivazione, attivi o warning
+                    [Op.or]: [0, 1, 2]
+                },
+                data: {
+                    [Op.gte]: new Date() // Oggi o date future
                 }
-            }
+            },
+            include: [
+                {
+                    model: JoinEvents,
+                    attributes: []
+                }
+            ],
+            attributes: {
+                include: [
+                    [fn('AVG', col('JoinEvents.star')), 'mediaRating']
+                ]
+            },
+            group: ['Events.id'],
+            order: [['data', 'ASC']]
         });
+
 
         if (!InfoEvents) {
             return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nella richiesta degli eventi')
@@ -143,13 +163,17 @@ router.put('/modify/:id', validateToken, validateIdEventParam, validateInfoEvent
         const sanitizedData = req.body;
 
         const updatedEvent = await Events.update({
-            nome: sanitizedData.nome,
-            tipo: sanitizedData.tipo,
+            titolo: sanitizedData.titolo,
+            categoria: sanitizedData.categoria,
+            data: sanitizedData.data,
             luogo: sanitizedData.luogo,
-            posti: sanitizedData.posti,
+            prezzo: sanitizedData.prezzo,
+            postiDisponibili: sanitizedData.postiDisponibili,
             descrizione: sanitizedData.descrizione,
-            data: sanitizedData.data
+            organizzatore: sanitizedData.organizzatore,
+            emailOrganizzatore: sanitizedData.emailOrganizzatore,
         }, { where: { id: id } })
+
 
         if (!updatedEvent) {
             return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nella modifica dell\'evento')
@@ -161,6 +185,32 @@ router.put('/modify/:id', validateToken, validateIdEventParam, validateInfoEvent
         sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
     }
 
+})
+
+/**
+ * @description Modify status Event
+ * @route PUT /event/:id/status/
+ * @access private
+ * @note Only Admin 
+ */
+router.put('/:id/status', validateToken, validateIdEventParam, requireRole('admin'), async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const { stato } = req.body
+
+        const updatedEvent = await Events.update({
+            stato: stato,
+        }, { where: { id: id } })
+
+        if (!updatedEvent) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nella modifica dello stato dell\'evento')
+        }
+
+        sendResponse(res, constants.RESOURCE_CREATED, true, 'Stato evento modificato con successo')
+    } catch (err) {
+        console.error('Errore nella PUT /event/:id/status: ', err)
+        sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
+    }
 })
 
 /**
