@@ -499,9 +499,9 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-        <div className="h-4 w-full"></div>
+        {/* <div className="h-4 w-full"></div> */}
         {/* Quick Actions */}
-        <div className="glass-morphism p-6 rounded-xl">
+        <div className="glass-morphism p-6 rounded-xl mt-5">
           <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
 
           <div className="space-y-3">
@@ -563,10 +563,10 @@ const UserProfile = () => {
             </button>
           </div>
         </div>
-        Account Management Panel - Admin Only
+        
         {profileData.tipo === 'admin' && (
-          <div className="glass-morphism p-6 rounded-xl mt-6">
-            <h3 className="text-lg font-bold mb-4">Account Management</h3>
+          <div className="glass-morphism p-6 rounded-xl mt-5">
+            <h3 className="text-lg font-bold mb-4">Account Management Panel</h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">User ID or Email</label>
