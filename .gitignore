@@ -26,5 +26,5 @@ web_modules/
 */.env.local
 
 # Ignora tutti i file in /uploads/events, ma NON la cartella
-uploads/events/*
-!uploads/events/default.png
+server/uploads/events/*
+!server/uploads/events/default.png
