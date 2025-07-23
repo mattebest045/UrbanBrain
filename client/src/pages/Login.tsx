@@ -53,6 +53,7 @@ const Login = () => {
       toast({
         title: 'Errore di login',
         description: error.response.data.message || 'Credenziali non valide',
+        variant: 'destructive',
       });
     }
   };
