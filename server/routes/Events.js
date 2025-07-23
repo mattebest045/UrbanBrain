@@ -134,10 +134,10 @@ router.get('/city/:city', async (req, res, next) => {
 
         InfoEvents.forEach(event => {
             // Imposto come default questa immagine
-            event.dataValues.imageUrl = 'http://localhost:3001/uploads/events/default.png';
+            event.dataValues.imageUrl = `${process.env.URL_SERVER}/uploads/events/default.png`;
             if (event.filename) {
                 // Costruisco l’URL dell’immagine solo se il file esiste
-                event.dataValues.imageUrl = `http://localhost:3001/uploads/events/${event.filename}`;
+                event.dataValues.imageUrl = `${process.env.URL_SERVER}/uploads/events/${event.filename}`;
             }
         }
         );
@@ -186,8 +186,8 @@ router.get('/listed', validateToken, requireRole('cittadino', 'operatore', 'admi
             const event = entry.Event;
 
             const imageUrl = event.filename
-                ? `http://localhost:3001/uploads/events/${event.filename}`
-                : `http://localhost:3001/uploads/events/default.png`;
+                ? `${process.env.URL_SERVER}/uploads/events/${event.filename}`
+                : `${process.env.URL_SERVER}/uploads/events/default.png`;
             const star = entry.star;
             const recensione = entry.descrizione;
             return {
@@ -282,10 +282,10 @@ router.get('/:id', validateIdEventParam, async (req, res, next) => {
         }
 
         // Imposto come default questa immagine
-        InfoEvent.dataValues.imageUrl = 'http://localhost:3001/uploads/events/default.png';
+        InfoEvent.dataValues.imageUrl = `${process.env.URL_SERVER}/uploads/events/default.png`;
         if (InfoEvent.filename) {
             // Costruisco l’URL dell’immagine solo se il file esiste
-            InfoEvent.dataValues.imageUrl = `http://localhost:3001/uploads/events/${InfoEvent.filename}`;
+            InfoEvent.dataValues.imageUrl = `${process.env.URL_SERVER}/uploads/events/${InfoEvent.filename}`;
         }
 
         sendResponse(res, constants.OK, true, 'Evento singolo', InfoEvent)

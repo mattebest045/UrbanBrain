@@ -14,6 +14,7 @@ import { useAuth } from '@/hooks/AuthContext';
 import { createEventData } from '@/types/eventType';
 import { formatDateTimeLocal } from '@/lib/formatLocalDate';
 import api from '@/api';
+import config from '@/lib/config';
 
 function CreateEvent() {
   const { toast } = useToast();
@@ -118,7 +119,7 @@ function CreateEvent() {
     // CONTINUA A DARE ERRORE NELL\'INSERIMENTO DI UN FILE
 
     try {
-      const resp = await api.post('http://localhost:3001/event', formData, {
+      const resp = await api.post('/event', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           accessToken: token,
@@ -179,7 +180,7 @@ function CreateEvent() {
           <div className="glass-morphism rounded-xl overflow-hidden">
             <div className="relative h-64 md:h-80">
               <img
-                src={imageUrl || 'http://localhost:3001/uploads/events/default.png'}
+                src={imageUrl || `${config.URL_SERVER}/uploads/events/default.png`}
                 alt={createEvent.titolo}
                 className="w-full h-full object-cover rounded-lg"
               />

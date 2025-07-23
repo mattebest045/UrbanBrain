@@ -14,7 +14,7 @@ const port = Number(process.env.SERVER_PORT) || 3001;
 
 const app = express();
 
-app.use(cors());
+app.use(cors([origin = process.env.URL_CLIENT])); // Permette le richieste CORS dal client
 app.use(express.json());
 app.use('/uploads/events', express.static(path.join(__dirname, 'uploads/events'))); // Rendo pubblica la cartella, così è accessibile
 

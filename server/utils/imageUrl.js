@@ -4,7 +4,7 @@ dotenv.config();
 function generateImageUrl(event) {
     if (!event || typeof event !== 'object') return event;
 
-    const baseUrl = process.env.EVENTS_IMAGE_BASE_URL || 'http://localhost:3001/uploads/events/';
+    const baseUrl = process.env.EVENTS_IMAGE_BASE_URL || `${process.env.URL_SERVER}/uploads/events/`;
     event.dataValues.imageUrl = event.filename
         ? `${baseUrl}${event.filename}`
         : `${baseUrl}default.png`;

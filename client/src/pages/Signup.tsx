@@ -43,7 +43,7 @@ const Signup = () => {
       color: 'text-red-400',
     },
     {
-      id: 'operator',
+      id: 'operatore',
       label: 'Operator',
       description: 'Manage city services and monitor operations',
       icon: Settings,

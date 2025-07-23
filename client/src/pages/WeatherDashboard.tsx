@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { mapWeatherCodeToIcon } from '@/lib/weatherCodeToIcon';
 import { CurrentData, ForecastData, AirQualityData, WeatherApiResponse } from '@/types/weatherData';
+import { useAuth } from '@/hooks/AuthContext';
 
 const WeatherDashboard: React.FC = () => {
   const defaultCity = 'Parma';
@@ -47,6 +48,19 @@ const WeatherDashboard: React.FC = () => {
       return { parameter, value, unit, status, color };
     });
   };
+
+  // useEffect(() => {
+  //   const savedCity = localStorage.getItem('lastCity'); // Ricupera la città salvata nel localStorage
+  //   setCurrentCity('Parma');
+
+  //   if (user?.luogo) {
+  //     setCurrentCity(user.luogo);
+  //   } else if (savedCity) {
+  //     setCurrentCity(savedCity);
+  //   }
+
+  //   fetchEvents();
+  // }, [user]);
 
   useEffect(() => {
     const fetchWeather = async () => {
