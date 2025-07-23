@@ -1,11 +1,12 @@
 const constants = require('../utils/constants');
-const sendResponse = require('../utils/server_response');
 
 module.exports = (...allowedRoles) => (req, res, next) => {
     const tipo = req.user.tipo;
     if (!allowedRoles.includes(tipo)) {
-        throw new Error('Operazione non permessa', )
-        (res, constants.UNAUTHORIZED, false, 'Operazione non permessa.');
+        const error = new Error('Operazione non permessa');
+        error.statusCode = constants.FORBIDDEN;
+        return next(error); // ✅ passa al middleware di gestione errori
     }
+
     next();
 };

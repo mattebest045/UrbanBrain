@@ -41,3 +41,29 @@ export interface createEventData {
   data: string;
   stato: number;
 }
+
+// Utilizzo in PersonalEvents
+export interface PersonalEventType {
+  id: number;
+  titolo: string;
+  categoria: string;
+  organizzatore: string;
+  emailOrganizzatore: string;
+  luogo: string;
+  prezzo: string;
+  filename: string;
+  path: string;
+  postiDisponibili: number;
+  descrizione: string;
+  data: string;
+  stato: number;
+  imageUrl: string;
+  mediaRating: number;
+  star?: number;
+  recensione?: string;
+}
+
+export interface EditablePersonalEventData {
+  recensione?: string;
+  star: number;
+}

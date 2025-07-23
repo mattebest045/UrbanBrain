@@ -46,7 +46,7 @@ const UserProfile = () => {
     cognome: '',
     email: '',
     luogo: '',
-    tipo: 'citizen', // Default role, can be 'citizen', 'operator', or 'admin'
+    tipo: 'cittadino', // Default role, can be 'cittadino', 'operatore', or 'admin'
     createdAt: '', // ISO date string
     stato: 1, // Default status
     id: '', // User ID
@@ -304,6 +304,7 @@ const UserProfile = () => {
     }
   };
 
+  console.log('tipo user: ', profileData.tipo);
   return (
     <div className="min-h-screen py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -460,31 +461,34 @@ const UserProfile = () => {
 
               {/* Role-based Action Buttons */}
               <div className="mt-6 space-y-3">
-                {profileData.tipo === 'citizen' && (
-                  <button className="w-full btn-secondary flex items-center space-x-2">
-                    <Bell className="h-4 w-4" />
-                    <span>My Subscriptions</span>
+                {profileData.tipo === 'cittadino' && (
+                  <button
+                    onClick={() => navigate('/personal-events')}
+                    className="w-full btn-secondary flex items-center space-x-2"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    <span>Events I Participated In</span>
                   </button>
                 )}
 
-                {profileData.tipo === 'operator' && (
-                  <button className="w-full btn-secondary flex items-center space-x-2">
+                {profileData.tipo === 'operatore' && (
+                  <button
+                    onClick={() => navigate('/personal-events')}
+                    className="w-full btn-secondary flex items-center space-x-2"
+                  >
                     <Calendar className="h-4 w-4" />
-                    <span>My Events</span>
+                    <span>Events I Worked In</span>
                   </button>
                 )}
 
                 {profileData.tipo === 'admin' && (
-                  <>
-                    <button className="w-full btn-secondary flex items-center space-x-2">
-                      <Calendar className="h-4 w-4" />
-                      <span>Events I Participate In</span>
-                    </button>
-                    <button className="w-full btn-secondary flex items-center space-x-2">
-                      <Settings className="h-4 w-4" />
-                      <span>Events I Created</span>
-                    </button>
-                  </>
+                  <button
+                    onClick={() => navigate('/personal-events')}
+                    className="w-full btn-secondary flex items-center space-x-2"
+                  >
+                    <Settings className="h-4 w-4" />
+                    <span>Events I Created</span>
+                  </button>
                 )}
               </div>
             </div>

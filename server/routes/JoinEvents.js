@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { validateInfoEvent, validateIdEventParam } = require('../middlewares/validate/validateCreateJoinEvent');
-const { validationResult } = require('express-validator');
+const { validateInfoEvent, validateIdEventParam, validateRateEvent } = require('../middlewares/validate/validateCreateJoinEvent');
 const { Events, JoinEvents } = require('../models')
 const { constants, sendResponse } = require('../utils')
 require('dotenv').config()
@@ -62,7 +61,7 @@ router.put('/', validateToken, requireRole('operatore'), validateInfoEvent, asyn
         const checkEvento = Events.findByPk(idEvento)
         if (!checkEvento) return sendResponse(res, constants.BAD_REQUEST, false, 'Evento selezionato inesistente')
 
-        const newCreatedEvent = await JoinEvents.create({
+        const newCreatedEvent = await JoinEvents.update({
             idEvento: idEvento,
             idUtente: idUtente,
             segnalazione: segnalazione
@@ -71,6 +70,50 @@ router.put('/', validateToken, requireRole('operatore'), validateInfoEvent, asyn
         if (!newCreatedEvent) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta dell\'evento')
 
         sendResponse(res, constants.RESOURCE_CREATED, true, 'Operatore aggiunto all\'evento correttamente')
+    } catch (err) {
+        console.error('Errore nella POST /create-event: ', err)
+        sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
+    }
+})
+
+
+/**
+ * @description Add/Update rating of an event
+ * @route PUT /join-event/rate/:id
+ * @access private
+ * @note Only citizen
+ */
+router.put('/rate/:idEvento', validateToken, requireRole('cittadino'), validateRateEvent, async (req, res, next) => {
+    try {
+        const { recensione, star } = req.body
+        const idEvento = req.params.idEvento
+        const idUtente = req.user.id
+
+        console.log(recensione, star, idEvento, idUtente)
+        // Controllo se esiste l'id evento esiste
+        const checkEvento = await Events.findByPk(idEvento)
+        if (!checkEvento) return sendResponse(res, constants.BAD_REQUEST, false, 'Evento selezionato inesistente')
+        // Controllo se esiste anche la registrazione all'evento
+        const checkJoinEvento = await JoinEvents.findOne({
+            where: {
+                idEvento: idEvento,
+                idUtente: idUtente
+            }
+        })
+        if (!checkJoinEvento) return sendResponse(res, constants.BAD_REQUEST, false, 'Non sei davvero registrato a questo evento')
+        const updateRecensione = await JoinEvents.update({
+            descrizione: recensione,
+            star: star
+        }, {
+            where: {
+                idEvento: idEvento,
+                idUtente: idUtente
+            }
+        })
+        if (!updateRecensione) return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nell\'aggiunta dell\'evento')
+
+        console.log('updateRecensione: ', updateRecensione)
+        sendResponse(res, constants.OK, true, 'Recensione aggiunta corrrettamente')
     } catch (err) {
         console.error('Errore nella POST /create-event: ', err)
         sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')

@@ -42,7 +42,7 @@ const Events = () => {
   const navigate = useNavigate();
   const [currentTypeUser] = useState(user?.tipo || 'not logged in');
   const [currentCity, setCurrentCity] = useState(user?.luogo || 'Parma');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('All Events');
   const [events, setEvents] = useState<EventType[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'detail'
@@ -80,19 +80,20 @@ const Events = () => {
 
   useEffect(() => {
     const savedCity = localStorage.getItem('lastCity'); // Ricupera la città salvata nel localStorage
+    setCurrentCity('Parma');
+
     if (user?.luogo) {
       setCurrentCity(user.luogo);
     } else if (savedCity) {
       setCurrentCity(savedCity);
-    } else {
-      setCurrentCity('Parma');
     }
 
     fetchEvents();
   }, [user]);
 
+  console.log(events);
   const filteredEvents =
-    selectedCategory === 'all'
+    selectedCategory === 'All Events'
       ? events
       : events.filter((event) => event.categoria === selectedCategory);
 
@@ -193,7 +194,7 @@ const Events = () => {
     try {
       const token = localStorage.getItem('accessToken');
       if (!token) throw new Error('Token mancante');
-      console.log('editData: ', editData);
+
       await api.put(`/event/modify/${selectedEvent?.id}`, editData, {
         headers: {
           accessToken: token,
@@ -779,7 +780,7 @@ const Events = () => {
               return (
                 <button
                   key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
+                  onClick={() => setSelectedCategory(category.label)}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
                     selectedCategory === category.id
                       ? 'bg-primary text-primary-foreground'
@@ -808,6 +809,7 @@ const Events = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredEvents.map((event) => {
             const CategoryIcon = getCategoryIcon(event.categoria);
+
             return (
               <div
                 key={event.id}

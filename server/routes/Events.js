@@ -30,8 +30,6 @@ router.post('/', validateToken, requireRole('admin', 'operatore'), upload.single
         const emailOrganizzatore = req.body.emailOrganizzatore ? req.body.emailOrganizzatore : req.user.email
         // Aggiungo il campo stato: 
         sanitizedData.stato = 0
-        console.log(sanitizedData)
-        console.log('filename: ', filename, ', filepath: ', filepath)
         // Creo l'evento
         const newEvent = await Events.create({
             titolo: sanitizedData.titolo,
@@ -147,6 +145,61 @@ router.get('/city/:city', async (req, res, next) => {
         sendResponse(res, constants.OK, true, 'Elenco eventi in città', InfoEvents)
     } catch (err) {
         console.error('Errore nella GET /city/:city: ', err)
+        sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
+    }
+})
+
+
+/**
+ * @description Get all listed events from an operator or citizen
+ * @route GET /event/listed/
+ * @access private
+ * @note Only operator or citizen or admin 
+ */
+router.get('/listed', validateToken, requireRole('cittadino', 'operatore', 'admin'), async (req, res, next) => {
+    try {
+        const idUtente = req.user.id
+
+        let response;
+        // Controllo se l'utente è cittadino
+        if (req.user.tipo === 'cittadino') {
+            // Cerco in JoinEvents
+            response = await JoinEvents.findAll({
+                where: { idUtente: idUtente },
+                include: [{ model: Events }],
+                order: [[{ model: Events }, 'data', 'DESC']]
+            })
+        } else {
+            // Cerco in CreateEvents
+            response = await CreateEvents.findAll({
+                where: { idUtente: idUtente },
+                include: [{ model: Events }],
+                order: [[{ model: Events }, 'data', 'DESC']]
+            })
+        }
+
+        if (!response) {
+            return sendResponse(res, constants.BAD_REQUEST, false, 'Errore nella modifica dell\'evento')
+        }
+
+        const eventi = response.map((entry) => {
+            const event = entry.Event;
+
+            const imageUrl = event.filename
+                ? `http://localhost:3001/uploads/events/${event.filename}`
+                : `http://localhost:3001/uploads/events/default.png`;
+            const star = entry.star;
+            const recensione = entry.descrizione;
+            return {
+                ...event.dataValues,
+                imageUrl,
+                star,
+                recensione
+            };
+        });
+        sendResponse(res, constants.OK, true, 'Eventi inviati con successo', eventi)
+    } catch (err) {
+        console.error('Errore nella GET /event/listed: ', err)
         sendResponse(res, constants.SERVER_ERROR, false, 'Errore Interno.')
     }
 })
