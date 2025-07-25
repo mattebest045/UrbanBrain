@@ -1,0 +1,95 @@
+/* dbdocs build docs/schema-db.dbml --project UrbanBrain2.0 */
+/* Vai sul sito di dbdocs ed edita da lì, fai molto prima* 
+Project urbanbrain { 
+  database_type: "MySQL" 
+} 
+ 
+/* Table: utenti */ 
+Table utenti { 
+  id int [pk, increment] 
+  tipo varchar(255)
+  nome varchar(255)
+  cognome varchar(255)
+  password varchar(255)
+  stato int
+  createdAt datetime
+  updatedAt datetime
+  email varchar(255) [unique]
+  luogo varchar(255)
+} 
+ 
+/* Table: eventi */ 
+Table eventi { 
+  id int [pk, increment] 
+  luogo varchar(255)
+  descrizione text
+  data datetime
+  stato int
+  createdAt datetime
+  updatedAt datetime
+  prezzo decimal(5,2)
+  filename varchar(255)
+  path varchar(255)
+  organizzatore varchar(255)
+  emailOrganizzatore varchar(255)
+  titolo varchar(255)
+  postiDisponibili int
+  categoria varchar(255)
+} 
+ 
+/* Table: creazione_evento */ 
+Table creazione_evento { 
+  idEvento int 
+  idUtente int 
+  segnalazione text 
+  createdAt datetime 
+  updatedAt datetime 
+ 
+  Primary Key (idEvento, idUtente) 
+  Indexes { 
+    (idUtente) 
+  } 
+} 
+ 
+/* Table: partecipa_evento */ 
+Table partecipa_evento { 
+  idEvento int 
+  idUtente int 
+  segnalazione text
+  createdAt datetime
+  updatedAt datetime
+  star int
+  descrizione text
+  stato int 
+ 
+  Primary Key (idEvento, idUtente) 
+  Indexes { 
+    (idUtente) 
+  } 
+} 
+ 
+/* Table: segnalazioni */ 
+Table segnalazioni { 
+  idSegnalazione int [pk, increment] 
+  idUtente int 
+  citta varchar(255)
+  indirizzo varchar(255)
+  data date
+  descrizione text
+  foto varchar(255)
+  createdAt datetime
+  updatedAt datetime
+ 
+  Indexes { 
+    (idUtente) 
+  } 
+} 
+ 
+/* Foreign key relationships */ 
+Ref: creazione_evento.idEvento > eventi.id [update: cascade] 
+Ref: creazione_evento.idUtente > utenti.id 
+ 
+Ref: partecipa_evento.idEvento > eventi.id [update: cascade] 
+Ref: partecipa_evento.idUtente > utenti.id 
+ 
+Ref: segnalazioni.idUtente > utenti.id [update: cascade] 
