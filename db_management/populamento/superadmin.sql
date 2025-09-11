@@ -1,2 +1,0 @@
-INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) VALUES ('1', 'System Administrator', '2024-11-02', '0', '2024-11-13 11:25:30', '202cb962ac59075b964b07152d234b70');
-INSERT INTO superadmin (IDSuperAdmin, Ruolo, DataAssegnazioneRuolo, Stato, UltimoAccesso, Password) VALUES ('2', 'Cybersecurity Analyst', '2024-11-13', '0', '2024-11-13 11:25:31', '33ceb07bf4eeb3da587e268d663aba1a');
